@@ -43,10 +43,10 @@
   <ItemGroup>
     <Compile Include="TakeawayResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TakeawayApi\TakeOutResponse\Take\TakeawayDeleteResponse.cs" />
-    <Compile Include="TakeawayApi\TakeOutResponse\Take\TakeawayAddResponse.cs" />
-    <Compile Include="TakeawayApi\TakeOutResponse\Take\TakeawayGetResponse.cs" />
-    <Compile Include="TakeawayApi\TakeOutResponse\Take\TakeawayUpdateResponse.cs" />
+    <Compile Include="TakeawayApi\TakeawayResponse\Take\TakeawayDeleteResponse.cs" />
+    <Compile Include="TakeawayApi\TakeawayResponse\Take\TakeawayAddResponse.cs" />
+    <Compile Include="TakeawayApi\TakeawayResponse\Take\TakeawayGetResponse.cs" />
+    <Compile Include="TakeawayApi\TakeawayResponse\Take\TakeawayUpdateResponse.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
