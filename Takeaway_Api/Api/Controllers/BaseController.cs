@@ -8,9 +8,10 @@ namespace Api.Controllers
 {
     public class BaseController : Controller
     {
-        // GET: Base
+        
         public ActionResult Index()
         {
+            ///玩不明白的东西
             return View();
         }
     }
