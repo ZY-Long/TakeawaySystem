@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SDK
+namespace SDK.TakeawayApi.TakeOutResponse.Take
 {
-    public class Class1
+    public class TakeawayDeleteResponse: TakeawayResponse
     {
     }
 }
