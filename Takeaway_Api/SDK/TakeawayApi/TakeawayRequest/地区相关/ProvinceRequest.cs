@@ -13,7 +13,7 @@ namespace SDK
     {
         public override string GetApiName()
         {
-            return "/api/City/GetProvinceInfos";
+            return "/api/Province/GetProvinceInfos";
         }
     }
 }

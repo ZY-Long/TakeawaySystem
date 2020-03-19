@@ -18,7 +18,7 @@ namespace SDK
 
         public override string GetApiName()
         {
-            return "/api/City/GetArealnfos";
+            return "/api/Area/GetArealnfos";
         }
     }
 }

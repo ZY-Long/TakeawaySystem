@@ -24,5 +24,5 @@ namespace Api.Controllers
             response.ProvinceInfos = BaseBLL<ProvinceBLL>.Instance.GetProvinceInfos();
             return response;
         }
-    }5
+    }
 }
