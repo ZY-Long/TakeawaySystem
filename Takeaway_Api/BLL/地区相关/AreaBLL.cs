@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
 using Model;
 
-namespace DAL
+namespace BLL
 {
     /// <summary>
-    /// 城市相关DAL
+    /// 地区相关BLL
     /// </summary>
-    public class CityDAL
+    public class AreaBLL
     {
         /// <summary>
         /// 获取城市集合,用作下拉
         /// </summary>
         /// <returns></returns>
-        public List<CityInfo> GetCityInfos(int provinceId)
+        public List<Arealnfo> GetArealnfos(int cityId)
         {
-            List<CityInfo> infos = OrmDBHelper.GetToList<CityInfo>("SELECT * FROM dbo.CityInfo WHERE ProvinceId ="+provinceId);
-            return infos;
+            return BaseDAL<AreaDAL>.Instance.GetArealnfos(cityId);
         }
     }
 }
