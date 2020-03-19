@@ -12,6 +12,7 @@ namespace Api.Controllers
         public ActionResult Index()
         {
             //噶王你会吃屎吗
+            //噶王你晚上接受小组制裁吧
             return View();
         }
       
