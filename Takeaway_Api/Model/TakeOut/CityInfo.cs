@@ -11,8 +11,11 @@ namespace Model
     /// </summary>
    public class CityInfo
     {
+        //市Id
         public int Id { get; set; }
+        //市名称
         public string Name { get; set; }
+        //省Id
         public int ProvinceId { get; set; }
     }
 }

@@ -11,7 +11,9 @@ namespace Model
     /// </summary>
    public class TasteInfo
     {
+        //口味Id
         public int Id { get; set; }
+        //口味名称
         public string Name { get; set; }
     }
 }

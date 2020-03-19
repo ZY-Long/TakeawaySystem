@@ -11,7 +11,9 @@ namespace Model
     /// </summary>
    public class ProvinceInfo
     {
+        //省Id
         public int Id { get; set; }
+        //省名称
         public string Name { get; set; }
     }
 }
