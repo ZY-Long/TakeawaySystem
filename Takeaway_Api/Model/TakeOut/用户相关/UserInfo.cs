@@ -22,7 +22,7 @@ namespace Model
         //用户密码
         public string PassWord { get; set; }
         //盐
-        public int Salt { get; set; }
+        public string Salt { get; set; }
         //邮箱
         public string Email { get; set; }
         //真实姓名
