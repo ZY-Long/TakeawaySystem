@@ -11,8 +11,11 @@ namespace Model
     /// </summary>
    public class Activity
     {
+        //活动Id
         public int Id { get; set; }
+        //活动名称
         public string Name { get; set; }
+        //活动介绍
         public string Content { get; set; }
     }
 }

@@ -11,8 +11,11 @@ namespace Model
     /// </summary>
    public class Arealnfo
     {
+        //区Id
         public int Id { get; set; }
+        //区名称
         public string Name { get; set; }
+        //市Id
         public int CityId { get; set; }
     }
 }

@@ -11,9 +11,13 @@ namespace Model
     /// </summary>
    public class SalesInfo
     {
+        //销售Id
         public int Id { get; set; }
+        //类型Id
         public int TypeId { get; set; }
+        //具体Id
         public int DetailsId { get; set; }
+        //销量
         public int Sales { get; set; }
         
     }

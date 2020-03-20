@@ -11,11 +11,17 @@ namespace Model
     /// </summary>
    public class CartDetails
     {
+        //购物车详情Id
         public int Id { get; set; }
-        public int CartId { get; set; }
+        //类型Id
         public int TypeId { get; set; }
+        //菜品酒水具体Id
         public int DetailsId { get; set; }
+        //购物车数量
         public int Count { get; set; }
+        //口味Id
         public int TasteId { get; set; }
+        //总价钱
+        public decimal ToPrice { get; set; }
     }
 }
