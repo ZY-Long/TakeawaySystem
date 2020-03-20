@@ -45,12 +45,5 @@ namespace DAL
             return salt;
         }
 
-
-        //登陆
-        public object DeLogin(string PhoneNumber,string Password)
-        {
-            string sql = $"select count(1) from UserInfo where PhoneNumber='{PhoneNumber}' and Password='{Password}'";
-            return DBHelper.
-        }
     }
 }
