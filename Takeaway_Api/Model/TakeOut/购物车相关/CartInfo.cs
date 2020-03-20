@@ -15,5 +15,7 @@ namespace Model
         public int Id { get; set; }
         //用户Id
         public int UserId { get; set; }
+        //商家Id
+        public int BusinessInfo { get; set; }
     }
 }

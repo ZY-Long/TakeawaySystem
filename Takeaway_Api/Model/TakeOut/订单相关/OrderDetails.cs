@@ -7,21 +7,24 @@ using System.Threading.Tasks;
 namespace Model
 {
     /// <summary>
-    /// 购物车详情表
+    /// 订单详情表
     /// </summary>
-   public class CartDetails
+   public class OrderDetails
     {
-        //购物车详情Id
+        //订单详情Id
         public int Id { get; set; }
-        //类型Id
+        //订单Id
+        public int OrderId { get; set; }
+        //菜品酒水套餐类型Id
         public int TypeId { get; set; }
-        //菜品酒水具体Id
+        //菜品酒水套餐具体Id
         public int DetailsId { get; set; }
-        //购物车数量
+        //数量
         public int Count { get; set; }
         //口味Id
         public int TasteId { get; set; }
-        //总价钱
-        public decimal ToPrice { get; set; }
+        //备注
+        public string Content { get; set; }
+        
     }
 }

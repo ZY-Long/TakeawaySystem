@@ -23,5 +23,7 @@ namespace Model
         public int TypeId { get; set; }
         //酒水备注
         public string Remark { get; set; }
+        //商家Id
+        public int BusinessInfo { get; set; }
     }
 }

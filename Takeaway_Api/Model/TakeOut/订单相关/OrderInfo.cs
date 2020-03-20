@@ -33,5 +33,7 @@ namespace Model
         public decimal TotalPrice { get; set; }
         //收货人
         public string Consignee { get; set; }
+        //商家Id
+        public int BusinessInfo { get; set; }
     }
 }
