@@ -13,6 +13,8 @@ namespace Model
     {
         //购物车详情Id
         public int Id { get; set; }
+        //购物车Id
+        public int CratId { get; set; }
         //类型Id
         public int TypeId { get; set; }
         //菜品酒水具体Id

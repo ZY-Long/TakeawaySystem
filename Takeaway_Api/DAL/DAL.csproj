@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="BaseDAL.cs" />
     <Compile Include="Helper\OrmDBHelper.cs" />
-    <Compile Include="TakeDAL.cs" />
+    <Compile Include="购物车相关\TakeDAL.cs" />
     <Compile Include="Helper\DataReaderHelper.cs" />
     <Compile Include="Helper\DBHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
