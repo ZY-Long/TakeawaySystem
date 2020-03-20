@@ -23,5 +23,7 @@ namespace Model
         public string PhoneNumber { get; set; }
         //负责人
         public string ContactPerson { get; set; }
+        //商家地址
+        public string Merchataddress { get; set; }
     }
 }
