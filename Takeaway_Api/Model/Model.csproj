@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TakeOut\商家相关\Activity.cs" />
     <Compile Include="TakeOut\用户相关\AddressInfo.cs" />

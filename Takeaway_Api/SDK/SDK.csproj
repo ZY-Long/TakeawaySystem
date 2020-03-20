@@ -41,10 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TakeawayApi\TakeawayRequest\Request\TakeawayaddRequest.cs" />
-    <Compile Include="TakeawayApi\TakeawayRequest\Request\TakeawayDeleteRequest.cs" />
-    <Compile Include="TakeawayApi\TakeawayRequest\Request\TakeawayGetRequest.cs" />
-    <Compile Include="TakeawayApi\TakeawayRequest\Request\TakeawayUpdateRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\地区相关\AreaRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\地区相关\CityRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\地区相关\ProvinceRequest.cs" />
@@ -57,10 +53,6 @@
     <Compile Include="BaseRequest.cs" />
     <Compile Include="BaseResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TakeawayApi\TakeOutResponse\Take\TakeawayDeleteResponse.cs" />
-    <Compile Include="TakeawayApi\TakeOutResponse\Take\TakeawayAddResponse.cs" />
-    <Compile Include="TakeawayApi\TakeOutResponse\Take\TakeawayGetResponse.cs" />
-    <Compile Include="TakeawayApi\TakeOutResponse\Take\TakeawayUpdateResponse.cs" />
     <Compile Include="TakeawayApi\TakeOutResponse\购物车相关\AddCartResponse.cs" />
     <Compile Include="TakeawayApi\TakeOutResponse\购物车相关\GetCartResponse.cs" />
     <Compile Include="TakeawayApi\TakeOutResponse\购物车相关\TakeResponse.cs" />
