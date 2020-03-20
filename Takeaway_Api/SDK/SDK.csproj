@@ -46,6 +46,7 @@
     <Compile Include="TakeawayApi\TakeawayRequest\Request\TakeawayGetRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\Request\TakeawayUpdateRequest.cs" />
     <Compile Include="TakeawayApi\TakeOutResponse\地区相关\CityResponse.cs" />
+    <Compile Include="TakeawayApi\TakeOutResponse\购物车相关\TakeResponse.cs" />
     <Compile Include="TakeawayRequest.cs" />
     <Compile Include="TakeawayResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
