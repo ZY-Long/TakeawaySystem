@@ -23,5 +23,6 @@ namespace Model
         public int TasteId { get; set; }
         //总价钱
         public decimal ToPrice { get; set; }
+        
     }
 }

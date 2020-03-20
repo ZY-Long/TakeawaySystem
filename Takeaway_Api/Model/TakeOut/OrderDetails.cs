@@ -25,5 +25,6 @@ namespace Model
         public int TasteId { get; set; }
         //备注
         public string Content { get; set; }
+        
     }
 }

@@ -46,6 +46,7 @@
     <Compile Include="TakeOut\Activity.cs" />
     <Compile Include="TakeOut\AddressInfo.cs" />
     <Compile Include="TakeOut\Arealnfo.cs" />
+    <Compile Include="TakeOut\BusinessInfo.cs" />
     <Compile Include="TakeOut\CartDetails.cs" />
     <Compile Include="TakeOut\CartInfo.cs" />
     <Compile Include="TakeOut\CityInfo.cs" />
