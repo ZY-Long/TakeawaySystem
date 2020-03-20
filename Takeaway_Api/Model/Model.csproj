@@ -43,23 +43,23 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TakeOut\Activity.cs" />
-    <Compile Include="TakeOut\AddressInfo.cs" />
-    <Compile Include="TakeOut\Arealnfo.cs" />
-    <Compile Include="TakeOut\BusinessInfo.cs" />
-    <Compile Include="TakeOut\CartDetails.cs" />
-    <Compile Include="TakeOut\CartInfo.cs" />
-    <Compile Include="TakeOut\CityInfo.cs" />
-    <Compile Include="TakeOut\DrinkInfo.cs" />
-    <Compile Include="TakeOut\MenuInfo.cs" />
-    <Compile Include="TakeOut\MenuPackageInfo.cs" />
-    <Compile Include="TakeOut\OrderDetails.cs" />
-    <Compile Include="TakeOut\OrderInfo.cs" />
-    <Compile Include="TakeOut\PackageInfo.cs" />
-    <Compile Include="TakeOut\ProvinceInfo.cs" />
-    <Compile Include="TakeOut\SalesInfo.cs" />
-    <Compile Include="TakeOut\TasteInfo.cs" />
-    <Compile Include="TakeOut\UserInfo.cs" />
+    <Compile Include="TakeOut\商家相关\Activity.cs" />
+    <Compile Include="TakeOut\用户相关\AddressInfo.cs" />
+    <Compile Include="TakeOut\地区相关\Arealnfo.cs" />
+    <Compile Include="TakeOut\商家相关\BusinessInfo.cs" />
+    <Compile Include="TakeOut\购物车相关\CartDetails.cs" />
+    <Compile Include="TakeOut\购物车相关\CartInfo.cs" />
+    <Compile Include="TakeOut\地区相关\CityInfo.cs" />
+    <Compile Include="TakeOut\菜品相关\DrinkInfo.cs" />
+    <Compile Include="TakeOut\菜品相关\MenuInfo.cs" />
+    <Compile Include="TakeOut\菜品相关\MenuPackageInfo.cs" />
+    <Compile Include="TakeOut\订单相关\OrderDetails.cs" />
+    <Compile Include="TakeOut\订单相关\OrderInfo.cs" />
+    <Compile Include="TakeOut\菜品相关\PackageInfo.cs" />
+    <Compile Include="TakeOut\地区相关\ProvinceInfo.cs" />
+    <Compile Include="TakeOut\订单相关\SalesInfo.cs" />
+    <Compile Include="TakeOut\菜品相关\TasteInfo.cs" />
+    <Compile Include="TakeOut\用户相关\UserInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
