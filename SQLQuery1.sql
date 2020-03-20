@@ -9,11 +9,10 @@ Id INT PRIMARY KEY IDENTITY(1,1),
 Name VARCHAR(20),
 Img VARCHAR(200),
 Price DECIMAL(18,2),
-TypeId INT,--默认为1
+TypeId INT DEFAULT(1),--默认为1
 Remark VARCHAR(20),
 BusinessInfo INT not null
 )
-
 --2.酒水表
 CREATE TABLE DrinkInfo
 (
@@ -21,7 +20,7 @@ Id INT PRIMARY KEY IDENTITY(1,1),
 Name VARCHAR(20),
 Img VARCHAR(200),
 Price DECIMAL(18,2),
-TypeId INT,--默认为2
+TypeId INT DEFAULT(2),--默认为2
 Remark VARCHAR(20),
 BusinessInfo INT not null
 )
@@ -33,10 +32,11 @@ Id INT PRIMARY KEY IDENTITY(1,1),
 Name VARCHAR(20),
 Img VARCHAR(200),
 Price DECIMAL(18,2),
-TypeId INT,--默认为3
+TypeId INT DEFAULT(3),--默认为3
 Remark VARCHAR(20),
 BusinessInfo INT not null
 )
+
 
 --4.套餐菜品关联
 CREATE TABLE MenuPackageInfo
