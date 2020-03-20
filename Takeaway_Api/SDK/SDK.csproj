@@ -45,6 +45,7 @@
     <Compile Include="TakeawayApi\TakeawayRequest\Request\TakeawayDeleteRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\Request\TakeawayGetRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\Request\TakeawayUpdateRequest.cs" />
+    <Compile Include="TakeawayApi\TakeOutResponse\地区相关\CityResponse.cs" />
     <Compile Include="TakeawayRequest.cs" />
     <Compile Include="TakeawayResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,6 +54,11 @@
     <Compile Include="TakeawayApi\TakeawayResponse\Take\TakeawayGetResponse.cs" />
     <Compile Include="TakeawayApi\TakeawayResponse\Take\TakeawayUpdateResponse.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{a76f8a1c-0f8e-438b-a4d0-84601c4bafa6}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
