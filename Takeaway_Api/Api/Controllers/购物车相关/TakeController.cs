@@ -9,7 +9,7 @@ using BLL;
 using SDK;
 namespace Api.Controllers.购物车相关
 {
-    public class CratController : ApiController
+    public class TakeController : ApiController
     {
         public TakeResponse GetTakeInfos()
         {

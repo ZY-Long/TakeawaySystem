@@ -161,7 +161,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\地区相关\ProvinceController.cs" />
-    <Compile Include="Controllers\购物车相关\CratController.cs" />
+    <Compile Include="Controllers\购物车相关\CratDeController.cs" />
+    <Compile Include="Controllers\购物车相关\TakeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

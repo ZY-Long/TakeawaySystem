@@ -9,10 +9,14 @@ namespace BLL
 {
    public class TakeBLL
     {
-        TakeDAL dal = new TakeDAL();
+        
         public List<TasteInfo> ShowTasteInfo()
         {
             return BaseDAL<TakeDAL>.Instance.ShowTasteInfo();
+        }
+        public List<CartDetails> ShowCartDetails()
+        {
+            return BaseBLL<TakeDAL>.Instance.ShowCartDetails();
         }
     }
 }
