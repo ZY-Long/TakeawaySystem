@@ -46,6 +46,7 @@
     <Compile Include="地区相关\AreaBLL.cs" />
     <Compile Include="地区相关\CityBLL.cs" />
     <Compile Include="地区相关\ProvinceBLL.cs" />
+    <Compile Include="用户相关\UserInfobll.cs" />
     <Compile Include="购物车相关\TakeBLL.cs" />
   </ItemGroup>
   <ItemGroup>

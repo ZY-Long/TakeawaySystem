@@ -18,7 +18,8 @@ namespace DAL
         public int AddUser(UserInfo user)
         {
             connection.Open();
-            string sql = $@"insert into UserInfo(NickName,Img,PhoneNumber,Password,Salt,Email,MyProperty) values('{user.NickName}','{user.PhoneNumber}','{user.PassWord}','{user.Salt}','{user.Email}','{user.MyProperty}')";
+            string sql = $@"insert into UserInfo(NickName,Img,PhoneNumber,Password,Salt,Email,RealName,CreateTime,UpdateTime,CreaterId,UpdaterId) 
+                                 values('{user.NickName}','{user.PhoneNumber}','{user.PassWord}','{user.Salt}','{user.Email}','{user.RealName},'{user.CreateTime}','{user.UpdateTime}','{user.CreaterId}','{user.UpdaterId}'')";
             SqlCommand command = new SqlCommand(sql,connection);
             var res = command.ExecuteNonQuery();
             return res;
