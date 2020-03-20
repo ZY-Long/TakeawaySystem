@@ -19,6 +19,11 @@ namespace Model
         public int DetailsId { get; set; }
         //销量
         public int Sales { get; set; }
-        
+        public int States { get; set; }
+        public DateTime CreateTime { get; set; }
+        public DateTime UpdateTime { get; set; }
+        public int CreaterId { get; set; }
+        public int UpdaterId { get; set; }
+
     }
 }

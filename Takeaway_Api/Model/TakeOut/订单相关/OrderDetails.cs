@@ -25,6 +25,11 @@ namespace Model
         public int TasteId { get; set; }
         //备注
         public string Content { get; set; }
-        
+        public int States { get; set; }
+        public DateTime CreateTime { get; set; }
+        public DateTime UpdateTime { get; set; }
+        public int CreaterId { get; set; }
+        public int UpdaterId { get; set; }
+
     }
 }
