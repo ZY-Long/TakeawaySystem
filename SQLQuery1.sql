@@ -105,8 +105,9 @@ PhoneNumber VARCHAR(40),
 PassWord VARCHAR(50),
 SaIt VARCHAR(200),
 Email VARCHAR(50),
-MyProperty varchar(50)
+RealName varchar(50)
 )
+drop table UserInfo
 
 --12.用户地址表
 CREATE TABLE AddressInfo
