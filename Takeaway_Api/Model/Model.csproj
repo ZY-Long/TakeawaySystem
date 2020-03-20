@@ -50,12 +50,10 @@
     <Compile Include="TakeOut\购物车相关\CartDetails.cs" />
     <Compile Include="TakeOut\购物车相关\CartInfo.cs" />
     <Compile Include="TakeOut\地区相关\CityInfo.cs" />
-    <Compile Include="TakeOut\菜品相关\DrinkInfo.cs" />
     <Compile Include="TakeOut\菜品相关\MenuInfo.cs" />
     <Compile Include="TakeOut\菜品相关\MenuPackageInfo.cs" />
     <Compile Include="TakeOut\订单相关\OrderDetails.cs" />
     <Compile Include="TakeOut\订单相关\OrderInfo.cs" />
-    <Compile Include="TakeOut\菜品相关\PackageInfo.cs" />
     <Compile Include="TakeOut\地区相关\ProvinceInfo.cs" />
     <Compile Include="TakeOut\订单相关\SalesInfo.cs" />
     <Compile Include="TakeOut\菜品相关\TasteInfo.cs" />

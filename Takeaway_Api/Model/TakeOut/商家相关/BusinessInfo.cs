@@ -25,5 +25,10 @@ namespace Model
         public string ContactPerson { get; set; }
         //商家地址
         public string Merchataddress { get; set; }
+        public int States { get; set; }
+        public DateTime CreateTime { get; set; }
+        public DateTime UpdateTime { get; set; }
+        public int CreaterId { get; set; }
+        public int UpdaterId { get; set; }
     }
 }
