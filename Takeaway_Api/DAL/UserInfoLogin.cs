@@ -12,7 +12,7 @@ namespace DAL
   public  class UserInfoLogin
     {
         SqlConnection connection = new SqlConnection("Data Source=.;Initial Catalog=TakeawayDb;Integrated Security=True");
-      
+        DBHelper bHelper = new DBHelper();
         //用户注册
         public int AddUser(UserInfo user)
         {
@@ -43,6 +43,14 @@ namespace DAL
             }
 
             return salt;
+        }
+        //用户登陆
+        public int DeLogin(string PhoneNumber,string Password)
+        {
+            string sql = $"select count(1) from UserInfo where PhoneNumber='{PhoneNumber}' and Password='{Password}'";
+           
+            
+            return Convert.ToInt32(bHelper.ExecuteScalar(sql));
         }
 
     }
