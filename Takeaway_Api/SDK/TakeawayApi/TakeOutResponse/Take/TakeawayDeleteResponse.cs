@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SDK.TakeawayApi.TakeOutResponse.Take
 {
-    public class TakeawayDeleteResponse: TakeawayResponse
+    public class TakeawayDeleteResponse: BaseResponse
     {
     }
 }

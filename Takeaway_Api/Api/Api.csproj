@@ -156,9 +156,12 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\地区相关\AreaController.cs" />
     <Compile Include="Controllers\地区相关\CityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\地区相关\ProvinceController.cs" />
+    <Compile Include="Controllers\购物车相关\CratController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -3,23 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL;
-using Model;
 
-namespace BLL
+namespace SDK
 {
     /// <summary>
-    /// 城市相关BLL
+    /// 请求的基类
     /// </summary>
-    public class CityBLL
+   public class BaseRequest
     {
         /// <summary>
-        /// 获取城市集合,用作下拉
+        /// 返回接口的名称
         /// </summary>
         /// <returns></returns>
-        public List<CityInfo> GetCityInfos(int provinceId)
+        public virtual string GetApiName()
         {
-            return BaseDAL<CityDAL>.Instance.GetCityInfos(provinceId);
+            return "";
         }
     }
 }
