@@ -58,6 +58,7 @@
     <Compile Include="TakeawayApi\TakeOutResponse\Take\TakeawayAddResponse.cs" />
     <Compile Include="TakeawayApi\TakeOutResponse\Take\TakeawayGetResponse.cs" />
     <Compile Include="TakeawayApi\TakeOutResponse\Take\TakeawayUpdateResponse.cs" />
+    <Compile Include="TakeawayApi\TakeOutResponse\购物车相关\TakeResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">
