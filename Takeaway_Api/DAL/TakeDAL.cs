@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class Class1
+    /// <summary>
+    /// 外卖数据访问层
+    /// </summary>
+    public class TakeDAL
     {
+        
     }
 }
