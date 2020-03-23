@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Model;
 namespace SDK
 {
-   public class CartAddRequest:BaseRequest
+   public class AddCartRequest : BaseRequest
     {
-        public CartDetails CartAdd { get; set; }
+        public CartDetails CartAdd  { get; set; }
         public override string GetApiName()
         {
             return "/api/Crat/GetArealnfos";
