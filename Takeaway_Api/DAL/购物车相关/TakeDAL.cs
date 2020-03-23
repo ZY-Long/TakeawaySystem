@@ -21,8 +21,9 @@ namespace DAL
         public int AddCart(CartInfo cart)
         {
             connection.Open();
-            string sql = $@"insert into CartInfo (UserId,BusinessInfo) values('{cart.UserId}','{cart.BusinessInfo}')";
-            SqlCommand command = new SqlCommand(sql,connection);
+            string sql = $@"insert into CartInfo (UserId,BusinessInfo,Sates,CreateTime,UpdateTime,CreaterId,UpdaterId) 
+                    values('{cart.UserId}','{cart.BusinessInfo}',1,'GetDate()','GetDate()',1,1)";
+            SqlCommand command = new SqlCommand(sql, connection);
             var res = command.ExecuteNonQuery();
             return res;
         }
@@ -34,10 +35,11 @@ namespace DAL
         public int AddCartDetails(CartDetails cart)
         {
             CartInfo c = new CartInfo();
-            
-            var car= AddCart(c);
+
+            var car = AddCart(c);
             connection.Open();
-            string sql = $@"insert into CartDetails (TypeId,DetailsId,Count,TasteId,ToPrice) values('{cart.TypeId}','{cart.DetailsId}','{cart.Count}','{cart.TasteId}','{cart.ToPrice}')";
+            string sql = $@"insert into CartDetails (TypeId,DetailsId,Count,TasteId,ToPrice,CartId,Sates,CreateTime,UpdateTime,CreaterId,UpdaterId) 
+                    values('{cart.TypeId}','{cart.DetailsId}','{cart.Count}','{cart.TasteId}','{cart.ToPrice}','{cart.CratId}',1,'GetDate()','GetDate()',1,1)";
             SqlCommand command = new SqlCommand(sql, connection);
             var res = command.ExecuteNonQuery();
             return res;
@@ -69,6 +71,19 @@ namespace DAL
             var reader = command.ExecuteReader();
             var list = reader.DataReaderToList<TasteInfo>();
             return list;
+        }
+        /// <summary>
+        /// 修改购物车
+        /// </summary>
+        /// <param name="cart"></param>
+        /// <returns></returns>
+        public int UpdateCart(int id=0)
+        {
+            connection.Open();
+            string sql = $@"";
+            SqlCommand command = new SqlCommand(sql, connection);
+            var res = command.ExecuteNonQuery();
+            return res;
         }
     }
 }

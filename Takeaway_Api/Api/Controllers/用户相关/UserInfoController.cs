@@ -16,5 +16,9 @@ namespace Api.Controllers
         {
             return bll.AddUser(user);
         }
+        public int DeLogin(UserInfo info)
+        {
+            return bll.DeLogin(info);
+        }
     }
 }

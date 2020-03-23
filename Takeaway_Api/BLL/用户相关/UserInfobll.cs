@@ -14,5 +14,11 @@ namespace BLL
         {
             return BaseDAL<UserInfoLogin>.Instance.AddUser(user);
         }
+  
+        //用户登陆
+        public int DeLogin(UserInfo info)
+        {
+            return BaseDAL<UserInfoLogin>.Instance.DeLogin(info);
+        }
     }
 }
