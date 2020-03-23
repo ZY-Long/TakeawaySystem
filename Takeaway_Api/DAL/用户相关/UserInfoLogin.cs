@@ -18,8 +18,9 @@ namespace DAL
         public int AddUser(UserInfo user)
         {
             connection.Open();
+            var bus = UserInfoLogin.GenerateSalt();
             string sql = $@"insert into UserInfo(NickName,Img,PhoneNumber,Password,Salt,Email,RealName,CreateTime,UpdateTime,CreaterId,UpdaterId) 
-                                 values('{user.NickName}','{user.PhoneNumber}','{user.PassWord}','{user.Salt}','{user.Email}','{user.RealName},'{user.CreateTime}','{user.UpdateTime}','{user.CreaterId}','{user.UpdaterId}'')";
+                                 values('{user.NickName}','{user.PhoneNumber}','{MD5Encrypt32(user.PassWord + "{"+bus+"}")}','{bus}','{user.Email}','{user.RealName},'{user.CreateTime}','{user.UpdateTime}','{user.CreaterId}','{user.UpdaterId}'')";
             SqlCommand command = new SqlCommand(sql,connection);
             var res = command.ExecuteNonQuery();
             return res;
@@ -53,6 +54,7 @@ namespace DAL
             string sql =string.Format("select count(1) from UserInfo where PhoneNumber='{0}' and Password='{1}'",info.PhoneNumber, MD5Encrypt32(info.PassWord+"{"+res+"}"));          
             return Convert.ToInt32(bHelper.ExecuteScalar(sql));
         }
+  
         /// <summary>
         /// 32位MD5加密
         /// </summary>
