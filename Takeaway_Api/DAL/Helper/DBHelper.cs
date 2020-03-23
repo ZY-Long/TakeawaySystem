@@ -21,7 +21,7 @@ namespace DAL
         {
             if (conn == null)
             {
-                conn = new SqlConnection("");
+                conn = new SqlConnection("Data Source=.;Initial Catalog=TakeOutDB;Integrated Security=True");
             }
         }
         /// <summary>

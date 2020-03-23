@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace DAL
+using Model;
+namespace SDK
 {
-    //用户相关DAL
-  public  class UserInfoLogin
+   public class AddCartResponse :BaseResponse
     {
-
+        
     }
 }

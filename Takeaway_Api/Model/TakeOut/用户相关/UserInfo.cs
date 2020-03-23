@@ -26,6 +26,11 @@ namespace Model
         //邮箱
         public string Email { get; set; }
         //真实姓名
-        public string MyProperty { get; set; }
+        public string RealName { get; set; }
+        public int States { get; set; }
+        public DateTime CreateTime { get; set; }
+        public DateTime UpdateTime { get; set; }
+        public int CreaterId { get; set; }
+        public int UpdaterId { get; set; }
     }
 }

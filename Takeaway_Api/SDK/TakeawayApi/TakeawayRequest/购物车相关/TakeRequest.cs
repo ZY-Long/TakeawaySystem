@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace SDK
 {
-   public class TakeawayGetRequest
+   public class TakeRequest:BaseRequest
     {
+        public override string GetApiName()
+        {
+            return "/api/Crat/GetTakeInfos";
+        }
     }
 }

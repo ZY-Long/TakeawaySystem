@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
 
-namespace Model
+namespace SDK
 {
-    public class Class1
+   public class UserInfoResponse:BaseResponse
     {
+        public List<UserInfo> userInfos { get; set; }
     }
 }

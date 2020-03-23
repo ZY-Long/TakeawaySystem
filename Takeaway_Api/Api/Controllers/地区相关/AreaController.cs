@@ -11,24 +11,24 @@ using SDK;
 namespace Api.Controllers
 {
     /// <summary>
-    /// 城市相关控制器
+    /// 地区相关控制器
     /// </summary>
-    public class CityController : ApiController
+    public class AreaController : ApiController
     {
         /// <summary>
-        /// 获取城市集合
+        /// 获取地区集合
         /// </summary>
         /// <param name="cityRequest"></param>
         /// <returns></returns>
         [HttpPost]
-        public CityResponse GetCityInfos(CityRequest cityRequest)
+        public AreaResponse GetArealnfos(AreaRequest areaRequest)
         {
-            if (cityRequest.provinceId <= 0)
+            if (areaRequest.cityId <= 0)
             {
-                cityRequest.provinceId = 0;
+                areaRequest.cityId = 0;
             }
-            CityResponse response = new CityResponse();
-            response.CityInfos = BaseBLL<CityBLL>.Instance.GetCityInfos(cityRequest.provinceId);
+            AreaResponse response = new AreaResponse();
+            response.Arealnfos = BaseBLL<AreaBLL>.Instance.GetArealnfos(areaRequest.cityId);
             return response;
         }
     }

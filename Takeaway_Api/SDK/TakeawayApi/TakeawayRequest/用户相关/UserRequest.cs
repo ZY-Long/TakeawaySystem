@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace SDK
 {
-   public class TakeawayRequest
+   public  class UserRequest:BaseRequest
     {
-      
+        public override string GetApiName()
+        {
+            return "/api/UserInfo/AddUser";
+        }
     }
 }

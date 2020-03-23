@@ -16,7 +16,7 @@ namespace Model
         //用户Id
         public int UserId { get; set; }
         //创建时间
-        public DateTime CreateTime { get; set; }
+        
         //地址Id
         public int AddressId { get; set; }
         //数据状态
@@ -35,5 +35,10 @@ namespace Model
         public string Consignee { get; set; }
         //商家Id
         public int BusinessInfo { get; set; }
+        public int States { get; set; }
+        public DateTime CreateTime { get; set; }
+        public DateTime UpdateTime { get; set; }
+        public int CreaterId { get; set; }
+        public int UpdaterId { get; set; }
     }
 }

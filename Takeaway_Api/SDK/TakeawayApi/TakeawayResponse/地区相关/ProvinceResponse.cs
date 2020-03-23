@@ -8,10 +8,10 @@ using Model;
 namespace SDK
 {
     /// <summary>
-    /// 城市相关返回
+    /// 省份相关返回
     /// </summary>
-    public class CityResponse:BaseResponse
+    public class ProvinceResponse:BaseResponse
     {
-        public List<CityInfo> CityInfos { get; set; }
+        public List<ProvinceInfo>  ProvinceInfos { get; set; }
     }
 }
