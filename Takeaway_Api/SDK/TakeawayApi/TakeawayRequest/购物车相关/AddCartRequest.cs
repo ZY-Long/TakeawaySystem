@@ -8,7 +8,7 @@ namespace SDK
 {
    public class AddCartRequest : BaseRequest
     {
-        public CartDetails CartAdd { get; set; }
+        public CartDetails CartAdd  { get; set; }
         public override string GetApiName()
         {
             return "/api/Crat/GetArealnfos";
