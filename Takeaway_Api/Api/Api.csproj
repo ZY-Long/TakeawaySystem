@@ -161,6 +161,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\地区相关\ProvinceController.cs" />
+    <Compile Include="Controllers\显示相关\ShowMenuInfoController.cs" />
     <Compile Include="Controllers\用户相关\UserInfoController.cs" />
     <Compile Include="Controllers\购物车相关\AddCartController.cs" />
     <Compile Include="Controllers\购物车相关\CratDeController.cs" />

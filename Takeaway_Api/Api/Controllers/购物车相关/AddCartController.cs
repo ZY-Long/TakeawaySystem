@@ -11,10 +11,12 @@ namespace Api
 {
     public class AddCartController : ApiController
     {
-        public int AddCart(CartDetails cart)
+       
+        public AddCartResponse AddCart(CartDetails cart)
         {
-            return BaseBLL<TakeBLL>.Instance.AddCartDetails(cart);
-
+             AddCartResponse addCart = new AddCartResponse();
+            addCart.add= BaseBLL<TakeBLL>.Instance.AddCartDetails(cart);
+            return addCart;
         }
     }
 }

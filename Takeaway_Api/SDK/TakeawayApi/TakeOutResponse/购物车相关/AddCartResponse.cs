@@ -8,6 +8,6 @@ namespace SDK
 {
    public class AddCartResponse :BaseResponse
     {
-        
+        public int add { get; set; }
     }
 }
