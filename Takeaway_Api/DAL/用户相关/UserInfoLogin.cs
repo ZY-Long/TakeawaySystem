@@ -54,7 +54,6 @@ namespace DAL
             string sql =string.Format("select count(1) from UserInfo where PhoneNumber='{0}' and Password='{1}'",info.PhoneNumber, MD5Encrypt32(info.PassWord+"{"+res+"}"));          
             return Convert.ToInt32(bHelper.ExecuteScalar(sql));
         }
-  
         /// <summary>
         /// 32位MD5加密
         /// </summary>

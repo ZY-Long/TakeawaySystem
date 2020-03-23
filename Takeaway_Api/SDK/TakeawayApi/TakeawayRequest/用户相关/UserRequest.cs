@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SDK
 {
-   public  class UserRequest:BaseRequest
+    public class UserRequest : BaseRequest
     {
         public override string GetApiName()
         {
