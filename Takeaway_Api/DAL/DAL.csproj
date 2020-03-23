@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BaseDAL.cs" />
     <Compile Include="Helper\OrmDBHelper.cs" />
+    <Compile Include="ShowDAL.cs" />
     <Compile Include="TakeDAL.cs" />
     <Compile Include="Helper\DataReaderHelper.cs" />
     <Compile Include="Helper\DBHelper.cs" />
