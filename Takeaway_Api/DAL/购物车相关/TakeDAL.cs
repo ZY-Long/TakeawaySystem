@@ -12,7 +12,7 @@ namespace DAL
     /// </summary>
     public class TakeDAL
     {
-        SqlConnection connection = new SqlConnection("Data Source=.\\sql2014;Initial Catalog=TakeawayDb;Integrated Security=True");
+        SqlConnection connection = new SqlConnection("Data Source=.\\sql2014;Initial Catalog=TakeOutDB;Integrated Security=True");
         /// <summary>
         /// 添加购物车
         /// </summary>
@@ -49,11 +49,9 @@ namespace DAL
         public List<CartDetails> ShowCartDetails()
         {
             connection.Open();
-            string sql = @"select m.Name,m.Img,m.Price,d.Name,d.Img,d.Price,t.Name,p.Name,p.Img,p.Price from CartDetails as c
-                        join MenuInfo as m on c.Id=m.TypeId
-                        join DrinkInfo as d on c.Id=d.TypeId
-                        join TasteInfo as t on t.Id=c.TasteId
-                        join PackageInfo as p on p.TypeId=c.Id";
+            string sql = @"select m.Name,m.Img,m.Price from CartDetails as c
+                        join CartInfo as a on c.CartId=a.Id
+                        join MenuInfo as m on c.TypeId =m.Id";
             SqlCommand command = new SqlCommand(sql,connection);
             var reader = command.ExecuteReader();
             var list = reader.DataReaderToList<CartDetails>();

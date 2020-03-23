@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace SDK.TakeawayApi.TakeOutResponse.Take
+using Model;
+namespace SDK
 {
-    public class TakeawayDeleteResponse: BaseResponse
+   public class GetCartResponse
     {
+        public List<CartDetails> GetCart { get; set; }
     }
 }
