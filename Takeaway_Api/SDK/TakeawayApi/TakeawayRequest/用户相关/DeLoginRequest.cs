@@ -12,5 +12,6 @@ namespace SDK
         {
             return "/api/UserInfo/DeLogin";
         }
+        public int user { get; set; }
     }
 }

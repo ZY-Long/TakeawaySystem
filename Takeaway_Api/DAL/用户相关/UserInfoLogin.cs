@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 using Model;
 
 namespace DAL
@@ -14,6 +16,8 @@ namespace DAL
     {
         SqlConnection connection = new SqlConnection("Data Source=.;Initial Catalog=TakeOutDB;Integrated Security=True");
         DBHelper bHelper = new DBHelper();
+        private string connStr;
+
         //用户注册
         public int AddUser(UserInfo user)
         {
@@ -50,9 +54,30 @@ namespace DAL
         //用户登陆
         public int DeLogin(UserInfo info)
         {
-            var res = UserInfoLogin.GenerateSalt();
-            string sql =string.Format("select count(1) from UserInfo where PhoneNumber='{0}' and Password='{1}'",info.PhoneNumber, MD5Encrypt32(info.PassWord+"{"+res+"}"));          
-            return Convert.ToInt32(bHelper.ExecuteScalar(sql));
+            using (IDbConnection conn = new SqlConnection(connStr))
+            {
+                string sql = "select count(1) from UserInfo where PhoneNumber=@phonenumber and Password=@password";
+                var userId = conn.QueryFirstOrDefault<int>(sql,new { phonenumber=info.PhoneNumber,password=info.PassWord});
+                return userId;
+            }
+        }
+        //public int DeLogin(UserInfo info)
+        //{
+
+        //    var res = UserInfoLogin.GenerateSalt();
+        //    string sql =string.Format("select count(1) from UserInfo where PhoneNumber='{0}' and Password='{1}'",info.PhoneNumber, MD5Encrypt32(info.PassWord+"{"+res+"}"));          
+           
+        //    return Convert.ToInt32(bHelper.ExecuteScalar(sql));
+        //}
+        //根据用户名获取用户的盐
+        public string GetuserSalt(string UserName)
+        {
+            using (IDbConnection conn=new SqlConnection(connStr))
+            {
+                string sql = "select Salt From UserInfo where PhoneNumber=@phonenumber";
+                var saltstr = conn.QueryFirstOrDefault<string>(sql,new { phonenumber=UserName});
+                return saltstr;
+            }
         }
         /// <summary>
         /// 32位MD5加密
@@ -73,6 +98,21 @@ namespace DAL
                 pwd = pwd + s[i].ToString("X");
             }
             return pwd;
+        }
+        ///修改密码
+        ///
+        public int EditUserPwd(string pwd,int id)
+        {
+            int res = 0;
+            res = bHelper.ExecuteNonQuery("update UserInfo set Password='"+pwd+"' where Id='"+id+"'");
+            return res;
+        }
+        //修改用户地址
+        public int EditUserInfo(string content,int id)
+        {
+            int res = 0;
+            res = bHelper.ExecuteNonQuery("update AddressInfo set Content='" + content + "' where Id in(select UserId=Id from UserInfo where Id='" + id + "')");
+            return res;
         }
     }
 }

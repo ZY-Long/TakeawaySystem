@@ -19,6 +19,7 @@ namespace Model
         public int CityId { get; set; }
         //区Id
         public int AreaId { get; set; }
+        public int UserId { get; set; }
         //详细地址
         public string Content { get; set; }
         public int States { get; set; }
