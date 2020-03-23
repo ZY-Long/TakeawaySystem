@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 
-namespace BLL.菜品展示相关
+namespace BLL
 {
     public class FoodShowBLL
     {
