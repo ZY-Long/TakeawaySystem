@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace Api
 {
-    public class ShowMenuInfoController : ApiController
+    public class ShowMenuInfoController:ApiController
     {
 
     }
