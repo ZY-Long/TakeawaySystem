@@ -40,9 +40,17 @@ namespace BLL
             return ApiRequestHelper.Post<LocationRequest, LocationResponse>(request);
         }
         //显示地址信息
-        public ShowResponse ShowressInfo(ShowRequest request)
+        public ShowLocationResponse ShowressInfo(ShowLocationRequest request)
         {
-            return ApiRequestHelper.Post<ShowRequest, ShowResponse>(request);
+            ShowLocationResponse response= ApiRequestHelper.Post<ShowLocationRequest, ShowLocationResponse>(request);
+            return response;
+        }
+
+        //显示单条地址信息
+        public OneAddressResponse GetOneAddress(OneAddressRequest request)
+        {
+            OneAddressResponse response = ApiRequestHelper.Post<OneAddressRequest, OneAddressResponse>(request);
+            return response;
         }
         //添加新地址
         public AdLoctionResponse AddressInfo(AdLoctionRequest request)

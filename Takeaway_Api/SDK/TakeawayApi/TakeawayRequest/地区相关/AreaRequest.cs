@@ -14,7 +14,6 @@ namespace SDK
         /// <summary>
         /// 省份Id
         /// </summary>
-        public int cityId { get; set; }
 
         public override string GetApiName()
         {

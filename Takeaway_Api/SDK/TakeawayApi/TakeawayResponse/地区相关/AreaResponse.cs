@@ -12,6 +12,12 @@ namespace SDK
     /// </summary>
     public class AreaResponse:BaseResponse
     {
-        public List<Arealnfo> Arealnfos { get; set; }
+        public List<AreaDto> Arealnfos { get; set; }
+    }
+
+    public class AreaDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

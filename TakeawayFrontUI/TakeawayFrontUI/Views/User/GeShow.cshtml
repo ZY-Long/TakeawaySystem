@@ -2,13 +2,56 @@
 @{
     ViewBag.Title = "GeShow";
 }
-<h2>历史订单</h2>
-<div id="showDiv"></div>
-<div class="title"id="name">商品名称</div>
-<div class="title" id="sun">商品数量</div>
-<div class="title" id="price">商品单价</div>
-<div class="title" id="her">订单总价</div>
-<script src="~/js/jquery.min.js"></script>
-<script src="~/js/index.js"></script>
-<script>
-</script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+</head>
+<body>
+    <table id="mytable" width="1200" align="center">
+        <thead>
+            <tr>
+                <td>菜品图片</td>
+                <td>菜品名称</td>
+                <td>菜品单价</td>
+                <td>菜品数量</td>
+                <td>下单时间</td>
+            </tr>
+        </thead>
+
+        <tbody id="td">
+        </tbody>
+    </table>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script>
+ $(document).ready(function () {
+        $.ajax({
+            url: "/User/Dingshow",
+            type: "POST",
+            dataType: "json",
+            success: function (res) {
+                var op = "";
+                $(res.Uuers).each(function () {
+
+                    var tp ="<tr>"
+                        + "<td><img src='"+this.Img+"' /></td>"
+                        + "<td>" + this.Name + "</td>"
+                        + "<td>" + this.Price + "</td>"
+                        + "<td>" + this.Count + "</td>"
+                        + "<td>" + this.Price + "</td>"
+                        + "<td>" + this.CreateTime + "</td>"
+                        +"</tr>"
+                    op += tp;
+                })
+                $("#td").append(op);
+            }
+        });
+    })
+
+
+
+    </script>
+</body>
+</html>

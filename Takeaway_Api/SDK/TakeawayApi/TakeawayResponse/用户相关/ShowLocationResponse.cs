@@ -12,6 +12,6 @@ namespace SDK
     /// </summary>
     public class ShowLocationResponse:BaseResponse
     {
-        public List<AddressInfo> Infos { get; set; }
+        public List<UserAddress> Infos { get; set; }
     }
 }

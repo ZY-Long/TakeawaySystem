@@ -25,5 +25,6 @@ namespace TakeawayFrontUI.Controllers
         {
             return Json(bll.GetArealnfos(areaRequest));
         }
+
     }
 }

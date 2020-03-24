@@ -12,6 +12,7 @@ namespace Api.Controllers
 {
     public class UserInfoController : ApiController
     {
+        UserInfobll bll = new UserInfobll();
         //注册用户
         [HttpPost]
         public UserInfoResponse AddUser(UserRequest request)
@@ -67,7 +68,7 @@ namespace Api.Controllers
         public UpdateResponse EditUserPwd(UpdateRequest request)
         {
             UpdateResponse response = new UpdateResponse();
-            response.User= BaseBLL<UserInfobll>.Instance.EditUserPwd(request.pwd, request.id);
+            response.User = BaseBLL<UserInfobll>.Instance.EditUserPwd(request.pwd, request.id);
             response.State = response.User > 0 ? true : false;
             return response;
         }
@@ -84,12 +85,26 @@ namespace Api.Controllers
         public ShowLocationResponse ShowressInfo(ShowLocationRequest request)
         {
             ShowLocationResponse response = new ShowLocationResponse();
-            response.Infos=BaseBLL<UserInfobll>.Instance.ShowressInfo(request.UserId);
-            response.State = true; return response;
+            response.Infos = BaseBLL<UserInfobll>.Instance.ShowressInfo(request.UserId);
+            response.State = true;
+            return response;
         }
+
+        //显示单条地址信息
+        [HttpPost]
+        public OneAddressResponse GetOneAddress(OneAddressRequest request)
+        {
+            OneAddressResponse response = new OneAddressResponse();
+            //获取所有的地址信息
+            List < UserAddress > infos= BaseBLL<UserInfobll>.Instance.ShowressInfo(request.UserId);
+            response.Info = infos.Where(c => c.Id == request.AddressId).FirstOrDefault();
+            response.State = true;
+            return response;
+        }
+
         //添加新地址
         [HttpPost]
-        public AdLoctionResponse AddressInfo(AdLoctionRequest request,AddressInfo info)
+        public AdLoctionResponse AddressInfo(AdLoctionRequest request, AddressInfo info)
         {
             AdLoctionResponse response = new AdLoctionResponse();
             response.User=Convert.ToInt32(BaseBLL<UserInfobll>.Instance.AddressInfo(info));
@@ -101,7 +116,7 @@ namespace Api.Controllers
         public OrderGeResponse Dingshow(OrderGeRequest request)
         {
             OrderGeResponse response = new OrderGeResponse();
-            response.shows =BaseBLL<UserInfobll>.Instance.Dingshow(request.UserId,request.BusinessId);
+            response.Uuers=BaseBLL<UserInfobll>.Instance.Dingshow(request.UserId);
             response.State = true;return response;
         }
     }

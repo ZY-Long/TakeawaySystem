@@ -1,0 +1,93 @@
+﻿
+@{
+
+}
+
+<section class="section section-xxl bg-image-1">
+    <div class="container">
+        <h2 class="text-transform-capitalize wow fadeScale">修改您的地址</h2>
+        <!-- Owl Carousel-->
+
+
+
+
+        <div class="post-classic-content" style="height:350px;margin-top:50px;width:55%;margin-left:27%">
+            <div style="margin-top:50px;width:100%;height:10%">
+                <div style="margin-left:0px;float:left"> <label>区域</label></div>
+                <div style="margin-right:0px;float:right;width:50%">
+                    <select data-select2-id="4" class="select2-hidden-accessible" aria-hidden="true" id="11">
+                        <option value="0" id="0">-请选择-</option>
+                        <option value="2">黄浦区</option>
+                        <option value="3">徐汇区</option>
+                        <option value="4">长宁区</option>
+                        <option value="5">静安区</option>
+                        <option value="6">普陀区</option>
+                        <option value="7">虹口区</option>
+                        <option value="8">杨浦区</option>
+                        <option value="9">闵行区</option>
+                        <option value="10">宝山区</option>
+                        <option value="11">嘉定区</option>
+                        <option value="12">金山区</option>
+                        <option value="13">松江区</option>
+                        <option value="14">青浦区</option>
+                        <option value="15">奉贤区</option>
+                        <option value="16">崇明区</option>
+                        <option value="17">浦东新区</option>
+                    </select>
+                    <span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="12" style="width: 41px;" />
+                    <span class="dropdown-wrapper" aria-hidden="true">  </span>
+                </div>
+            </div>
+            <div style="margin-top:50px;width:100%;height:10%">
+                <div style="margin-left:0px;float:left"> <label>详细地址</label></div>
+                <div style="margin-right:0px;float:right">  <input class="in" type="text" /></div>
+            </div>
+            <div style="margin-top:100px;width:100%;height:10%">
+                <div style="margin-left:30%;float:left"><input id="Button1" type="button" value="提交" class="btn btn-default" onclick="EditRequest()" /></div>
+            </div>
+        </div>
+        <!-- Post Classic-->
+    </div>
+
+</section>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script>
+    jQuery(document).ready(
+        function () {
+            var id = @Request["Id"];
+            alert(id);
+        }
+    );
+
+    function GetOneAddress() {
+        var id = @Request["Id"];
+        jQuery.ajax({
+            url: "/User/GetOneAddress",
+            dataType: "Json",
+            type: "Post",
+            data:
+            {
+                UserId: 1,
+                AddressId: id
+            },
+            success: function (res  ) {
+
+            }
+        })
+    }
+
+    function EditRequest() {
+        var seladd = $("#11").val();
+        var Content = $(".in").val();
+        alert(seladd);
+        alert(Content);
+    }
+
+
+
+
+</script>
+
+
