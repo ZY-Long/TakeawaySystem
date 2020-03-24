@@ -13,8 +13,20 @@ namespace DAL
     public class TakeDAL
     {
         SqlConnection connection = new SqlConnection("Data Source=.\\sql2014;Initial Catalog=TakeOutDB;Integrated Security=True");
-        
-
+        /// <summary>
+        /// 清空购物车
+        /// 1.用户点击清空购物车获取所有页面上信息Id
+        /// 2.用一个List<int>存储这个获取到的Id
+        /// 3.foreach嵌套访问数据库语句
+        /// </summary>
+        public int DeleteCart(int id)
+        {
+            connection.Open();
+            string sql = "Update CartDetails set Sates=-1 where Id ="+id;
+            SqlCommand command = new SqlCommand(sql,connection);
+            var res = command.ExecuteNonQuery();
+            return res;
+        }
         /// <summary>
         /// 显示购物车
         /// </summary>
