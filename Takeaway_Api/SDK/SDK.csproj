@@ -78,7 +78,6 @@
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\OneAddressResponse.cs" />
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\ShowLocationResponse.cs" />
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\OrderGeResponse.cs" />
-    <Compile Include="TakeawayApi\TakeawayResponse\用户相关\ShowLocationRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\ShowResponse.cs" />
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\UpdateResponse.cs" />
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\UserInfoResponse.cs" />
