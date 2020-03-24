@@ -16,7 +16,7 @@ namespace DAL
     {
         SqlConnection connection = new SqlConnection("Data Source=.;Initial Catalog=TakeOutDB;Integrated Security=True");
         DBHelper bHelper = new DBHelper();
-        private string connStr;
+        string connStr = "Data Source=.;Initial Catalog=TakeOutDB;Integrated Security=True";
 
         //用户注册
         public int AddUser(UserInfo user)
@@ -114,5 +114,22 @@ namespace DAL
             res = bHelper.ExecuteNonQuery("update AddressInfo set Content='" + content + "' where Id in(select UserId=Id from UserInfo where Id='" + id + "')");
             return res;
         }
+        //显示地址信息
+        public List<AddressInfo> ShowressInfo()
+        {
+            List<AddressInfo> infos = new List<AddressInfo>();
+            using (IDbConnection conn=new SqlConnection(connStr))
+            {
+                infos = conn.Query<AddressInfo>("select * from AddressInfo").ToList();
+            }
+            return infos;
+        }
+        //添加新地址
+        //public int AddressInfo(AddressInfo info)
+        //{
+        //    connection.Open();
+        //    string sql = @"insert into AddressInfo values('{0}','{1}','{2}')";
+        //}
+
     }
 }
