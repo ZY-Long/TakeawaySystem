@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model;
-namespace SDK
+
+namespace SDK.TakeawayApi.TakeOutResponse.Take
 {
-   public class AddCartResponse :BaseResponse
+    public class TakeawayDeleteResponse: TakeawayResponse
     {
-        
     }
 }

@@ -72,5 +72,18 @@ namespace DAL
             var list = reader.DataReaderToList<TasteInfo>();
             return list;
         }
+        /// <summary>
+        /// 修改购物车
+        /// </summary>
+        /// <param name="cart"></param>
+        /// <returns></returns>
+        public int UpdateCart(int id=0)
+        {
+            connection.Open();
+            string sql = $@"";
+            SqlCommand command = new SqlCommand(sql, connection);
+            var res = command.ExecuteNonQuery();
+            return res;
+        }
     }
 }

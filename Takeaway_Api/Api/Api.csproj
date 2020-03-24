@@ -161,6 +161,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\地区相关\ProvinceController.cs" />
+    <Compile Include="Controllers\显示相关\ShowMenuInfoController.cs" />
     <Compile Include="Controllers\用户相关\UserInfoController.cs" />
     <Compile Include="Controllers\购物车相关\AddCartController.cs" />
     <Compile Include="Controllers\购物车相关\CratDeController.cs" />
@@ -223,6 +224,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\菜品展示相关\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
