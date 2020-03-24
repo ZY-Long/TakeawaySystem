@@ -18,22 +18,17 @@ namespace DAL
         /// 1.用户点击清空购物车获取所有页面上信息Id
         /// 2.用一个List<int>存储这个获取到的Id
         /// 3.foreach嵌套访问数据库语句
-        /// </summary>
-        /// 添加购物车
-        public int AddCart(CartInfo cart)
-        {
-            connection.Open();
-            string sql = $@"insert into CartInfo (UserId,BusinessInfo,Sates,CreateTime,UpdateTime,CreaterId,UpdaterId) 
-                    values('{cart.UserId}','{cart.BusinessInfo}',1,'GetDate()','GetDate()',1,1)";
-            SqlCommand command = new SqlCommand(sql, connection);
-            var res = command.ExecuteNonQuery();
-            return res;
-        }
+        
+        
         /// <summary>
         /// 添加购物车详情
         /// </summary>
         public int AddCartDetails(int minefid, int userId, int count)
         {
+            if (connection.State == System.Data.ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             string sql = "AddCart";
             SqlCommand command = new SqlCommand(sql, connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
@@ -44,33 +39,50 @@ namespace DAL
                  new SqlParameter{ParameterName = "@count",SqlDbType = System.Data.SqlDbType.Int,SqlValue = count },
             });
             var res = command.ExecuteNonQuery();
-            connection.Close();
+            if (connection.State == System.Data.ConnectionState.Open)
+            {
+                connection.Close();
+            }
             return res;
         }
         /// <param name="id"></param>
         /// <returns></returns>
         public int DeleteCart(int id)
         {
-            connection.Open();
+            if (connection.State == System.Data.ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             string sql = "Update CartDetails set Sates=-1 where Id ="+id;
             SqlCommand command = new SqlCommand(sql,connection);
             var res = command.ExecuteNonQuery();
+            if (connection.State == System.Data.ConnectionState.Open)
+            {
+                connection.Close();
+            }
             return res;
         }
         /// <summary>
         /// 显示购物车
         /// </summary>
         /// <returns></returns>
-        public List<CartInfos> GetCartInfos()
+        public List<CartInfos> GetCartInfos(int userid)
         {
-            connection.Open();
+            if (connection.State==System.Data.ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+            
             string sql = @"select c.Id,  m.Img,m.Name,m.Price,c.Count,c.ToPrice from CartDetails as c
                         join CartInfo as a on c.CartId=a.Id
-                        join MenuInfo as m on c.TypeId =m.Id";
+                        join MenuInfo as m on c.DetailsId =m.Id where c.[Sates]=1 and a.UserId=" + userid;
             SqlCommand command = new SqlCommand(sql,connection);
             var reader = command.ExecuteReader();
             var list = reader.DataReaderToList<CartInfos>();
-            connection.Close();
+            if (connection.State == System.Data.ConnectionState.Open)
+            {
+                connection.Close();
+            }
             return list;
         }
         /// <summary>
@@ -79,11 +91,18 @@ namespace DAL
         /// <returns></returns>
         public List<TasteInfo> GetTakeInfos()
         {
-            connection.Open();
+            if (connection.State == System.Data.ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             string sql = "Select Name from TasteInfo";
             SqlCommand command = new SqlCommand(sql, connection);
             var reader = command.ExecuteReader();
             var list = reader.DataReaderToList<TasteInfo>();
+            if (connection.State == System.Data.ConnectionState.Open)
+            {
+                connection.Close();
+            }
             return list;
         }
         
