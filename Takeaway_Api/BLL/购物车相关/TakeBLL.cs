@@ -23,9 +23,6 @@ namespace BLL
         //    return BaseDAL<TakeDAL>.Instance.AddCart(cart);
         //}
         /*添加购物车*/
-        public int AddCartDetails(CartDetails cart)
-        {
-            return BaseDAL<TakeDAL>.Instance.AddCartDetails(cart);
-        }
+       
     }
 }
