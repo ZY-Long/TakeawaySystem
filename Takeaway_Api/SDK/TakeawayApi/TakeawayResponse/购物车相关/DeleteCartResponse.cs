@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using Model;
 namespace SDK
 {
-   public class AddCartResponse :BaseResponse
+   public class DeleteCartResponse : BaseResponse
     {
-        public int add { get; set; }
+        public int delete { get; set; }
     }
 }
