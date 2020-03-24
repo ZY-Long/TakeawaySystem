@@ -52,6 +52,15 @@
     <Compile Include="BaseRequest.cs" />
     <Compile Include="BaseResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TakeawayApi\TakeawayResponse\地区相关\AreaResponse.cs" />
+    <Compile Include="TakeawayApi\TakeawayResponse\地区相关\CityResponse.cs" />
+    <Compile Include="TakeawayApi\TakeawayResponse\地区相关\ProvinceResponse.cs" />
+    <Compile Include="TakeawayApi\TakeawayResponse\用户相关\DeLoginResponse.cs" />
+    <Compile Include="TakeawayApi\TakeawayResponse\用户相关\UserInfoResponse.cs" />
+    <Compile Include="TakeawayApi\TakeawayResponse\订单相关\OrderResponse.cs" />
+    <Compile Include="TakeawayApi\TakeawayResponse\购物车相关\AddCartResponse.cs" />
+    <Compile Include="TakeawayApi\TakeawayResponse\购物车相关\GetCartResponse.cs" />
+    <Compile Include="TakeawayApi\TakeawayResponse\购物车相关\TakeResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

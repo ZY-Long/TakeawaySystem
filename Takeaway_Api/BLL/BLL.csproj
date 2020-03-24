@@ -73,6 +73,9 @@
     <Compile Include="购物车相关\TakeBLL.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{086d102f-0533-4536-8a71-afa0ddd29ce5}</Project>
       <Name>DAL</Name>
@@ -85,9 +88,6 @@
       <Project>{c349fc72-fc0f-41dd-aa27-2e9fb6f9e633}</Project>
       <Name>SDK</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
