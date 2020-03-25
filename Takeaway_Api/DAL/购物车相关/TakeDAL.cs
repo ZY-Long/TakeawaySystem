@@ -14,33 +14,16 @@ namespace DAL
     {
         SqlConnection connection = new SqlConnection("Data Source=.\\sql2014;Initial Catalog=TakeOutDB;Integrated Security=True");
         /// <summary>
-        /// 添加购物车
+        /// 清空购物车
+        /// 1.用户点击清空购物车获取所有页面上信息Id
+        /// 2.用一个List<int>存储这个获取到的Id
+        /// 3.foreach嵌套访问数据库语句
         /// </summary>
-        /// <param name="cart"></param>
-        /// <returns></returns>
-        public int AddCart(CartInfo cart)
+        public int DeleteCart(int id)
         {
             connection.Open();
-            string sql = $@"insert into CartInfo (UserId,BusinessInfo,Sates,CreateTime,UpdateTime,CreaterId,UpdaterId) 
-                    values('{cart.UserId}','{cart.BusinessInfo}',1,'GetDate()','GetDate()',1,1)";
-            SqlCommand command = new SqlCommand(sql, connection);
-            var res = command.ExecuteNonQuery();
-            return res;
-        }
-        /// <summary>
-        /// 添加购物车详情
-        /// </summary>
-        /// <param name="cart"></param>
-        /// <returns></returns>
-        public int AddCartDetails(CartDetails cart)
-        {
-            CartInfo c = new CartInfo();
-
-            var car = AddCart(c);
-            connection.Open();
-            string sql = $@"insert into CartDetails (TypeId,DetailsId,Count,TasteId,ToPrice,CartId,Sates,CreateTime,UpdateTime,CreaterId,UpdaterId) 
-                    values('{cart.TypeId}','{cart.DetailsId}','{cart.Count}','{cart.TasteId}','{cart.ToPrice}','{cart.CratId}',1,'GetDate()','GetDate()',1,1)";
-            SqlCommand command = new SqlCommand(sql, connection);
+            string sql = "Update CartDetails set Sates=-1 where Id ="+id;
+            SqlCommand command = new SqlCommand(sql,connection);
             var res = command.ExecuteNonQuery();
             return res;
         }
@@ -72,18 +55,7 @@ namespace DAL
             var list = reader.DataReaderToList<TasteInfo>();
             return list;
         }
-        /// <summary>
-        /// 修改购物车
-        /// </summary>
-        /// <param name="cart"></param>
-        /// <returns></returns>
-        public int UpdateCart(int id=0)
-        {
-            connection.Open();
-            string sql = $@"";
-            SqlCommand command = new SqlCommand(sql, connection);
-            var res = command.ExecuteNonQuery();
-            return res;
-        }
+        
+        
     }
 }
