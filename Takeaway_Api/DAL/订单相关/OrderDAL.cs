@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using Dapper;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace DAL
 {
@@ -65,5 +68,20 @@ ON m.Id=cd.DetailsId
 WHERE c.UserId =" + UserId + " AND c.BusinessInfo=" + BusinessId + " AND c.Sates=1 ");
             return orders;
         }
+
+        /// <summary>
+        /// 生成订单信息
+        /// </summary>
+        /// <returns></returns>
+        public int GenerateOrder(OrderParameter parameter)
+        {
+            int res = 0;
+            using (IDbConnection conn = new SqlConnection() { ConnectionString = "Data Source =.; Initial Catalog = TakeOutDB; Integrated Security = True" })
+            {
+                res = conn.Execute("GenerateOrder", parameter, commandType: CommandType.StoredProcedure);
+            }
+            return res;
+        }
+
     }
 }

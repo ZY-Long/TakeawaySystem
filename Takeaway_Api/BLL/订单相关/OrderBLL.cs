@@ -25,5 +25,14 @@ namespace BLL
 
         }
 
+        /// <summary>
+        /// 生成订单信息
+        /// </summary>
+        /// <returns></returns>
+        public int GenerateOrder(OrderParameter parameter)
+        {
+            return BaseDAL<OrderDAL>.Instance.GenerateOrder(parameter);
+        }
+
     }
 }
