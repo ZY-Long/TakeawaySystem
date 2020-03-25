@@ -53,13 +53,13 @@ namespace DAL
             return salt;
         }
         //用户登陆
-        public int DeLogin(UserInfo info)
+        public UserInfoLog DeLogin(UserInfoLog info)
         {
             using (IDbConnection conn = new SqlConnection(connStr))
             {
-                string sql = "select Id from UserInfo where PhoneNumber=@phonenumber and Password=@password";
-                var userId = conn.QueryFirstOrDefault<int>(sql, new { phonenumber = info.PhoneNumber, password = info.PassWord });
-                return userId;
+                string sql = "select PhoneNumber ,Id from UserInfo where PhoneNumber=@phonenumber and Password=@password";
+                var userLog = conn.QueryFirstOrDefault<UserInfoLog>(sql, new { phonenumber = info.PhoneNumber, password = info.PassWord });
+                return userLog;
             }
         }
         //public int DeLogin(UserInfo info)
