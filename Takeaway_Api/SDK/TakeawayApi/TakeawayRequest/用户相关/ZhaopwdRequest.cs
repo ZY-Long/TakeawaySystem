@@ -1,19 +1,18 @@
-﻿using Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
 
 namespace SDK
 {
-    //注册
-    public class UserRequest : BaseRequest
+   public  class ZhaopwdRequest:BaseRequest
     {
+        //找回密码
         public override string GetApiName()
         {
-            return "/api/UserInfo/AddUser";
+            return "/api/UserInfo/FindPwd";
         }
-        public UserInfo user { get; set; }
     }
 }

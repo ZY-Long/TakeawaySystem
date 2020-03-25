@@ -12,16 +12,15 @@ namespace Api.Controllers
 {
     public class UserInfoController : ApiController
     {
-        UserInfobll bll = new UserInfobll();
         //注册用户
-        public int AddUser(UserInfo user)
+        public UserInfoResponse AddUser(UserRequest request)
         {
-            return bll.AddUser(user);
+            return BaseBLL<UserInfobll>.Instance.AddUser(request);
         }
         //登陆
         public UserInfoResponse InfoResponse(UserRequest request)
         {
-            return bll.InfoResponse(request);
+            return BaseBLL<UserInfobll>.Instance.InfoResponse(request);
         }
         /// <summary>
         /// 找回密码
@@ -33,7 +32,7 @@ namespace Api.Controllers
         public string FindPwd(string PhoneNumber, string PassWord, string Email)
         {
             string Content = "";
-            string res = bll.FindPwd(PhoneNumber,PassWord,Email);
+            string res =BaseBLL<UserInfobll>.Instance.FindPwd(PhoneNumber,PassWord,Email);
 
             if (!string.IsNullOrEmpty(res))
             {
@@ -55,24 +54,33 @@ namespace Api.Controllers
 
         }
         ///修改密码
-        public int EditUserPwd(string pwd, int id)
+        public UpdateResponse EditUserPwd(string pwd, int id)
         {
-            return bll.EditUserPwd(pwd,id);
+            UpdateResponse response = new UpdateResponse();
+            response.User= BaseBLL<UserInfobll>.Instance.EditUserPwd(pwd,id);
+            return response;
         }
         //修改用户地址
-        public int EditUserInfo(string content, int id)
+        public UserInfoResponse EditUserInfo(string content, int id)
         {
-            return bll.EditUserInfo(content, id) ;
+            UserInfoResponse response = new UserInfoResponse();
+            response.User = BaseBLL<UserInfobll>.Instance.EditUserInfo(content,id);
+            return response;
         }
         //显示地址信息
-        public List<AddressInfo> ShowressInfo()
+        public LocationResponse ShowressInfo(LocationRequest request)
         {
-            return bll.ShowressInfo();
+            LocationResponse response = new LocationResponse();
+            response.User=Convert.ToInt32( BaseBLL<UserInfobll>.Instance.ShowressInfo());
+            return response;
         }
         //添加新地址
-        public int AddressInfo(AddressInfo info)
+        public AdLoctionResponse AddressInfo(AdLoctionRequest request,AddressInfo info)
         {
-            return bll.AddressInfo(info);
+            AdLoctionResponse response = new AdLoctionResponse();
+            response.User=Convert.ToInt32(BaseBLL<UserInfobll>.Instance.AddressInfo(info));
+            return response;
+             
         }
     }
 }
