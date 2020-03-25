@@ -80,9 +80,25 @@ namespace BLL
             }
             return pwd;
         }
-        ///修改密码
-        ///
-        public int EditUserPwd(string pwd, int id)
+        /// <summary>
+        /// 找回密码
+        /// </summary>
+        /// <param name="PhoneNumber"></param>
+        /// <param name="PassWord"></param>
+        /// <param name="Email"></param>
+        /// <returns></returns>
+        public string FindPwd(string PhoneNumber, string PassWord,string Email)
+        {
+            return dal.FindPwd(PhoneNumber,PassWord,Email);
+        }
+        //邮箱
+        public void ForgetPwd(string Email, string Content)
+        {
+            
+        }
+            ///修改密码
+            ///
+            public int EditUserPwd(string pwd, int id)
         {
             return BaseDAL<UserInfoLogin>.Instance.EditUserPwd(pwd,id);
         }
@@ -90,6 +106,16 @@ namespace BLL
         public int EditUserInfo(string content, int id)
         {
             return BaseDAL<UserInfoLogin>.Instance.EditUserInfo(content,id);
+        }
+        //显示地址信息
+        public List<AddressInfo> ShowressInfo()
+        {
+            return dal.ShowressInfo();
+        }
+        //添加新地址
+        public int AddressInfo(AddressInfo info)
+        {
+            return dal.AddressInfo(info);
         }
     }
 }

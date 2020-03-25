@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -99,8 +100,66 @@ namespace DAL
             }
             return pwd;
         }
+        /// <summary>
+        /// 找回密码
+        /// </summary>
+        /// <param name="PhoneNumber"></param>
+        /// <param name="PassWord"></param>
+        /// <param name="Email"></param>
+        /// <returns></returns>
+        public string FindPwd(string PhoneNumber, string PassWord,string Email)
+        {
+            UserInfo info = OrmDBHelper.GetModel<UserInfo>("select PassWord from UserInfo where PhoneNumber='"+PhoneNumber+"' and PassWord='"+PassWord+"'");
+            string res = "";
+            if (info != null)
+            {
+                res = info.PassWord;
+            }
+            return res;
+        }
+        /// <summary>
+        /// 发送邮件
+        /// </summary>
+        /// <param name="EmailUrl"></param>
+        /// <returns></returns>
+        public void ForgetPwd(string Email, string Content)
+        {
+            MailMessage mail = new MailMessage();
+            SmtpClient smtp = new SmtpClient();
+
+            mail.From = new MailAddress("zyl3086362103@163.com");
+            mail.To.Add(new MailAddress(Email));
+
+            mail.IsBodyHtml = true;
+            mail.SubjectEncoding = Encoding.UTF8;
+            mail.Subject = "找回密码";
+            mail.BodyEncoding = Encoding.UTF8;
+            mail.Priority = MailPriority.Normal;
+            mail.Body = Content;
+
+            //发件邮箱的服务器地址
+            smtp.Host = "smtp.163.com";
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.Timeout = 10000;
+            //是否为SSL加密
+            smtp.EnableSsl = true;
+            //设置端口,如果不设置的话,默认端口为25,QQ邮箱587 465 Or 百度
+            smtp.Port = 25;
+            smtp.UseDefaultCredentials = true;
+            //验证发件人的凭据
+            smtp.Credentials = new System.Net.NetworkCredential("zyl3086362103@163.com", "z118114");
+
+            try
+            {
+                //发送邮件
+                smtp.Send(mail);
+            }
+            catch (Exception e1)
+            {
+                
+            }
+        }
         ///修改密码
-        ///
         public int EditUserPwd(string pwd,int id)
         {
             int res = 0;
@@ -125,11 +184,15 @@ namespace DAL
             return infos;
         }
         //添加新地址
-        //public int AddressInfo(AddressInfo info)
-        //{
-        //    connection.Open();
-        //    string sql = @"insert into AddressInfo values('{0}','{1}','{2}')";
-        //}
+        public int AddressInfo(AddressInfo info)
+        {
+            connection.Open();
+            string sql = $@"insert into AddressInfo(ProvinceId,CityId,AreaId,UserId,Content,States,CreateTime,UpdateTime,CreaterId,UpdaterId)
+            values('{info.ProvinceId}','{info.CityId}','{info.AreaId}','{info.UserId}','{info.Content}','{info.States}','{info.CreateTime}','{info.UpdateTime}','{info.CreaterId}','{info.UpdaterId}')";
+            SqlCommand command = new SqlCommand(sql,connection);
+            var res = command.ExecuteNonQuery();
+            return res;
+        }
 
     }
 }
