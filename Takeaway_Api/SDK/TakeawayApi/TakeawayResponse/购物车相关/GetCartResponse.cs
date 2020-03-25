@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Model;
 namespace SDK
 {
-   public class GetCartResponse
+   public class GetCartResponse:BaseResponse
     {
         public List<CartDetails> GetCart { get; set; }
     }

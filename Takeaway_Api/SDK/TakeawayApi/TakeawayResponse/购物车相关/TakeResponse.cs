@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Model;
 namespace SDK
 {
-   public class TakeResponse
+   public class TakeResponse:BaseResponse
     {
         public List<TasteInfo> TaseInfos { get; set; }
     }
