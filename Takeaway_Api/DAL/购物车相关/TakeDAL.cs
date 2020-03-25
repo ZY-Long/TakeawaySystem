@@ -73,9 +73,9 @@ namespace DAL
                 connection.Open();
             }
             
-            string sql = @"select c.Id,  m.Img,m.Name,m.Price,c.Count,c.ToPrice from CartDetails as c
+            string sql = $@"select c.Id,  m.Img,m.Name,m.Price,c.Count,c.ToPrice from CartDetails as c
                         join CartInfo as a on c.CartId=a.Id
-                        join MenuInfo as m on c.DetailsId =m.Id where c.[Sates]=1 and a.UserId=" + userid;
+                        join MenuInfo as m on c.DetailsId =m.Id where c.[Sates]=1 and a.UserId={userid} order by c.Id desc";
             SqlCommand command = new SqlCommand(sql,connection);
             var reader = command.ExecuteReader();
             var list = reader.DataReaderToList<CartInfos>();
