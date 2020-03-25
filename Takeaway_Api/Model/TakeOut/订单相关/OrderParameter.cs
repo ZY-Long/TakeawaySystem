@@ -19,32 +19,32 @@ namespace Model
         /// <summary>
         /// 总价
         /// </summary>
-        public int TotalPrice { get; set; }
+        public double TotalPrice { get; set; }
 
         /// <summary>
         /// 用户昵称
         /// </summary>
-        public int NickName { get; set; }
+        public string NickName { get; set; }
 
         /// <summary>
         /// 店铺名称
         /// </summary>
-        public int Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// 用户电话
         /// </summary>
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         /// <summary>
         /// 店铺联系电话
         /// </summary>
-        public int BusinessNumber { get; set; }
+        public string BusinessNumber { get; set; }
 
         /// <summary>
         /// 店铺位置
         /// </summary>
-        public int Merchataddress { get; set; }
+        public string Merchataddress { get; set; }
 
         /// <summary>
         /// 地址Id
@@ -64,12 +64,12 @@ namespace Model
         /// <summary>
         /// 收货人
         /// </summary>
-        public int Consignee { get; set; }
+        public string Consignee { get; set; }
 
         /// <summary>
         /// 备注
         /// </summary>
-        public int Content { get; set; }
+        public string Content { get; set; }
 
     }
 }
