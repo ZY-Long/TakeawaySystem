@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using BLL;
 using SDK;
 
-namespace TakeawayFrontUI.Controllers.地区相关
+namespace TakeawayFrontUI.Controllers
 {
     public class ProvinceController : Controller
     {

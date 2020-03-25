@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using SDK;
 using BLL;
 
-namespace TakeawayFrontUI.Controllers.订单相关
+namespace TakeawayFrontUI.Controllers
 {
     public class OrderController : Controller
     {
