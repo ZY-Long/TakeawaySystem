@@ -7,10 +7,9 @@ using Model;
 
 namespace SDK
 {
-    //注册
-
-   public class UserInfoResponse:BaseResponse
+   public  class LocationResponse:BaseResponse
     {
+        //修改用户地址
         public List<UserInfo> userInfos { get; set; }
         public int User { get; set; }
     }
