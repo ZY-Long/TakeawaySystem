@@ -19,7 +19,7 @@ namespace SDK
 
         public override string GetApiName()
         {
-            return "/api/Order/GenerateOrder";
+            return "/api/Order/GenerateOrder"; 
         }
     }
 }

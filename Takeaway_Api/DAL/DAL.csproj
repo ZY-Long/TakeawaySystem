@@ -80,6 +80,7 @@
     <Compile Include="Helper\OrmDBHelper.cs" />
     <Compile Include="用户相关\EF\UserDbContext.cs" />
     <Compile Include="菜品展示相关\FoodShowDAL.cs" />
+    <Compile Include="订单相关\OrderDAL.cs" />
     <Compile Include="购物车相关\TakeDAL.cs" />
     <Compile Include="Helper\DataReaderHelper.cs" />
     <Compile Include="Helper\DBHelper.cs" />

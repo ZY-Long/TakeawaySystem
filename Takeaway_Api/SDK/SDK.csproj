@@ -46,6 +46,8 @@
     <Compile Include="TakeawayApi\TakeawayRequest\地区相关\ProvinceRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\用户相关\DeLoginRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\用户相关\UserRequest.cs" />
+    <Compile Include="TakeawayApi\TakeawayRequest\订单相关\GenerateOrderRequest.cs" />
+    <Compile Include="TakeawayApi\TakeawayRequest\订单相关\OrderRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\菜品展示相关\ShowRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\购物车相关\DeleteCartRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\购物车相关\GetCartRequest.cs" />
