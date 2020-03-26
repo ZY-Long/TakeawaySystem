@@ -20,6 +20,7 @@ namespace Api
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
+        [HttpPost]
         public OrderResponse GetOrderShow(OrderRequest request)
         {
             OrderResponse response = new OrderResponse();
@@ -31,6 +32,7 @@ namespace Api
         /// 生成订单信息
         /// </summary>
         /// <returns></returns>
+        [HttpPost]
         public GenerateOrderResponse GenerateOrder(GenerateOrderRequest parameter)
         {
             GenerateOrderResponse response = new GenerateOrderResponse();

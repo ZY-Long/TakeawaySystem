@@ -11,6 +11,7 @@ namespace Api
 {
     public class CratDeController : ApiController
     {
+        [HttpPost]
         public GetCartResponse GetTakeInfos()
         {
             GetCartResponse response = new GetCartResponse();

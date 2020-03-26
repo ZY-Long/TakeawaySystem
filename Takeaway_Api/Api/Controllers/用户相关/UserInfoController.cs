@@ -13,11 +13,13 @@ namespace Api.Controllers
     public class UserInfoController : ApiController
     {
         //注册用户
+        [HttpPost]
         public UserInfoResponse AddUser(UserRequest request)
         {
             return BaseBLL<UserInfobll>.Instance.AddUser(request);
         }
         //登陆
+        [HttpPost]
         public UserInfoResponse InfoResponse(UserRequest request)
         {
             return BaseBLL<UserInfobll>.Instance.InfoResponse(request);
@@ -29,6 +31,7 @@ namespace Api.Controllers
         /// <param name="PassWord"></param>
         /// <param name="Email"></param>
         /// <returns></returns>
+        [HttpPost]
         public ZhaopwdResponse FindPwd(ZhaopwdRequest request)
         {
             ZhaopwdResponse response = new ZhaopwdResponse();
@@ -50,11 +53,13 @@ namespace Api.Controllers
 
         }
         //邮箱
+        [HttpPost]
         public void ForgetPwd(string Email, string Content)
         {
 
         }
         ///修改密码
+        [HttpPost]
         public UpdateResponse EditUserPwd(UpdateRequest request)
         {
             UpdateResponse response = new UpdateResponse();
@@ -62,6 +67,7 @@ namespace Api.Controllers
             return response;
         }
         //修改用户地址
+        [HttpPost]
         public LocationResponse EditUserInfo(LocationRequest request)
         {
             LocationResponse response = new LocationResponse();
@@ -69,6 +75,7 @@ namespace Api.Controllers
             return response;
         }
         //显示地址信息
+        [HttpPost]
         public ShowResponse ShowressInfo(ShowRequest request)
         {
             ShowResponse response = new ShowResponse();
@@ -76,6 +83,7 @@ namespace Api.Controllers
             return response;
         }
         //添加新地址
+        [HttpPost]
         public AdLoctionResponse AddressInfo(AdLoctionRequest request,AddressInfo info)
         {
             AdLoctionResponse response = new AdLoctionResponse();
