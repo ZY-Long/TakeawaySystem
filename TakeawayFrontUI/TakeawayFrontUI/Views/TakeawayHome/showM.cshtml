@@ -290,7 +290,7 @@
     })
     function AddCart(id) {
 
-        var userId = $("#UserId").val();
+        var userId = $("#Id").val();
         $.ajax({
             url: "/AddCartDetails/AddCartDetailInfos",
             type: "POST",
@@ -301,7 +301,7 @@
                 Count: 1
             },
             success: function (res) {
-                if (res > 0) {
+                if (res. State) {
                     location.href = "/ShowCart/ShowCartDeci";
                 }
                 else {
