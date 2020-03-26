@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SDK.TakeawayApi.TakeawayResponse.菜品展示相关
+namespace SDK
 {
     public class ShowResponse : BaseResponse
     {
