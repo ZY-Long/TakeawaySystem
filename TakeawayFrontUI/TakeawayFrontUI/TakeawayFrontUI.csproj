@@ -130,11 +130,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TakeawayHomeController.cs" />
     <Compile Include="Controllers\SHOWController.cs" />
-    <Compile Include="Controllers\地区相关\CityController.cs" />
-    <Compile Include="Controllers\地区相关\ProvinceController.cs" />
-    <Compile Include="Controllers\地区相关\AreaController.cs" />
-    <Compile Include="Controllers\用户相关\Usercontrollers.cs" />
-    <Compile Include="Controllers\订单相关\OrderController.cs" />
+    <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\ProvinceController.cs" />
+    <Compile Include="Controllers\AreaController.cs" />
+    <Compile Include="Controllers\Usercontrollers.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -307,7 +307,7 @@
     <Content Include="Views\TakeawayHome\NotFind.cshtml" />
     <Content Include="Views\SHOW\show.cshtml" />
     <Content Include="Views\TakeawayHome\ProductHome.cshtml" />
-    <Content Include="Views\User\InfoResponse.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

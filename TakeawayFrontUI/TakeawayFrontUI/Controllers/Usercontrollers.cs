@@ -13,10 +13,9 @@ namespace TakeawayFrontUI.Controllers
     public class UserController : Controller
     {
         UserBll userBll = new UserBll();
-        // 注册页面
-        public ActionResult Index()
+        // 登录页面
+        public ActionResult Login()
         {
-            GetProvince(new ProvinceRequest { });
             return View();
         }
 
