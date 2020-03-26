@@ -22,7 +22,12 @@ namespace BLL
         {
             return BaseDAL<UserInfoLogin>.Instance.AddUser(user);
         }
-  
+
+        public UserInfoResponse AddUser(UserRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
         ////用户登陆
         //public int DeLogin(UserInfo info)
         //{

@@ -8,8 +8,11 @@ using BLL;
 using Model;
 using SDK;
 
-namespace Api.Controllers
+namespace Api
 {
+    /// <summary>
+    /// 省份相关控制器
+    /// </summary>
     public class ProvinceController : ApiController
     {
         /// <summary>

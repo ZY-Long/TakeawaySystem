@@ -7,11 +7,9 @@ using Model;
 
 namespace SDK
 {
-    //注册
-
-   public class UserInfoResponse:BaseResponse
+   public  class EmailResponse:BaseResponse
     {
+        //邮箱
         public List<UserInfo> userInfos { get; set; }
-        public int User { get; set; }
     }
 }

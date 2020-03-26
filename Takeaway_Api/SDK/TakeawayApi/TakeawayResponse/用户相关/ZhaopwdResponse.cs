@@ -7,11 +7,9 @@ using Model;
 
 namespace SDK
 {
-    //注册
-
-   public class UserInfoResponse:BaseResponse
+    /// 找回密码
+    public class ZhaopwdResponse:BaseResponse
     {
-        public List<UserInfo> userInfos { get; set; }
-        public int User { get; set; }
+        public List<UserInfo>  userInfos { get; set; }
     }
 }

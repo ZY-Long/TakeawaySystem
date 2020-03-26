@@ -1,19 +1,19 @@
-﻿using Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
 
 namespace SDK
 {
-    //注册
-    public class UserRequest : BaseRequest
+   public  class ShowRequest:BaseRequest
     {
+        //显示地址
         public override string GetApiName()
         {
-            return "/api/UserInfo/AddUser";
+            return "/api/UserInfo/EditUserPwd";
         }
-        public UserInfo user { get; set; }
+        public AddressInfo user { get; set; }
     }
 }

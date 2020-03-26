@@ -15,6 +15,9 @@ namespace DAL
     /// </summary>
     public class OrderDAL
     {
+        int UserId = 0;
+        int BusinessId = 0;
+
         /// <summary>
         /// 获取订单中的死信息
         /// </summary>
@@ -23,6 +26,9 @@ namespace DAL
         /// <returns></returns>
         public OrderShow GetOrderShow(int UserId, int BusinessId)
         {
+            this.UserId = UserId;
+            this.UserId = BusinessId;
+
             OrderShow order = OrmDBHelper.GetToList<OrderShow>(@"SELECT 
 SUM(cd.ToPrice) AS TotalPrice,
 c.Id,
@@ -76,6 +82,18 @@ WHERE c.UserId =" + UserId + " AND c.BusinessInfo=" + BusinessId + " AND c.Sates
         public int GenerateOrder(OrderParameter parameter)
         {
             int res = 0;
+            OrderShow order = GetOrderShow(UserId, BusinessId);
+
+            parameter.OrderId = order.Id;
+            parameter.TotalPrice = order.TotalPrice;
+            parameter.NickName = order.NickName;
+            parameter.Name = order.Name;
+            parameter.PhoneNumber = order.PhoneNumber;
+            parameter.BusinessNumber = order.BusinessNumber;
+            parameter.Merchataddress = order.Merchataddress;
+            parameter.Consignee = parameter.Consignee == "" ? order.NickName : parameter.Consignee;
+            parameter.ActivityId = 1;
+
             using (IDbConnection conn = new SqlConnection() { ConnectionString = "Data Source =.; Initial Catalog = TakeOutDB; Integrated Security = True" })
             {
                 res = conn.Execute("GenerateOrder", parameter, commandType: CommandType.StoredProcedure);
