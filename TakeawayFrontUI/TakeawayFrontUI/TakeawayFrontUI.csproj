@@ -305,6 +305,7 @@
     <Content Include="Views\Area\Index.cshtml" />
     <Content Include="Views\TakeawayHome\NotFind.cshtml" />
     <Content Include="Views\SHOW\show.cshtml" />
+    <Content Include="Views\TakeawayHome\ProductHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
