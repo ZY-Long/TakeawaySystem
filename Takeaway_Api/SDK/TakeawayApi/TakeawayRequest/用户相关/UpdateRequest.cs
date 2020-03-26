@@ -15,5 +15,7 @@ namespace SDK
             return "/api/UserInfo/EditUserPwd";
         }
         public UserInfo user { get; set; }
+        public string  pwd { get; set; }
+        public int id { get; set; }
     }
 }

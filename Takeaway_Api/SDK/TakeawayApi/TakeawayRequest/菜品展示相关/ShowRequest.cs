@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SDK.TakeawayApi.TakeawayRequest.菜品展示相关
+namespace SDK
 {
     public class ShowRequest:BaseRequest
     {

@@ -29,23 +29,24 @@ namespace Api.Controllers
         /// <param name="PassWord"></param>
         /// <param name="Email"></param>
         /// <returns></returns>
-        public string FindPwd(string PhoneNumber, string PassWord, string Email)
+        public ZhaopwdResponse FindPwd(ZhaopwdRequest request)
         {
+            ZhaopwdResponse response = new ZhaopwdResponse();
             string Content = "";
-            string res =BaseBLL<UserInfobll>.Instance.FindPwd(PhoneNumber,PassWord,Email);
+            string res =BaseBLL<UserInfobll>.Instance.FindPwd(request.PhoneNumber,request.PassWord, request.Email);
 
             if (!string.IsNullOrEmpty(res))
             {
                 Content = "您好,您的密码为" + res;
-                ForgetPwd(Email, Content);
+                ForgetPwd(request.Email, Content);
             }
             else
             {
                 Content = "您的账户出现问题,请重试";
-                ForgetPwd(Email, Content);
+                ForgetPwd(request.Email, Content);
             }
 
-            return Content;
+            return response;
 
         }
         //邮箱
@@ -54,23 +55,23 @@ namespace Api.Controllers
 
         }
         ///修改密码
-        public UpdateResponse EditUserPwd(string pwd, int id)
+        public UpdateResponse EditUserPwd(UpdateRequest request)
         {
             UpdateResponse response = new UpdateResponse();
-            response.User= BaseBLL<UserInfobll>.Instance.EditUserPwd(pwd,id);
+            response.User= BaseBLL<UserInfobll>.Instance.EditUserPwd(request.pwd, request.id);
             return response;
         }
         //修改用户地址
-        public UserInfoResponse EditUserInfo(string content, int id)
+        public LocationResponse EditUserInfo(LocationRequest request)
         {
-            UserInfoResponse response = new UserInfoResponse();
-            response.User = BaseBLL<UserInfobll>.Instance.EditUserInfo(content,id);
+            LocationResponse response = new LocationResponse();
+            response.User = BaseBLL<UserInfobll>.Instance.EditUserInfo(request.content, request.id);
             return response;
         }
         //显示地址信息
-        public LocationResponse ShowressInfo(LocationRequest request)
+        public ShowResponse ShowressInfo(ShowRequest request)
         {
-            LocationResponse response = new LocationResponse();
+            ShowResponse response = new ShowResponse();
             response.User=Convert.ToInt32( BaseBLL<UserInfobll>.Instance.ShowressInfo());
             return response;
         }

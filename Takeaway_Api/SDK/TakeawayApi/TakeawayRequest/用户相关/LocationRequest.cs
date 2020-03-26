@@ -15,5 +15,7 @@ namespace SDK
             return "/api/UserInfo/EditUserInfo";
         }
         public UserInfo user { get; set; }
+        public string content { get; set; }
+        public int id { get; set; }
     }
 }
