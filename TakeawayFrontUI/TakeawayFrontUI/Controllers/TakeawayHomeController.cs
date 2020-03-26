@@ -17,6 +17,14 @@ namespace TakeawayFrontUI.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// 菜品展示
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult SHOPShow()
+        {
+            return View();
+        }
 
         /// <summary>
         /// 404页面
