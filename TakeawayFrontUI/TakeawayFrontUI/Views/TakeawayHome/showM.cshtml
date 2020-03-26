@@ -148,7 +148,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row row-30 row-lg-50">
+                <div class="row row-30 row-lg-50" >
                     @*<div class="col-sm-6 col-md-4 col-lg-6 col-xl-4">
                             <!-- Product-->
                             <article class="product">
@@ -258,10 +258,12 @@
                 Name: Name,
                 TypeId: TypeId
             },
+
             success: function (res) {
+                $("#div11").empty();
                 var dav = "";
                 $(res.Showw).each(function () {
-                    var div1 = "<div class='col-sm-6 col-md-4 col-lg-6 col-xl-4'>"
+                    var div1 = "<div class='col-sm-6 col-md-4 col-lg-6 col-xl-4'style='width:150px;height:415px'>"
                         + "<article class='product'>"
                         + "<div class='product-body'>"
                         + "<div class='product-figure'>"

@@ -12,7 +12,7 @@ namespace DAL
     /// </summary>
     public class TakeDAL
     {
-        SqlConnection connection = new SqlConnection("Data Source=.\\sql2014;Initial Catalog=TakeOutDB;Integrated Security=True");
+        SqlConnection connection = new SqlConnection("Data Source=.;Initial Catalog=TakeOutDB;Integrated Security=True");
         /// <summary>
         /// 清空购物车
         /// 1.用户点击清空购物车获取所有页面上信息Id
