@@ -15,5 +15,6 @@ namespace SDK
             return "/api/UserInfo/AddressInfo";
         }
         public AddressInfo user { get; set; }
+        public AddressInfo info { get; set; }
     }
 }
