@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "show";
+}
+
+<h2>show</h2>
+
+<table>
+    <tr>
+        <td>菜名</td>
+        <td>图片</td>
+        <td>价格</td>
+    </tr>
+</table>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "",
+            type: "Get",
+            dataType: "json",
+            success: function (res) {
+                $(res).each(function () {
+                    var tr="<tr>"
+                        + "<td>菜名</td>"
+                        + "<td>图片</td>"
+                        + "<td>价格</td>"
+                        + "</tr>"
+                });
+                $("#tr").append(tr);
+            }
+        })
+    })
+</script>
