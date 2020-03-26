@@ -19,21 +19,21 @@
             <div class="title">登录</div>
             <div class="input">
                 <label for="name">用户名</label>
-                <input type="text" name="name" id="name">
+                <input type="text" name="name" id="phonenumber">
                 <span class="spin"></span>
             </div>
             <div class="input">
                 <label for="pass">密码</label>
-                <input type="password" name="pass" id="pass">
+                <input type="password" name="pass" id="password">
                 <span class="spin"></span>
             </div>
             <div class="button login">
                 <button>
                     <span>登录</span>
-                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check" id="test"></i>
                 </button>
             </div>
-            <a href="javascript:" class="pass-forgot">忘记密码？</a>
+            <a href="javascript:" class="pass-forgot" id="wang">忘记密码？</a>
         </div>
 
         <div class="overbox">
@@ -66,7 +66,35 @@
     </div>
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/index.js"></script>
+    <script>
+        $("#test").click(function () {
+            var PhoneNumber = $("#phonenumber").val();
+            var PassWord = $("#password").val();
+            if (PhoneNumber == "" || PassWord=="") {
+                alert("用户名密码不能为空！");
+                return;
+            }
+            $.ajax({
+                url: "http://localhost:53336/api/UserInfo/InfoResponse",
+                type: "POST",
+                data: {
+                    PhoneNumber: PhoneNumber,
+                    PassWord: PassWord
+                },
+                dataType:'json',
+                success: function (d) {
+                    if (d>0) {
+                        alert("登陆成功");
+                        //location.href = "";
+                    }
+                    else {
+                        alert("登陆失败！");
+                    }
+                }
+            })
+        })
 
+    </script>
 </body>
 </html>
 
