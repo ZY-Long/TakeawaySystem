@@ -128,7 +128,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\用户相关\UserController.cs" />
     <Compile Include="Controllers\地区相关\CityController.cs" />
     <Compile Include="Controllers\地区相关\ProvinceController.cs" />
     <Compile Include="Controllers\地区相关\AreaController.cs" />

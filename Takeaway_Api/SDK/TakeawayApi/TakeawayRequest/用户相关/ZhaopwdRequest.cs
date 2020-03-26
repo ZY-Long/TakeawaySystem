@@ -14,5 +14,8 @@ namespace SDK
         {
             return "/api/UserInfo/FindPwd";
         }
+        public string  PhoneNumber { get; set; }
+        public string PassWord { get; set; }
+        public string Email { get; set; }
     }
 }
