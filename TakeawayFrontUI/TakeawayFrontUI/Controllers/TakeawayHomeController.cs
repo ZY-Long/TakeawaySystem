@@ -13,7 +13,7 @@ namespace TakeawayFrontUI.Controllers
         /// 主页面
         /// </summary>
         /// <returns></returns>
-        public ActionResult Home()
+        public ActionResult ProductHome()
         {
             return View();
         }
