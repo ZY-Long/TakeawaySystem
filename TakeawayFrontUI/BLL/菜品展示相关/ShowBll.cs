@@ -14,9 +14,9 @@ namespace BLL
         /// </summary>
         /// <param name="show"></param>
         /// <returns></returns>
-        public ShowResponse Show(ShowRequest show)
+        public ShowMenuInfoResponse Show(ShowMenuInfoRequest show)
         {
-            return ApiRequestHelper.Post<ShowRequest, ShowResponse>(show);
+            return ApiRequestHelper.Post<ShowMenuInfoRequest, ShowMenuInfoResponse>(show);
         }
     }
 }
