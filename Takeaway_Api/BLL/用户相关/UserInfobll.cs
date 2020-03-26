@@ -46,9 +46,7 @@ namespace BLL
                 return userInfo;
             }
             //调用dal层方法
-            UserInfoLog info = dal.DeLogin(request.User);
-            userInfo.userInfos.Id = info.Id;
-            userInfo.userInfos.PhoneNumber = info.PhoneNumber;
+           userInfo.userInfos= dal.DeLogin(request.User);
             //判断
             if (userInfo.userInfos != null)
             {

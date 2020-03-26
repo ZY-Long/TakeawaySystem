@@ -147,14 +147,18 @@ namespace TakeawayFrontUI.Controllers
         public JsonResult InfoResponse(DeLoginRequest Request)
         {
             DeLoginResponse response = userBll.InfoResponse(Request);
-            if (response.userInfos.Id > 0)
+            if (response.State)
             {
-                Session["Id"] = response.userInfos; 
+                if (response.userInfos.Id > 0)
+                {
+                    Session["Id"] = response.userInfos;
+                }
+                if (!string.IsNullOrEmpty(response.userInfos.PhoneNumber))
+                {
+                    Session["PhoneNumber"] = response.userInfos.PhoneNumber;
+                }
             }
-            if (!string.IsNullOrEmpty(response.userInfos.PhoneNumber))
-            {
-                Session["PhoneNumber"] = response.userInfos.PhoneNumber;
-            }
+            
 
 
             return Json(response, JsonRequestBehavior.AllowGet);

@@ -12,7 +12,8 @@ namespace DAL
     /// </summary>
     public class TakeDAL
     {
-        SqlConnection connection = new SqlConnection("Data Source=.;Initial Catalog=TakeOutDB;Integrated Security=True");
+        readonly static string connstr = System.Configuration.ConfigurationManager.AppSettings["conn"];
+        SqlConnection connection = new SqlConnection(connstr);
         /// <summary>
         /// 清空购物车
         /// 1.用户点击清空购物车获取所有页面上信息Id

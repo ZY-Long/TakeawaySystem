@@ -9,15 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using Model;
+using SDK;
 
 namespace DAL
 {
     //用户相关DAL
     public class UserInfoLogin
     {
-        SqlConnection connection = new SqlConnection("Data Source=.;Initial Catalog=TakeOutDB;Integrated Security=True");
+        readonly static string connstr = System.Configuration.ConfigurationManager.AppSettings["conn"];
+        SqlConnection connection = new SqlConnection(connstr);
+
+
         DBHelper bHelper = new DBHelper();
-        string connStr = "Data Source=.;Initial Catalog=TakeOutDB;Integrated Security=True";
+        string connStr = connstr;
 
         //用户注册
         public int AddUser(UserInfo user)
@@ -76,14 +80,14 @@ namespace DAL
             }
         }
         //用户登陆
-        public UserInfoLog DeLogin(UserInfoLog info)
+        public UserInfoDto DeLogin(UserInfoLog info)
         {
             try
             {
                 using (IDbConnection conn = new SqlConnection(connStr))
                 {
                     string sql = "select PhoneNumber ,Id from UserInfo where PhoneNumber=@phonenumber and Password=@password";
-                    var userLog = conn.QueryFirstOrDefault<UserInfoLog>(sql, new { phonenumber = info.PhoneNumber, password = info.PassWord });
+                    var userLog = conn.QueryFirstOrDefault<UserInfoDto>(sql, new { phonenumber = info.PhoneNumber, password = info.PassWord });
                     return userLog;
                 }
             }

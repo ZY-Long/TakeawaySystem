@@ -11,7 +11,10 @@ namespace DAL
 {
     public class FoodShowDAL
     {
-        SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=TakeOutDB;Integrated Security=True");
+
+        readonly static string connstr = System.Configuration.ConfigurationManager.AppSettings["conn"];
+
+        SqlConnection conn = new SqlConnection(connstr);
         /// <summary>
         /// 显示
         /// </summary>
