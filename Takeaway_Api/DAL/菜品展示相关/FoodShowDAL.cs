@@ -21,46 +21,54 @@ namespace DAL
         /// <returns></returns>
         public List<MenuInfo> Show(int currPage,  int TypeId, string Name = "")
         {
-            
-
-            //打开数据库
-            if (conn.State == System.Data.ConnectionState.Closed)
+            try
             {
-                conn.Open();
-            }
+                //打开数据库
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
 
-            //命令
-            string sql = "prcPageResult";
-            SqlCommand comm = new SqlCommand(sql, conn);
-            comm.CommandType = System.Data.CommandType.StoredProcedure;
-            comm.Parameters.AddRange(new SqlParameter[]
-            {
+                //命令
+                string sql = "prcPageResult";
+                SqlCommand comm = new SqlCommand(sql, conn);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.AddRange(new SqlParameter[]
+                {
                 new SqlParameter{ParameterName = "@currPage",SqlDbType = System.Data.SqlDbType.Int,SqlValue = currPage },
                  new SqlParameter{ParameterName = "@Name",SqlDbType = System.Data.SqlDbType.VarChar,SqlValue = Name },
                  new SqlParameter{ParameterName = "@TypeId",SqlDbType = System.Data.SqlDbType.Int,SqlValue = TypeId },
-            });
+                });
 
-            //反馈
-            var readr = comm.ExecuteReader();
-            
-            List<MenuInfo> list = new List<MenuInfo>();
-            while (readr.Read())
-            {
-                MenuInfo menuInfo = new MenuInfo();
-                menuInfo.Id = int.Parse(readr["Id"].ToString());
-                menuInfo.Name = readr["Name"].ToString();
-                menuInfo.Img = readr["Img"].ToString();
-                menuInfo.Price = Convert.ToDecimal(readr["Price"]);
-                list.Add(menuInfo);
+                //反馈
+                var readr = comm.ExecuteReader();
+
+                List<MenuInfo> list = new List<MenuInfo>();
+                while (readr.Read())
+                {
+                    MenuInfo menuInfo = new MenuInfo();
+                    menuInfo.Id = int.Parse(readr["Id"].ToString());
+                    menuInfo.Name = readr["Name"].ToString();
+                    menuInfo.Img = readr["Img"].ToString();
+                    menuInfo.Price = Convert.ToDecimal(readr["Price"]);
+                    list.Add(menuInfo);
+                }
+
+                //关闭数据库
+                if (conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+
+                return list;
             }
-            
-            //关闭数据库
-            if (conn.State == System.Data.ConnectionState.Open)
+            catch (Exception)
             {
-                conn.Close();
+
+                throw;
             }
-            
-            return list;
+
+           
         }
     }
 }
