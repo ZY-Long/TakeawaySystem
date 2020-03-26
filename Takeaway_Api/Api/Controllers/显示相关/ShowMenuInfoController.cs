@@ -11,6 +11,7 @@ namespace Api
 {
     public class ShowMenuInfoController:ApiController
     {
+        [HttpPost]
         public SqlDataReader Show(int currPage, string Name, int TypeId)
         {
             return BaseBLL<FoodShowBLL>.Instance.Show(currPage, Name, TypeId);
