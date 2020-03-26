@@ -34,7 +34,7 @@ namespace DAL
         public List<CartDetails> ShowCartDetails()
         {
             connection.Open();
-            string sql = @"select m.Name,m.Img,m.Price from CartDetails as c
+            string sql = @"select  m.Img,m.Name,c.Count,c.ToPrice from CartDetails as c
                         join CartInfo as a on c.CartId=a.Id
                         join MenuInfo as m on c.TypeId =m.Id";
             SqlCommand command = new SqlCommand(sql,connection);

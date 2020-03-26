@@ -12,7 +12,7 @@ namespace Api
     public class CratDeController : ApiController
     {
         [HttpPost]
-        public GetCartResponse GetTakeInfos()
+        public GetCartResponse GetCartInfos(GetCartRequest request)
         {
             GetCartResponse response = new GetCartResponse();
             response.GetCart = BaseBLL<TakeBLL>.Instance.ShowCartDetails();

@@ -12,7 +12,7 @@ namespace Api.Controllers.购物车相关
     public class TakeController : ApiController
     {
         [HttpPost]
-        public TakeResponse GetTakeInfos()
+        public TakeResponse GetTakeInfos(GetCartRequest request)
         {
             TakeResponse response = new TakeResponse();
             response.TaseInfos = BaseBLL<TakeBLL>.Instance.ShowTasteInfo();
