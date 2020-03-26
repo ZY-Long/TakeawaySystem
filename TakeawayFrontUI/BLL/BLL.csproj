@@ -60,6 +60,7 @@
     <Compile Include="地区相关\ProvinceBLL.cs" />
     <Compile Include="地区相关\AreaBLL.cs" />
     <Compile Include="订单相关\OrderBLL.cs" />
+    <Compile Include="菜品展示相关\ShowBll.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="log4net.config">
