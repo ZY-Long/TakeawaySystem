@@ -24,15 +24,15 @@ namespace TakeawayFrontUI.Controllers
         /// <summary>
         /// 用户注册
         /// </summary>
-       
+
         public JsonResult AddUser(UserRequest userRequest)
-        {        
+        {
             return Json(userBll.AddUser(userRequest));
         }
         //登陆
         public JsonResult InfoResponse(UserRequest Request)
         {
-            return Json(userBll.InfoResponse(Request));   
+            return Json(userBll.InfoResponse(Request));
         }
         //找回密码
         public JsonResult FindPwd(ZhaopwdRequest request)
@@ -59,12 +59,12 @@ namespace TakeawayFrontUI.Controllers
         {
             return Json(userBll.AddressInfo(request));
         }
-            /// <summary>
-            /// 获取省份信息,用作绑定下拉框
-            /// </summary>
-            /// <param name="province"></param>
-            /// <returns></returns>
-            public JsonResult GetProvince(ProvinceRequest province)
+        /// <summary>
+        /// 获取省份信息,用作绑定下拉框
+        /// </summary>
+        /// <param name="province"></param>
+        /// <returns></returns>
+        public JsonResult GetProvince(ProvinceRequest province)
         {
             return Json(userBll.GetProvince(province));
         }
