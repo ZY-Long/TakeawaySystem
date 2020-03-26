@@ -129,14 +129,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TakeawayHomeController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\用户相关\UserController.cs" />
     <Compile Include="Controllers\SHOWController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\地区相关\CityController.cs" />
     <Compile Include="Controllers\地区相关\ProvinceController.cs" />
     <Compile Include="Controllers\地区相关\AreaController.cs" />
-    <Compile Include="Controllers\用户相关\UserController.cs" />
     <Compile Include="Controllers\订单相关\OrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -311,6 +307,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\用户相关\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Order\" />
   </ItemGroup>
