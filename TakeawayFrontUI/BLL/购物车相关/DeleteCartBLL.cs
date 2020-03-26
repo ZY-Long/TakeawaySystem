@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using SDK;
 namespace BLL
 {
-   public class DeleteCart
+   public class DeleteCartBLL
     {
-        public DeleteCartResponse GetCart(DeleteCartRequest request)
+        public DeleteCartResponse DeleteCart(DeleteCartRequest request)
         {
             return ApiRequestHelper.Post<DeleteCartRequest, DeleteCartResponse>(request);
         }

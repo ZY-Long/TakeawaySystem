@@ -127,7 +127,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DeleteCartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShowCartController.cs" />
+    <Compile Include="Controllers\ShowTakeController.cs" />
     <Compile Include="Controllers\TakeawayHomeController.cs" />
     <Compile Include="Controllers\SHOWController.cs" />
     <Compile Include="Controllers\CityController.cs" />
@@ -313,7 +316,10 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\DeleteCart\" />
     <Folder Include="Views\Order\" />
+    <Folder Include="Views\ShowCart\" />
+    <Folder Include="Views\ShowTake\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
