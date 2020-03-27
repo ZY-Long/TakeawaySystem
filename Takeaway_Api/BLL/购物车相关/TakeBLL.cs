@@ -23,17 +23,17 @@ namespace BLL
         /// </summary>
         /// <returns></returns>
 
-        public List<TasteInfo> ShowTasteInfo()
+        public List<TasteInfo> GetTakeInfos()
         {
-            return BaseDAL<TakeDAL>.Instance.ShowTasteInfo();
+            return BaseDAL<TakeDAL>.Instance.GetTakeInfos();
         }
         /// <summary>
         /// 显示购物车
         /// </summary>
         /// <returns></returns>
-        public List<CartDetails> ShowCartDetails()
+        public List<CartDetails> GetCartInfos()
         {
-            return BaseDAL<TakeDAL>.Instance.ShowCartDetails();
+            return BaseDAL<TakeDAL>.Instance.GetCartInfos();
         }
         //public int AddCart(CartInfo cart)
         //{

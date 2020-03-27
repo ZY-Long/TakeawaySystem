@@ -15,7 +15,7 @@ namespace Api
         public GetCartResponse GetCartInfos(GetCartRequest request)
         {
             GetCartResponse response = new GetCartResponse();
-            response.GetCart = BaseBLL<TakeBLL>.Instance.ShowCartDetails();
+            response.GetCart = BaseBLL<TakeBLL>.Instance.GetCartInfos();
             return response;
         }
     }

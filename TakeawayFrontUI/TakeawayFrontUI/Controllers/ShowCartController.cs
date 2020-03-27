@@ -11,7 +11,7 @@ namespace TakeawayFrontUI.Controllers
     {
         ShowCartBLL bll = new ShowCartBLL();
         // GET: ShowCart
-        public ActionResult Index()
+        public ActionResult GetCart()
         {
             return View();
         }

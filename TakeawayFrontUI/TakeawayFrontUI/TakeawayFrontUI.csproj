@@ -312,6 +312,7 @@
     <Content Include="Views\TakeawayHome\ProductHome.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\TakeawayHome\SHOPShow.cshtml" />
+    <Content Include="Views\ShowCart\ShowCart.cshtml" />
     <Content Include="Views\ShowCart\GetCart.cshtml" />
   </ItemGroup>
   <ItemGroup>

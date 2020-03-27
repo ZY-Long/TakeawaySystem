@@ -15,7 +15,7 @@ namespace Api.Controllers.购物车相关
         public TakeResponse GetTakeInfos(GetCartRequest request)
         {
             TakeResponse response = new TakeResponse();
-            response.TaseInfos = BaseBLL<TakeBLL>.Instance.ShowTasteInfo();
+            response.TaseInfos = BaseBLL<TakeBLL>.Instance.GetTakeInfos();
             return response;
         }
     }

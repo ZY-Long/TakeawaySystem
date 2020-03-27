@@ -31,7 +31,7 @@ namespace DAL
         /// 显示购物车
         /// </summary>
         /// <returns></returns>
-        public List<CartDetails> ShowCartDetails()
+        public List<CartDetails> GetCartInfos()
         {
             connection.Open();
             string sql = @"select  m.Img,m.Name,c.Count,c.ToPrice from CartDetails as c
@@ -46,7 +46,7 @@ namespace DAL
         /// 口味下拉框
         /// </summary>
         /// <returns></returns>
-        public List<TasteInfo> ShowTasteInfo()
+        public List<TasteInfo> GetTakeInfos()
         {
             connection.Open();
             string sql = "Select Name from TasteInfo";
