@@ -327,15 +327,11 @@
     <Content Include="Views\TakeawayHome\NotFind.cshtml" />
     <Content Include="Views\TakeawayHome\ProductHome.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
-    <Content Include="Views\TakeawayHome\SHOPShow.cshtml" />
     <Content Include="Views\ShowCart\ShowCart.cshtml" />
     <Content Include="Views\ShowCart\GetCart.cshtml" />
+    <Content Include="Views\TakeawayHome\SHOPShow.cshtml" />
     <Content Include="Views\TakeawayHome\UserInfo.cshtml" />
     <Content Include="Views\AddCartDetails\AddCartDetails.cshtml" />
-    <Content Include="Views\ShowCart\ShowCart.cshtml" />
-    <Content Include="Views\ShowCart\FenShowCart.cshtml" />
-    <Content Include="Views\ShowCart\ShowCartDeci.cshtml" />
-    <Content Include="Views\TakeawayHome\showM.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
