@@ -34,5 +34,14 @@ namespace TakeawayFrontUI.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// 用户信息页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult UserInfo()
+        {
+            return View();
+        }
     }
 }

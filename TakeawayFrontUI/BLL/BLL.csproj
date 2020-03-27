@@ -54,6 +54,8 @@
   <ItemGroup>
     <Compile Include="ApiRequest\ApiRequestHelper.cs" />
     <Compile Include="ApiRequest\LogHelper.cs" />
+    <Compile Include="购物车相关\DeleteCartBLL.cs" />
+    <Compile Include="购物车相关\ShowTakeBLL.cs" />
     <Compile Include="用户相关\UserBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="地区相关\CityBLL.cs" />
@@ -61,6 +63,7 @@
     <Compile Include="地区相关\AreaBLL.cs" />
     <Compile Include="订单相关\OrderBLL.cs" />
     <Compile Include="菜品展示相关\ShowBll.cs" />
+    <Compile Include="购物车相关\ShowCartBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="log4net.config">

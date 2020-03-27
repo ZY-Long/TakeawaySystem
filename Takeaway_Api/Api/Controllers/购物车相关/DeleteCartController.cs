@@ -12,7 +12,7 @@ namespace Api
     public class DeleteCartController : ApiController
     {
         [HttpPost]
-        public DeleteCartResponse DeleteCare(int id)
+        public DeleteCartResponse DeleteCart(int id)
         {
             DeleteCartResponse response = new DeleteCartResponse();
             response.delete = BaseBLL<TakeBLL>.Instance.DeleteCart(id);
