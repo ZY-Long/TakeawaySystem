@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="ApiRequest\ApiRequestHelper.cs" />
     <Compile Include="ApiRequest\LogHelper.cs" />
+    <Compile Include="购物车相关\AddCartBLL.cs" />
     <Compile Include="购物车相关\DeleteCartBLL.cs" />
     <Compile Include="购物车相关\ShowTakeBLL.cs" />
     <Compile Include="用户相关\UserBll.cs" />
