@@ -19,6 +19,33 @@ namespace DAL
         /// 2.用一个List<int>存储这个获取到的Id
         /// 3.foreach嵌套访问数据库语句
         /// </summary>
+        /// 添加购物车
+        public int AddCart(CartInfo cart)
+        {
+            connection.Open();
+            string sql = $@"insert into CartInfo (UserId,BusinessInfo,Sates,CreateTime,UpdateTime,CreaterId,UpdaterId) 
+                    values('{cart.UserId}','{cart.BusinessInfo}',1,'GetDate()','GetDate()',1,1)";
+            SqlCommand command = new SqlCommand(sql, connection);
+            var res = command.ExecuteNonQuery();
+            return res;
+        }
+        /// <summary>
+        /// 添加购物车详情
+        /// </summary>
+        public int AddCartDetails(CartDetails cart)
+        {
+            CartInfo c = new CartInfo();
+
+            var car = AddCart(c);
+            connection.Open();
+            string sql = $@"insert into CartDetails (TypeId,DetailsId,Count,TasteId,ToPrice,CartId,Sates,CreateTime,UpdateTime,CreaterId,UpdaterId) 
+                    values('{cart.TypeId}','{cart.DetailsId}','{cart.Count}','{cart.TasteId}','{cart.ToPrice}','{cart.CratId}',1,'GetDate()','GetDate()',1,1)";
+            SqlCommand command = new SqlCommand(sql, connection);
+            var res = command.ExecuteNonQuery();
+            return res;
+        }
+        /// <param name="id"></param>
+        /// <returns></returns>
         public int DeleteCart(int id)
         {
             connection.Open();
