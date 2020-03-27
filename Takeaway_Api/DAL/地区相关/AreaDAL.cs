@@ -18,6 +18,7 @@ namespace DAL
         /// <returns></returns>
         public List<Arealnfo> GetArealnfos(int cityId)
         {
+            cityId = 1;
             List<Arealnfo> infos = OrmDBHelper.GetToList<Arealnfo>("SELECT * FROM dbo.Arealnfo WHERE CityId= " + cityId);
             return infos;
         }

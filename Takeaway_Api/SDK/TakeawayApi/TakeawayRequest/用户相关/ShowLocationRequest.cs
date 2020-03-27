@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model;
 
 namespace SDK
 {
-   public  class DeshowRequest:BaseRequest
+    /// <summary>
+    /// 显示用户地址界面
+    /// </summary>
+    public class ShowLocationRequest:BaseRequest
     {
-        //登陆
         public override string GetApiName()
         {
-            return "/api/UserInfo/InfoResponse";
+            return "/api/UserInfo/ShowressInfo";
         }
+
+        public int UserId { get; set; }
     }
 }

@@ -18,9 +18,9 @@ namespace BLL
             return ApiRequestHelper.Post<UserRequest, UserInfoResponse>(userRequest);
         }
         //登陆
-        public UserInfoResponse InfoResponse(UserRequest request)
+        public DeLoginResponse InfoResponse(DeLoginRequest request)
         {
-            return ApiRequestHelper.Post<UserRequest,UserInfoResponse>(request);
+            return ApiRequestHelper.Post<DeLoginRequest, DeLoginResponse>(request);
         }
         //找回密码
         public ZhaopwdResponse FindPwd(ZhaopwdRequest request)

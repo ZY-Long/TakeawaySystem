@@ -57,7 +57,7 @@ namespace DAL
         {
             using (IDbConnection conn = new SqlConnection(connStr))
             {
-                string sql = "select count(1) from UserInfo where PhoneNumber=@phonenumber and Password=@password";
+                string sql = "select Id from UserInfo where PhoneNumber=@phonenumber and Password=@password";
                 var userId = conn.QueryFirstOrDefault<int>(sql,new { phonenumber=info.PhoneNumber,password=info.PassWord});
                 return userId;
             }
@@ -71,12 +71,12 @@ namespace DAL
         //    return Convert.ToInt32(bHelper.ExecuteScalar(sql));
         //}
         //根据用户名获取用户的盐
-        public string GetuserSalt(string UserName)
+        public string GetuserSalt(string PhoneNumber)
         {
             using (IDbConnection conn=new SqlConnection(connStr))
             {
-                string sql = "select Salt From UserInfo where PhoneNumber=@phonenumber";
-                var saltstr = conn.QueryFirstOrDefault<string>(sql,new { phonenumber=UserName});
+                string sql = "select SaIt From UserInfo where PhoneNumber=@phonenumber";
+                var saltstr = conn.QueryFirstOrDefault<string>(sql,new { phonenumber= PhoneNumber});
                 return saltstr;
             }
         }
@@ -162,8 +162,9 @@ namespace DAL
         ///修改密码
         public int EditUserPwd(string pwd,int id)
         {
+            var bus = UserInfoLogin.GenerateSalt();
             int res = 0;
-            res = bHelper.ExecuteNonQuery("update UserInfo set Password='"+pwd+"' where Id='"+id+"'");
+            res = bHelper.ExecuteNonQuery("update UserInfo set Password='"+MD5Encrypt32(pwd+bus)+"' and Salt="+bus+" where Id='" + id+"'");
             return res;
         }
         //修改用户地址
@@ -174,12 +175,12 @@ namespace DAL
             return res;
         }
         //显示地址信息
-        public List<AddressInfo> ShowressInfo()
+        public List<AddressInfo> ShowressInfo(int UserId)
         {
             List<AddressInfo> infos = new List<AddressInfo>();
             using (IDbConnection conn=new SqlConnection(connStr))
             {
-                infos = conn.Query<AddressInfo>("select * from AddressInfo").ToList();
+                infos = conn.Query<AddressInfo>("SELECT aa.Name,a.Content FROM dbo.AddressInfo AS a JOIN dbo.Arealnfo AS aa ON a.Area = aa.Id WHERE a.UserId = "+ UserId + "  AND a.Sates=1").ToList();
             }
             return infos;
         }

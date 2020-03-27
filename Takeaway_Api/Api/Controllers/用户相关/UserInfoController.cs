@@ -14,15 +14,19 @@ namespace Api.Controllers
     {
         //注册用户
         [HttpPost]
-        public UserInfoResponse AddUser(UserRequest request)
+        public UserInfoResponse AddUser(UserRequest request,UserInfo user)
         {
-            return BaseBLL<UserInfobll>.Instance.AddUser(request);
+            UserInfoResponse response = new UserInfoResponse();
+            response.User = BaseBLL<UserInfobll>.Instance.AddUser(user);
+            return response;
+            
         }
         //登陆
         [HttpPost]
-        public UserInfoResponse InfoResponse(UserRequest request)
+        public DeLoginResponse InfoResponse(DeLoginRequest request)
         {
-            return BaseBLL<UserInfobll>.Instance.InfoResponse(request);
+            DeLoginResponse user = BaseBLL<UserInfobll>.Instance.InfoResponse(request);
+            return user;
         }
         /// <summary>
         /// 找回密码
@@ -64,6 +68,7 @@ namespace Api.Controllers
         {
             UpdateResponse response = new UpdateResponse();
             response.User= BaseBLL<UserInfobll>.Instance.EditUserPwd(request.pwd, request.id);
+            response.State = response.User > 0 ? true : false;
             return response;
         }
         //修改用户地址
@@ -71,15 +76,15 @@ namespace Api.Controllers
         public LocationResponse EditUserInfo(LocationRequest request)
         {
             LocationResponse response = new LocationResponse();
-            response.User = BaseBLL<UserInfobll>.Instance.EditUserInfo(request.content, request.id);
+            response.UserId = BaseBLL<UserInfobll>.Instance.EditUserInfo(request.content, request.id);
             return response;
         }
         //显示地址信息
         [HttpPost]
-        public ShowResponse ShowressInfo(ShowRequest request)
+        public ShowLocationResponse ShowressInfo(ShowLocationRequest request)
         {
-            ShowResponse response = new ShowResponse();
-            response.User=Convert.ToInt32( BaseBLL<UserInfobll>.Instance.ShowressInfo());
+            ShowLocationResponse response = new ShowLocationResponse();
+            response.Infos= BaseBLL<UserInfobll>.Instance.ShowressInfo(request.UserId);
             return response;
         }
         //添加新地址

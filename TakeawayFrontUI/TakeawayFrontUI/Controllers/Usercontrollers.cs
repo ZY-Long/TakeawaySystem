@@ -29,7 +29,7 @@ namespace TakeawayFrontUI.Controllers
             return Json(userBll.AddUser(userRequest));
         }
         //登陆
-        public JsonResult InfoResponse(UserRequest Request)
+        public JsonResult InfoResponse(DeLoginRequest Request)
         {
             return Json(userBll.InfoResponse(Request));
         }
