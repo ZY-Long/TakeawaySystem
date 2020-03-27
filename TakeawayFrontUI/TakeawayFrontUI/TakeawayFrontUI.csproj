@@ -280,6 +280,8 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\lg.woff" />
     <Content Include="fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="购物车引用文件2\css\carts.css" />
     <Content Include="购物车引用文件2\css\reset.css" />
     <Content Include="购物车引用文件2\images\1.png" />
@@ -327,10 +329,14 @@
     <Content Include="Views\TakeawayHome\NotFind.cshtml" />
     <Content Include="Views\TakeawayHome\ProductHome.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\TakeawayHome\SHOPShow.cshtml" />
     <Content Include="Views\ShowCart\ShowCart.cshtml" />
     <Content Include="Views\ShowCart\GetCart.cshtml" />
     <Content Include="Views\TakeawayHome\UserInfo.cshtml" />
     <Content Include="Views\AddCartDetails\AddCartDetails.cshtml" />
+    <Content Include="Views\ShowCart\ShowCart.cshtml" />
+    <Content Include="Views\ShowCart\FenShowCart.cshtml" />
+    <Content Include="Views\ShowCart\ShowCartDeci.cshtml" />
     <Content Include="Views\TakeawayHome\showM.cshtml" />
     <Content Include="Views\TakeawayHome\AddressView.cshtml" />
   </ItemGroup>
