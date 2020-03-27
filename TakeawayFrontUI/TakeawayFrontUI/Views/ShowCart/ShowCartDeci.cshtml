@@ -4,11 +4,11 @@
     Layout = "~/Views/ShowCart/ShowCart.cshtml";
 }
 
-
 <table>
 
     <tbody id="td"></tbody>
 </table>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script>
     $(document).ready(function () {
         $.ajax({
@@ -22,16 +22,18 @@
                     +"<li class='list_chk'>"
                         +"<input type='checkbox' id='checkbox_2' class='son_check'>"
                         +"<label for='checkbox_2'></label>"
-                   +" </li>"
-
+                        + " </li>"
+                        + "<li class='list_img'>"
+                        + "<div class='list_img'><a href='javascript:;'><img src='" + this.Img + "' alt=''></a></div>"
+                        +"</li>"
                     +"<li class='list_con'>"
 
-                        + "<div class='list_img'><a href='javascript:;'><img src='~/购物车引用文件2/images/1.png' alt=''></a></div>"
+                        
                         + "<div class='list_text'><a href='javascript:;'>" + this.Name + "</a></div>"
                     +"</li>"
                         + "<li class='list_info'>"
                         + "<p>"+this.Remark+"</p>"
-                        
+
                    +" </li>"
                    +" <li class='list_price'>"
                      +"   <p class='price'>"+this.Price+"</p>"
@@ -57,6 +59,4 @@
         });
     })
 </script>
-
-
 

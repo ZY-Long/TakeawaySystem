@@ -333,11 +333,10 @@
     <Content Include="Views\TakeawayHome\SHOPShow.cshtml" />
     <Content Include="Views\TakeawayHome\UserInfo.cshtml" />
     <Content Include="Views\AddCartDetails\AddCartDetails.cshtml" />
-    <Content Include="Views\ShowCart\ShowCartDeci.cshtml" />
     <Content Include="Views\ShowCart\FenShowCart.cshtml" />
-    <Content Include="Views\ShowCart\ShowCartDeci.cshtml" />
     <Content Include="Views\TakeawayHome\showM.cshtml" />
     <Content Include="Views\TakeawayHome\AddressView.cshtml" />
+    <Content Include="Views\ShowCart\ShowCartDeci.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

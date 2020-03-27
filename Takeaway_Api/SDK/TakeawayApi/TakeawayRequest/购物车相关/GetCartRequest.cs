@@ -10,7 +10,7 @@ namespace SDK
     {
         public override string GetApiName()
         {
-            return "/api/CratDe/GetTakeInfos";
+            return "/api/CratDe/GetCartInfos";
         }
     }
 }
