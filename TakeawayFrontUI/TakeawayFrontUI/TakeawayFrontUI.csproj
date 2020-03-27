@@ -314,6 +314,7 @@
     <Content Include="Views\TakeawayHome\SHOPShow.cshtml" />
     <Content Include="Views\ShowCart\ShowCart.cshtml" />
     <Content Include="Views\ShowCart\GetCart.cshtml" />
+    <Content Include="Views\TakeawayHome\UserInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
