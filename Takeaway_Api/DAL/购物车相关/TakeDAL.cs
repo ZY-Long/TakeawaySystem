@@ -36,7 +36,7 @@ namespace DAL
         {
             CartInfo c = new CartInfo();
 
-            var car = AddCart(c);
+            var car = AddCart(c); 
             connection.Open();
             string sql = $@"insert into CartDetails (TypeId,DetailsId,Count,TasteId,ToPrice,CartId,Sates,CreateTime,UpdateTime,CreaterId,UpdaterId) 
                     values('{cart.TypeId}','{cart.DetailsId}','{cart.Count}','{cart.TasteId}','{cart.ToPrice}','{cart.CratId}',1,'GetDate()','GetDate()',1,1)";
