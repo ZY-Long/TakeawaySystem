@@ -359,6 +359,7 @@
     <Content Include="Views\ShowCart\ShowCartDeci.cshtml" />
     <Content Include="Views\User\GeShow.cshtml" />
     <Content Include="Views\TakeawayHome\Address.cshtml" />
+    <Content Include="Views\ShowCart\GetCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
