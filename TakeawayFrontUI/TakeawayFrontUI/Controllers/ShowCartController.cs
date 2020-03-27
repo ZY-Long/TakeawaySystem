@@ -11,7 +11,27 @@ namespace TakeawayFrontUI.Controllers
     {
         ShowCartBLL bll = new ShowCartBLL();
         // GET: ShowCart
-        public ActionResult GetCart()
+        /// <summary>
+        /// 模板页
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ShowCart()
+        {
+            return View();
+        }
+        /// <summary>
+        /// 分布页
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult FenShowCart()
+        {
+            return View();
+        }
+        /// <summary>
+        /// ajax视图
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ShowCartDeci()
         {
             return View();
         }

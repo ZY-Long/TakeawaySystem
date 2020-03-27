@@ -19,6 +19,14 @@ namespace Model
         /// 菜品名称
         /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// 菜品介绍
+        /// </summary>
+        public string Remark { get; set; }
+        /// <summary>
+        /// 单价
+        /// </summary>
+        public string Price { get; set; }
         //购物车数量
         public int Count { get; set; }
         //总价钱
