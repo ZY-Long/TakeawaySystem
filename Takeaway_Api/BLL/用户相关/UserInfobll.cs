@@ -16,8 +16,6 @@ namespace BLL
     {
         UserInfoLogin dal = new UserInfoLogin();
 
-        
-
         public int AddUser(UserInfo user)
         {
             return BaseDAL<UserInfoLogin>.Instance.AddUser(user);
