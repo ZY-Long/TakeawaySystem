@@ -12,7 +12,7 @@ namespace SDK
         //显示地址
         public override string GetApiName()
         {
-            return "/api/UserInfo/EditUserPwd";
+            return "/api/UserInfo/ShowressInfo";
         }
         public AddressInfo user { get; set; }
     }

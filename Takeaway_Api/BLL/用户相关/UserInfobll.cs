@@ -21,39 +21,36 @@ namespace BLL
             return BaseDAL<UserInfoLogin>.Instance.AddUser(user);
         }
 
-        public UserInfoResponse AddUser(UserRequest request)
-        {
-            throw new NotImplementedException();
-        }
 
         ////用户登陆
         //public int DeLogin(UserInfo info)
         //{
         //    return BaseDAL<UserInfoLogin>.Instance.DeLogin(info);
         //}
-        public UserInfoResponse InfoResponse(UserRequest request)
+        public DeLoginResponse InfoResponse(DeLoginRequest request)
         {
-            UserInfoResponse userInfo = new UserInfoResponse();
-            string salt = BaseDAL<UserInfoLogin>.Instance.GetuserSalt(request.user.PhoneNumber);
-            string password = MD5Encrypt32(request.user.PassWord+salt);
-            request.user.PassWord = password;
-            if (string.IsNullOrEmpty(request.user.PhoneNumber))
+            DeLoginResponse userInfo = new DeLoginResponse();
+            string salt = dal.GetuserSalt(request.User.PhoneNumber);
+            string password = MD5Encrypt32(request.User.PassWord+salt);
+            request.User.PassWord = password;
+            if (string.IsNullOrEmpty(request.User.PhoneNumber))
             {
                 userInfo.State = false;
                 userInfo.Message = "用户名为空";
                 return userInfo;
             }
-            if (string.IsNullOrEmpty(request.user.PassWord))
+            if (string.IsNullOrEmpty(request.User.PassWord))
             {
                 userInfo.State = false;
                 userInfo.Message = "密码为空";
                 return userInfo;
             }
             //调用dal层方法
-            int userid = BaseDAL<UserInfoLogin>.Instance.DeLogin(request.user);
+            int userid = dal.DeLogin(request.User);
             //判断
             if (userid>0)
             {
+                userInfo.State = true;
                 userInfo.Message="登陆成功 ！";
             }
             else

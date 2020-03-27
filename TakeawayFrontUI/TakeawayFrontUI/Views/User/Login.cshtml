@@ -33,8 +33,10 @@
                     <i class="fa fa-check" id="test"></i>
                 </button>
             </div>
+            <div>
             <a href="javascript:" class="pass-forgot" id="wang">忘记密码？</a>
         </div>
+            </div>
 
         <div class="overbox">
             <div class="material-button alt-2">
@@ -42,23 +44,24 @@
             </div>
             <div class="title">注册</div>
             <div class="input">
-                <label for="regname">用户名</label>
-                <input type="text" name="regname" id="regname">
+                <label for="yong">用户名</label>
+                <input type="text" name="yong" id="yong">
                 <span class="spin"></span>
             </div>
             <div class="input">
-                <label for="regpass">密码</label>
-                <input type="password" name="regpass" id="regpass">
+                <label for="ma">密码</label>
+                <input type="password" name="ma" id="ma">
                 <span class="spin"></span>
             </div>
             <div class="input">
-                <label for="reregpass">确认密码</label>
-                <input type="password" name="reregpass" id="reregpass">
+                <label for="email">邮箱</label>
+                <input type="text" name="email" id="email">
                 <span class="spin"></span>
             </div>
             <div class="button">
                 <button>
                     <span>注册</span>
+                    <i id="test"></i>
                 </button>
             </div>
         </div>
@@ -68,22 +71,25 @@
     <script src="~/js/index.js"></script>
     <script>
         $("#test").click(function () {
-            var PhoneNumber = $("#phonenumber").val();
-            var PassWord = $("#password").val();
+            var PhoneNumber =$("#phonenumber").val();
+            var PassWord= $("#password").val();
             if (PhoneNumber == "" || PassWord=="") {
                 alert("用户名密码不能为空！");
                 return;
             }
+            var obj = {
+                User: {
+                    PhoneNumber:$("#phonenumber").val(),
+                    PassWord:$("#password").val()
+                }
+            };
             $.ajax({
-                url: "http://localhost:53336/api/UserInfo/InfoResponse",
+                url: "/User/InfoResponse",
                 type: "POST",
-                data: {
-                    PhoneNumber: PhoneNumber,
-                    PassWord: PassWord
-                },
-                dataType:'json',
+                data:obj,               
+                dataType:"json",
                 success: function (d) {
-                    if (d>0) {
+                    if (d.State==true) {
                         alert("登陆成功");
                         //location.href = "";
                     }
@@ -93,7 +99,34 @@
                 }
             })
         })
+    </script>
+    <script>
+        $("#Zhu").on("click", function () {
+            var PhoneNumber = $("#yong").val();
+            var PassWord = $("#ma").val();
+            var Email = $("#email").val();
+            if (PhoneNumber == "" || PassWord == "" || Email=="") {
+                alert("用户名密码邮箱不能为空！");
+                return;
+            }
+            $.ajax({
+                url: "http://localhost:53336/api/UserInfo/AddUser",
+                type: 'POST',
+                data: {
+                    PhoneNumber: PhoneNumber,
+                    PassWord: PassWord,
+                    Email: Email
+                },
+                dataType:'json',
+                success: function (d) {
+                    if (d > 0) {
+                        alert("注册成功");
+                        location.href = 'Login.cshtml';
+                    }
+                }
 
+            })
+        })
     </script>
 </body>
 </html>

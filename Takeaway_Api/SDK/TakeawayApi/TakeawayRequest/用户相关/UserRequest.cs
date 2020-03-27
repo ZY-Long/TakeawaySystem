@@ -14,6 +14,6 @@ namespace SDK
         {
             return "/api/UserInfo/AddUser";
         }
-        public UserInfo user { get; set; }
+        public UserInfo User { get; set; }
     }
 }
