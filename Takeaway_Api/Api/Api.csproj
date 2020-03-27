@@ -191,6 +191,7 @@
     <Compile Include="Controllers\显示相关\ShowMenuInfoController.cs" />
     <Compile Include="Controllers\用户相关\UserInfoController.cs" />
     <Compile Include="Controllers\订单相关\OrderController.cs" />
+    <Compile Include="Controllers\购物车相关\AddCartDetailsController.cs" />
     <Compile Include="Controllers\购物车相关\CratDeController.cs" />
     <Compile Include="Controllers\购物车相关\DeleteCartController.cs" />
     <Compile Include="Controllers\购物车相关\TakeController.cs" />

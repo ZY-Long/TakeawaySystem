@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
-
 namespace SDK
 {
-   public  class DeshowRequest:BaseRequest
+   public class AddCartDetailsRequest:BaseRequest
     {
-        //登陆
+        public CartDetails AddCart { get; set; }
         public override string GetApiName()
         {
-            return "/api/UserInfo/InfoResponse";
+            return "/api/AddCartDetails/AddCartDetails";
         }
     }
 }

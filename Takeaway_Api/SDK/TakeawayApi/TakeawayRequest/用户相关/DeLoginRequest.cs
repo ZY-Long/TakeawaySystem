@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
 
 namespace SDK
 {
     public class DeLoginRequest : BaseRequest
     {
+        //登录
         public override string GetApiName()
         {
-            return "/api/UserInfo/DeLogin";
+            return "/api/UserInfo/InfoResponse";
         }
-        public int user { get; set; }
+        public UserInfo User { get; set; }
     }
 }

@@ -8,10 +8,10 @@ namespace SDK
 {
    public class DeleteCartRequest : BaseRequest
     {
-        public CartDetails DeleteCart  { get; set; }
+        public int id  { get; set; }
         public override string GetApiName()
         {
-            return "/api/Crat/GetArealnfos";
+            return "/api/DeleteCart/DeleteCart";
         }
     }
 }
