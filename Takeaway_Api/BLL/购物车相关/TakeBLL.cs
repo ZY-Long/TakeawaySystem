@@ -10,6 +10,15 @@ namespace BLL
    public class TakeBLL
     {
         /// <summary>
+        /// 添加购物车详情
+        /// </summary>
+        /// <param name="cart"></param>
+        /// <returns></returns>
+        public int AddCartDetails(CartDetails cart)
+        {
+            return BaseDAL<TakeDAL>.Instance.AddCartDetails(cart);
+        }
+        /// <summary>
         /// 删除购物车
         /// </summary>
         /// <param name="id"></param>

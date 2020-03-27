@@ -12,10 +12,10 @@ namespace Api
     public class DeleteCartController : ApiController
     {
         [HttpPost]
-        public DeleteCartResponse DeleteCart(int id)
+        public DeleteCartResponse DeleteCart(DeleteCartRequest request)
         {
             DeleteCartResponse response = new DeleteCartResponse();
-            response.delete = BaseBLL<TakeBLL>.Instance.DeleteCart(id);
+            response.delete = BaseBLL<TakeBLL>.Instance.DeleteCart(request.id);
             return response;
         }
     }
