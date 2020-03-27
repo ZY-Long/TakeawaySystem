@@ -47,7 +47,6 @@
     <Compile Include="TakeawayApi\TakeawayRequest\用户相关\AddRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\用户相关\AdLoctionRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\用户相关\DeLoginRequest.cs" />
-    <Compile Include="TakeawayApi\TakeawayRequest\用户相关\DeshowRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\用户相关\EmailRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\用户相关\LocationRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\用户相关\ShowRequest.cs" />
@@ -70,7 +69,6 @@
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\AddResponse.cs" />
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\AdLoctionResponse.cs" />
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\DeLoginResponse.cs" />
-    <Compile Include="TakeawayApi\TakeawayResponse\用户相关\DeShowResponse.cs" />
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\EmailResponse.cs" />
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\LocationResponse.cs" />
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\ShowResponse.cs" />

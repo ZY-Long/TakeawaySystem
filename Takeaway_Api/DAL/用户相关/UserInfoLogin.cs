@@ -57,7 +57,7 @@ namespace DAL
         {
             using (IDbConnection conn = new SqlConnection(connStr))
             {
-                string sql = "select count(1) from UserInfo where PhoneNumber=@phonenumber and Password=@password";
+                string sql = "select Id from UserInfo where PhoneNumber=@phonenumber and Password=@password";
                 var userId = conn.QueryFirstOrDefault<int>(sql,new { phonenumber=info.PhoneNumber,password=info.PassWord});
                 return userId;
             }
@@ -71,12 +71,12 @@ namespace DAL
         //    return Convert.ToInt32(bHelper.ExecuteScalar(sql));
         //}
         //根据用户名获取用户的盐
-        public string GetuserSalt(string UserName)
+        public string GetuserSalt(string PhoneNumber)
         {
             using (IDbConnection conn=new SqlConnection(connStr))
             {
-                string sql = "select Salt From UserInfo where PhoneNumber=@phonenumber";
-                var saltstr = conn.QueryFirstOrDefault<string>(sql,new { phonenumber=UserName});
+                string sql = "select SaIt From UserInfo where PhoneNumber=@phonenumber";
+                var saltstr = conn.QueryFirstOrDefault<string>(sql,new { phonenumber= PhoneNumber});
                 return saltstr;
             }
         }

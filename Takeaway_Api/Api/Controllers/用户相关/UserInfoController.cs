@@ -14,15 +14,19 @@ namespace Api.Controllers
     {
         //注册用户
         [HttpPost]
-        public UserInfoResponse AddUser(UserRequest request)
+        public UserInfoResponse AddUser(UserRequest request,UserInfo user)
         {
-            return BaseBLL<UserInfobll>.Instance.AddUser(request);
+            UserInfoResponse response = new UserInfoResponse();
+            response.User = BaseBLL<UserInfobll>.Instance.AddUser(user);
+            return response;
+            
         }
         //登陆
         [HttpPost]
-        public UserInfoResponse InfoResponse(UserRequest request)
+        public DeLoginResponse InfoResponse(DeLoginRequest request)
         {
-            return BaseBLL<UserInfobll>.Instance.InfoResponse(request);
+            DeLoginResponse user = BaseBLL<UserInfobll>.Instance.InfoResponse(request);
+            return user;
         }
         /// <summary>
         /// 找回密码
