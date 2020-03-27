@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BLL;
+using SDK;
 
 namespace TakeawayFrontUI.Controllers
 {
     public class TakeawayHomeController : Controller
     {
+
         // GET: TakeawayHome
         /// <summary>
         /// 主页面
@@ -17,14 +20,22 @@ namespace TakeawayFrontUI.Controllers
         {
             return View();
         }
+
         /// <summary>
         /// 菜品展示
         /// </summary>
         /// <returns></returns>
-        public ActionResult SHOPShow()
+        public ActionResult showM()
         {
             return View();
         }
+        [HttpPost]
+        public JsonResult showM(ShowMenuInfoRequest showRequest)
+        {
+            ShowBll bll = new ShowBll();
+            return Json(bll.Show(showRequest));
+        }
+
 
         /// <summary>
         /// 404页面
