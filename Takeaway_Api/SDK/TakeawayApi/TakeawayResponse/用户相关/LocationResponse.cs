@@ -11,6 +11,7 @@ namespace SDK
     {
         //修改用户地址
         public List<UserInfo> userInfos { get; set; }
-        public int User { get; set; }
+
+        public int UserId { get; set; }
     }
 }
