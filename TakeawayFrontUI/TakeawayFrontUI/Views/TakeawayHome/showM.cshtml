@@ -148,7 +148,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row row-30 row-lg-50">
+                <div class="row row-30 row-lg-50" >
                     @*<div class="col-sm-6 col-md-4 col-lg-6 col-xl-4">
                             <!-- Product-->
                             <article class="product">
@@ -230,7 +230,6 @@
 <script>
 
     function inquire() {
-        var currPage = 1;
 
         //页数
         currPage = $("#page").val();
@@ -259,10 +258,12 @@
                 Name: Name,
                 TypeId: TypeId
             },
+
             success: function (res) {
+                $("#div11").empty();
                 var dav = "";
                 $(res.Showw).each(function () {
-                    var div1 = "<div class='col-sm-6 col-md-4 col-lg-6 col-xl-4'>"
+                    var div1 = "<div class='col-sm-6 col-md-4 col-lg-6 col-xl-4'style='width:150px;height:415px'>"
                         + "<article class='product'>"
                         + "<div class='product-body'>"
                         + "<div class='product-figure'>"
@@ -275,7 +276,7 @@
                         + "</div>"
                         + "<div class='product-button-wrap'>"
                         + "<div class='product-button'><a class='button button-secondary button-zakaria fl-bigmug-line-search74' href='single-product.html'></a></div>"
-                        + "<div class='product-button'><a class='button button-primary button-zakaria fl-bigmug-line-shopping202' href='#' onclick='AddCart(" + this.DetailsId + ")'></a></div>"
+                        + "<div class='product-button'><a class='button button-primary button-zakaria fl-bigmug-line-shopping202' href='#' onclick='AddCart(" + this.Id + ")'></a></div>"
                         + "</div>"
                         + "</article>"
                         + "</div>"
@@ -289,15 +290,16 @@
     $(document).ready(function () {
         inquire();
     })
-    function AddCart(id) {
+    function AddCart(cnmid) {
 
         var userId = $("#Id").val();
+        alert(cnmid);
         $.ajax({
             url: "/AddCartDetails/AddCartDetailInfos",
             type: "POST",
             dataType: "json",
             data: {
-                DetailsId: id,
+                minefid: cnmid,
                 UserId: userId,
                 Count: 1
             },
