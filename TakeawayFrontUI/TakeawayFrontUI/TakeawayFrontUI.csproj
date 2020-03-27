@@ -332,6 +332,7 @@
     <Content Include="Views\TakeawayHome\UserInfo.cshtml" />
     <Content Include="Views\AddCartDetails\AddCartDetails.cshtml" />
     <Content Include="Views\TakeawayHome\showM.cshtml" />
+    <Content Include="Views\TakeawayHome\AddressView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
