@@ -113,9 +113,9 @@ namespace BLL
             return BaseDAL<UserInfoLogin>.Instance.EditUserInfo(content,id);
         }
         //显示地址信息
-        public List<AddressInfo> ShowressInfo()
+        public List<AddressInfo> ShowressInfo(int UserId)
         {
-            return dal.ShowressInfo();
+            return dal.ShowressInfo(UserId);
         }
         //添加新地址
         public int AddressInfo(AddressInfo info)

@@ -64,6 +64,7 @@ namespace Api.Controllers
         {
             UpdateResponse response = new UpdateResponse();
             response.User= BaseBLL<UserInfobll>.Instance.EditUserPwd(request.pwd, request.id);
+            response.State = response.User > 0 ? true : false;
             return response;
         }
         //修改用户地址
@@ -71,15 +72,15 @@ namespace Api.Controllers
         public LocationResponse EditUserInfo(LocationRequest request)
         {
             LocationResponse response = new LocationResponse();
-            response.User = BaseBLL<UserInfobll>.Instance.EditUserInfo(request.content, request.id);
+            response.UserId = BaseBLL<UserInfobll>.Instance.EditUserInfo(request.content, request.id);
             return response;
         }
         //显示地址信息
         [HttpPost]
-        public ShowResponse ShowressInfo(ShowRequest request)
+        public ShowLocationResponse ShowressInfo(ShowLocationRequest request)
         {
-            ShowResponse response = new ShowResponse();
-            response.User=Convert.ToInt32( BaseBLL<UserInfobll>.Instance.ShowressInfo());
+            ShowLocationResponse response = new ShowLocationResponse();
+            response.Infos= BaseBLL<UserInfobll>.Instance.ShowressInfo(request.UserId);
             return response;
         }
         //添加新地址
