@@ -12,14 +12,16 @@ namespace DAL
     /// </summary>
     public class AreaDAL
     {
+        DBHelper DBHelper = new DBHelper();
+
         /// <summary>
         /// 获取城市集合,用作下拉
         /// </summary>
         /// <returns></returns>
-        public List<Arealnfo> GetArealnfos(int cityId)
+        public List<Arealnfo> GetArealnfos()
         {
-            cityId = 1;
-            List<Arealnfo> infos = OrmDBHelper.GetToList<Arealnfo>("SELECT * FROM dbo.Arealnfo WHERE CityId= " + cityId);
+            List<Arealnfo> infos = DBHelper.GetToList<Arealnfo>("SELECT * FROM dbo.Arealnfo WHERE CityId= 1");
+                //OrmDBHelper.GetToList<Arealnfo>("SELECT * FROM dbo.Arealnfo WHERE CityId= 1");
             return infos;
         }
     }

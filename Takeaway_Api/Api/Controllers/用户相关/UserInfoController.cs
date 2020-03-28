@@ -14,12 +14,12 @@ namespace Api.Controllers
     {
         //注册用户
         [HttpPost]
-        public UserInfoResponse AddUser(UserRequest request,UserInfo user)
+        public UserInfoResponse AddUser(UserRequest request, UserInfo user)
         {
             UserInfoResponse response = new UserInfoResponse();
             response.User = BaseBLL<UserInfobll>.Instance.AddUser(user);
             return response;
-            
+
         }
         //登陆
         [HttpPost]
@@ -40,7 +40,7 @@ namespace Api.Controllers
         {
             ZhaopwdResponse response = new ZhaopwdResponse();
             string Content = "";
-            string res =BaseBLL<UserInfobll>.Instance.FindPwd(request.PhoneNumber,request.PassWord, request.Email);
+            string res = BaseBLL<UserInfobll>.Instance.FindPwd(request.PhoneNumber, request.PassWord, request.Email);
 
             if (!string.IsNullOrEmpty(res))
             {
@@ -67,7 +67,7 @@ namespace Api.Controllers
         public UpdateResponse EditUserPwd(UpdateRequest request)
         {
             UpdateResponse response = new UpdateResponse();
-            response.User= BaseBLL<UserInfobll>.Instance.EditUserPwd(request.pwd, request.id);
+            response.User = BaseBLL<UserInfobll>.Instance.EditUserPwd(request.pwd, request.id);
             response.State = response.User > 0 ? true : false;
             return response;
         }
@@ -76,7 +76,8 @@ namespace Api.Controllers
         public LocationResponse EditUserInfo(LocationRequest request)
         {
             LocationResponse response = new LocationResponse();
-            response.UserId = BaseBLL<UserInfobll>.Instance.EditUserInfo(request.content, request.id);
+            int res = BaseBLL<UserInfobll>.Instance.EditUserInfo(request.content, request.Areaid, request.UserId, request.Id);
+            response.State = res > 0 ? true : false;
             return response;
         }
         //显示地址信息
@@ -84,17 +85,31 @@ namespace Api.Controllers
         public ShowLocationResponse ShowressInfo(ShowLocationRequest request)
         {
             ShowLocationResponse response = new ShowLocationResponse();
-            response.Infos= BaseBLL<UserInfobll>.Instance.ShowressInfo(request.UserId);
+            response.Infos = BaseBLL<UserInfobll>.Instance.ShowressInfo(request.UserId);
+            response.State = true;
             return response;
         }
+
+        //显示单条地址信息
+        [HttpPost]
+        public OneAddressResponse GetOneAddress(OneAddressRequest request)
+        {
+            OneAddressResponse response = new OneAddressResponse();
+            //获取所有的地址信息
+            List < UserAddress > infos= BaseBLL<UserInfobll>.Instance.ShowressInfo(request.UserId);
+            response.Info = infos.Where(c => c.Id == request.AddressId).FirstOrDefault();
+            response.State = true;
+            return response;
+        }
+
         //添加新地址
         [HttpPost]
-        public AdLoctionResponse AddressInfo(AdLoctionRequest request,AddressInfo info)
+        public AdLoctionResponse AddressInfo(AdLoctionRequest request, AddressInfo info)
         {
             AdLoctionResponse response = new AdLoctionResponse();
-            response.User=Convert.ToInt32(BaseBLL<UserInfobll>.Instance.AddressInfo(info));
+            response.User = Convert.ToInt32(BaseBLL<UserInfobll>.Instance.AddressInfo(info));
             return response;
-             
+
         }
     }
 }

@@ -1,33 +1,61 @@
 ﻿<section class="section section-xxl bg-image-1">
     <div class="container">
-        <h2 class="text-transform-capitalize wow fadeScale">修改密码</h2>
-        <!-- Owl Carousel-->
-        <div class="owl-carousel" data-margin="30" data-dots="true" data-mouse-drag="false">
-            <!-- Post Classic-->
-            <!-- Post Classic-->
-            <article class="post post-classic box-md wow slideInUp">
-                <div class="post-classic-content" style="height:300px">
-                    <div style="width:100%;height:10%">
-                        <div style="margin-left:0px;float:left"> <label>旧密码</label></div>
-                        <div style="margin-right:0px;float:right">  <input id="OldPwd" type="text" /></div>
-                    </div>
-                    <div style="margin-top:50px;width:100%;height:10%">
-                        <div style="margin-left:0px;float:left"> <label>新密码</label></div>
-                        <div style="margin-right:0px;float:right">  <input id="NewPwd" type="password" /></div>
-                    </div>
-                    <div style="margin-top:50px;width:100%;height:10%">
-                        <div style="margin-left:0px;float:left"> <label>确认新密码</label></div>
-                        <div style="margin-right:0px;float:right">  <input id="ConfirmPwd" type="password" /></div>
-                    </div>
-                    <div style="margin-top:50px;width:100%;height:10%">
-                        <div style="margin-left:30%;float:left"><input id="Button1" type="button" value="提交" class="btn btn-default" onclick="EditPwd()" /></div>
-                    </div>
-                </div>
-            </article>
-            <!-- Post Classic-->
+        <h2 class="text-transform-capitalize wow fadeScale">编辑地址信息</h2>
+ 
+            <div class="owl-carousel" data-margin="30" data-dots="true" data-mouse-drag="false" id="dd">
         </div>
+
     </div>
 </section>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
 <script src="~/Scripts/bootstrap.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script>
+    $(document).ready(
+        function () {
+            GetAddress();
+        }
+    );
+
+    function GetAddress() {
+        var UserId = 1;
+
+        jQuery.ajax({
+            url: "/User/ShowressInfo",
+            data:
+            {
+                UserId: 1
+            },
+            dataType: "Json",
+            type: "Post",
+            success: function (res) {
+                jQuery.each(res.Infos, function (index, item) {
+                    var tb = '<article class="post post-classic box-md wow slideInUp" style="margin-top:30px">'
+                        + '<div class="post-classic-content" style="height:50px;width:400px">'
+                        + '<div style="float:left;width:25%;height:100%">'
+                        + '<label>上海市</label>'
+                        + '</div>'
+                        + '<div style="width:25%;height:100%;margin-left:25%">'
+                        + '    <label>' + item.Name + '</label>'
+                        + '</div>'
+                        + '<div style="width:25%;height:100%;margin-left:50%">'
+                        + '    <label>' + item.Content + '</label>'
+                        + '</div>'
+                        + '<div style="float:right;width:25%;height:100%;margin-left:95%">'
+                        + '    <a onclick="EditAddress(' + item.Id + ')">编辑地址</a> '
+                        + '</div>'
+                        + '</div>'
+                        + '</article>';
+                    jQuery("#dd").prepend(tb);
+                }
+                );
+            }
+        })
+    }
+
+    function EditAddress(Id) {
+        alert(Id);
+        location.href = "/TakeawayHome/EditAddress/?Id=" + Id;
+    }
+</script>
 

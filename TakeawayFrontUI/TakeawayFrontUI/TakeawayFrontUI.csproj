@@ -267,6 +267,7 @@
     <Content Include="js\jquery.parallax.js" />
     <Content Include="js\script.js" />
     <Content Include="js\swiper.js" />
+    <Content Include="ProcImg\product-1-196x134.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="css\fontawesome-webfont.eot" />
@@ -338,6 +339,7 @@
     <Content Include="Views\ShowCart\ShowCartDeci.cshtml" />
     <Content Include="Views\TakeawayHome\showM.cshtml" />
     <Content Include="Views\TakeawayHome\AddressView.cshtml" />
+    <Content Include="Views\TakeawayHome\EditAddress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

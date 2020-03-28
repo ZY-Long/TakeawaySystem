@@ -168,22 +168,23 @@ namespace DAL
             return res;
         }
         //修改用户地址
-        public int EditUserInfo(string content,int id)
+        public int EditUserInfo(string content,int Areaid,int UserId,int Id)
         {
             int res = 0;
-            res = bHelper.ExecuteNonQuery("update AddressInfo set Content='" + content + "' where Id in(select UserId=Id from UserInfo where Id='" + id + "')");
+            res = bHelper.ExecuteNonQuery("UPDATE dbo.AddressInfo SET Content="+content+" ,Area="+Areaid+" WHERE UserId="+UserId+" AND Id="+Id+")");
             return res;
         }
         //显示地址信息
-        public List<AddressInfo> ShowressInfo(int UserId)
+        public List<UserAddress> ShowressInfo(int UserId)
         {
-            List<AddressInfo> infos = new List<AddressInfo>();
+            List<UserAddress> infos = new List<UserAddress>();
             using (IDbConnection conn=new SqlConnection(connStr))
             {
-                infos = conn.Query<AddressInfo>("SELECT aa.Name,a.Content FROM dbo.AddressInfo AS a JOIN dbo.Arealnfo AS aa ON a.Area = aa.Id WHERE a.UserId = "+ UserId + "  AND a.Sates=1").ToList();
+                infos = conn.Query<UserAddress>("SELECT a.Id,aa.Name,a.Content FROM dbo.AddressInfo AS a JOIN dbo.Arealnfo AS aa ON a.Area = aa.Id WHERE a.UserId = 1  AND a.Sates=1").ToList();
             }
             return infos;
         }
+
         //添加新地址
         public int AddressInfo(AddressInfo info)
         {

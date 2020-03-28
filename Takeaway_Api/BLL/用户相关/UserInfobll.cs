@@ -103,12 +103,12 @@ namespace BLL
             return BaseDAL<UserInfoLogin>.Instance.EditUserPwd(pwd,id);
         }
         //修改用户地址
-        public int EditUserInfo(string content, int id)
+        public int EditUserInfo(string content, int Areaid, int UserId, int Id)
         {
-            return BaseDAL<UserInfoLogin>.Instance.EditUserInfo(content,id);
+            return BaseDAL<UserInfoLogin>.Instance.EditUserInfo(content,Areaid,UserId,Id);
         }
         //显示地址信息
-        public List<AddressInfo> ShowressInfo(int UserId)
+        public List<UserAddress> ShowressInfo(int UserId)
         {
             return dal.ShowressInfo(UserId);
         }

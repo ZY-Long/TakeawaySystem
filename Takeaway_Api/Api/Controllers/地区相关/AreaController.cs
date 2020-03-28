@@ -23,12 +23,15 @@ namespace Api.Controllers
         [HttpPost]
         public AreaResponse GetArealnfos(AreaRequest areaRequest)
         {
-            if (areaRequest.cityId <= 0)
-            {
-                areaRequest.cityId = 0;
-            }
+
             AreaResponse response = new AreaResponse();
-            response.Arealnfos = BaseBLL<AreaBLL>.Instance.GetArealnfos(areaRequest.cityId);
+            var infos = BaseBLL<AreaBLL>.Instance.GetArealnfos();
+            response.Arealnfos = new List<AreaDto>();
+            foreach (var item in infos)
+            {
+                response.Arealnfos.Add(new AreaDto() {Id=item.Id,Name=item.Name });
+            }
+            response.State = response.Arealnfos.Count > 0 ? true : false;
             return response;
         }
     }

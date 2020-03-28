@@ -17,7 +17,9 @@ namespace BLL
         /// </summary>
         public AreaResponse GetArealnfos(AreaRequest areaRequest)
         {
-            return ApiRequestHelper.Post<AreaRequest, AreaResponse>(areaRequest);
+            AreaResponse response = ApiRequestHelper.Post<AreaRequest, AreaResponse>(areaRequest);
+             
+             return response;
         }
     }
 }
