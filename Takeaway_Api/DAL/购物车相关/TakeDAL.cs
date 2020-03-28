@@ -80,6 +80,7 @@ namespace DAL
             SqlCommand command = new SqlCommand(sql,connection);
             var reader = command.ExecuteReader();
             var list = reader.DataReaderToList<CartInfos>();
+            reader.Close();
             if (connection.State == System.Data.ConnectionState.Open)
             {
                 connection.Close();
