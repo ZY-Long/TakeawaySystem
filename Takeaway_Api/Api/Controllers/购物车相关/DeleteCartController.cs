@@ -16,6 +16,7 @@ namespace Api
         {
             DeleteCartResponse response = new DeleteCartResponse();
             response.delete = BaseBLL<TakeBLL>.Instance.DeleteCart(request.id);
+            response.State = true;
             return response;
         }
     }

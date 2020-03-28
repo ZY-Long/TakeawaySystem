@@ -26,7 +26,7 @@ namespace Model
         /// <summary>
         /// 单价
         /// </summary>
-        public string Price { get; set; }
+        public decimal Price { get; set; }
         //购物车数量
         public int Count { get; set; }
         //总价钱

@@ -3,7 +3,26 @@
     ViewBag.Title = "AddCartDetails";
 }
 
+<script>
+    function AddCart() {
+        $.ajax({
+            url: "/AddCartDetails/AddCartDetails",
+            type: "POST",
+            dataType: "json",
+            data: {
 
+            },
+            success: function (res) {
+                if (res > 0) {
+                    location.href = "/ShowCart/ShowCartDeci";
+                }
+                else {
+                    alert("添加到购物车失败请重试");
+                }
+            }
+        })
+    }
+</script>
 
 
 
