@@ -61,6 +61,7 @@
     <Compile Include="TakeOut\订单相关\SalesInfo.cs" />
     <Compile Include="TakeOut\菜品相关\TasteInfo.cs" />
     <Compile Include="TakeOut\用户相关\UserInfo.cs" />
+    <Compile Include="TakeOut\购物车相关\CartInfos.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

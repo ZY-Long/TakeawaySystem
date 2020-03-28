@@ -13,7 +13,7 @@ using Model;
 namespace DAL
 {
     //用户相关DAL
-  public  class UserInfoLogin
+    public class UserInfoLogin
     {
         SqlConnection connection = new SqlConnection("Data Source=.;Initial Catalog=TakeOutDB;Integrated Security=True");
         DBHelper bHelper = new DBHelper();
@@ -25,8 +25,8 @@ namespace DAL
             connection.Open();
             var bus = UserInfoLogin.GenerateSalt();
             string sql = $@"insert into UserInfo(NickName,Img,PhoneNumber,Password,Salt,Email,RealName,CreateTime,UpdateTime,CreaterId,UpdaterId) 
-                                 values('{user.NickName}','{user.PhoneNumber}','{MD5Encrypt32(user.PassWord + "{"+bus+"}")}','{bus}','{user.Email}','{user.RealName},'{user.CreateTime}','{user.UpdateTime}','{user.CreaterId}','{user.UpdaterId}'')";
-            SqlCommand command = new SqlCommand(sql,connection);
+                                 values('{user.NickName}','','{user.PhoneNumber}','{MD5Encrypt32(user.PassWord + "{" + bus + "}")}','{bus}','{user.Email}','{user.RealName}','{DateTime.Now}','{DateTime.Now}','{user.CreaterId}','{user.UpdaterId}')";
+            SqlCommand command = new SqlCommand(sql, connection);
             var res = command.ExecuteNonQuery();
             return res;
         }
@@ -58,7 +58,7 @@ namespace DAL
             using (IDbConnection conn = new SqlConnection(connStr))
             {
                 string sql = "select Id from UserInfo where PhoneNumber=@phonenumber and Password=@password";
-                var userId = conn.QueryFirstOrDefault<int>(sql,new { phonenumber=info.PhoneNumber,password=info.PassWord});
+                var userId = conn.QueryFirstOrDefault<int>(sql, new { phonenumber = info.PhoneNumber, password = info.PassWord });
                 return userId;
             }
         }
@@ -67,16 +67,16 @@ namespace DAL
 
         //    var res = UserInfoLogin.GenerateSalt();
         //    string sql =string.Format("select count(1) from UserInfo where PhoneNumber='{0}' and Password='{1}'",info.PhoneNumber, MD5Encrypt32(info.PassWord+"{"+res+"}"));          
-           
+
         //    return Convert.ToInt32(bHelper.ExecuteScalar(sql));
         //}
         //根据用户名获取用户的盐
         public string GetuserSalt(string PhoneNumber)
         {
-            using (IDbConnection conn=new SqlConnection(connStr))
+            using (IDbConnection conn = new SqlConnection(connStr))
             {
-                string sql = "select SaIt From UserInfo where PhoneNumber=@phonenumber";
-                var saltstr = conn.QueryFirstOrDefault<string>(sql,new { phonenumber= PhoneNumber});
+                string sql = "select Salt From UserInfo where PhoneNumber=@phonenumber";
+                var saltstr = conn.QueryFirstOrDefault<string>(sql, new { phonenumber = PhoneNumber });
                 return saltstr;
             }
         }
@@ -107,9 +107,9 @@ namespace DAL
         /// <param name="PassWord"></param>
         /// <param name="Email"></param>
         /// <returns></returns>
-        public string FindPwd(string PhoneNumber, string PassWord,string Email)
+        public string FindPwd(string PhoneNumber, string PassWord, string Email)
         {
-            UserInfo info = OrmDBHelper.GetModel<UserInfo>("select PassWord from UserInfo where PhoneNumber='"+PhoneNumber+"' and PassWord='"+PassWord+"'");
+            UserInfo info = OrmDBHelper.GetModel<UserInfo>("select PassWord from UserInfo where PhoneNumber='" + PhoneNumber + "' and PassWord='" + PassWord + "'");
             string res = "";
             if (info != null)
             {
@@ -156,15 +156,15 @@ namespace DAL
             }
             catch (Exception e1)
             {
-                
+
             }
         }
         ///修改密码
-        public int EditUserPwd(string pwd,int id)
+        public int EditUserPwd(string pwd, int id)
         {
             var bus = UserInfoLogin.GenerateSalt();
             int res = 0;
-            res = bHelper.ExecuteNonQuery("update UserInfo set Password='"+MD5Encrypt32(pwd+bus)+"' and Salt="+bus+" where Id='" + id+"'");
+            res = bHelper.ExecuteNonQuery("update UserInfo set Password='" + MD5Encrypt32(pwd + bus) + "' and Salt=" + bus + " where Id='" + id + "'");
             return res;
         }
         //修改用户地址
@@ -191,10 +191,26 @@ namespace DAL
             connection.Open();
             string sql = $@"insert into AddressInfo(ProvinceId,CityId,AreaId,UserId,Content,States,CreateTime,UpdateTime,CreaterId,UpdaterId)
             values('{info.ProvinceId}','{info.CityId}','{info.AreaId}','{info.UserId}','{info.Content}','{info.States}','{info.CreateTime}','{info.UpdateTime}','{info.CreaterId}','{info.UpdaterId}')";
-            SqlCommand command = new SqlCommand(sql,connection);
+            SqlCommand command = new SqlCommand(sql, connection);
             var res = command.ExecuteNonQuery();
             return res;
         }
 
+
+
+        //显示订单 
+        public List<UserInfo> Dingshow(int UserId)
+        {
+            List<UserInfo> infos = new List<UserInfo>();
+            using (IDbConnection conn = new SqlConnection(connStr))
+            {
+                infos = conn.Query<UserInfo>("select m.Img,m.Name,cd.ToPrice,cd.Count, cd.CreateTime FROM dbo.CartInfo AS c JOIN dbo.CartDetails AS cd ON c.Id = cd.CartId JOIN dbo.BusinessInfo AS b ON b.Id = c.BusinessInfo JOIN dbo.UserInfo AS u ON c.UserId = u.Id JOIN dbo.MenuInfo AS m ON m.Id = cd.DetailsId WHERE c.UserId =" + UserId + " ").ToList();
+            }
+                return infos;
+        }
+
     }
 }
+
+
+

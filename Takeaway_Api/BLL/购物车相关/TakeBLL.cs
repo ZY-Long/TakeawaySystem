@@ -14,9 +14,9 @@ namespace BLL
         /// </summary>
         /// <param name="cart"></param>
         /// <returns></returns>
-        public int AddCartDetails(CartDetails cart)
+        public int AddCartDetails(int minefid, int userId, int count)
         {
-            return BaseDAL<TakeDAL>.Instance.AddCartDetails(cart);
+            return BaseDAL<TakeDAL>.Instance.AddCartDetails(minefid, userId, count);
         }
         /// <summary>
         /// 删除购物车
@@ -40,7 +40,7 @@ namespace BLL
         /// 显示购物车
         /// </summary>
         /// <returns></returns>
-        public List<CartDetails> GetCartInfos()
+        public List<CartInfos> GetCartInfos()
         {
             return BaseDAL<TakeDAL>.Instance.GetCartInfos();
         }

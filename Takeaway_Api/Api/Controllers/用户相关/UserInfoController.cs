@@ -12,21 +12,22 @@ namespace Api.Controllers
 {
     public class UserInfoController : ApiController
     {
+        UserInfobll bll = new UserInfobll();
         //注册用户
         [HttpPost]
-        public UserInfoResponse AddUser(UserRequest request, UserInfo user)
+        public UserInfoResponse AddUser(UserRequest request)
         {
             UserInfoResponse response = new UserInfoResponse();
-            response.User = BaseBLL<UserInfobll>.Instance.AddUser(user);
-            return response;
-
+            response.User = BaseBLL<UserInfobll>.Instance.AddUser(request.User);
+            response.State = true; return response;
+            
         }
         //登陆
         [HttpPost]
         public DeLoginResponse InfoResponse(DeLoginRequest request)
         {
             DeLoginResponse user = BaseBLL<UserInfobll>.Instance.InfoResponse(request);
-            return user;
+            user.State = true; return user;
         }
         /// <summary>
         /// 找回密码
@@ -52,7 +53,7 @@ namespace Api.Controllers
                 Content = "您的账户出现问题,请重试";
                 ForgetPwd(request.Email, Content);
             }
-
+            response.State = true;
             return response;
 
         }
@@ -62,7 +63,7 @@ namespace Api.Controllers
         {
 
         }
-        ///修改密码
+        //修改密码
         [HttpPost]
         public UpdateResponse EditUserPwd(UpdateRequest request)
         {
@@ -76,9 +77,8 @@ namespace Api.Controllers
         public LocationResponse EditUserInfo(LocationRequest request)
         {
             LocationResponse response = new LocationResponse();
-            int res = BaseBLL<UserInfobll>.Instance.EditUserInfo(request.content, request.Areaid, request.UserId, request.Id);
-            response.State = res > 0 ? true : false;
-            return response;
+            response.UserId=BaseBLL<UserInfobll>.Instance.EditUserInfo(request.content, request.id);
+            response.State = true; return response;
         }
         //显示地址信息
         [HttpPost]
@@ -107,9 +107,17 @@ namespace Api.Controllers
         public AdLoctionResponse AddressInfo(AdLoctionRequest request, AddressInfo info)
         {
             AdLoctionResponse response = new AdLoctionResponse();
-            response.User = Convert.ToInt32(BaseBLL<UserInfobll>.Instance.AddressInfo(info));
-            return response;
-
+            response.User=Convert.ToInt32(BaseBLL<UserInfobll>.Instance.AddressInfo(info));
+            response.State = true; return response;
+             
+        }
+        [HttpPost]
+        //显示订单 
+        public OrderGeResponse Dingshow(OrderGeRequest request)
+        {
+            OrderGeResponse response = new OrderGeResponse();
+            response.Uuers=BaseBLL<UserInfobll>.Instance.Dingshow(request.UserId);
+            response.State = true;return response;
         }
     }
 }

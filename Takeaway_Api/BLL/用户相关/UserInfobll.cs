@@ -117,5 +117,10 @@ namespace BLL
         {
             return dal.AddressInfo(info);
         }
+        //显示订单 
+        public List<UserInfo> Dingshow(int UserId)
+        {
+            return dal.Dingshow(UserId);
+        }
     }
 }

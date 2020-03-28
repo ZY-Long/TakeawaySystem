@@ -142,6 +142,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="验证码\ValidateCode.ashx.cs">
+      <DependentUpon>ValidateCode.ashx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -283,6 +286,18 @@
     <Content Include="fonts\materialdesignicons-webfont.woff2" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Ximages\about-1-634x373.jpg" />
+    <Content Include="Ximages\post-7-800x394.jpg" />
+    <Content Include="Ximages\pricing-1-346x229.jpg" />
+    <Content Include="Ximages\product-1-196x134.png" />
+    <Content Include="Ximages\product-2-155x145.png" />
+    <Content Include="Ximages\product-3-180x154.png" />
+    <Content Include="Ximages\product-5-169x159.png" />
+    <Content Include="Ximages\product-6-89x164.png" />
+    <Content Include="Ximages\product-7-89x157.png" />
+    <Content Include="Ximages\slide-1.jpg" />
+    <Content Include="显示购物车图片\1.jpg" />
+    <Content Include="显示购物车图片\2 - 副本.jpg" />
     <Content Include="购物车引用文件2\css\carts.css" />
     <Content Include="购物车引用文件2\css\reset.css" />
     <Content Include="购物车引用文件2\images\1.png" />
@@ -325,21 +340,21 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Area\Index.cshtml" />
     <Content Include="Views\TakeawayHome\NotFind.cshtml" />
     <Content Include="Views\TakeawayHome\ProductHome.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
-    <Content Include="Views\ShowCart\ShowCart.cshtml" />
     <Content Include="Views\TakeawayHome\SHOPShow.cshtml" />
     <Content Include="Views\TakeawayHome\UserInfo.cshtml" />
     <Content Include="Views\AddCartDetails\AddCartDetails.cshtml" />
-    <Content Include="Views\ShowCart\ShowCartDeci.cshtml" />
+    <Content Include="显示购物车图片\3.jpg" />
+    <Content Include="验证码\ValidateCode.ashx" />
     <Content Include="Views\ShowCart\FenShowCart.cshtml" />
-    <Content Include="Views\ShowCart\ShowCartDeci.cshtml" />
     <Content Include="Views\TakeawayHome\showM.cshtml" />
     <Content Include="Views\TakeawayHome\AddressView.cshtml" />
     <Content Include="Views\TakeawayHome\EditAddress.cshtml" />
+    <Content Include="Views\ShowCart\ShowCartDeci.cshtml" />
+    <Content Include="Views\User\GeShow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,15 +1,42 @@
 ﻿
 @{
     ViewBag.Title = "ShowCartDeci";
-    Layout = "~/Views/ShowCart/ShowCart.cshtml";
 }
+<script src="~/Scripts/jquery-3.3.1.js"></script>
 
 
-<table>
+<div id="info-table">
 
-    <tbody id="td"></tbody>
-</table>
-<script>
+    <table id="mytable" width="1200" align="center">
+        <thead>
+            <tr>
+            <th><input type="checkbox" id="allCheck" onclick="selectAll()" />全选</th>
+            <td>菜品图片</td>
+            <td>菜品名称</td>
+            <td>菜品单价</td>
+            <td>菜品数量</td>
+            <td>菜品小计</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        
+        <tbody id="td">
+
+        </tbody>
+    </table>
+</div>
+<div id="info-input">
+    <div class="total-div">
+        <span>商品总价(不含运费)：<span id="resultTotalMoney">0</span>元</span>
+    </div>
+    <div class="btorinter-div">
+        <button onclick="selectDelete()" class="btdelete">删除所选</button>
+        <button class="btbuy">立即购买</button>
+    </div>
+    
+</div>
+<script type="text/javascript">
+
     $(document).ready(function () {
         $.ajax({
             url: "/ShowCart/GetCart",
@@ -17,46 +44,152 @@
             dataType: "json",
             success: function (res) {
                 var op = "";
-                $(res).each(function () {
-                    var th = "<ul class='order_lists'>"
-                    +"<li class='list_chk'>"
-                        +"<input type='checkbox' id='checkbox_2' class='son_check'>"
-                        +"<label for='checkbox_2'></label>"
-                   +" </li>"
+                $(res.GetCart).each(function () {
 
-                    +"<li class='list_con'>"
-
-                        + "<div class='list_img'><a href='javascript:;'><img src='~/购物车引用文件2/images/1.png' alt=''></a></div>"
-                        + "<div class='list_text'><a href='javascript:;'>" + this.Name + "</a></div>"
-                    +"</li>"
-                        + "<li class='list_info'>"
-                        + "<p>"+this.Remark+"</p>"
-                        
-                   +" </li>"
-                   +" <li class='list_price'>"
-                     +"   <p class='price'>"+this.Price+"</p>"
-                   +" </li>"
-                   +" <li class='list_amount'>"
-                      +"  <div class='amount_box'>"
-                           +" <a href='javascript:;' class='reduce reSty'>-</a>"
-                            +"<input type='text' value='1' class='sum'>"
-                           +" <a href='javascript:;' class='plus'>+</a>"
-                       +" </div>"
-                   +" </li>"
-                            + " <li class='list_sum'>"
-                            + " <p class='sum_price'>" + this.ToPrice + "</p>"
-                   +" </li>"
-                  +"  <li class='list_op'>"
-                     +"   <p class='del'><a href='javascript:;' class='delBtn'>移除商品</a></p>"
-                   +" </li>"
-                +"</ul>"
-                    op += th;
-                });
+                    var tp ="<tr>"
+                        +"<td><input type='checkbox' class='selectOne' /></td>"
+                        + "<td class='imgbackground'><img src='"+this.Img+"' /></td>"
+                        + "<td>" + this.Name + "</td>"
+                        + "<td>" + this.Price + "</td>"
+                        +"<td>"
+                        + "<button onclick='reduce(this)'>-</button>"
+                        + "<input type='text' size='1' readonly='true' value='"+this.Count+"' />"
+                        +"<button onclick='plus(this)'>+</button>"
+                        + "</td>"
+                        + "<td class='shopCount'>" + this.ToPrice + "</td>"
+                        + "<td><input type='button' value=’删除 ' onclick='deleteCatr(" + this
+                            .Id + ")' /></td>"
+                        +"</tr>"
+                    op += tp;
+                })
                 $("#td").append(op);
             }
         });
     })
+    // 全选
+    function selectAll() {
+        var obj = document.getElementsByClassName("selectOne");
+        var btSelectAll = document.getElementById("allCheck").checked;
+        for (inputCheck of obj) {
+            inputCheck.checked = btSelectAll;
+        }
+    }
+    // 单个删除
+    function deleteChild(obj) {
+        var nowtr = obj.parentElement.parentElement;
+        var nowtable = nowtr.parentElement;
+        nowtable.removeChild(nowtr);
+        // 总价
+        allShopPriceTotal();
+        
+    }
+    // 批量删除
+    function selectDelete() {
+        var obj = document.getElementsByClassName("selectOne");
+        for (var i = obj.length - 1; i >= 0; i--) {
+            var nowCheck = obj[i];
+            if (nowCheck.checked == true) {
+                deleteChild(nowCheck);
+            }
+        }
+        // 总价
+        allShopPriceTotal();
+       
+    }
+
+    // 减少数量
+    function reduce(obj) {
+        var textElement = obj.parentElement.children[1];
+        if (textElement.value == "1") {
+            return;
+        }
+        textElement.value = eval(textElement.value + "-1");
+        // 小计
+        var singelSumElement = obj.parentElement.parentElement.children[5];
+        singleSubTotal(singelSumElement);
+        // 总价
+        allShopPriceTotal();
+       
+    }
+    // 增加数量
+    function plus(obj) {
+        var textElement = obj.parentElement.children[1];
+        textElement.value = eval(textElement.value + "+1");
+        // 小计
+        var singelSumElement = obj.parentElement.parentElement.children[5];
+        singleSubTotal(singelSumElement);
+        // 总价
+        allShopPriceTotal();
+        
+    }
+    // 初始化全部商品小计
+    function singleAllSubTotal() {
+        var obj = document.getElementsByClassName("shopCount");
+        for (shopCount of obj) {
+            singleSubTotal(shopCount);
+        }
+    }
+    // 计算单个商品的小计
+    function singleSubTotal(obj) {
+        var price = obj.parentElement.children[3].innerHTML;
+        var count = obj.parentElement.children[4].children[1].value;
+        obj.innerHTML = eval(price + "*" + count);
+    }
+    // 所有商品的总价钱
+    function allShopPriceTotal() {
+        var obj = document.getElementById("resultTotalMoney");
+        var allSingelSubElement = document.getElementsByClassName("shopCount");
+        var sum = "0";
+        for (singelSubElement of allSingelSubElement) {
+            if (sum != "") {
+                sum += "+";
+            }
+            sum += singelSubElement.innerHTML;
+        }
+        obj.innerHTML = eval(sum);
+    }
+    // 鼠标移动改变背景颜色
+    function changeBackground() {
+        var imgtd = document.getElementsByClassName("imgbackground");
+        for (singeltd of imgtd) {
+            singeltd.onmousemove = function () {
+                this.style.backgroundColor = "orange";
+            }
+            singeltd.onmouseleave = function () {
+                this.style.backgroundColor = "white";
+            }
+        }
+    }
+    function deleteCatr(id) {
+        
+        $.ajax({
+            url: "/DeleteCart/DeleteCartInfo",
+            type: "POST",
+            dataType: "json",
+            data: {
+                Id: id
+            },
+            success: function (res) {
+                if (res > 0) {
+                    alert("删除成功");
+                }
+                else {
+                    alert("删除失败");
+                }
+            }
+        })
+    }
+    // 初始化界面内容
+    window.onload = function () {
+        changeBackground();
+        singleAllSubTotal();
+        allShopPriceTotal();
+       
+    }
 </script>
+
+
+
 
 
 

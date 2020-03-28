@@ -15,12 +15,14 @@ namespace BLL
         /// </summary>
         public UserInfoResponse AddUser(UserRequest userRequest)
         {
-            return ApiRequestHelper.Post<UserRequest, UserInfoResponse>(userRequest);
+            UserInfoResponse response = ApiRequestHelper.Post<UserRequest, UserInfoResponse>(userRequest);
+            return response;
         }
         //登陆
         public DeLoginResponse InfoResponse(DeLoginRequest request)
         {
-            return ApiRequestHelper.Post<DeLoginRequest, DeLoginResponse>(request);
+            DeLoginResponse response= ApiRequestHelper.Post<DeLoginRequest, DeLoginResponse>(request);
+            return response;
         }
         //找回密码
         public ZhaopwdResponse FindPwd(ZhaopwdRequest request)
@@ -75,7 +77,10 @@ namespace BLL
         {
             return ApiRequestHelper.Post<ProvinceRequest, ProvinceResponse>(province);
         }
-
-
-    }
+        //显示订单 
+        public OrderGeResponse Dingshow(OrderGeRequest request)
+        {
+            return ApiRequestHelper.Post<OrderGeRequest, OrderGeResponse>(request);
+        }
+        }
 }
