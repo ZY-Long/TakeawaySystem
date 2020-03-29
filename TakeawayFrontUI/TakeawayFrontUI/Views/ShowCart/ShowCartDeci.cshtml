@@ -41,7 +41,7 @@
             type: "POST",
             dataType: "Json",
             data: {
-                userid: minefid
+                userid: userid
             },
             success: function (res) {
                 var op = "";
@@ -58,7 +58,7 @@
                         +"<button onclick='plus(this)'>+</button>"
                         + "</td>"
                         + "<td class='shopCount'>" + this.ToPrice + "</td>"
-                        + "<td><input type='button' value=’删除 ' onclick='deleteCatr(" + this
+                        + "<td><input type='button' value=删除 ' onclick='deleteCatr(" + this
                             .Id + ")' /></td>"
                         +"</tr>"
                     op += tp;
@@ -186,7 +186,6 @@
         changeBackground();
         singleAllSubTotal();
         allShopPriceTotal();
-
     }
 </script>
 
