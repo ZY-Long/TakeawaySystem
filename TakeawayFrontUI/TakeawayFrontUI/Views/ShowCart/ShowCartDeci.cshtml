@@ -33,7 +33,8 @@
         <button onclick="selectDelete()" class="btdelete">删除所选</button>
         <button class="btbuy">立即购买</button>
     </div>
-    
+
+    <img src="~/ProcImg/product-1-196x134.png" />
 </div>
 <script type="text/javascript">
 
@@ -41,7 +42,10 @@
         $.ajax({
             url: "/ShowCart/GetCart",
             type: "POST",
-            dataType: "json",
+            dataType: "Json",
+            data: {
+                userid: 1
+            },
             success: function (res) {
                 var op = "";
                 $(res.GetCart).each(function () {
@@ -170,8 +174,9 @@
                 Id: id
             },
             success: function (res) {
-                if (res > 0) {
+                if (res.State ) {
                     alert("删除成功");
+                    location.href = "/ShowCart/ShowCartDeci";
                 }
                 else {
                     alert("删除失败");
