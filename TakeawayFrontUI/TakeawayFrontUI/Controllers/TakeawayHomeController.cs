@@ -71,8 +71,6 @@ namespace TakeawayFrontUI.Controllers
         public ActionResult EditAddress()
         {
 
-            var res = bll.GetArealnfos(new AreaRequest());
-            ViewBag.sadasdasd = res.Arealnfos;
             return View();
         }
     }

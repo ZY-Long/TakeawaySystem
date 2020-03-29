@@ -15,7 +15,7 @@
             <div style="margin-top:50px;width:100%;height:10%">
                 <div style="margin-left:0px;float:left"> <label>区域</label></div>
                 <div style="margin-right:0px;float:right;width:50%">
-                    <select data-select2-id="4" class="select2-hidden-accessible" aria-hidden="true" id="11">
+                    <select data-select2-id="4" class="select2-hidden-accessible" aria-hidden="true" id="Sele">
                         <option value="0" id="0">-请选择-</option>
                         <option value="2">黄浦区</option>
                         <option value="3">徐汇区</option>
@@ -40,7 +40,7 @@
             </div>
             <div style="margin-top:50px;width:100%;height:10%">
                 <div style="margin-left:0px;float:left"> <label>详细地址</label></div>
-                <div style="margin-right:0px;float:right">  <input class="in" type="text" /></div>
+                <div style="margin-right:0px;float:right">  <input class="Address" type="text" /></div>
             </div>
             <div style="margin-top:100px;width:100%;height:10%">
                 <div style="margin-left:30%;float:left"><input id="Button1" type="button" value="提交" class="btn btn-default" onclick="EditRequest()" /></div>
@@ -56,8 +56,7 @@
 <script>
     jQuery(document).ready(
         function () {
-            var id = @Request["Id"];
-            alert(id);
+            GetOneAddress();
         }
     );
 
@@ -72,17 +71,17 @@
                 UserId: 1,
                 AddressId: id
             },
-            success: function (res  ) {
-
+            success: function (res) {
+                if (res.State) {
+                    alert(res.Info.Name);
+                    jQuery("#Sele").val(res.Info.Id);
+                    jQuery("#Address").val(res.Info.Name);
+                }
             }
         })
     }
 
     function EditRequest() {
-        var seladd = $("#11").val();
-        var Content = $(".in").val();
-        alert(seladd);
-        alert(Content);
     }
 
 
