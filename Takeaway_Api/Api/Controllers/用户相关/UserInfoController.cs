@@ -101,7 +101,7 @@ namespace Api.Controllers
         public OrderGeResponse Dingshow(OrderGeRequest request)
         {
             OrderGeResponse response = new OrderGeResponse();
-            response.shows =BaseBLL<UserInfobll>.Instance.Dingshow(request.UserId,request.BusinessId);
+            response.Uuers=BaseBLL<UserInfobll>.Instance.Dingshow(request.UserId);
             response.State = true;return response;
         }
     }
