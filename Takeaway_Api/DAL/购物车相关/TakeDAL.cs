@@ -81,7 +81,9 @@ namespace DAL
                         join MenuInfo as m on c.DetailsId =m.Id where c.[Sates]=1 and a.UserId={userid} order by c.Id desc";
                 SqlCommand command = new SqlCommand(sql, connection);
                 var reader = command.ExecuteReader();
+                
                 var list = reader.DataReaderToList<CartInfos>();
+
                 reader.Close();
                 if (connection.State == System.Data.ConnectionState.Open)
                 {
@@ -91,10 +93,10 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                string s= ex.Message;
+                string a = ex.Message;
                 throw;
             }
-            
+          
         }
         /// <summary>
         /// 口味下拉框
