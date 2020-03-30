@@ -2,27 +2,193 @@
 @{
     ViewBag.Title = "AddCartDetails";
 }
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<body>
+    <div>
+        <table border="1" cellspacing="0" cellpadding="10px">
+            <thead>
+            <th><input type='checkbox'></th>
+            <th>商品</th>
+            <th>数量</th>
+            <th>单价</th>
+            <th>状态</th>
+            <th>库存</th>
+            <th>小计</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type='checkbox'></td>
+                    <td>语音电子红外体温计枪</td>
+                    <td>
+                        <button class="jian">-</button>
+                        <input type="number" maxlength="2" value="0" disabled>
+                        <button class="jia">+</button>
+                    </td>
+                    <td>
+                        69.00
+                    </td>
+                    <td>
+                        有货
+                    </td>
+                    <td>20</td>
+                    <td class="xiaoji"></td>
+                </tr>
+                <tr>
+                    <td><input type='checkbox'></td>
+                    <td>儿童防晒衣</td>
+                    <td>
+                        <button class="jian">-</button>
+                        <input type="number" maxlength="2" value="0" disabled>
+                        <button class="jia">+</button>
+                    </td>
+                    <td>
+                        109.00
+                    </td>
+                    <td>
+                        有货
+                    </td>
+                    <td>20</td>
+                    <td class="xiaoji"></td>
+                </tr>
+                <tr>
+                    <td><input type='checkbox'></td>
+                    <td>小黄鸭玩具</td>
+                    <td>
+                        <button class="jian">-</button>
+                        <input type="number" maxlength="2" value="0" disabled>
+                        <button class="jia">+</button>
+                    </td>
+                    <td>
+                        9.90
+                    </td>
+                    <td>
+                        有货
+                    </td>
+                    <td>20</td>
+                    <td class="xiaoji"></td>
+                </tr>
+                <tr>
+                    <td><input type='checkbox'></td>
+                    <td>儿童滑板车</td>
+                    <td>
+                        <button class="jian">-</button>
+                        <input type="number" maxlength="2" value="0" disabled>
+                        <button class="jia">+</button>
+                    </td>
+                    <td>
+                        169.00
+                    </td>
+                    <td>
+                        有货
+                    </td>
+                    <td>20</td>
+                    <td class="xiaoji"></td>
+                </tr>
+                <tr>
+                    <td><input type='checkbox'></td>
+                    <td>轻薄长裤</td>
+                    <td>
+                        <button class="jian">-</button>
+                        <input type="number" maxlength="2" value="0" disabled>
+                        <button class="jia">+</button>
+                    </td>
+                    <td>
+                        39.00
+                    </td>
+                    <td>
+                        有货
+                    </td>
+                    <td>20</td>
+                    <td class="xiaoji"></td>
+                </tr>
+                <tr>
+                    <td><input type='checkbox'></td>
+                    <td>儿童防蚊裤</td>
+                    <td>
+                        <button class="jian">-</button>
+                        <input type="number" maxlength="2" value="0" disabled>
+                        <button class="jia">+</button>
+                    </td>
+                    <td>
+                        29.00
+                    </td>
+                    <td>
+                        有货
+                    </td>
+                    <td>20</td>
+                    <td class="xiaoji"></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5"></td>
+                    <td>总计</td>
+                    <td class="total"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <script type="text/javascript">
+        $(".jia").click(function () {
+            var num = $(this).prev().val();
+            
 
-<script>
-    function AddCart() {
-        $.ajax({
-            url: "/AddCartDetails/AddCartDetails",
-            type: "POST",
-            dataType: "json",
-            data: {
-
-            },
-            success: function (res) {
-                if (res > 0) {
-                    location.href = "/ShowCart/ShowCartDeci";
-                }
-                else {
-                    alert("添加到购物车失败请重试");
-                }
-            }
+            $(this).prev().val(parseInt(++num));
+            
+            
+            money()
         })
-    }
-</script>
+        $(".jian").click(function () {
+
+            var num = $(this).next().val();
+            if (num == 0) {
+                return;
+            }
+            $(this).next().val(parseInt(--num));
+            
+
+            
+            money()
+        })
+
+        function money() {
+            var price = $('.jia').parent().next();
+            var num = $('.jia').prev();
+            var xiaoji = $('.xiaoji');
+            var sum = 0.0;
+            for (var i = 0; i < price.length; i++) {
+                var price1 = parseFloat(price.eq(i).text());
+                var num1 = parseFloat(num.eq(i).val());
+                xiaoji.eq(i).text((price1 * num1).toFixed(2))
+                sum += price1 * num1;
+            }
+            $('.total').text(sum.toFixed(2));
+
+        }
+
+    </script>
+</body>
+
+@*<script>
+        function AddCart() {
+            $.ajax({
+                url: "/AddCartDetails/AddCartDetails",
+                type: "POST",
+                dataType: "json",
+                data: {
+
+                },
+                success: function (res) {
+                    if (res > 0) {
+                        location.href = "/ShowCart/ShowCartDeci";
+                    }
+                    else {
+                        alert("添加到购物车失败请重试");
+                    }
+                }
+            })
+        }
+    </script>*@
 
 
 

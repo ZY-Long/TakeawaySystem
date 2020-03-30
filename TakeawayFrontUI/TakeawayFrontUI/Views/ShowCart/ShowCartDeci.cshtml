@@ -2,74 +2,117 @@
 @{
     ViewBag.Title = "ShowCartDeci";
 }
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="~/购物车引用文件2/css/reset.css" rel="stylesheet" />
-    <link href="~/购物车引用文件2/css/carts.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <title>购物车</title>
+    <style>
+        input {
+            width: 50px;
+        }
+    </style>
 
 </head>
 <body>
-    <section class="cartMain">
-        <div class="cartMain_hd">
-            <ul class="order_lists cartTop">
-                <li class="list_chk">
-                    <!--所有商品全选-->
-                    <input type="checkbox" id="all" class="whole_check">
-                    <label for="all"></label>
-                    全选
-                </li>
-                <li class="list_img">商品图片</li>
-                <li class="list_con">商品信息</li>
-                <li class="list_info">商品参数</li>
-                <li class="list_price">单价</li>
-                <li class="list_amount">数量</li>
-                <li class="list_sum">金额</li>
-                <li class="list_op">操作</li>
-            </ul>
-        </div>
-        <div class="shop_name">
-            店铺：<a href="javascript:;">默默外卖</a>
-        </div>
-        <div class="cartBox">
+    <div>
+        <table border="1" cellspacing="0" cellpadding="10px">
+            <thead>
 
-            <div class="shop_info">
-                <div class="all_check">
+                <tr>
+                    <td><input type='checkbox' id="checkAll" name="checkAll" onclick="checkAll(this)"></td>
+                    <td>菜品图片</td>
+                    <td>菜品名称</td>
+                    <td>菜品介绍</td>
+                    <td>菜品单价</td>
+                    <td>菜品数量</td>
+                    <td>菜品小计</td>
+                </tr>
+            </thead>
+            <tbody id="td"></tbody>
 
-                    <input type="checkbox" id="shop_a" class="shopChoice">
-                    <label for="shop_a" class="shop"></label>
-                </div>
-
-            </div>
-            <div class="order_content" id="td">
+        </table>
+    </div>
+    <script type="text/javascript">
+        //算小计
+        //1.取出单价  2.改变数量   小计金额=单价*数量
+        //3.把小计列的数据显示成小计金额
 
 
+        $(document).ready(function () {
+            $.ajax({
+                url: "/ShowCart/GetCart",
+                type: "POST",
+                dataType: "json",
+                success: function (res) {
+                    var op = "";
+                    $(res.GetCart).each(function (index, item) {
+                        var th = "<tr>"
+                            + "<td><input type='checkbox' name='checkList'></td>"
+                            + "<td>" + this.Img + "</td>"
+                            + "<td>" + this.Name + "</td>"
+                            + "<td>" + this.Remark + "</td>"
+                            + "<td>" + this.Price + "</td>"
+                            + "<td>"
+                            + "<button class='jian' id='jian" + index + "'  onclick='jian(" + index + "," + this.Price + ")'>-</button>"
+                            + "<input type='number' id='num" + index + "'  maxlength='2' value='" + this.Count + "' disabled>"
+                            + "<button class='jia'  id='jia" + index + "' onclick='jia(" + index + "," + this.Price + ")'>+</button>"
+                            + "</td>"
+                            + "<td id='xiaoji" + index + "'>" + this.ToPrice + "</td>"
+                            + "<td>已选商品<strong id='yixuan" + index + "'>0</strong>件</td>"
+                            + "<td>共计: <strong id='gong" + index + "'>0.00</strong></td>"
+                            + "<td><input type='button' value='结算' /></td>"
+                            + " </tr>";
+                        op += th; 
 
-            </div>
-        </div>
+                        
+                    });
+                    $("#td").append(op);
+                }
+            });
+        })
+        function jia(index, price) {
+
+            var num = $("#num" + index).val();
+            num = parseInt(num) + 1;
+            $("#num" + index).val(num);
+            var sum = num * parseFloat(price);
+            $("#xiaoji" + index).html(sum);
+
+        }
+        function jian(index, price) {
+
+            var num = $("#num" + index).val();
+            if (num == 0) {
+                return;
+            }
+            num = parseInt(num) - 1;
+            $("#num" + index).val(num);
+            var sum = num * parseFloat(price);
+            $("#xiaoji" + index).html(sum);
+        }
+        function checkAll(checkbox) {
+
+            if (checkbox.checked) {
+                $("input[name='checkList']").each(function () {
+                    this.checked = true;
+
+                })
+            } else {
+                $("input[name='checkList']").each(function () {
+                    this.checked = false;
+                })
+            }
+        }
 
 
 
-        <!--底部-->
-        <div class="bar-wrapper">
-            <div class="bar-right">
-                <div class="piece">已选商品<strong class="piece_num">0</strong>件</div>
-                <div class="totalMoney">共计: <strong class="total_text">0.00</strong></div>
-                <div class="calBtn"><a href="javascript:;">结算</a></div>
-            </div>
-        </div>
-    </section>
-    <section class="model_bg"></section>
-    <section class="my_model">
-        <p class="title">删除宝贝<span class="closeModel">X</span></p>
-        <p>您确认要删除该宝贝吗？</p>
-        <div class="opBtn"><a href="javascript:;" class="dialog-sure">确定</a><a href="javascript:;" class="dialog-close">关闭</a></div>
-    </section>
-    <script src="~/购物车引用文件2/js/jquery.min.js"></script>
-    <script src="~/购物车引用文件2/js/carts.js"></script>
+
+
+
+    </script>
 </body>
 </html>
 
@@ -77,57 +120,4 @@
 
 
 
-
-<script>
-    $(document).ready(function () {
-        $.ajax({
-            url: "/ShowCart/GetCart",
-            type: "POST",
-            dataType: "json",
-            success: function (res) {
-                var op = "";
-                $(res.GetCart).each(function () {
-                    var ul = '<ul class="order_lists">\
-                        <li class="list_chk">\
-                            \
-                            <label for="checkbox_2"></label>\
-                        </li>\
-                        <li class="list_con">\
-                            <div class="list_img"><a href="javascript:;"><img src="'+ this.Img + '" alt=""></a></div>\
-                            <div class="list_text"><a href="javascript:;">'+ this.Name + '</a></div>\
-                        </li>\
-                        <li class="list_info">\
-                            <p>'+ this.Remark + '</p>\
-                            \
-                        </li>\
-                        <li class="list_price">\
-                            <p class="price">'+ this.Price + '</p>\
-                        </li>\
-                        <li class="list_amount">\
-                            <div class="amount_box">\
-                                <a href="javascript:;" class="reduce reSty">-</a>\
-                                <input type="text" value="'+ this.Count + '" class="sum">\
-                                <a href="javascript:;" class="plus">+</a>\
-                            </div>\
-                        </li>\
-                        <li class="list_sum">\
-                            <p class="sum_price">'+ this.ToPrice + '</p>\
-                        </li>\
-                        <li class="list_op">\
-                            <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>\
-                        </li>\
-                    </ul> \
-                        <section class="my_model">\
-                        <p class="title">删除宝贝<span class="closeModel">X</span></p>\
-                        <p>您确认要删除该宝贝吗？</p>\
-                        <div class="opBtn"><a href="javascript:;" class="dialog-sure">确定</a><a href="javascript:;" class="dialog-close">关闭</a></div>\
-                    </section>'
-                        ;
-                    op += ul;
-                });
-                $("#td").append(op);
-            }
-        });
-    })
-</script>
 
