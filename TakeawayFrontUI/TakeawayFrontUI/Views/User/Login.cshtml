@@ -8,7 +8,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>CSS3登录注册切换动画模板 - 站长素材</title>
+    <title>CSS3登录动画模板 - 站长素材</title>
     <link href="~/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/css/Loginstyle.css" rel="stylesheet" />
 </head>
@@ -42,12 +42,6 @@
                 </button>
             </div>
             <div>
-                <div style="float:left">
-                    <a href="" class="pass-forgot" id="wang">忘记密码</a>
-                </div>
-                <div style="float:right">
-                    <a href="AddUser" class="pass-forgot" id="Zhu">注册用户</a>
-                </div>
             </div>
         </div>
         <div class="overbox">
@@ -71,9 +65,9 @@
                 <span class="spin"></span>
             </div>
             <div class="button">
-                <button>
+                <button id="Zhu" onclick="Zhu()">
                     <span>注册</span>
-                    <i id="test"></i>
+                    <i class="fa fa-check" id="Zhu"></i>
                 </button>
             </div>
         </div>
@@ -82,7 +76,7 @@
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/index.js"></script>
     <script>
-       
+
     $("#GL_StandardCode").click(function () {
     var newSrc = "@Url.Action("GetImg", "User")" + "?t=" + (new Date()).getTime();
     this.src=newSrc;
@@ -104,12 +98,12 @@
             $.ajax({
                 url: "/User/InfoResponse",
                 type: "POST",
-                data:obj,               
+                data:obj,
                 dataType:"json",
                 success: function (d) {
                     if (d.State==true) {
                         alert("登陆成功");
-                        //location.href = "";
+                        location.href = "/TakeawayHome/ProductHome/1";
                     }
                     else {
                         alert("登陆失败！");
@@ -117,9 +111,9 @@
                 }
             })
         })
-    </script>
-    <script>
-        $("#Zhu").on("click", function () {
+
+        function Zhu() {
+                        alert("cao");
             var PhoneNumber = $("#yong").val();
             var PassWord = $("#ma").val();
             var Email = $("#email").val();
@@ -128,23 +122,30 @@
                 return;
             }
             $.ajax({
-                url: "/UserInfo/AddUser",
+                url: "/User/AddUser",
                 type: 'POST',
                 data: {
-                    PhoneNumber: PhoneNumber,
+                    User: {
+                                            PhoneNumber: PhoneNumber,
                     PassWord: PassWord,
                     Email: Email
+                    }
+
                 },
-                dataType:'json',
+                dataType:"json",
                 success: function (d) {
-                    if (d > 0) {
+                    if (d.State) {
                         alert("注册成功");
-                        location.href = 'Login.cshtml';
+                    }
+                    else {
+                        alert("注册失败");
                     }
                 }
 
             })
-        })
+        }
+
+
     </script>
 </body>
 </html>

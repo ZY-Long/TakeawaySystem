@@ -327,7 +327,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Area\Index.cshtml" />
     <Content Include="Views\TakeawayHome\NotFind.cshtml" />
     <Content Include="Views\TakeawayHome\ProductHome.cshtml" />
@@ -337,7 +336,6 @@
     <Content Include="Views\TakeawayHome\UserInfo.cshtml" />
     <Content Include="Views\AddCartDetails\AddCartDetails.cshtml" />
     <Content Include="验证码\ValidateCode.ashx" />
-    <Content Include="Views\User\AddUser.cshtml" />
     <Content Include="Views\ShowCart\FenShowCart.cshtml" />
     <Content Include="Views\TakeawayHome\showM.cshtml" />
     <Content Include="Views\TakeawayHome\AddressView.cshtml" />

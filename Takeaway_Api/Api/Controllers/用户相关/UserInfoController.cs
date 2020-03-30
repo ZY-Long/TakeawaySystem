@@ -14,10 +14,10 @@ namespace Api.Controllers
     {
         //注册用户
         [HttpPost]
-        public UserInfoResponse AddUser(UserRequest request,UserInfo user)
+        public UserInfoResponse AddUser(UserRequest request)
         {
             UserInfoResponse response = new UserInfoResponse();
-            response.User = BaseBLL<UserInfobll>.Instance.AddUser(user);
+            response.User = BaseBLL<UserInfobll>.Instance.AddUser(request.User);
             response.State = true; return response;
             
         }
@@ -76,15 +76,15 @@ namespace Api.Controllers
         public LocationResponse EditUserInfo(LocationRequest request)
         {
             LocationResponse response = new LocationResponse();
-            response.User = BaseBLL<UserInfobll>.Instance.EditUserInfo(request.content, request.id);
+            response.UserId=BaseBLL<UserInfobll>.Instance.EditUserInfo(request.content, request.id);
             response.State = true; return response;
         }
         //显示地址信息
         [HttpPost]
         public ShowLocationResponse ShowressInfo(ShowLocationRequest request)
         {
-            ShowResponse response = new ShowResponse();
-            response.User=Convert.ToInt32( BaseBLL<UserInfobll>.Instance.ShowressInfo());
+            ShowLocationResponse response = new ShowLocationResponse();
+            response.Infos=BaseBLL<UserInfobll>.Instance.ShowressInfo(request.UserId);
             response.State = true; return response;
         }
         //添加新地址
@@ -95,6 +95,14 @@ namespace Api.Controllers
             response.User=Convert.ToInt32(BaseBLL<UserInfobll>.Instance.AddressInfo(info));
             response.State = true; return response;
              
+        }
+        [HttpPost]
+        //显示订单 
+        public OrderGeResponse Dingshow(OrderGeRequest request)
+        {
+            OrderGeResponse response = new OrderGeResponse();
+            response.shows =BaseBLL<UserInfobll>.Instance.Dingshow(request.UserId,request.BusinessId);
+            response.State = true;return response;
         }
     }
 }

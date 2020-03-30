@@ -21,8 +21,6 @@ namespace TakeawayFrontUI.Controllers
         {
             return View();
         }
-
-
         /// <summary>
         /// 用户注册
         /// </summary>
