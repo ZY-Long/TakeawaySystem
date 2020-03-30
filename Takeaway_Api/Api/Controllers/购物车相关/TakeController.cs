@@ -16,6 +16,7 @@ namespace Api.Controllers.购物车相关
         {
             TakeResponse response = new TakeResponse();
             response.TaseInfos = BaseBLL<TakeBLL>.Instance.GetTakeInfos();
+            response.State = true;
             return response;
         }
     }

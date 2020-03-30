@@ -58,15 +58,16 @@ namespace DAL
         /// 显示购物车
         /// </summary>
         /// <returns></returns>
-        public List<CartDetails> GetCartInfos()
+        public List<CartInfos> GetCartInfos()
         {
             connection.Open();
-            string sql = @"select  m.Img,m.Name,c.Count,c.ToPrice from CartDetails as c
+            string sql = @"select  m.Img,m.Name,m.Remark,m.Price,c.Count,c.ToPrice from CartDetails as c
                         join CartInfo as a on c.CartId=a.Id
                         join MenuInfo as m on c.TypeId =m.Id";
             SqlCommand command = new SqlCommand(sql,connection);
             var reader = command.ExecuteReader();
-            var list = reader.DataReaderToList<CartDetails>();
+            var list = reader.DataReaderToList<CartInfos>();
+            connection.Close();
             return list;
         }
         /// <summary>

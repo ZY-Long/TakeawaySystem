@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace SDK
 {
-   public class GetCartRequest:BaseRequest
+    /// <summary>
+    /// 显示用户地址界面
+    /// </summary>
+    public class ShowLocationRequest:BaseRequest
     {
         public override string GetApiName()
         {
-            return "/api/CratDe/GetCartInfos";
+            return "/api/UserInfo/ShowressInfo";
         }
+
+        public int UserId { get; set; }
     }
 }

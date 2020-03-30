@@ -17,6 +17,7 @@ namespace Api
         {
             AddCartDetailsResponse response = new AddCartDetailsResponse();
             response.Add = BaseBLL<TakeBLL>.Instance.AddCartDetails(request.AddCart);
+            response.State = true;
             return response;
         }
     }

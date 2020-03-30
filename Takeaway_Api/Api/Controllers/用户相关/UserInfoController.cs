@@ -68,7 +68,8 @@ namespace Api.Controllers
         {
             UpdateResponse response = new UpdateResponse();
             response.User= BaseBLL<UserInfobll>.Instance.EditUserPwd(request.pwd, request.id);
-            response.State = true; return response;
+            response.State = response.User > 0 ? true : false;
+            return response;
         }
         //修改用户地址
         [HttpPost]
@@ -80,7 +81,7 @@ namespace Api.Controllers
         }
         //显示地址信息
         [HttpPost]
-        public ShowResponse ShowressInfo(ShowRequest request)
+        public ShowLocationResponse ShowressInfo(ShowLocationRequest request)
         {
             ShowResponse response = new ShowResponse();
             response.User=Convert.ToInt32( BaseBLL<UserInfobll>.Instance.ShowressInfo());

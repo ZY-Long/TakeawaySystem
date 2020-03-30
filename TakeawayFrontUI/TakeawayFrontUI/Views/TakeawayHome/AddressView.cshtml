@@ -1,8 +1,4 @@
-﻿
-@{
-
-}
-<section class="section section-xxl bg-image-1">
+﻿<section class="section section-xxl bg-image-1">
     <div class="container">
         <h2 class="text-transform-capitalize wow fadeScale">修改密码</h2>
         <!-- Owl Carousel-->
@@ -34,36 +30,4 @@
 </section>
 <script src="~/Scripts/bootstrap.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-<script>
-    function EditPwd() {
-        var NewPwd = jQuery("NewPwd").val();
-        var ConfirmPwd = jQuery("ConfirmPwd").val();
-        var id = "";
-
-        if (NewPwd != ConfirmPwd) {
-            alert("两次密码输入不一致");
-        }
-        else {
-            jQuery.ajax({
-                url: "/User/EditUserPwd",
-                data: {
-                    Id=id,
-                    pwd=NewPwd
-                },
-                dataType: "Json",
-                type: "Post",
-                success: function (res) {
-                    if (res.State == true) {
-                        alert("修改成功");
-                    }
-                    else {
-                        alert(res.Message);
-                    }
-                }
-            })
-        }
-    }
-</script>
-
-
 

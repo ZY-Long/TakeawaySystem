@@ -8,6 +8,6 @@ namespace SDK
 {
    public class GetCartResponse:BaseResponse
     {
-        public List<CartDetails> GetCart { get; set; }
+        public List<CartInfos> GetCart { get; set; }
     }
 }
