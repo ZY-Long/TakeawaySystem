@@ -18,7 +18,7 @@ namespace Api.Controllers
         {
             UserInfoResponse response = new UserInfoResponse();
             response.User = BaseBLL<UserInfobll>.Instance.AddUser(user);
-            return response;
+            response.State = true; return response;
             
         }
         //登陆
@@ -26,7 +26,7 @@ namespace Api.Controllers
         public DeLoginResponse InfoResponse(DeLoginRequest request)
         {
             DeLoginResponse user = BaseBLL<UserInfobll>.Instance.InfoResponse(request);
-            return user;
+            user.State = true; return user;
         }
         /// <summary>
         /// 找回密码
@@ -40,7 +40,7 @@ namespace Api.Controllers
         {
             ZhaopwdResponse response = new ZhaopwdResponse();
             string Content = "";
-            string res =BaseBLL<UserInfobll>.Instance.FindPwd(request.PhoneNumber,request.PassWord, request.Email);
+            string res = BaseBLL<UserInfobll>.Instance.FindPwd(request.PhoneNumber, request.PassWord, request.Email);
 
             if (!string.IsNullOrEmpty(res))
             {
@@ -52,7 +52,7 @@ namespace Api.Controllers
                 Content = "您的账户出现问题,请重试";
                 ForgetPwd(request.Email, Content);
             }
-
+            response.State = true;
             return response;
 
         }
@@ -62,13 +62,13 @@ namespace Api.Controllers
         {
 
         }
-        ///修改密码
+        //修改密码
         [HttpPost]
         public UpdateResponse EditUserPwd(UpdateRequest request)
         {
             UpdateResponse response = new UpdateResponse();
             response.User= BaseBLL<UserInfobll>.Instance.EditUserPwd(request.pwd, request.id);
-            return response;
+            response.State = true; return response;
         }
         //修改用户地址
         [HttpPost]
@@ -76,7 +76,7 @@ namespace Api.Controllers
         {
             LocationResponse response = new LocationResponse();
             response.User = BaseBLL<UserInfobll>.Instance.EditUserInfo(request.content, request.id);
-            return response;
+            response.State = true; return response;
         }
         //显示地址信息
         [HttpPost]
@@ -84,7 +84,7 @@ namespace Api.Controllers
         {
             ShowResponse response = new ShowResponse();
             response.User=Convert.ToInt32( BaseBLL<UserInfobll>.Instance.ShowressInfo());
-            return response;
+            response.State = true; return response;
         }
         //添加新地址
         [HttpPost]
@@ -92,7 +92,7 @@ namespace Api.Controllers
         {
             AdLoctionResponse response = new AdLoctionResponse();
             response.User=Convert.ToInt32(BaseBLL<UserInfobll>.Instance.AddressInfo(info));
-            return response;
+            response.State = true; return response;
              
         }
     }

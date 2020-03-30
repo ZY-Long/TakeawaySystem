@@ -11,7 +11,6 @@
     <title>CSS3登录注册切换动画模板 - 站长素材</title>
     <link href="~/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/css/Loginstyle.css" rel="stylesheet" />
-
 </head>
 <body>
     <div class="materialContainer">
@@ -27,6 +26,15 @@
                 <input type="password" name="password" id="password">
                 <span class="spin"></span>
             </div>
+            <div></div>
+            <div class="form-group">
+                <div style="float:left">
+                    <img id="GL_StandardCode" style="cursor: pointer;margin-top:20px;margin-left:-10px;" src="@Url.Action("GetImg", "User")?t=@DateTime.Now.Ticks" title="看不清，点击换一张" />
+                </div>
+                <div style="float:right">
+                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="验证码" id="num" name="password" style="margin-top:20px;margin-left:-10px;width:250px;height:44px">
+                </div>
+            </div>
             <div class="button login">
                 <button>
                     <span>登录</span>
@@ -34,10 +42,14 @@
                 </button>
             </div>
             <div>
-            <a href="javascript:" class="pass-forgot" id="wang">忘记密码？</a>
-        </div>
+                <div style="float:left">
+                    <a href="" class="pass-forgot" id="wang">忘记密码</a>
+                </div>
+                <div style="float:right">
+                    <a href="AddUser" class="pass-forgot" id="Zhu">注册用户</a>
+                </div>
             </div>
-
+        </div>
         <div class="overbox">
             <div class="material-button alt-2">
                 <span class="shape"></span>
@@ -70,6 +82,12 @@
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/index.js"></script>
     <script>
+       
+    $("#GL_StandardCode").click(function () {
+    var newSrc = "@Url.Action("GetImg", "User")" + "?t=" + (new Date()).getTime();
+    this.src=newSrc;
+    return false;
+    });
         $("#test").click(function () {
             var PhoneNumber =$("#phonenumber").val();
             var PassWord= $("#password").val();
@@ -110,7 +128,7 @@
                 return;
             }
             $.ajax({
-                url: "http://localhost:53336/api/UserInfo/AddUser",
+                url: "/UserInfo/AddUser",
                 type: 'POST',
                 data: {
                     PhoneNumber: PhoneNumber,
