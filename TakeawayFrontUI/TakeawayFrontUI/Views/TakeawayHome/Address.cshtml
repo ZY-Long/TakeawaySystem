@@ -5,12 +5,8 @@
 
 <section class="section section-xxl bg-image-1">
     <div class="container">
-        <h2 class="text-transform-capitalize wow fadeScale">修改您的地址</h2>
+        <h2 class="text-transform-capitalize wow fadeScale">新建地址</h2>
         <!-- Owl Carousel-->
-
-
-
-
         <div class="post-classic-content" style="height:350px;margin-top:50px;width:55%;margin-left:27%">
             <div style="margin-top:50px;width:100%;height:10%">
                 <div style="margin-left:0px;float:left"> <label>区域</label></div>
@@ -43,7 +39,7 @@
                 <div style="margin-right:0px;float:right">  <input class="Address" type="text" id="Address" /><hiden id="AddresId"></hiden></div>
             </div>
             <div style="margin-top:100px;width:100%;height:10%">
-                <div style="margin-left:30%;float:left"><input id="Button1" type="button" value="提交" class="btn btn-default" onclick="EditRequest()" /></div>
+                <div style="margin-left:30%;float:left"><input id="Button1" type="button" value="提交" class="btn btn-default" onclick="AddRequest()" /></div>
             </div>
         </div>
         <!-- Post Classic-->
@@ -54,55 +50,29 @@
 <script src="~/Scripts/bootstrap.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 <script>
-    jQuery(document).ready(
-        function () {
-            GetOneAddress();
-        }
-    );
 
-    //将获取用户原本的地址信息
-    function GetOneAddress() {
-        var id = @Request["Id"];
-        jQuery.ajax({
-            url: "/User/GetOneAddress",
-            dataType: "Json",
-            type: "Post",
-            data:
-            {
-                UserId: 1,
-                AddressId: id
-            },
-            success: function (res) {
-                if (res.State) {
-                    jQuery("#Sele").val(res.Info.Id);
-                    $("#Address").attr("value", res.Info.Content)
-                    $("#Id").attr("value", res.Info.Id)
-                }
-            }
-        })
-    }
-
-    //修改用户地址信息
-    function EditRequest() {
-     var sele=   jQuery("#Sele").val();
+    //添加地址请求
+    function AddRequest() {
+        var sele = jQuery("#Sele").val();
         var Address = jQuery("#Address").val();
         var UserId = jQuery("#UserId").val();
-        var AddresId = @Request["Id"];
 
         jQuery.ajax({
-            url: "/User/EditUserInfo",
+            url: "/User/AddressInfo",
             dataType: "Json",
             type: "Post",
             data:
             {
                 UserId: 1,
-                content: Address,
-                 Areaid: sele,
-                Id: AddresId,
+                info: {
+                    content: Address,
+                    Areaid: sele,
+                }
+
             },
             success: function (res) {
                 if (res.State) {
-                    alert("修改成功");
+                    alert("添加成功");
                     location.href = "/TakeawayHome/AddressView";
                 }
             }
@@ -113,5 +83,3 @@
 
 
 </script>
-
-

@@ -2,7 +2,19 @@
     <div class="container">
         <h2 class="text-transform-capitalize wow fadeScale">编辑地址信息</h2>
  
-            <div class="owl-carousel" data-margin="30" data-dots="true" data-mouse-drag="false" id="dd">
+        <div class="owl-carousel" data-margin="30" data-dots="true" data-mouse-drag="false" id="dd" style="margin-left:-10%">
+            <article class="post post-classic box-md wow slideInUp" style="margin-top:30px;">
+               <div class="post-classic-content" style="height:50px;width:700px">
+                   <div style="margin-left:28%">
+                       <h4 class="text-transform-capitalize wow fadeScale">
+                           <a href="/TakeawayHome/Address">新建地址信息</a>
+                       </h4>
+                   </div>
+              
+                    
+                </div>
+               
+            </article>
         </div>
 
     </div>
@@ -31,7 +43,7 @@
             success: function (res) {
                 jQuery.each(res.Infos, function (index, item) {
                     var tb = '<article class="post post-classic box-md wow slideInUp" style="margin-top:30px">'
-                        + '<div class="post-classic-content" style="height:50px;width:400px">'
+                        + '<div class="post-classic-content" style="height:50px;width:700px">'
                         + '<div style="float:left;width:25%;height:100%">'
                         + '<label>上海市</label>'
                         + '</div>'
