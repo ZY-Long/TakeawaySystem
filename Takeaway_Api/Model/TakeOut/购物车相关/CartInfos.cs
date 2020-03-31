@@ -11,7 +11,6 @@ namespace Model
         public int Id { get; set; }
         public string Img { get; set; }
         public string Name { get; set; }
-        public string Remark { get; set; }
         public decimal Price { get; set; }
         public int Count { get; set; }
         public decimal ToPrice { get; set; }

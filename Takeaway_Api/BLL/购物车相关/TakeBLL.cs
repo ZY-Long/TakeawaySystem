@@ -14,9 +14,9 @@ namespace BLL
         /// </summary>
         /// <param name="cart"></param>
         /// <returns></returns>
-        public int AddCartDetails(int cartId, int userId, int count)
+        public int AddCartDetails(int minefid, int userId, int count)
         {
-            return BaseDAL<TakeDAL>.Instance.AddCartDetails(cartId, userId, count);
+            return BaseDAL<TakeDAL>.Instance.AddCartDetails(minefid, userId, count);
         }
         /// <summary>
         /// 删除购物车

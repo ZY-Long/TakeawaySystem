@@ -11,6 +11,7 @@ namespace Model
     /// </summary>
    public class CartDetails
     {
+       
         /// <summary>
         /// 菜品图片
         /// </summary>

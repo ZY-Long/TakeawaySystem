@@ -5,14 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
+using SDK;
 
 namespace BLL
 {
     public class FoodShowBLL
     {
-        public SqlDataReader Show(int currPage, string Name, int TypeId)
+        public show Show(int currPage,  int TypeId, string Name)
         {
-            return BaseDAL<FoodShowDAL>.Instance.Show(currPage,Name,TypeId);
+            return BaseDAL<FoodShowDAL>.Instance.Show(currPage, TypeId, Name);
         }
     }
 }

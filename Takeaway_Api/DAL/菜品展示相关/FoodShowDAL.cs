@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SDK;
 
 namespace DAL
 {
@@ -17,7 +18,7 @@ namespace DAL
         /// <param name="Name">菜品名</param>
         /// <param name="TypeId">菜品类型</param>
         /// <returns></returns>
-        public SqlDataReader Show(int currPage, string Name, int TypeId)
+        public show Show(int currPage,  int TypeId, string Name = null)
         {
             
 
@@ -39,14 +40,23 @@ namespace DAL
             });
 
             //反馈
-            var res = comm.ExecuteReader();
+            var readr = comm.ExecuteReader();
+            show show = new show();
+            while (readr.Read())
+            {
+                
+                show.currPage =int.Parse( readr["currPage"].ToString());
+                show.Name = readr["currPage"].ToString();
+                show.TypeId = int.Parse(readr["TypeId"].ToString());
+            }
 
             //关闭数据库
             if (conn.State == System.Data.ConnectionState.Open)
             {
                 conn.Close();
             }
-            return res;
+            
+            return show;
         }
     }
 }
