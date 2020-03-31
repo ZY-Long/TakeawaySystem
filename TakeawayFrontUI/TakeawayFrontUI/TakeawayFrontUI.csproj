@@ -285,6 +285,16 @@
     <Content Include="fonts\materialdesignicons-webfont.woff2" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Ximages\about-1-634x373.jpg" />
+    <Content Include="Ximages\post-7-800x394.jpg" />
+    <Content Include="Ximages\pricing-1-346x229.jpg" />
+    <Content Include="Ximages\product-1-196x134.png" />
+    <Content Include="Ximages\product-2-155x145.png" />
+    <Content Include="Ximages\product-3-180x154.png" />
+    <Content Include="Ximages\product-5-169x159.png" />
+    <Content Include="Ximages\product-6-89x164.png" />
+    <Content Include="Ximages\product-7-89x157.png" />
+    <Content Include="Ximages\slide-1.jpg" />
     <Content Include="显示购物车图片\1.jpg" />
     <Content Include="显示购物车图片\2 - 副本.jpg" />
     <Content Include="购物车引用文件2\css\carts.css" />
