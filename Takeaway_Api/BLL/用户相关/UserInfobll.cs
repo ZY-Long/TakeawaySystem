@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Model;
 using DAL;
 using SDK;
-using System.Security.Cryptography; 
+using System.Security.Cryptography;
 
 
 namespace BLL
 {
-   
-   public  class UserInfobll
+
+    public class UserInfobll
     {
         UserInfoLogin dal = new UserInfoLogin();
 
@@ -46,7 +46,9 @@ namespace BLL
                 return userInfo;
             }
             //调用dal层方法
-            userInfo.userInfos = dal.DeLogin(request.User);
+            UserInfoLog info = dal.DeLogin(request.User);
+            userInfo.userInfos.Id = info.Id;
+            userInfo.userInfos.PhoneNumber = info.PhoneNumber;
             //判断
             if (userInfo.userInfos != null)
             {
@@ -87,25 +89,25 @@ namespace BLL
         /// <param name="PassWord"></param>
         /// <param name="Email"></param>
         /// <returns></returns>
-        public string FindPwd(string PhoneNumber, string PassWord,string Email)
+        public string FindPwd(string PhoneNumber, string PassWord, string Email)
         {
-            return dal.FindPwd(PhoneNumber,PassWord,Email);
+            return dal.FindPwd(PhoneNumber, PassWord, Email);
         }
         //邮箱
         public void ForgetPwd(string Email, string Content)
         {
-            
+
         }
-            ///修改密码
-            ///
-            public int EditUserPwd(string pwd, int id)
+        ///修改密码
+        ///
+        public int EditUserPwd(string pwd, int id)
         {
-            return BaseDAL<UserInfoLogin>.Instance.EditUserPwd(pwd,id);
+            return BaseDAL<UserInfoLogin>.Instance.EditUserPwd(pwd, id);
         }
         //修改用户地址
         public int EditUserInfo(string content, int Areaid, int UserId, int Id)
         {
-            return BaseDAL<UserInfoLogin>.Instance.EditUserInfo(content,Areaid,UserId,Id);
+            return BaseDAL<UserInfoLogin>.Instance.EditUserInfo(content, Areaid, UserId, Id);
         }
         //显示地址信息
         public List<UserAddress> ShowressInfo(int UserId)
