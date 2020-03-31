@@ -32,16 +32,19 @@ namespace DAL
         /// <summary>
         /// 添加购物车详情
         /// </summary>
-        public int AddCartDetails(CartDetails cart)
+        public int AddCartDetails(int cartId,int userId,int count)
         {
-            CartInfo c = new CartInfo();
-
-            var car = AddCart(c); 
-            connection.Open();
-            string sql = $@"insert into CartDetails (TypeId,DetailsId,Count,TasteId,ToPrice,CartId,Sates,CreateTime,UpdateTime,CreaterId,UpdaterId) 
-                    values('{cart.TypeId}','{cart.DetailsId}','{cart.Count}','{cart.TasteId}','{cart.ToPrice}','{cart.CratId}',1,'GetDate()','GetDate()',1,1)";
+            string sql = "AddCart";
             SqlCommand command = new SqlCommand(sql, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddRange(new SqlParameter[]
+            {
+                new SqlParameter{ParameterName = "@cartId",SqlDbType = System.Data.SqlDbType.Int,SqlValue = cartId },
+                 new SqlParameter{ParameterName = "@userId",SqlDbType = System.Data.SqlDbType.VarChar,SqlValue = userId },
+                 new SqlParameter{ParameterName = "@count",SqlDbType = System.Data.SqlDbType.Int,SqlValue = count },
+            });
             var res = command.ExecuteNonQuery();
+            connection.Close();
             return res;
         }
         /// <param name="id"></param>

@@ -23,6 +23,7 @@
 
                 <tr>
                     <td><input type='checkbox' id="checkAll" name="checkAll" onclick="checkAll(this)"></td>
+                    <td>菜品Id</td>
                     <td>菜品图片</td>
                     <td>菜品名称</td>
                     <td>菜品介绍</td>
@@ -31,10 +32,15 @@
                     <td>菜品小计</td>
                     <td>操作</td>
                 </tr>
+
             </thead>
+
             <tbody id="td"></tbody>
 
         </table>
+        
+
+        
     </div>
     <script type="text/javascript">
         //算小计
@@ -51,7 +57,8 @@
                     var op = "";
                     $(res.GetCart).each(function (index, item) {
                         var th = "<tr>"
-                            + "<td><input type='checkbox' name='checkList'></td>"
+                            + "<td><input type='checkbox' id='all" + index + "' name='checkList'></td>"
+                            + "<td>" + this.Id + "</td>"
                             + "<td>" + this.Img + "</td>"
                             + "<td>" + this.Name + "</td>"
                             + "<td>" + this.Remark + "</td>"
@@ -61,7 +68,7 @@
                             + "<input type='number' id='num" + index + "'  maxlength='2' value='" + this.Count + "' disabled>"
                             + "<button class='jia'  id='jia" + index + "' onclick='jia(" + index + "," + this.Price + ")'>+</button>"
                             + "</td>"
-                            + "<td id='xiaoji" + index + "'>" + this.XiaoJi + "</td>"
+                            + "<td id='xiaoji" + index + "'>" + this.ToPrice + "</td>"
                             + "<td>已选商品<strong id='yixuan" + index + "'>0</strong>件</td>"
                             + "<td>共计: <strong id='gong" + index + "'>0.00</strong></td>"
                             + "<td><input type='button' value=’删除 ' onclick='deleteCatr("+item.Id+")' /></td>"
@@ -94,12 +101,14 @@
             var sum = num * parseFloat(price);
             $("#xiaoji" + index).html(sum);
         }
-        function checkAll(checkbox) {
-
+    function checkAll(checkbox, index) {
+            var num = 0;
+            
             if (checkbox.checked) {
                 $("input[name='checkList']").each(function () {
                     this.checked = true;
-
+                    num++;
+                    alert(num);
                 })
             } else {
                 $("input[name='checkList']").each(function () {
@@ -127,9 +136,7 @@
         })
     }
 
-
-
-
+    
 
 
 
