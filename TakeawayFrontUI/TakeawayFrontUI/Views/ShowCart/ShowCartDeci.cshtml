@@ -2,51 +2,61 @@
 @{
     ViewBag.Title = "ShowCartDeci";
 }
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <title>购物车</title>
-    <style>
-        input {
-            width: 50px;
-        }
-    </style>
+    <link href="~/购物车引用文件2/css/reset.css" rel="stylesheet" />
+    <link href="~/购物车引用文件2/css/carts.css" rel="stylesheet" />
 
 </head>
 <body>
-    <div>
-        <table border="1" cellspacing="0" cellpadding="10px">
-            <thead>
+    <section class="cartMain">
+        <div class="cartMain_hd">
+            <ul class="order_lists cartTop">
+                <li class="list_chk">
+                    <!--所有商品全选-->
+                    <input type="checkbox" id="all" class="whole_check">
+                    <label for="all"></label>
+                    全选
+                </li>
+                <li class="list_img">商品图片</li>
+                <li class="list_con">商品信息</li>
+                <li class="list_info">商品参数</li>
+                <li class="list_price">单价</li>
+                <li class="list_amount">数量</li>
+                <li class="list_sum">金额</li>
+                <li class="list_op">操作</li>
+            </ul>
+        </div>
+        <div class="shop_name">
+            店铺：<a href="javascript:;">默默外卖</a>
+        </div>
+        <div class="cartBox">
 
                 <tr>
                     <td><input type='checkbox' id="checkAll" name="checkAll" onclick="checkAll(this)"></td>
-                    <td>菜品Id</td>
                     <td>菜品图片</td>
                     <td>菜品名称</td>
                     <td>菜品介绍</td>
                     <td>菜品单价</td>
                     <td>菜品数量</td>
                     <td>菜品小计</td>
-                    <td>操作</td>
                 </tr>
-
             </thead>
-
             <tbody id="td"></tbody>
 
         </table>
-        
-
-        
     </div>
     <script type="text/javascript">
         //算小计
         //1.取出单价  2.改变数量   小计金额=单价*数量
         //3.把小计列的数据显示成小计金额
 
+            </div>
+            <div class="order_content" id="td">
 
         $(document).ready(function () {
             $.ajax({
@@ -57,8 +67,7 @@
                     var op = "";
                     $(res.GetCart).each(function (index, item) {
                         var th = "<tr>"
-                            + "<td><input type='checkbox' id='all" + index + "' name='checkList'></td>"
-                            + "<td>" + this.Id + "</td>"
+                            + "<td><input type='checkbox' name='checkList'></td>"
                             + "<td>" + this.Img + "</td>"
                             + "<td>" + this.Name + "</td>"
                             + "<td>" + this.Remark + "</td>"
@@ -71,7 +80,7 @@
                             + "<td id='xiaoji" + index + "'>" + this.ToPrice + "</td>"
                             + "<td>已选商品<strong id='yixuan" + index + "'>0</strong>件</td>"
                             + "<td>共计: <strong id='gong" + index + "'>0.00</strong></td>"
-                            + "<td><input type='button' value=’删除 ' onclick='deleteCatr("+item.Id+")' /></td>"
+                            + "<td><input type='button' value='结算' /></td>"
                             + " </tr>";
                         op += th; 
 
@@ -101,14 +110,12 @@
             var sum = num * parseFloat(price);
             $("#xiaoji" + index).html(sum);
         }
-    function checkAll(checkbox, index) {
-            var num = 0;
-            
+        function checkAll(checkbox) {
+
             if (checkbox.checked) {
                 $("input[name='checkList']").each(function () {
                     this.checked = true;
-                    num++;
-                    alert(num);
+
                 })
             } else {
                 $("input[name='checkList']").each(function () {
@@ -116,27 +123,9 @@
                 })
             }
         }
-    function deleteCatr(id) {
-        
-        $.ajax({
-            url: "/DeleteCart/DeleteCartInfo",
-            type: "POST",
-            dataType: "json",
-            data: {
-                Id: id
-            },
-            success: function (res) {
-                if (res > 0) {
-                    alert("删除成功");
-                }
-                else {
-                    alert("删除失败");
-                }
-            }
-        })
-    }
 
-    
+
+
 
 
 
