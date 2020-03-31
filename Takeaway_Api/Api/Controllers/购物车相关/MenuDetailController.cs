@@ -16,7 +16,7 @@ namespace Api.Controllers.购物车相关
         //    MenuDetailResponse menuresponse = new MenuDetailResponse();
         //    menuresponse.GetMenu = BaseBLL<TakeBLL>.Instance.GetMenuDetail(request.userid, request.menuid);
         //    menuresponse.State = true;
-        //    //return menuresponse;
+        //    //return menuresponse; 
         //}
     }
 }
