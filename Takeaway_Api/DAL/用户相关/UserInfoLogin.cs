@@ -203,7 +203,7 @@ namespace DAL
             List<UserInfo> infos = new List<UserInfo>();
             using (IDbConnection conn = new SqlConnection(connStr))
             {
-                infos = conn.Query<UserInfo>("select cd.Img,cd.Name,cd.Price,cd.Count,cd.CreateTime from UserInfo as us join CartInfo ca on us.Id=ca.UserId join CartDetails cd on ca.Id=cd.CartId where us.Id=" + UserId + " ").ToList();
+                infos = conn.Query<UserInfo>("select m.Img,m.Name,cd.ToPrice,cd.Count, cd.CreateTime FROM dbo.CartInfo AS c JOIN dbo.CartDetails AS cd ON c.Id = cd.CartId JOIN dbo.BusinessInfo AS b ON b.Id = c.BusinessInfo JOIN dbo.UserInfo AS u ON c.UserId = u.Id JOIN dbo.MenuInfo AS m ON m.Id = cd.DetailsId WHERE c.UserId =" + UserId + " ").ToList();
             }
                 return infos;
         }
