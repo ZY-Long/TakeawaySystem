@@ -40,14 +40,23 @@ namespace DAL
             });
 
             //反馈
-            var res = comm.ExecuteReader();
+            var readr = comm.ExecuteReader();
+            show show = new show();
+            while (readr.Read())
+            {
+                
+                show.currPage =int.Parse( readr["currPage"].ToString());
+                show.Name = readr["currPage"].ToString();
+                show.TypeId = int.Parse(readr["TypeId"].ToString());
+            }
 
             //关闭数据库
             if (conn.State == System.Data.ConnectionState.Open)
             {
                 conn.Close();
             }
-            return res;
+            
+            return show;
         }
     }
 }
