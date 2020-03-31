@@ -62,14 +62,14 @@
 
     //将获取用户原本的地址信息
     function GetOneAddress() {
-        var id = @Request["Id"];
+        var Id = jQuery("#Id").val();
         jQuery.ajax({
             url: "/User/GetOneAddress",
             dataType: "Json",
             type: "Post",
             data:
             {
-                UserId: 1,
+                UserId: Id,
                 AddressId: id
             },
             success: function (res) {
@@ -86,7 +86,7 @@
     function EditRequest() {
      var sele=   jQuery("#Sele").val();
         var Address = jQuery("#Address").val();
-        var UserId = jQuery("#UserId").val();
+        var Id = jQuery("#Id").val();
         var AddresId = @Request["Id"];
 
         jQuery.ajax({
@@ -95,7 +95,7 @@
             type: "Post",
             data:
             {
-                UserId: 1,
+                UserId: Id,
                 content: Address,
                  Areaid: sele,
                 Id: AddresId,
