@@ -25,7 +25,7 @@ namespace DAL
             connection.Open();
             var bus = UserInfoLogin.GenerateSalt();
             string sql = $@"insert into UserInfo(NickName,Img,PhoneNumber,Password,Salt,Email,RealName,CreateTime,UpdateTime,CreaterId,UpdaterId) 
-                                 values('{user.NickName}','{user.PhoneNumber}','{MD5Encrypt32(user.PassWord + "{"+bus+"}")}','{bus}','{user.Email}','{user.RealName},'{user.CreateTime}','{user.UpdateTime}','{user.CreaterId}','{user.UpdaterId}'')";
+                                 values('{user.NickName}','','{user.PhoneNumber}','{MD5Encrypt32(user.PassWord + "{"+bus+"}")}','{bus}','{user.Email}','{user.RealName}','{DateTime.Now}','{DateTime.Now}','{user.CreaterId}','{user.UpdaterId}')";
             SqlCommand command = new SqlCommand(sql,connection);
             var res = command.ExecuteNonQuery();
             return res;
@@ -75,7 +75,7 @@ namespace DAL
         {
             using (IDbConnection conn=new SqlConnection(connStr))
             {
-                string sql = "select SaIt From UserInfo where PhoneNumber=@phonenumber";
+                string sql = "select Salt From UserInfo where PhoneNumber=@phonenumber";
                 var saltstr = conn.QueryFirstOrDefault<string>(sql,new { phonenumber= PhoneNumber});
                 return saltstr;
             }
@@ -193,6 +193,36 @@ namespace DAL
             SqlCommand command = new SqlCommand(sql,connection);
             var res = command.ExecuteNonQuery();
             return res;
+        }
+       
+             
+        int UserId = 0;
+        int BusinessId = 0;
+
+        OrderDAL  dAL = new OrderDAL();
+        //显示订单 
+        public OrderShow Dingshow(int UserId, int BusinessId)
+        {
+            this.UserId = UserId;
+            this.UserId = BusinessId;
+
+            OrderShow order =bHelper.GetToList<OrderShow>(@"selectSUM(cd.ToPrice) AS TotalPrice,
+c.Id,
+u.NickName,
+b.Name,
+u.PhoneNumber,
+b.PhoneNumber AS BusinessNumber,
+b.Merchataddress
+FROM dbo.CartInfo AS c
+JOIN dbo.CartDetails AS cd
+ON c.Id = cd.CartId
+JOIN dbo.BusinessInfo AS b
+ON b.Id = c.BusinessInfo
+JOIN dbo.UserInfo AS u
+ON c.UserId = u.Id
+WHERE c.UserId = " + UserId + " AND c.BusinessInfo = " + BusinessId + " AND c.Sates = 1 GROUP BY b.Name, b.PhoneNumber, c.Id, u.NickName, u.PhoneNumber, b.Merchataddress").FirstOrDefault();
+            order.list =dAL.GetListOrders(UserId, BusinessId);
+            return order;
         }
 
     }

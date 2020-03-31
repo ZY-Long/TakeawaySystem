@@ -1,59 +1,151 @@
 ﻿
 @{
     ViewBag.Title = "ShowCartDeci";
-    Layout = "~/Views/ShowCart/ShowCart.cshtml";
 }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <title>购物车</title>
+    <style>
+        input {
+            width: 50px;
+        }
+    </style>
 
-<table>
+</head>
+<body>
+    <div>
+        <table border="1" cellspacing="0" cellpadding="10px">
+            <thead>
 
-    <tbody id="td"></tbody>
-</table>
-<script>
-    $(document).ready(function () {
+                <tr>
+                    <td><input type='checkbox' id="checkAll" name="checkAll" onclick="checkAll(this)"></td>
+                    <td>菜品Id</td>
+                    <td>菜品图片</td>
+                    <td>菜品名称</td>
+                    <td>菜品介绍</td>
+                    <td>菜品单价</td>
+                    <td>菜品数量</td>
+                    <td>菜品小计</td>
+                    <td>操作</td>
+                </tr>
+
+            </thead>
+
+            <tbody id="td"></tbody>
+
+        </table>
+        
+
+        
+    </div>
+    <script type="text/javascript">
+        //算小计
+        //1.取出单价  2.改变数量   小计金额=单价*数量
+        //3.把小计列的数据显示成小计金额
+
+
+        $(document).ready(function () {
+            $.ajax({
+                url: "/ShowCart/GetCart",
+                type: "POST",
+                dataType: "json",
+                success: function (res) {
+                    var op = "";
+                    $(res.GetCart).each(function (index, item) {
+                        var th = "<tr>"
+                            + "<td><input type='checkbox' id='all" + index + "' name='checkList'></td>"
+                            + "<td>" + this.Id + "</td>"
+                            + "<td>" + this.Img + "</td>"
+                            + "<td>" + this.Name + "</td>"
+                            + "<td>" + this.Remark + "</td>"
+                            + "<td>" + this.Price + "</td>"
+                            + "<td>"
+                            + "<button class='jian' id='jian" + index + "'  onclick='jian(" + index + "," + this.Price + ")'>-</button>"
+                            + "<input type='number' id='num" + index + "'  maxlength='2' value='" + this.Count + "' disabled>"
+                            + "<button class='jia'  id='jia" + index + "' onclick='jia(" + index + "," + this.Price + ")'>+</button>"
+                            + "</td>"
+                            + "<td id='xiaoji" + index + "'>" + this.ToPrice + "</td>"
+                            + "<td>已选商品<strong id='yixuan" + index + "'>0</strong>件</td>"
+                            + "<td>共计: <strong id='gong" + index + "'>0.00</strong></td>"
+                            + "<td><input type='button' value=’删除 ' onclick='deleteCatr("+item.Id+")' /></td>"
+                            + " </tr>";
+                        op += th; 
+
+                        
+                    });
+                    $("#td").append(op);
+                }
+            });
+        })
+        function jia(index, price) {
+
+            var num = $("#num" + index).val();
+            num = parseInt(num) + 1;
+            $("#num" + index).val(num);
+            var sum = num * parseFloat(price);
+            $("#xiaoji" + index).html(sum);
+
+        }
+        function jian(index, price) {
+
+            var num = $("#num" + index).val();
+            if (num == 0) {
+                return;
+            }
+            num = parseInt(num) - 1;
+            $("#num" + index).val(num);
+            var sum = num * parseFloat(price);
+            $("#xiaoji" + index).html(sum);
+        }
+    function checkAll(checkbox, index) {
+            var num = 0;
+            
+            if (checkbox.checked) {
+                $("input[name='checkList']").each(function () {
+                    this.checked = true;
+                    num++;
+                    alert(num);
+                })
+            } else {
+                $("input[name='checkList']").each(function () {
+                    this.checked = false;
+                })
+            }
+        }
+    function deleteCatr(id) {
+        
         $.ajax({
-            url: "/ShowCart/GetCart",
+            url: "/DeleteCart/DeleteCartInfo",
             type: "POST",
             dataType: "json",
+            data: {
+                Id: id
+            },
             success: function (res) {
-                var op = "";
-                $(res).each(function () {
-                    var th = "<ul class='order_lists'>"
-                    +"<li class='list_chk'>"
-                        +"<input type='checkbox' id='checkbox_2' class='son_check'>"
-                        +"<label for='checkbox_2'></label>"
-                   +" </li>"
-                    
-                    +"<li class='list_con'>"
-
-                        +"<div class='list_img'><a href='javascript:;'><img src='~/购物车引用文件2/images/1.png' alt=""></a></div>"
-                        +"<div class="list_text"><a href="javascript:;">夏季男士迷彩无袖T恤圆领潮流韩版修身男装背心青年时尚打底衫男</a></div>"
-                    +"</li>"
-                    +"<li class="list_info">"
-                        +"<p>好吃不贵</p>"
-                        +"<p>还实惠</p>"
-                   +" </li>"
-                   +" <li class="list_price">"
-                     +"   <p class="price">￥980</p>"
-                   +" </li>"
-                   +" <li class="list_amount">"
-                      +"  <div class="amount_box">"
-                           +" <a href="javascript:;" class="reduce reSty">-</a>"
-                            +"<input type="text" value="1" class="sum">"
-                           +" <a href="javascript:;" class="plus">+</a>"
-                       +" </div>"
-                   +" </li>"
-                   +" <li class="list_sum">"
-                       +" <p class="sum_price">￥980</p>"
-                   +" </li>"
-                  +"  <li class="list_op">"
-                     +"   <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>"
-                   +" </li>"
-                +"</ul>"
-                    op += th;
-                });
-                $("#td").append(op);
+                if (res > 0) {
+                    alert("删除成功");
+                }
+                else {
+                    alert("删除失败");
+                }
             }
-        });
-    })
-</script>
+        })
+    }
+
+    
+
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
 

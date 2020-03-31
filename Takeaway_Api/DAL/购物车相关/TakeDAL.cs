@@ -32,16 +32,19 @@ namespace DAL
         /// <summary>
         /// 添加购物车详情
         /// </summary>
-        public int AddCartDetails(CartDetails cart)
+        public int AddCartDetails(int cartId,int userId,int count)
         {
-            CartInfo c = new CartInfo();
-
-            var car = AddCart(c); 
-            connection.Open();
-            string sql = $@"insert into CartDetails (TypeId,DetailsId,Count,TasteId,ToPrice,CartId,Sates,CreateTime,UpdateTime,CreaterId,UpdaterId) 
-                    values('{cart.TypeId}','{cart.DetailsId}','{cart.Count}','{cart.TasteId}','{cart.ToPrice}','{cart.CratId}',1,'GetDate()','GetDate()',1,1)";
+            string sql = "AddCart";
             SqlCommand command = new SqlCommand(sql, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddRange(new SqlParameter[]
+            {
+                new SqlParameter{ParameterName = "@cartId",SqlDbType = System.Data.SqlDbType.Int,SqlValue = cartId },
+                 new SqlParameter{ParameterName = "@userId",SqlDbType = System.Data.SqlDbType.VarChar,SqlValue = userId },
+                 new SqlParameter{ParameterName = "@count",SqlDbType = System.Data.SqlDbType.Int,SqlValue = count },
+            });
             var res = command.ExecuteNonQuery();
+            connection.Close();
             return res;
         }
         /// <param name="id"></param>
@@ -58,15 +61,16 @@ namespace DAL
         /// 显示购物车
         /// </summary>
         /// <returns></returns>
-        public List<CartDetails> GetCartInfos()
+        public List<CartInfos> GetCartInfos()
         {
             connection.Open();
-            string sql = @"select  m.Img,m.Name,m.Remark,m.Price,c.Count,c.ToPrice from CartDetails as c
+            string sql = @"select c.Id, m.Img,m.Name,m.Remark,m.Price,c.Count,c.ToPrice from CartDetails as c
                         join CartInfo as a on c.CartId=a.Id
                         join MenuInfo as m on c.TypeId =m.Id";
             SqlCommand command = new SqlCommand(sql,connection);
             var reader = command.ExecuteReader();
-            var list = reader.DataReaderToList<CartDetails>();
+            var list = reader.DataReaderToList<CartInfos>();
+            connection.Close();
             return list;
         }
         /// <summary>

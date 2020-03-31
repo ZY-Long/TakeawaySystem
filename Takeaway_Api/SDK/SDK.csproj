@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\AddCartDecimals.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\地区相关\AreaRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\地区相关\CityRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\地区相关\ProvinceRequest.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="TakeawayApi\TakeawayRequest\用户相关\DeLoginRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\用户相关\EmailRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\用户相关\LocationRequest.cs" />
+    <Compile Include="TakeawayApi\TakeawayRequest\用户相关\OrderGeRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\用户相关\ShowLocationRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\用户相关\ShowRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayRequest\用户相关\UpdateRequest.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\DeLoginResponse.cs" />
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\EmailResponse.cs" />
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\LocationResponse.cs" />
+    <Compile Include="TakeawayApi\TakeawayResponse\用户相关\OrderGeResponse.cs" />
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\ShowLocationRequest.cs" />
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\ShowResponse.cs" />
     <Compile Include="TakeawayApi\TakeawayResponse\用户相关\UpdateResponse.cs" />
