@@ -13,7 +13,7 @@ namespace BLL
     {
         public show Show(int currPage, string Name, int TypeId)
         {
-            return BaseDAL<FoodShowDAL>.Instance.Show(currPage,Name,TypeId);
+            return BaseDAL<FoodShowDAL>.Instance.Show(currPage,TypeId,Name);
         }
     }
 }
