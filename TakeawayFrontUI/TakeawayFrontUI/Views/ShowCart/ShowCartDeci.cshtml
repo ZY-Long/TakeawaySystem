@@ -2,120 +2,163 @@
 @{
     ViewBag.Title = "ShowCartDeci";
 }
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <title>购物车</title>
-    <style>
-        input {
-            width: 50px;
-        }
-    </style>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
 
-</head>
-<body>
-    <div>
-        <table border="1" cellspacing="0" cellpadding="10px">
-            <thead>
 
-                <tr>
-                    <td><input type='checkbox' id="checkAll" name="checkAll" onclick="checkAll(this)"></td>
-                    <td>菜品Id</td>
-                    <td>菜品图片</td>
-                    <td>菜品名称</td>
-                    <td>菜品介绍</td>
-                    <td>菜品单价</td>
-                    <td>菜品数量</td>
-                    <td>菜品小计</td>
-                    <td>操作</td>
-                </tr>
+<div id="info-table">
 
-            </thead>
-
-            <tbody id="td"></tbody>
-
-        </table>
+    <table id="mytable" width="1200" align="center">
+        <tr>
+            <th><input type="checkbox" id="allCheck" onclick="selectAll()" />全选</th>
+            <td>菜品图片</td>
+            <td>菜品名称</td>
+            <td>菜品单价</td>
+            <td>菜品数量</td>
+            <td>菜品小计</td>
+            <td>操作</td>
+        </tr>
         
+        <tbody id="td">
 
-        
+        </tbody>
+    </table>
+</div>
+<div id="info-input">
+    <div class="total-div">
+        <span>商品总价(不含运费)：<span id="resultTotalMoney">0</span>元</span>
     </div>
-    <script type="text/javascript">
-        //算小计
-        //1.取出单价  2.改变数量   小计金额=单价*数量
-        //3.把小计列的数据显示成小计金额
+    <div class="btorinter-div">
+        <button onclick="selectDelete()" class="btdelete">删除所选</button>
+        <button class="btbuy">立即购买</button>
+    </div>
+    
+</div>
+<script type="text/javascript">
 
-
-        $(document).ready(function () {
-            $.ajax({
-                url: "/ShowCart/GetCart",
-                type: "POST",
-                dataType: "json",
-                success: function (res) {
-                    var op = "";
-                    $(res.GetCart).each(function (index, item) {
-                        var th = "<tr>"
-                            + "<td><input type='checkbox' id='all" + index + "' name='checkList'></td>"
-                            + "<td>" + this.Id + "</td>"
-                            + "<td>" + this.Img + "</td>"
-                            + "<td>" + this.Name + "</td>"
-                            + "<td>" + this.Remark + "</td>"
-                            + "<td>" + this.Price + "</td>"
-                            + "<td>"
-                            + "<button class='jian' id='jian" + index + "'  onclick='jian(" + index + "," + this.Price + ")'>-</button>"
-                            + "<input type='number' id='num" + index + "'  maxlength='2' value='" + this.Count + "' disabled>"
-                            + "<button class='jia'  id='jia" + index + "' onclick='jia(" + index + "," + this.Price + ")'>+</button>"
-                            + "</td>"
-                            + "<td id='xiaoji" + index + "'>" + this.ToPrice + "</td>"
-                            + "<td>已选商品<strong id='yixuan" + index + "'>0</strong>件</td>"
-                            + "<td>共计: <strong id='gong" + index + "'>0.00</strong></td>"
-                            + "<td><input type='button' value=’删除 ' onclick='deleteCatr("+item.Id+")' /></td>"
-                            + " </tr>";
-                        op += th; 
-
-                        
-                    });
-                    $("#td").append(op);
-                }
-            });
-        })
-        function jia(index, price) {
-
-            var num = $("#num" + index).val();
-            num = parseInt(num) + 1;
-            $("#num" + index).val(num);
-            var sum = num * parseFloat(price);
-            $("#xiaoji" + index).html(sum);
-
-        }
-        function jian(index, price) {
-
-            var num = $("#num" + index).val();
-            if (num == 0) {
-                return;
+    $(document).ready(function () {
+        $.ajax({
+            url: "/ShowCart/GetCart",
+            type: "POST",
+            dataType: "json",
+            success: function (res) {
+                var op = "";
+                $(res.GetCart).each(function () {
+                    var tp = "<td><input type='checkbox' class='selectOne' /></td>"
+                        + "<td class='imgbackground'><img src='" + this.Img + "' height='100' width='100' /></td>"
+                        + "<td>" + this.Name + "</td>"
+                        + "<td>" + this.Price + "</td>"
+                        +"<td>"
+                        + "<button onclick='reduce(this)'>-</button>"
+                        + "<input type='text' size='1' readonly='true' value='"+this.Count+"' />"
+                        +"<button onclick='plus(this)'>+</button>"
+                        + "</td>"
+                        + "<td class='shopCount'>" + this.ToPrice + "</td>"
+                        + "<td><input type='button' value=’删除 ' onclick='deleteCatr(" + this
+                            .Id + ")' /></td>"
+                    op += tp;
+                })
+                $("#td").append(op);
             }
-            num = parseInt(num) - 1;
-            $("#num" + index).val(num);
-            var sum = num * parseFloat(price);
-            $("#xiaoji" + index).html(sum);
+        });
+    })
+    // 全选
+    function selectAll() {
+        var obj = document.getElementsByClassName("selectOne");
+        var btSelectAll = document.getElementById("allCheck").checked;
+        for (inputCheck of obj) {
+            inputCheck.checked = btSelectAll;
         }
-    function checkAll(checkbox, index) {
-            var num = 0;
-            
-            if (checkbox.checked) {
-                $("input[name='checkList']").each(function () {
-                    this.checked = true;
-                    num++;
-                    alert(num);
-                })
-            } else {
-                $("input[name='checkList']").each(function () {
-                    this.checked = false;
-                })
+    }
+    // 单个删除
+    function deleteChild(obj) {
+        var nowtr = obj.parentElement.parentElement;
+        var nowtable = nowtr.parentElement;
+        nowtable.removeChild(nowtr);
+        // 总价
+        allShopPriceTotal();
+        // 总积分
+        allIntegralTotal();
+    }
+    // 批量删除
+    function selectDelete() {
+        var obj = document.getElementsByClassName("selectOne");
+        for (var i = obj.length - 1; i >= 0; i--) {
+            var nowCheck = obj[i];
+            if (nowCheck.checked == true) {
+                deleteChild(nowCheck);
             }
         }
+        // 总价
+        allShopPriceTotal();
+        // 总积分
+        allIntegralTotal();
+    }
+
+    // 减少数量
+    function reduce(obj) {
+        var textElement = obj.parentElement.children[1];
+        if (textElement.value == "1") {
+            return;
+        }
+        textElement.value = eval(textElement.value + "-1");
+        // 小计
+        var singelSumElement = obj.parentElement.parentElement.children[5];
+        singleSubTotal(singelSumElement);
+        // 总价
+        allShopPriceTotal();
+        // 总积分
+        allIntegralTotal();
+    }
+    // 增加数量
+    function plus(obj) {
+        var textElement = obj.parentElement.children[1];
+        textElement.value = eval(textElement.value + "+1");
+        // 小计
+        var singelSumElement = obj.parentElement.parentElement.children[5];
+        singleSubTotal(singelSumElement);
+        // 总价
+        allShopPriceTotal();
+        // 总积分
+        allIntegralTotal();
+    }
+    // 初始化全部商品小计
+    function singleAllSubTotal() {
+        var obj = document.getElementsByClassName("shopCount");
+        for (shopCount of obj) {
+            singleSubTotal(shopCount);
+        }
+    }
+    // 计算单个商品的小计
+    function singleSubTotal(obj) {
+        var price = obj.parentElement.children[3].innerHTML;
+        var count = obj.parentElement.children[4].children[1].value;
+        obj.innerHTML = eval(price + "*" + count);
+    }
+    // 所有商品的总价钱
+    function allShopPriceTotal() {
+        var obj = document.getElementById("resultTotalMoney");
+        var allSingelSubElement = document.getElementsByClassName("shopCount");
+        var sum = "0";
+        for (singelSubElement of allSingelSubElement) {
+            if (sum != "") {
+                sum += "+";
+            }
+            sum += singelSubElement.innerHTML;
+        }
+        obj.innerHTML = eval(sum);
+    }
+    // 鼠标移动改变背景颜色
+    function changeBackground() {
+        var imgtd = document.getElementsByClassName("imgbackground");
+        for (singeltd of imgtd) {
+            singeltd.onmousemove = function () {
+                this.style.backgroundColor = "orange";
+            }
+            singeltd.onmouseleave = function () {
+                this.style.backgroundColor = "white";
+            }
+        }
+    }
     function deleteCatr(id) {
         
         $.ajax({
@@ -135,14 +178,14 @@
             }
         })
     }
-
-    
-
-
-
-    </script>
-</body>
-</html>
+    // 初始化界面内容
+    window.onload = function () {
+        changeBackground();
+        singleAllSubTotal();
+        allShopPriceTotal();
+        allIntegralTotal();
+    }
+</script>
 
 
 
