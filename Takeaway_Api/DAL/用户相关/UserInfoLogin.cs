@@ -22,12 +22,21 @@ namespace DAL
         //用户注册
         public int AddUser(UserInfo user)
         {
-            connection.Open();
+            if (connection.State==ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+           
             var bus = UserInfoLogin.GenerateSalt();
             string sql = $@"insert into UserInfo(NickName,Img,PhoneNumber,Password,Salt,Email,RealName,CreateTime,UpdateTime,CreaterId,UpdaterId) 
-                                 values('{user.NickName}','','{user.PhoneNumber}','{MD5Encrypt32(user.PassWord + "{" + bus + "}")}','{bus}','{user.Email}','{user.RealName}','{DateTime.Now}','{DateTime.Now}','{user.CreaterId}','{user.UpdaterId}')";
+                                 values('{user.NickName}','','{user.PhoneNumber}','{MD5Encrypt32(user.PassWord + bus )}','{bus}','{user.Email}','{user.RealName}','{DateTime.Now}','{DateTime.Now}','{user.CreaterId}','{user.UpdaterId}')";
             SqlCommand command = new SqlCommand(sql, connection);
             var res = command.ExecuteNonQuery();
+
+            if (connection.State==ConnectionState.Open)
+            {
+                connection.Close();
+            }
             return res;
         }
         /// <summary>

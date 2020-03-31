@@ -1,19 +1,19 @@
 ﻿<section class="section section-xxl bg-image-1">
     <div class="container">
         <h2 class="text-transform-capitalize wow fadeScale">编辑地址信息</h2>
- 
+
         <div class="owl-carousel" data-margin="30" data-dots="true" data-mouse-drag="false" id="dd" style="margin-left:-10%">
             <article class="post post-classic box-md wow slideInUp" style="margin-top:30px;">
-               <div class="post-classic-content" style="height:50px;width:700px">
-                   <div style="margin-left:28%">
-                       <h4 class="text-transform-capitalize wow fadeScale">
-                           <a href="/TakeawayHome/Address">新建地址信息</a>
-                       </h4>
-                   </div>
-              
-                    
+                <div class="post-classic-content" style="height:50px;width:700px">
+                    <div style="margin-left:28%">
+                        <h4 class="text-transform-capitalize wow fadeScale">
+                            <a href="/TakeawayHome/Address">新建地址信息</a>
+                        </h4>
+                    </div>
+
+
                 </div>
-               
+
             </article>
         </div>
 
@@ -26,12 +26,13 @@
     $(document).ready(
         function () {
             GetAddress();
+            getCookie();
         }
     );
 
     function GetAddress() {
         var UserId = 1;
-
+        
         jQuery.ajax({
             url: "/User/ShowressInfo",
             data:
@@ -67,6 +68,16 @@
 
     function EditAddress(Id) {
         location.href = "/TakeawayHome/EditAddress/?Id=" + Id;
+    }
+
+    function getCookie() {
+        var name = "Userid";
+        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        if (arr != null) {
+            alert(unescape(arr[2]));
+        } else {
+            return null;
+        }
     }
 </script>
 
