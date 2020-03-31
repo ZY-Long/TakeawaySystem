@@ -16,6 +16,10 @@ namespace TakeawayFrontUI.Controllers
     public class UserController : Controller
     {
         UserBll userBll = new UserBll();
+        public ActionResult GeShow()
+        {
+            return View();
+        }
         // 登录页面
         public ActionResult Login()
         {
@@ -178,6 +182,10 @@ namespace TakeawayFrontUI.Controllers
         {
             return Json(userBll.GetProvince(province));
         }
-
-    }
+        //显示订单 
+        public JsonResult Dingshow(OrderGeRequest request)
+        {
+            return Json(userBll.Dingshow(request));
+        }
+        }
 }

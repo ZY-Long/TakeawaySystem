@@ -69,7 +69,10 @@ namespace BLL
         {
             return ApiRequestHelper.Post<ProvinceRequest, ProvinceResponse>(province);
         }
-
-
-    }
+        //显示订单 
+        public OrderGeResponse Dingshow(OrderGeRequest request)
+        {
+            return ApiRequestHelper.Post<OrderGeRequest, OrderGeResponse>(request);
+        }
+        }
 }

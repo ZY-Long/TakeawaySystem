@@ -340,6 +340,7 @@
     <Content Include="Views\TakeawayHome\showM.cshtml" />
     <Content Include="Views\TakeawayHome\AddressView.cshtml" />
     <Content Include="Views\ShowCart\ShowCartDeci.cshtml" />
+    <Content Include="Views\User\GeShow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
