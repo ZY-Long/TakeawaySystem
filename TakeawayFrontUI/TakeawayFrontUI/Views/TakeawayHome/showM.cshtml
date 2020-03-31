@@ -83,6 +83,8 @@
                                     <div class="form-wrap">
                                         <input class="form-input" id="search-form" type="text" name="s" autocomplete="off">
                                         <label class="form-label" for="search-form">输入查询菜品</label>
+
+
                                         <button class="button-search fl-bigmug-line-search74" type="submit"></button>
                                     </div>
                                 </form>
@@ -229,9 +231,8 @@
 
         <script>
             
-
-            $(document).ready(function () {
-                //页数
+            function inquire() {
+            //页数
             var currPage = $("#page").val();
             //菜名
             var Name = $("#search-form").val();
@@ -284,6 +285,9 @@
                         $("#div11").append(dav);
                     }
                 })
+            }
+            $(document).ready(function () {
+                inquire();
             })
 
         </script>
