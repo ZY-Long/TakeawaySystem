@@ -12,6 +12,7 @@ namespace Api.Controllers
 {
     public class UserInfoController : ApiController
     {
+        UserInfobll bll = new UserInfobll();
         //注册用户
         [HttpPost]
         public UserInfoResponse AddUser(UserRequest request)
