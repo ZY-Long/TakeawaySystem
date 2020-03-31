@@ -18,7 +18,7 @@ namespace DAL
         /// <param name="Name">菜品名</param>
         /// <param name="TypeId">菜品类型</param>
         /// <returns></returns>
-        public show Show(int currPage, string Name, int TypeId)
+        public show Show(int currPage,  int TypeId, string Name = null)
         {
             
 
