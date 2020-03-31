@@ -34,9 +34,9 @@ namespace BLL
         /// <param name="userid"></param>
         /// <param name="menuid"></param>
         /// <returns></returns>
-        public List<MenuDetail> GetMenuDetail(int userid, int menuid)
+        public MenuDetail GetMenuDetail( int menuid)
         {
-            return BaseDAL<TakeDAL>.Instance.GetMenuDetail(userid,menuid);
+            return BaseDAL<TakeDAL>.Instance.GetMenuDetail(menuid);
         }
         /// <summary>
         /// 显示口味下拉框
