@@ -13,6 +13,7 @@
 
     <link href="~/css/Loginstyle.css" rel="stylesheet" />
 </head>
+
 <body>
     <div class="materialContainer">
         <div class="box">
@@ -104,7 +105,7 @@
                 success: function (d) {
                     if (d.State==true) {
                         alert("登陆成功");
-                        location.href = "/TakeawayHome/ProductHome/1";
+                        location.href = "/TakeawayHome/ProductHome/?Id=" + d.userInfos.Id;
                     }
                     else {
                         alert("登陆失败！");

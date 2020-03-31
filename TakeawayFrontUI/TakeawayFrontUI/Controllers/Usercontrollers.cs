@@ -146,7 +146,10 @@ namespace TakeawayFrontUI.Controllers
         //登陆
         public JsonResult InfoResponse(DeLoginRequest Request)
         {
-            return Json(userBll.InfoResponse(Request));
+            DeLoginResponse response = userBll.InfoResponse(Request);
+
+            
+            return Json(response,JsonRequestBehavior.AllowGet);
         }
         //找回密码
         public JsonResult FindPwd(ZhaopwdRequest request)

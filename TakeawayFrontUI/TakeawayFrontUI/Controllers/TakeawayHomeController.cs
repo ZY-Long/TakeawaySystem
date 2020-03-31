@@ -42,7 +42,8 @@ namespace TakeawayFrontUI.Controllers
         public JsonResult showM(ShowMenuInfoRequest showRequest)
         {
             ShowBll bll = new ShowBll();
-            return Json(bll.Show(showRequest));
+            ShowMenuInfoResponse response = bll.Show(showRequest);
+            return Json(response);
         }
 
 

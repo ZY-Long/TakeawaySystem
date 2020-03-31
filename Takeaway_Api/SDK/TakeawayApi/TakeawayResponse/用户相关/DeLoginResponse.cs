@@ -10,7 +10,7 @@ namespace SDK
    public  class DeLoginResponse:BaseResponse
     {
         //登录
-        public List<UserInfo> userInfos { get; set; }
+        public UserInfoLog userInfos { get; set; }
         public int User { get; set; }
     }
 }

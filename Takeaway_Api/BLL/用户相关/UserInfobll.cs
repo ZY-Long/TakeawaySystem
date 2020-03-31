@@ -31,7 +31,7 @@ namespace BLL
         {
             DeLoginResponse userInfo = new DeLoginResponse();
             string salt = dal.GetuserSalt(request.User.PhoneNumber);
-            string password = MD5Encrypt32(request.User.PassWord+salt);
+            string password = MD5Encrypt32(request.User.PassWord + salt);
             request.User.PassWord = password;
             if (string.IsNullOrEmpty(request.User.PhoneNumber))
             {
@@ -46,12 +46,12 @@ namespace BLL
                 return userInfo;
             }
             //调用dal层方法
-            int userid = dal.DeLogin(request.User);
+            userInfo.userInfos = dal.DeLogin(request.User);
             //判断
-            if (userid>0)
+            if (userInfo.userInfos != null)
             {
                 userInfo.State = true;
-                userInfo.Message="登陆成功 ！";
+                userInfo.Message = "登陆成功 ！";
             }
             else
             {
