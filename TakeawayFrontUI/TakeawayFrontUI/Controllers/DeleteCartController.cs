@@ -16,7 +16,7 @@ namespace TakeawayFrontUI.Controllers
             return View();
         }
 
-        public JsonResult DeleteCart(DeleteCartRequest request)
+        public JsonResult DeleteCartInfo(DeleteCartRequest request)
         {
             return Json(bll.DeleteCart(request));
         }

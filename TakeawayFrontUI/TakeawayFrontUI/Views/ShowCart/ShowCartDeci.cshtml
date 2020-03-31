@@ -29,6 +29,7 @@
                     <td>菜品单价</td>
                     <td>菜品数量</td>
                     <td>菜品小计</td>
+                    <td>操作</td>
                 </tr>
             </thead>
             <tbody id="td"></tbody>
@@ -60,10 +61,10 @@
                             + "<input type='number' id='num" + index + "'  maxlength='2' value='" + this.Count + "' disabled>"
                             + "<button class='jia'  id='jia" + index + "' onclick='jia(" + index + "," + this.Price + ")'>+</button>"
                             + "</td>"
-                            + "<td id='xiaoji" + index + "'>" + this.ToPrice + "</td>"
+                            + "<td id='xiaoji" + index + "'>" + this.XiaoJi + "</td>"
                             + "<td>已选商品<strong id='yixuan" + index + "'>0</strong>件</td>"
                             + "<td>共计: <strong id='gong" + index + "'>0.00</strong></td>"
-                            + "<td><input type='button' value='结算' /></td>"
+                            + "<td><input type='button' value=’删除 ' onclick='deleteCatr("+item.Id+")' /></td>"
                             + " </tr>";
                         op += th; 
 
@@ -106,6 +107,26 @@
                 })
             }
         }
+    function deleteCatr(id) {
+        
+        $.ajax({
+            url: "/DeleteCart/DeleteCartInfo",
+            type: "POST",
+            dataType: "json",
+            data: {
+                Id: id
+            },
+            success: function (res) {
+                if (res > 0) {
+                    alert("删除成功");
+                }
+                else {
+                    alert("删除失败");
+                }
+            }
+        })
+    }
+
 
 
 
