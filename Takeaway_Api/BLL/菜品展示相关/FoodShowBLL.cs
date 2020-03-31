@@ -11,9 +11,9 @@ namespace BLL
 {
     public class FoodShowBLL
     {
-        public show Show(int currPage, string Name, int TypeId)
+        public show Show(int currPage,  int TypeId, string Name)
         {
-            return BaseDAL<FoodShowDAL>.Instance.Show(currPage,Name,TypeId);
+            return BaseDAL<FoodShowDAL>.Instance.Show(currPage, TypeId, Name);
         }
     }
 }
