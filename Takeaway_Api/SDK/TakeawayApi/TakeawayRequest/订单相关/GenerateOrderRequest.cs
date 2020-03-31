@@ -17,6 +17,8 @@ namespace SDK
         /// </summary>
         public OrderParameter parameter { get; set; }
 
+        public decimal Price { get; set; }
+
         public override string GetApiName()
         {
             return "/api/Order/GenerateOrder"; 

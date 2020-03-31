@@ -21,7 +21,7 @@ namespace BLL
         /// <returns></returns>
         public OrderShow GetOrderShow(int UserId, int BusinessId)
         {
-            return BaseDAL<OrderDAL>.Instance.GetOrderShow(UserId,BusinessId);
+            return BaseDAL<OrderDAL>.Instance.GetOrderShow(UserId, BusinessId);
 
         }
 
@@ -32,6 +32,16 @@ namespace BLL
         public int GenerateOrder(OrderParameter parameter)
         {
             return BaseDAL<OrderDAL>.Instance.GenerateOrder(parameter);
+        }
+
+        /// <summary>
+        /// 获取用户地址信息
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        public List<OrderAddress> GetOrders(int UserId)
+        {
+            return BaseDAL<OrderDAL>.Instance.GetOrders(UserId);
         }
 
     }

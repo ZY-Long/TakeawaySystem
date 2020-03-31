@@ -155,6 +155,7 @@ namespace TakeawayFrontUI.Controllers
                 }
                 if (!string.IsNullOrEmpty(response.userInfos.PhoneNumber))
                 {
+                    
                     Session["PhoneNumber"] = response.userInfos.PhoneNumber;
                 }
             }
