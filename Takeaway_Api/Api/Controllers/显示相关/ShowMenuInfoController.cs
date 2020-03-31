@@ -6,15 +6,19 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using BLL;
+using SDK;
 
 namespace Api
 {
     public class ShowMenuInfoController:ApiController
     {
         [HttpPost]
-        public SqlDataReader Show(int currPage, string Name, int TypeId)
+        public ShowMenuInfoResponse Show(ShowMenuInfoRequest request)
         {
-            return BaseBLL<FoodShowBLL>.Instance.Show(currPage, Name, TypeId);
+            ShowMenuInfoResponse response = new ShowMenuInfoResponse();
+            response.Showw = BaseBLL<FoodShowBLL>.Instance.Show(request.currPage, request.Name, request.TypeId);
+            return response;
+            
         }
 
     }

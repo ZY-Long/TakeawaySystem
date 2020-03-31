@@ -8,6 +8,10 @@ namespace SDK
 {
     public class ShowMenuInfoResponse : BaseResponse
     {
+        public show Showw { get; set; }
+    }
+    public class show
+    {
         /// <summary>
         /// 当前页码
         /// </summary>

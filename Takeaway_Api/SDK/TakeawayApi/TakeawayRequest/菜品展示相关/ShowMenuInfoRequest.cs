@@ -8,6 +8,18 @@ namespace SDK
 {
     public class ShowMenuInfoRequest : BaseRequest
     {
+        /// <summary>
+        /// 当前页码
+        /// </summary>
+        public int currPage { get; set; }
+        /// <summary>
+        /// 菜品名
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// 菜品类型
+        /// </summary>
+        public int TypeId { get; set; }
         public override string GetApiName()
         {
             return "/api/ShowMenuInfo/Show";
