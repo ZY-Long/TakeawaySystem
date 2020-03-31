@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 using System.Drawing;
 using System.IO;
 using System.Drawing.Imaging;
-
+using Model;
 namespace TakeawayFrontUI.Controllers
 {
     public class UserController : Controller
@@ -149,7 +149,7 @@ namespace TakeawayFrontUI.Controllers
             DeLoginResponse response = userBll.InfoResponse(Request);
             if (response.userInfos.Id > 0)
             {
-                Session["Id"] = response.userInfos.Id;
+                Session["Id"] = response.userInfos; 
             }
             if (!string.IsNullOrEmpty(response.userInfos.PhoneNumber))
             {
