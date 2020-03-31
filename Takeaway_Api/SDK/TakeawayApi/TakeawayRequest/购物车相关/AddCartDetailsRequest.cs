@@ -8,7 +8,7 @@ namespace SDK
 {
    public class AddCartDetailsRequest:BaseRequest
     {
-        public int cartId { get; set; }
+        public int minefid { get; set; }
         public int userId { get; set; }
         public int count { get; set; }
         public override string GetApiName()
