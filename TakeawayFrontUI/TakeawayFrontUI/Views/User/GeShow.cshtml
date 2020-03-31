@@ -9,44 +9,46 @@
     <title>无标题文档</title>
 </head>
 <body>
-    <table style="width:100%;">
-        <tr>
-            <td>菜品图片</td>
-            <td>菜品名称</td>
-            <td>菜品单价</td>
-            <td>菜品数量</td>
-            <td>下单时间</td>
-            <td></td>
-        </tr>
+    <table id="mytable" width="1200" align="center">
+        <thead>
+            <tr>
+                <td>菜品图片</td>
+                <td>菜品名称</td>
+                <td>菜品单价</td>
+                <td>菜品数量</td>
+                <td>下单时间</td>
+            </tr>
+        </thead>
+
+        <tbody id="td">
+        </tbody>
     </table>
     <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script>
-        $(document).ready(function () {
-            $.ajax({
-                url: "User/Dingshow",
-                type: "POST",
-                dataType: "json",
-                success: function (res) {
-                    var th = "";
-                    $(res.Dingshow).each(function () {
-                        var td = +"<tr>"
-                            + " <td>" + this.lmg + "</td>"
-                            + "<td>" + this.Name + "</td>"
-                            + "<td>" + this.Price + "</td>"
-                            + "<td>" + this.Count + "</td>"
-                            + "<td>" + this.CreateTime + "</td>"
-                            + "<td></td>"
-                            + " </tr>";
-                        th += td;
-                    });
+ $(document).ready(function () {
+        $.ajax({
+            url: "/User/Dingshow",
+            type: "POST",
+            dataType: "json",
+            success: function (res) {
+                var op = "";
+                $(res.Uuers).each(function () {
 
-                    $("#tr").append(td);
-                }
-            })
-
-        }
-        )
+                    var tp ="<tr>"
+                        + "<td><img src='"+this.Img+"' /></td>"
+                        + "<td>" + this.Name + "</td>"
+                        + "<td>" + this.Price + "</td>"
+                        + "<td>" + this.Count + "</td>"
+                        + "<td>" + this.Price + "</td>"
+                        + "<td>" + this.CreateTime + "</td>"
+                        +"</tr>"
+                    op += tp;
+                })
+                $("#td").append(op);
+            }
+        });
+    })
 
 
 
