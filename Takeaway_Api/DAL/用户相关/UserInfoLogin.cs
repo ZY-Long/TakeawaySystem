@@ -15,9 +15,12 @@ namespace DAL
     //用户相关DAL
     public class UserInfoLogin
     {
-        SqlConnection connection = new SqlConnection("Data Source=.;Initial Catalog=TakeOutDB;Integrated Security=True");
+        readonly static string connstr = System.Configuration.ConfigurationManager.AppSettings["conn"];
+        SqlConnection connection = new SqlConnection(connstr);
+
+
         DBHelper bHelper = new DBHelper();
-        string connStr = "Data Source=.;Initial Catalog=TakeOutDB;Integrated Security=True";
+        string connStr = connstr;
 
         //用户注册
         public int AddUser(UserInfo user)

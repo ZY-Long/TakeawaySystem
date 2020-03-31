@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 using Dapper;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 namespace DAL
 {
 
-    public static class OrmDBHelper
+    public class OrmDBHelper
     {
-        private const string connectionString = "Data Source=.;Initial Catalog=PRODUCTDB;Integrated Security=True";
+        readonly static string conn = System.Configuration.ConfigurationManager.AppSettings["conn"];
+        private  static string connectionString = conn;
 
         /// <summary>
         /// 获取集合

@@ -13,6 +13,8 @@ namespace DAL
 {
     public class DBHelper
     {
+        readonly static string constr = System.Configuration.ConfigurationManager.AppSettings["conn"];
+        private static string connectionString = constr;
         private SqlConnection conn = null;
         /// <summary>
         /// 构造函数
@@ -21,7 +23,7 @@ namespace DAL
         {
             if (conn == null)
             {
-                conn = new SqlConnection("Data Source=.;Initial Catalog=TakeOutDB;Integrated Security=True");
+                conn = new SqlConnection(connectionString);
             }
         }
         /// <summary>
