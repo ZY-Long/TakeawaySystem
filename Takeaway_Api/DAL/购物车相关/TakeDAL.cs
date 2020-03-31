@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using Model;
+using SDK;
 namespace DAL
 {
     /// <summary>
@@ -97,6 +98,31 @@ namespace DAL
                 throw;
             }
           
+        }
+        /// <summary>
+        /// 显示商品详情商品详情
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <returns></returns>
+        public List<MenuDetail> GetMenuDetail(int userid,int menuid)
+        {
+            if (connection.State == System.Data.ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+            string sql = $@"select m.Name,m.Img ,m.Price,m.Remark from CartDetails as c
+                        join CartInfo as a on c.CartId=a.Id
+                        join MenuInfo as m on c.DetailsId =m.Id where c.[Sates]=1 and a.UserId={userid} and m.Id={menuid}";
+            SqlCommand command = new SqlCommand(sql, connection);
+            var reader = command.ExecuteReader();
+
+            var list = reader.DataReaderToList<MenuDetail>();
+            reader.Close();
+            if (connection.State == System.Data.ConnectionState.Open)
+            {
+                connection.Close();
+            }
+            return list;
         }
         /// <summary>
         /// 口味下拉框

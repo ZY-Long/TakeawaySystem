@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Model;
 using DAL;
+using SDK;
 namespace BLL
 {
    public class TakeBLL
@@ -26,6 +27,16 @@ namespace BLL
         public int DeleteCart(int id)
         {
             return BaseDAL<TakeDAL>.Instance.DeleteCart(id);
+        }
+        /// <summary>
+        /// 显示商品详情
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="menuid"></param>
+        /// <returns></returns>
+        public List<MenuDetail> GetMenuDetail(int userid, int menuid)
+        {
+            return BaseDAL<TakeDAL>.Instance.GetMenuDetail(userid,menuid);
         }
         /// <summary>
         /// 显示口味下拉框

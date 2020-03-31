@@ -133,6 +133,7 @@
     <Compile Include="Controllers\AddCartDetailsController.cs" />
     <Compile Include="Controllers\DeleteCartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuDetailController.cs" />
     <Compile Include="Controllers\ShowCartController.cs" />
     <Compile Include="Controllers\ShowTakeController.cs" />
     <Compile Include="Controllers\TakeawayHomeController.cs" />
@@ -359,7 +360,8 @@
     <Content Include="Views\ShowCart\ShowCartDeci.cshtml" />
     <Content Include="Views\User\GeShow.cshtml" />
     <Content Include="Views\TakeawayHome\Address.cshtml" />
-    <Content Include="Views\ShowCart\GetCart.cshtml" />
+    <Content Include="Views\MenuDetail\GetMenuDetail.cshtml" />
+    <Content Include="Views\ShowCart\MenuDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

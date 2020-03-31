@@ -194,6 +194,7 @@
     <Compile Include="Controllers\购物车相关\AddCartDetailsController.cs" />
     <Compile Include="Controllers\购物车相关\CratDeController.cs" />
     <Compile Include="Controllers\购物车相关\DeleteCartController.cs" />
+    <Compile Include="Controllers\购物车相关\MenuDetailController.cs" />
     <Compile Include="Controllers\购物车相关\TakeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
