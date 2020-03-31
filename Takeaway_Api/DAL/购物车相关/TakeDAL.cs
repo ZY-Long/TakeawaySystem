@@ -27,25 +27,34 @@ namespace DAL
         /// </summary>
         public int AddCartDetails(int minefid, int userId, int count)
         {
-            if (connection.State == System.Data.ConnectionState.Closed)
+            try
             {
-                connection.Open();
-            }
-            string sql = "AddCart";
-            SqlCommand command = new SqlCommand(sql, connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.Parameters.AddRange(new SqlParameter[]
-            {
+                if (connection.State == System.Data.ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
+                string sql = "AddCart";
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddRange(new SqlParameter[]
+                {
                 new SqlParameter{ParameterName = "@minefid",SqlDbType = System.Data.SqlDbType.Int,SqlValue = minefid },
                  new SqlParameter{ParameterName = "@userId",SqlDbType = System.Data.SqlDbType.Int,SqlValue = userId },
                  new SqlParameter{ParameterName = "@count",SqlDbType = System.Data.SqlDbType.Int,SqlValue = count },
-            });
-            var res = command.ExecuteNonQuery();
-            if (connection.State == System.Data.ConnectionState.Open)
-            {
-                connection.Close();
+                });
+                int res = command.ExecuteNonQuery();
+                if (connection.State == System.Data.ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+                return res;
             }
-            return res;
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+                return 0;
+            }
+          
         }
         /// <param name="id"></param>
         /// <returns></returns>
@@ -71,26 +80,15 @@ namespace DAL
         public List<CartInfos> GetCartInfos(int userid)
         {
             try
-            {
-                if (connection.State == System.Data.ConnectionState.Closed)
-                {
-                    connection.Open();
-                }
+            {     
 
                 string sql = $@"select c.Id,  m.Img,m.Name,m.Price,c.Count,c.ToPrice from CartDetails as c
                         join CartInfo as a on c.CartId=a.Id
                         join MenuInfo as m on c.DetailsId =m.Id where c.[Sates]=1 and a.UserId={userid} order by c.Id desc";
-                SqlCommand command = new SqlCommand(sql, connection);
-                var reader = command.ExecuteReader();
-                
-                var list = reader.DataReaderToList<CartInfos>();
 
-                reader.Close();
-                if (connection.State == System.Data.ConnectionState.Open)
-                {
-                    connection.Close();
-                }
-                return list;
+                List<CartInfos> infos = OrmDBHelper.GetToList<CartInfos>(sql);
+           
+                return infos;
             }
             catch (Exception ex)
             {
