@@ -189,7 +189,7 @@
                             
                             
                             
-                            <div class="col-sm-6 col-md-4 col-lg-6 col-xl-4" id="div1">
+                            <div class="col-sm-6 col-md-4 col-lg-6 col-xl-4" id="div11">
                                 <!-- Product-->
                                 <article class="product">
                                     <div class="product-body">
@@ -203,7 +203,7 @@
                                     </div>
                                     <div class="product-button-wrap">
                                         <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="single-product.html"></a></div>
-                                        <div class="product-button"><a class="button button-primary button-zakaria fl-bigmug-line-shopping202" href="#"></a></div>
+                                        <div class="product-button"><a class="button button-primary button-zakaria fl-bigmug-line-shopping202" href="#" onclick="DIAO()"></a></div>
                                     </div>
                                 </article>
                             </div>
@@ -228,10 +228,13 @@
 
 
         <script>
-            //页数
-            var currPage = $("#page").val;
+            
+
+            $(document).ready(function () {
+                //页数
+            var currPage = $("#page").val();
             //菜名
-            var Name = $("#search-form").val;
+            var Name = $("#search-form").val();
             //菜品类型:0代表全部，1代表菜，2代表酒水，3代表套餐
             var TypeId = 0;
             if ($("Radio1").attr("checked")) {
@@ -246,18 +249,18 @@
             if ($("Radio4").attr("checked")) {
                 TypeId = 3;
             }
-
-            $(document).ready(function () {
                 $.ajax({
                     url: "/TakeawayHome/ShowM",
-                    type: "Post",
+                    type: "POST",
                     dataType: "json",
                     data: {
                         currPage: currPage,
                         Name: Name,
-                        TypeId: TypeId
+                        TypeId:TypeId
+                        
                     },
                     success: function (res) {
+                        var dav = "";
                         $(res).each(function () {
                             var div1="<div class='col-sm-6 col-md-4 col-lg-6 col-xl-4'>"
                                 +"<article class='product'>"
@@ -275,9 +278,10 @@
                                         +"<div class='product-button'><a class='button button-primary button-zakaria fl-bigmug-line-shopping202' href='#'></a></div>"
                                     +"</div>"
                                 +"</article>"
-                            +"</div>"
+                                + "</div>"
+                            dav += div1;
                         });
-                        $("#div1").append(div1);
+                        $("#div11").append(dav);
                     }
                 })
             })

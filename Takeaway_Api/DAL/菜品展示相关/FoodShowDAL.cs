@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SDK;
 
 namespace DAL
 {
@@ -17,7 +18,7 @@ namespace DAL
         /// <param name="Name">菜品名</param>
         /// <param name="TypeId">菜品类型</param>
         /// <returns></returns>
-        public SqlDataReader Show(int currPage, string Name, int TypeId)
+        public show Show(int currPage, string Name, int TypeId)
         {
             
 

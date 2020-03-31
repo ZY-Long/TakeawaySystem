@@ -16,7 +16,8 @@ namespace BLL
         /// <returns></returns>
         public ShowMenuInfoResponse Show(ShowMenuInfoRequest show)
         {
-            return ApiRequestHelper.Post<ShowMenuInfoRequest, ShowMenuInfoResponse>(show);
+            ShowMenuInfoResponse response= ApiRequestHelper.Post<ShowMenuInfoRequest, ShowMenuInfoResponse>(show);
+            return response;
         }
     }
 }
