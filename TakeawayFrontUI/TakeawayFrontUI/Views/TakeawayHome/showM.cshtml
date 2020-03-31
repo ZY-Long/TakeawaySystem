@@ -289,8 +289,23 @@
             $(document).ready(function () {
                 inquire();
             })
-            function AddCart() {
-                
+    function AddCart() {
+        $.ajax({
+            url: "",
+            type: "",
+            dataType: "",
+            data: {
+
+            }，
+            success: function (res) {
+                if (res>0) {
+
+                }
+                else {
+                    alert("加入购物车失败");
+                }
+            }
+        })
             }   
         </script>
 

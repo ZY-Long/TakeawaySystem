@@ -8,8 +8,8 @@ using Model;
 namespace SDK
 {
     //显示用户个人订单信息
-   public  class OrderGeResponse:BaseResponse
+    public class OrderGeResponse : BaseResponse
     {
-        public OrderShow shows { get; set; }
+        public List<UserInfo> Uuers { get; set; }
     }
 }

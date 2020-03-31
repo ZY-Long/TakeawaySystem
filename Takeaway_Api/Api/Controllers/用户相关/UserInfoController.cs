@@ -12,6 +12,7 @@ namespace Api.Controllers
 {
     public class UserInfoController : ApiController
     {
+        UserInfobll bll = new UserInfobll();
         //注册用户
         [HttpPost]
         public UserInfoResponse AddUser(UserRequest request)
@@ -101,7 +102,7 @@ namespace Api.Controllers
         public OrderGeResponse Dingshow(OrderGeRequest request)
         {
             OrderGeResponse response = new OrderGeResponse();
-            response.shows =BaseBLL<UserInfobll>.Instance.Dingshow(request.UserId,request.BusinessId);
+            response.Uuers=BaseBLL<UserInfobll>.Instance.Dingshow(request.UserId);
             response.State = true;return response;
         }
     }

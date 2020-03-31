@@ -10,14 +10,14 @@
     <table id="mytable" width="1200" align="center">
         <thead>
             <tr>
-                <th><input type="checkbox" id="allCheck" onclick="selectAll()" />全选</th>
-                <td>菜品图片</td>
-                <td>菜品名称</td>
-                <td>菜品单价</td>
-                <td>菜品数量</td>
-                <td>菜品小计</td>
-                <td>操作</td>
-            </tr>
+            <th><input type="checkbox" id="allCheck" onclick="selectAll()" />全选</th>
+            <td>菜品图片</td>
+            <td>菜品名称</td>
+            <td>菜品单价</td>
+            <td>菜品数量</td>
+            <td>菜品小计</td>
+            <td>操作</td>
+        </tr>
         </thead>
         
         <tbody id="td">
@@ -45,8 +45,10 @@
             success: function (res) {
                 var op = "";
                 $(res.GetCart).each(function () {
-                    var tp = "<td><input type='checkbox' class='selectOne' /></td>"
-                        + "<td class='imgbackground'><img src='" + this.Img + "' height='100' width='100' /></td>"
+
+                    var tp ="<tr>"
+                        +"<td><input type='checkbox' class='selectOne' /></td>"
+                        + "<td class='imgbackground'><img src='"+this.Img+"' /></td>"
                         + "<td>" + this.Name + "</td>"
                         + "<td>" + this.Price + "</td>"
                         +"<td>"
@@ -57,6 +59,7 @@
                         + "<td class='shopCount'>" + this.ToPrice + "</td>"
                         + "<td><input type='button' value=’删除 ' onclick='deleteCatr(" + this
                             .Id + ")' /></td>"
+                        +"</tr>"
                     op += tp;
                 })
                 $("#td").append(op);
@@ -78,8 +81,7 @@
         nowtable.removeChild(nowtr);
         // 总价
         allShopPriceTotal();
-        // 总积分
-        allIntegralTotal();
+        
     }
     // 批量删除
     function selectDelete() {
@@ -92,8 +94,7 @@
         }
         // 总价
         allShopPriceTotal();
-        // 总积分
-        allIntegralTotal();
+       
     }
 
     // 减少数量
@@ -108,8 +109,7 @@
         singleSubTotal(singelSumElement);
         // 总价
         allShopPriceTotal();
-        // 总积分
-        allIntegralTotal();
+       
     }
     // 增加数量
     function plus(obj) {
@@ -120,8 +120,7 @@
         singleSubTotal(singelSumElement);
         // 总价
         allShopPriceTotal();
-        // 总积分
-        allIntegralTotal();
+        
     }
     // 初始化全部商品小计
     function singleAllSubTotal() {
@@ -185,7 +184,7 @@
         changeBackground();
         singleAllSubTotal();
         allShopPriceTotal();
-        allIntegralTotal();
+       
     }
 </script>
 
