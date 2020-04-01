@@ -171,6 +171,7 @@ namespace TakeawayFrontUI.Controllers
         }
 
         //显示单条地址信息
+        [HttpPost]
         public JsonResult GetOneAddress(OneAddressRequest request)
         {
             OneAddressResponse response = userBll.GetOneAddress(request);

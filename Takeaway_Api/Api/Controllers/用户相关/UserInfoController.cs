@@ -77,7 +77,7 @@ namespace Api.Controllers
         public LocationResponse EditUserInfo(LocationRequest request)
         {
             LocationResponse response = new LocationResponse();
-            response.UserId=BaseBLL<UserInfobll>.Instance.EditUserInfo(request.content, request.id);
+            response.UserId=BaseBLL<UserInfobll>.Instance.EditUserInfo(request.content, request.Areaid,request.UserId,request.Id);
             response.State = true; return response;
         }
         //显示地址信息

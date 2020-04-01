@@ -40,9 +40,9 @@ namespace BLL
         /// 显示购物车
         /// </summary>
         /// <returns></returns>
-        public List<CartInfos> GetCartInfos()
+        public List<CartInfos> GetCartInfos(int userid)
         {
-            return BaseDAL<TakeDAL>.Instance.GetCartInfos();
+            return BaseDAL<TakeDAL>.Instance.GetCartInfos(userid);
         }
         //public int AddCart(CartInfo cart)
         //{
