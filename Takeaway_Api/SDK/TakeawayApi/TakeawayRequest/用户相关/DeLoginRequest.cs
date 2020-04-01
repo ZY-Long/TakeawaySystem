@@ -14,6 +14,6 @@ namespace SDK
         {
             return "/api/UserInfo/InfoResponse";
         }
-        public UserInfo User { get; set; }
+        public UserInfoLog User { get; set; }
     }
 }
