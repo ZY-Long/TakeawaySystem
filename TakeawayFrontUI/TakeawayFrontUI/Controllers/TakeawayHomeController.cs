@@ -10,7 +10,7 @@ namespace TakeawayFrontUI.Controllers
 {
     public class TakeawayHomeController : Controller
     {
-
+        AreaBLL bll = new AreaBLL();
         // GET: TakeawayHome
         /// <summary>
         /// 主页面
@@ -61,6 +61,16 @@ namespace TakeawayFrontUI.Controllers
         /// <returns></returns>
         public ActionResult AddressView()
         {
+            return View();
+        }
+
+        /// <summary>
+        /// 修改地址页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult EditAddress()
+        {
+
             return View();
         }
     }

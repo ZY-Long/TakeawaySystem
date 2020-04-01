@@ -226,9 +226,6 @@
             </div>
         </section>
 
-
-
-
         <script>
             
             function inquire() {
@@ -257,8 +254,7 @@
                     data: {
                         currPage: currPage,
                         Name: Name,
-                        TypeId:TypeId
-                        
+                        TypeId:TypeId 
                     },
                     success: function (res) {
                         var dav = "";
@@ -276,7 +272,7 @@
                                     +"</div>"
                                     +"<div class='product-button-wrap'>"
                                         +"<div class='product-button'><a class='button button-secondary button-zakaria fl-bigmug-line-search74' href='single-product.html'></a></div>"
-                                        +"<div class='product-button'><a class='button button-primary button-zakaria fl-bigmug-line-shopping202' href='#'></a></div>"
+                                        +"<div class='product-button'><a class='button button-primary button-zakaria fl-bigmug-line-shopping202' href='#' onclick='AddCart(" + this.DetailsId + ")'></a></div>"
                                     +"</div>"
                                 +"</article>"
                                 + "</div>"
@@ -289,17 +285,21 @@
             $(document).ready(function () {
                 inquire();
             })
-    function AddCart() {
+    function AddCart(id) {
+        
+        var userId = $("#UserId").val();
         $.ajax({
-            url: "",
-            type: "",
-            dataType: "",
+            url: "/AddCartDetails/AddCartDetailInfos",
+            type: "POST",
+            dataType: "json",
             data: {
-
-            }，
+                DetailsId: id,
+                UserId: userId,
+                Count:1
+            },
             success: function (res) {
-                if (res>0) {
-
+                if (res > 0) {
+                    location.href = "/ShowCart/ShowCartDeci";
                 }
                 else {
                     alert("加入购物车失败");

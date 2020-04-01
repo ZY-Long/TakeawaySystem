@@ -4,14 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace SDK
 {
-   public class GetCartRequest:BaseRequest
+    public class OneAddressRequest:BaseRequest
     {
-        public int userid { get; set; }
+        public int UserId { get; set; }
+
+        public int AddressId { get; set; }
+
         public override string GetApiName()
         {
-            return "/api/CratDe/GetCartInfos";
+            return "/api/UserInfo/GetOneAddress";
         }
     }
 }

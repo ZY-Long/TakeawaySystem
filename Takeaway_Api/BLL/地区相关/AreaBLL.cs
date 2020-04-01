@@ -17,9 +17,9 @@ namespace BLL
         /// 获取城市集合,用作下拉
         /// </summary>
         /// <returns></returns>
-        public List<Arealnfo> GetArealnfos(int cityId)
+        public List<Arealnfo> GetArealnfos()
         {
-            return BaseDAL<AreaDAL>.Instance.GetArealnfos(cityId);
+            return BaseDAL<AreaDAL>.Instance.GetArealnfos();
         }
     }
 }

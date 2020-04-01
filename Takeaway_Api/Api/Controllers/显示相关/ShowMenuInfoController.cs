@@ -16,9 +16,10 @@ namespace Api
         public ShowMenuInfoResponse Show(ShowMenuInfoRequest request)
         {
             ShowMenuInfoResponse response = new ShowMenuInfoResponse();
-            //response.Showw = BaseBLL<FoodShowBLL>.Instance.Show(request.currPage, request.TypeId, request.Name);
+            response.Showw = BaseBLL<FoodShowBLL>.Instance.Show(request.currPage,  request.TypeId,request.Name);
             return response;
             
+
         }
 
     }

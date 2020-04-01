@@ -174,10 +174,20 @@ namespace TakeawayFrontUI.Controllers
             return Json(userBll.EditUserInfo(request));
         }
         //显示地址信息
-        public JsonResult ShowressInfo(ShowRequest request)
+        public JsonResult ShowressInfo(ShowLocationRequest request)
         {
-            return Json(userBll.ShowressInfo(request));
+            ShowLocationResponse response = userBll.ShowressInfo(request);
+            return Json(response);
         }
+
+        //显示单条地址信息
+        [HttpPost]
+        public JsonResult GetOneAddress(OneAddressRequest request)
+        {
+            OneAddressResponse response = userBll.GetOneAddress(request);
+            return Json(response);
+        }
+
         //添加新地址
         public JsonResult AddressInfo(AdLoctionRequest request)
         {
