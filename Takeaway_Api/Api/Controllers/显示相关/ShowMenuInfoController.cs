@@ -19,6 +19,7 @@ namespace Api
             response.Showw = BaseBLL<FoodShowBLL>.Instance.Show(request.currPage,  request.TypeId,request.Name);
             return response;
             
+
         }
 
     }
