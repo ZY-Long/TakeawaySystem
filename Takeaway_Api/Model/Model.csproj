@@ -46,6 +46,7 @@
     <Compile Include="TakeOut\用户相关\AddressInfo.cs" />
     <Compile Include="TakeOut\地区相关\Arealnfo.cs" />
     <Compile Include="TakeOut\商家相关\BusinessInfo.cs" />
+    <Compile Include="TakeOut\用户相关\UserInfoLog.cs" />
     <Compile Include="TakeOut\用户相关\UserAddress.cs" />
     <Compile Include="TakeOut\订单相关\ListOrder.cs" />
     <Compile Include="TakeOut\订单相关\OrderParameter.cs" />
