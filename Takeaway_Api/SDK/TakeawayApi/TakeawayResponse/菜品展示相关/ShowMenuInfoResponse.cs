@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
 
 namespace SDK
 {
     public class ShowMenuInfoResponse : BaseResponse
     {
-        public show Showw { get; set; }
+        public List<MenuInfo> Showw { get; set; }
     }
     public class show
     {

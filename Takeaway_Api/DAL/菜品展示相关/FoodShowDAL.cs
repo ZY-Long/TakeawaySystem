@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SDK;
+using Model;
 
 namespace DAL
 {
@@ -18,7 +19,7 @@ namespace DAL
         /// <param name="Name">菜品名</param>
         /// <param name="TypeId">菜品类型</param>
         /// <returns></returns>
-        public show Show(int currPage,  int TypeId, string Name = null)
+        public List<MenuInfo> Show(int currPage,  int TypeId, string Name = "")
         {
             
 
@@ -41,22 +42,25 @@ namespace DAL
 
             //反馈
             var readr = comm.ExecuteReader();
-            show show = new show();
+            
+            List<MenuInfo> list = new List<MenuInfo>();
             while (readr.Read())
             {
-                
-                show.currPage =int.Parse( readr["currPage"].ToString());
-                show.Name = readr["currPage"].ToString();
-                show.TypeId = int.Parse(readr["TypeId"].ToString());
+                MenuInfo menuInfo = new MenuInfo();
+                menuInfo.Id = int.Parse(readr["Id"].ToString());
+                menuInfo.Name = readr["Name"].ToString();
+                menuInfo.Img = readr["Img"].ToString();
+                menuInfo.Price = Convert.ToDecimal(readr["Price"]);
+                list.Add(menuInfo);
             }
-
+            
             //关闭数据库
             if (conn.State == System.Data.ConnectionState.Open)
             {
                 conn.Close();
             }
             
-            return show;
+            return list;
         }
     }
 }

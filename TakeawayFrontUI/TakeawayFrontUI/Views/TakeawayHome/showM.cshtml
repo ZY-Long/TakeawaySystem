@@ -2,291 +2,295 @@
 @{
     ViewBag.Title = "showM";
 }
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 
 
-        <section class="breadcrumbs-custom">
-            <div class="parallax-container" data-parallax-img="images/bg-about-2.jpg">
-                <div class="breadcrumbs-custom-body parallax-content context-dark">
-                    <div class="container">
-                        <h2 class="text-transform-capitalize breadcrumbs-custom-title">Shop</h2>
-                        <h5 class="breadcrumbs-custom-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius <br class="d-none d-md-block">mod tempor incididunt ut labore et dolore magna aliqua.</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="breadcrumbs-custom-footer">
-                <div class="container">
-                    <ul class="breadcrumbs-custom-path">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active">Shop</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        <!-- Section Shop-->
-        <section class="section section-xxl bg-default text-md-left">
+<section class="breadcrumbs-custom">
+    <div class="parallax-container" data-parallax-img="images/bg-about-2.jpg">
+        <div class="breadcrumbs-custom-body parallax-content context-dark">
             <div class="container">
-                <div class="row row-50">
-                    <div class="col-lg-4 col-xl-3">
-                        <div class="aside row row-30 row-md-50 justify-content-md-between">
-                            <div class="aside-item col-12">
-                                <h6 class="aside-title">Filter by Price</h6>
-                                <!-- RD Range-->
-                                <div class="rd-range" data-min="0" data-max="999" data-min-diff="100" data-start="[13, 235]" data-step="1" data-tooltip="false" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2"></div>
-                                <div class="group-xs group-justify">
-                                    <div>
-                                        <button class="button button-sm button-primary button-zakaria" type="button">Filter</button>
-                                    </div>
-                                    <div>
-                                        <div class="rd-range-wrap">
-                                            <div class="rd-range-title">Price:</div>
-                                            <div class="rd-range-form-wrap">
-                                                <span>$</span>
-                                                <input class="rd-range-input rd-range-input-value-1" type="text" name="value-1">
-                                            </div>
-                                            <div class="rd-range-divider"></div>
-                                            <div class="rd-range-form-wrap">
-                                                <span>$</span>
-                                                <input class="rd-range-input rd-range-input-value-2" type="text" name="value-2">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                <h2 class="text-transform-capitalize breadcrumbs-custom-title">Shop</h2>
+                <h5 class="breadcrumbs-custom-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius <br class="d-none d-md-block">mod tempor incididunt ut labore et dolore magna aliqua.</h5>
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumbs-custom-footer">
+        <div class="container">
+            <ul class="breadcrumbs-custom-path">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Shop</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Section Shop-->
+<section class="section section-xxl bg-default text-md-left">
+    <div class="container">
+        <div class="row row-50">
+            <div class="col-lg-4 col-xl-3">
+                <div class="aside row row-30 row-md-50 justify-content-md-between">
+                    <div class="aside-item col-12">
+                        <h6 class="aside-title">Filter by Price</h6>
+                        <!-- RD Range-->
+                        <div class="rd-range" data-min="0" data-max="999" data-min-diff="100" data-start="[13, 235]" data-step="1" data-tooltip="false" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2"></div>
+                        <div class="group-xs group-justify">
+                            <div>
+                                <button class="button button-sm button-primary button-zakaria" type="button">Filter</button>
                             </div>
-                            <div class="aside-item col-sm-6 col-md-5 col-lg-12">
-                                <h6 class="aside-title">Categories</h6>
-                                <ul class="list-shop-filter">
-                                    <li>
-                                        <label class="radio-inline">
-                                            <input id="Radio1" type="radio" value="radio-1" name="c" checked="checked"/>全部
-                                        </label><span class="list-shop-filter-number">(18)</span>
-                                    </li>
-                                    <li>
-                                        <label class="radio-inline">
-                                            <input id="Radio2" type="radio" value="radio-1" name="c"/>菜品
-                                        </label><span class="list-shop-filter-number">(9)</span>
-                                    </li>
-                                    <li>
-                                        <label class="radio-inline">
-                                            <input id="Radio3" type="radio" value="radio-1" name="c" />酒水
-                                        </label><span class="list-shop-filter-number">(5)</span>
-                                    </li>
-                                    <li>
-                                        <label class="radio-inline">
-                                            <input id="Radio4" type="radio" value="radio-1" name="c" />套餐
-                                        </label><span class="list-shop-filter-number">(8)</span>
-                                    </li>
-                                </ul>
-                                <!-- RD Search Form-->
-                                <form class="rd-search form-search" action="search-results.html" method="GET">
-                                    <div class="form-wrap">
-                                        <input class="form-input" id="search-form" type="text" name="s" autocomplete="off">
-                                        <label class="form-label" for="search-form">输入查询菜品</label>
-
-
-                                        <button class="button-search fl-bigmug-line-search74" type="button" onclick="inquire()"></button>
+                            <div>
+                                <div class="rd-range-wrap">
+                                    <div class="rd-range-title">Price:</div>
+                                    <div class="rd-range-form-wrap">
+                                        <span>$</span>
+                                        <input class="rd-range-input rd-range-input-value-1" type="text" name="value-1">
                                     </div>
-                                </form>
-                            </div>
-                            <div class="aside-item col-sm-6 col-lg-12">
-                                <h6 class="aside-title">热门商品</h6>
-                                <div class="row row-10 row-lg-20 gutters-10">
-                                    <div class="col-4 col-sm-6 col-md-12">
-                                        <!-- Product Minimal-->
-                                        <article class="product-minimal">
-                                            <div class="unit unit-spacing-sm flex-column flex-md-row align-items-center">
-                                                <div class="unit-left"><a class="product-minimal-figure" href="single-product.html"><img src="~/images/product-mini-1-106x104.jpg" alt="" width="106" height="104" /></a></div>
-                                                <div class="unit-body">
-                                                    <p class="product-minimal-title"><a href="single-product.html">Sparkling Drinks</a></p>
-                                                    <p class="product-minimal-price">$13.00</p>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="col-4 col-sm-6 col-md-12">
-                                        <!-- Product Minimal-->
-                                        <article class="product-minimal">
-                                            <div class="unit unit-spacing-sm flex-column flex-md-row align-items-center">
-                                                <div class="unit-left"><a class="product-minimal-figure" href="single-product.html"><img src="~/images/product-mini-2-106x104.jpg" alt="" width="106" height="104" /></a></div>
-                                                <div class="unit-body">
-                                                    <p class="product-minimal-title"><a href="single-product.html">Tomatoes</a></p>
-                                                    <p class="product-minimal-price">$16.00</p>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="col-4 col-sm-6 col-md-12">
-                                        <!-- Product Minimal-->
-                                        <article class="product-minimal">
-                                            <div class="unit unit-spacing-sm flex-column flex-md-row align-items-center">
-                                                <div class="unit-left"><a class="product-minimal-figure" href="single-product.html"><img src="~/images/product-mini-3-106x104.jpg" alt="" width="106" height="104" /></a></div>
-                                                <div class="unit-body">
-                                                    <p class="product-minimal-title"><a href="single-product.html">Carrots胡萝卜</a></p>
-                                                    <p class="product-minimal-price">$23.00</p>
-                                                </div>
-                                            </div>
-                                        </article>
+                                    <div class="rd-range-divider"></div>
+                                    <div class="rd-range-form-wrap">
+                                        <span>$</span>
+                                        <input class="rd-range-input rd-range-input-value-2" type="text" name="value-2">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-xl-9">
-                        <div class="product-top-panel group-md">
-                            <p class="product-top-panel-title">Showing 1–12 of 28 results</p>
-                            <div>
-                                <div class="group-sm group-middle">
-                                    <div class="product-top-panel-sorting">
-                                        <select>
-                                            <option value="1">Sort by newness</option>
-                                            <option value="2">Sort by popularity</option>
-                                            <option value="3">Sort by alphabet</option>
-                                        </select>
-                                    </div>
-                                    <div class="product-view-toggle"><a class="mdi mdi-apps product-view-link product-view-grid active" href="grid-shop.html"></a><a class="mdi mdi-format-list-bulleted product-view-link product-view-list" href="#"></a></div>
-                                </div>
+                    <div class="aside-item col-sm-6 col-md-5 col-lg-12">
+                        <h6 class="aside-title">Categories</h6>
+                        <ul class="list-shop-filter">
+                            <li>
+                                <label class="radio-inline">
+                                    <input id="Radio1" type="radio" value="radio-1" name="c" checked="checked" />全部
+                                </label><span class="list-shop-filter-number">(18)</span>
+                            </li>
+                            <li>
+                                <label class="radio-inline">
+                                    <input id="Radio2" type="radio" value="radio-1" name="c" />菜品
+                                </label><span class="list-shop-filter-number">(9)</span>
+                            </li>
+                            <li>
+                                <label class="radio-inline">
+                                    <input id="Radio3" type="radio" value="radio-1" name="c" />酒水
+                                </label><span class="list-shop-filter-number">(5)</span>
+                            </li>
+                            <li>
+                                <label class="radio-inline">
+                                    <input id="Radio4" type="radio" value="radio-1" name="c" />套餐
+                                </label><span class="list-shop-filter-number">(8)</span>
+                            </li>
+                        </ul>
+                        <!-- RD Search Form-->
+                        <form class="rd-search form-search" action="search-results.html" method="GET">
+                            <div class="form-wrap">
+                                <input class="form-input" id="search-form" type="text" name="s" autocomplete="off">
+                                <label class="form-label" for="search-form">输入查询菜品</label>
+
+
+                                <button class="button-search fl-bigmug-line-search74" type="button" onclick="inquire()"></button>
                             </div>
-                        </div>
-                        <div class="row row-30 row-lg-50" >
-                            @*<div class="col-sm-6 col-md-4 col-lg-6 col-xl-4">
-                                <!-- Product-->
-                                <article class="product">
-                                    <div class="product-body">
-                                        <div class="product-figure">
-                                            <img src="~/images/product-1-196x134.png" alt="" width="196" height="134" />
+                        </form>
+                    </div>
+                    <div class="aside-item col-sm-6 col-lg-12">
+                        <h6 class="aside-title">热门商品</h6>
+                        <div class="row row-10 row-lg-20 gutters-10">
+                            <div class="col-4 col-sm-6 col-md-12">
+                                <!-- Product Minimal-->
+                                <article class="product-minimal">
+                                    <div class="unit unit-spacing-sm flex-column flex-md-row align-items-center">
+                                        <div class="unit-left"><a class="product-minimal-figure" href="single-product.html"><img src="~/images/product-mini-1-106x104.jpg" alt="" width="106" height="104" /></a></div>
+                                        <div class="unit-body">
+                                            <p class="product-minimal-title"><a href="single-product.html">Sparkling Drinks</a></p>
+                                            <p class="product-minimal-price">$13.00</p>
                                         </div>
-                                        <h5 class="product-title"><a href="single-product.html">Carrots哇撒大</a></h5>
-                                        <div class="product-price-wrap">
-                                            <div class="product-price product-price-old">$30.00</div>
-                                            <div class="product-price">$23.00</div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="col-4 col-sm-6 col-md-12">
+                                <!-- Product Minimal-->
+                                <article class="product-minimal">
+                                    <div class="unit unit-spacing-sm flex-column flex-md-row align-items-center">
+                                        <div class="unit-left"><a class="product-minimal-figure" href="single-product.html"><img src="~/images/product-mini-2-106x104.jpg" alt="" width="106" height="104" /></a></div>
+                                        <div class="unit-body">
+                                            <p class="product-minimal-title"><a href="single-product.html">Tomatoes</a></p>
+                                            <p class="product-minimal-price">$16.00</p>
                                         </div>
-                                    </div><span class="product-badge product-badge-sale">Sale</span>
-                                    <div class="product-button-wrap">
-                                        <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="single-product.html"></a></div>
-                                        <div class="product-button"><a class="button button-primary button-zakaria fl-bigmug-line-shopping202" href="#"></a></div>
                                     </div>
                                 </article>
                             </div>
-                            <div class="col-sm-6 col-md-4 col-lg-6 col-xl-4">
-                                <!-- Product-->
-                                <article class="product">
-                                    <div class="product-body">
-                                        <div class="product-figure">
-                                            <img src="~/images/product-2-155x145.png" alt="" width="155" height="145" />
+                            <div class="col-4 col-sm-6 col-md-12">
+                                <!-- Product Minimal-->
+                                <article class="product-minimal">
+                                    <div class="unit unit-spacing-sm flex-column flex-md-row align-items-center">
+                                        <div class="unit-left"><a class="product-minimal-figure" href="single-product.html"><img src="~/images/product-mini-3-106x104.jpg" alt="" width="106" height="104" /></a></div>
+                                        <div class="unit-body">
+                                            <p class="product-minimal-title"><a href="single-product.html">Carrots胡萝卜</a></p>
+                                            <p class="product-minimal-price">$23.00</p>
                                         </div>
-                                        <h5 class="product-title"><a href="single-product.html">Sparkling drinks</a></h5>
-                                        <div class="product-price-wrap">
-                                            <div class="product-price">$13.00</div>
-                                        </div>
-                                    </div><span class="product-badge product-badge-new">New</span>
-                                    <div class="product-button-wrap">
-                                        <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="single-product.html"></a></div>
-                                        <div class="product-button"><a class="button button-primary button-zakaria fl-bigmug-line-shopping202" href="#"></a></div>
                                     </div>
                                 </article>
-                            </div>*@
-
-
-                            
-                            
-                            <div id="div11" class="row row-30 row-lg-50">
-                                <div class="col-sm-6 col-md-4 col-lg-6 col-xl-4">
-                                    <!-- Product-->
-                                    <article class="product">
-                                        <div class="product-body">
-                                            <div class="product-figure">
-                                                <img src="~/images/product-8-145x136.png" alt="" width="145" height="136" />
-                                            </div>
-                                            <h5 class="product-title"><a href="single-product.html">Melon啥</a></h5>
-                                            <div class="product-price-wrap">
-                                                <div class="product-price">$16.99</div>
-                                            </div>
-                                        </div>
-                                        <div class="product-button-wrap">
-                                            <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="single-product.html"></a></div>
-                                            <div class="product-button"><a class="button button-primary button-zakaria fl-bigmug-line-shopping202" href="#" onclick="DIAO()"></a></div>
-                                        </div>
-                                    </article>
-                                </div>
                             </div>
-                        <div class="pagination-wrap">
-                            <!-- Bootstrap Pagination-->
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination">
-                                    <li class="page-item page-item-control disabled"><a class="page-link" href="#" aria-label="Previous"><span class="icon" aria-hidden="true"></span></a></li>
-                                    <li class="page-item active"><span class="page-link"><input id="page" type="text" style="width:50px" placeholder="页数"/></span></li>
-
-                                </ul>
-                            </nav>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
-        </section>
+            <div class="col-lg-8 col-xl-9">
+                <div class="product-top-panel group-md">
+                    <p class="product-top-panel-title">Showing 1–12 of 28 results</p>
+                    <div>
+                        <div class="group-sm group-middle">
+                            <div class="product-top-panel-sorting">
+                                <select>
+                                    <option value="1">Sort by newness</option>
+                                    <option value="2">Sort by popularity</option>
+                                    <option value="3">Sort by alphabet</option>
+                                </select>
+                            </div>
+                            <div class="product-view-toggle"><a class="mdi mdi-apps product-view-link product-view-grid active" href="grid-shop.html"></a><a class="mdi mdi-format-list-bulleted product-view-link product-view-list" href="#"></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-30 row-lg-50">
+                    @*<div class="col-sm-6 col-md-4 col-lg-6 col-xl-4">
+                            <!-- Product-->
+                            <article class="product">
+                                <div class="product-body">
+                                    <div class="product-figure">
+                                        <img src="~/images/product-1-196x134.png" alt="" width="196" height="134" />
+                                    </div>
+                                    <h5 class="product-title"><a href="single-product.html">Carrots哇撒大</a></h5>
+                                    <div class="product-price-wrap">
+                                        <div class="product-price product-price-old">$30.00</div>
+                                        <div class="product-price">$23.00</div>
+                                    </div>
+                                </div><span class="product-badge product-badge-sale">Sale</span>
+                                <div class="product-button-wrap">
+                                    <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="single-product.html"></a></div>
+                                    <div class="product-button"><a class="button button-primary button-zakaria fl-bigmug-line-shopping202" href="#"></a></div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-6 col-xl-4">
+                            <!-- Product-->
+                            <article class="product">
+                                <div class="product-body">
+                                    <div class="product-figure">
+                                        <img src="~/images/product-2-155x145.png" alt="" width="155" height="145" />
+                                    </div>
+                                    <h5 class="product-title"><a href="single-product.html">Sparkling drinks</a></h5>
+                                    <div class="product-price-wrap">
+                                        <div class="product-price">$13.00</div>
+                                    </div>
+                                </div><span class="product-badge product-badge-new">New</span>
+                                <div class="product-button-wrap">
+                                    <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="single-product.html"></a></div>
+                                    <div class="product-button"><a class="button button-primary button-zakaria fl-bigmug-line-shopping202" href="#"></a></div>
+                                </div>
+                            </article>
+                        </div>*@
 
-        <script>
-            
-            function inquire() {
-            //页数
-            var currPage = $("#page").val();
-            //菜名
-            var Name = $("#search-form").val();
-            //菜品类型:0代表全部，1代表菜，2代表酒水，3代表套餐
-            var TypeId = 0;
-            if ($("Radio1").attr("checked")) {
-                TypeId = 0;
+
+
+
+                    <div id="div11" class="row row-30 row-lg-50">
+                        @*<div class="col-sm-6 col-md-4 col-lg-6 col-xl-4">
+                            <!-- Product-->
+                            <article class="product">
+                                <div class="product-body">
+                                    <div class="product-figure">
+                                        <img src="~/images/product-8-145x136.png" alt="" width="145" height="136" />
+                                    </div>
+                                    <h5 class="product-title"><a href="single-product.html">Melon啥</a></h5>
+                                    <div class="product-price-wrap">
+                                        <div class="product-price">$16.99</div>
+                                    </div>
+                                </div>
+                                <div class="product-button-wrap">
+                                    <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="single-product.html"></a></div>
+                                    <div class="product-button"><a class="button button-primary button-zakaria fl-bigmug-line-shopping202" href="#" onclick="DIAO()"></a></div>
+                                </div>
+                            </article>
+                        *@
+                    </div>
+                </div>
+                <div class="pagination-wrap">
+                    <!-- Bootstrap Pagination-->
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li class="page-item page-item-control disabled"><a class="page-link" href="#" aria-label="Previous"><span class="icon" aria-hidden="true"></span></a></li>
+                            <li class="page-item active"><span class="page-link">页数：<input id="page" type="text" style="width:50px" placeholder="页数" value="1" /></span></li>
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<script>
+
+    function inquire() {
+        var currPage = 1;
+
+        //页数
+        currPage = $("#page").val();
+        //菜名
+        var Name = $("#search-form").val();
+        //菜品类型:0代表全部，1代表菜，2代表酒水，3代表套餐
+        var TypeId = 0;
+        if ($("Radio1").attr("checked")) {
+            TypeId = 0;
+        }
+        if ($("Radio2").attr("checked")) {
+            TypeId = 1;
+        }
+        if ($("Radio3").attr("checked")) {
+            TypeId = 2;
+        }
+        if ($("Radio4").attr("checked")) {
+            TypeId = 3;
+        }
+        $.ajax({
+            url: "/TakeawayHome/ShowM",
+            type: "POST",
+            dataType: "json",
+            data: {
+                currPage: currPage,
+                Name: Name,
+                TypeId: TypeId
+            },
+            success: function (res) {
+                var dav = "";
+                $(res.Showw).each(function () {
+                    var div1 = "<div class='col-sm-6 col-md-4 col-lg-6 col-xl-4'>"
+                        + "<article class='product'>"
+                        + "<div class='product-body'>"
+                        + "<div class='product-figure'>"
+                        + "<img src='" + this.Img + "' alt='' width='145' height='136' />"
+                        + "</div>"
+                        + "<h5 class='product-title'><a href='single-product.html'>" + this.Name + "</a></h5>"
+                        + "<div class='product-price-wrap'>"
+                        + "<div class='product-price'>" + this.Price + "</div>"
+                        + "</div>"
+                        + "</div>"
+                        + "<div class='product-button-wrap'>"
+                        + "<div class='product-button'><a class='button button-secondary button-zakaria fl-bigmug-line-search74' href='single-product.html'></a></div>"
+                        + "<div class='product-button'><a class='button button-primary button-zakaria fl-bigmug-line-shopping202' href='#' onclick='AddCart(" + this.DetailsId + ")'></a></div>"
+                        + "</div>"
+                        + "</article>"
+                        + "</div>"
+                    dav += div1;
+                });
+                $("#div11").append(dav);
+               
             }
-            if ($("Radio2").attr("checked")) {
-                TypeId = 1;
-            }
-            if ($("Radio3").attr("checked")) {
-                TypeId = 2;
-            }
-            if ($("Radio4").attr("checked")) {
-                TypeId = 3;
-            }
-                $.ajax({
-                    url: "/TakeawayHome/ShowM",
-                    type: "POST",
-                    dataType: "json",
-                    data: {
-                        currPage: currPage,
-                        Name: Name,
-                        TypeId:TypeId 
-                    },
-                    success: function (res) {
-                        var dav = "";
-                        $(res.showM).each(function () {
-                            var div1="<div class='col-sm-6 col-md-4 col-lg-6 col-xl-4'>"
-                                +"<article class='product'>"
-                                    +"<div class='product-body'>"
-                                + "<div class='product-figure'>"
-                                + "<img src='" + this.Img + "' alt='' width='145' height='136' />"
-                                + "</div>"
-                                + "<h5 class='product-title'><a href='single-product.html'>" + this.Name + "</a></h5>"
-                                + "<div class='product-price-wrap'>"
-                                + "<div class='product-price'>" + this.Price + "</div>"
-                                        +"</div>"
-                                    +"</div>"
-                                    +"<div class='product-button-wrap'>"
-                                        +"<div class='product-button'><a class='button button-secondary button-zakaria fl-bigmug-line-search74' href='single-product.html'></a></div>"
-                                        +"<div class='product-button'><a class='button button-primary button-zakaria fl-bigmug-line-shopping202' href='#' onclick='AddCart(" + this.DetailsId + ")'></a></div>"
-                                    +"</div>"
-                                +"</article>"
-                                + "</div>"
-                            dav += div1;
-                        });
-                        $("#div11").append(dav);
-                    }
-                })
-            }
-            $(document).ready(function () {
-                inquire();
-            })
+        })
+    }
+    $(document).ready(function () {
+        inquire();
+    })
     function AddCart(id) {
-        
+
         var userId = $("#UserId").val();
         $.ajax({
             url: "/AddCartDetails/AddCartDetailInfos",
@@ -295,7 +299,7 @@
             data: {
                 DetailsId: id,
                 UserId: userId,
-                Count:1
+                Count: 1
             },
             success: function (res) {
                 if (res > 0) {
@@ -306,8 +310,8 @@
                 }
             }
         })
-            }   
-        </script>
+    }
+</script>
 
 
 
@@ -315,21 +319,21 @@
 
 
 
-        @*<div class="col-sm-6 col-md-4 col-lg-6 col-xl-4">
-            <!-- Product-->
-            <article class="product">
-                <div class="product-body">
-                    <div class="product-figure">
-                        <img src="~/images/product-8-145x136.png" alt="" width="145" height="136" />
-                    </div>
-                    <h5 class="product-title"><a href="single-product.html">Melon啥</a></h5>
-                    <div class="product-price-wrap">
-                        <div class="product-price">$16.99</div>
-                    </div>
+@*<div class="col-sm-6 col-md-4 col-lg-6 col-xl-4">
+        <!-- Product-->
+        <article class="product">
+            <div class="product-body">
+                <div class="product-figure">
+                    <img src="~/images/product-8-145x136.png" alt="" width="145" height="136" />
                 </div>
-                <div class="product-button-wrap">
-                    <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="single-product.html"></a></div>
-                    <div class="product-button"><a class="button button-primary button-zakaria fl-bigmug-line-shopping202" href="#"></a></div>
+                <h5 class="product-title"><a href="single-product.html">Melon啥</a></h5>
+                <div class="product-price-wrap">
+                    <div class="product-price">$16.99</div>
                 </div>
-            </article>
-        </div>*@
+            </div>
+            <div class="product-button-wrap">
+                <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="single-product.html"></a></div>
+                <div class="product-button"><a class="button button-primary button-zakaria fl-bigmug-line-shopping202" href="#"></a></div>
+            </div>
+        </article>
+    </div>*@
