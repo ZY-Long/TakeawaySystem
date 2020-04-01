@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using Model;
+using SDK;
 
 namespace DAL
 {
@@ -79,14 +80,14 @@ namespace DAL
             }
         }
         //用户登陆
-        public UserInfoLog DeLogin(UserInfoLog info)
+        public UserInfoDto DeLogin(UserInfoLog info)
         {
             try
             {
                 using (IDbConnection conn = new SqlConnection(connStr))
                 {
                     string sql = "select PhoneNumber ,Id from UserInfo where PhoneNumber=@phonenumber and Password=@password";
-                    var userLog = conn.QueryFirstOrDefault<UserInfoLog>(sql, new { phonenumber = info.PhoneNumber, password = info.PassWord });
+                    var userLog = conn.QueryFirstOrDefault<UserInfoDto>(sql, new { phonenumber = info.PhoneNumber, password = info.PassWord });
                     return userLog;
                 }
             }
