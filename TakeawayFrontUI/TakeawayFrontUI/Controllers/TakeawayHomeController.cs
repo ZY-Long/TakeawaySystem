@@ -22,6 +22,15 @@ namespace TakeawayFrontUI.Controllers
         }
 
         /// <summary>
+        /// 添加地址信息
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Address()
+        {
+            return View();
+        }
+
+        /// <summary>
         /// 菜品展示
         /// </summary>
         /// <returns></returns>

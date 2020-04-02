@@ -38,8 +38,8 @@
     function EditPwd() {
         var NewPwd = jQuery("NewPwd").val();
         var ConfirmPwd = jQuery("ConfirmPwd").val();
-        var id = "";
-
+        var id = jQuery("#UserId").val();
+        alert(id);
         if (NewPwd != ConfirmPwd) {
             alert("两次密码输入不一致");
         }

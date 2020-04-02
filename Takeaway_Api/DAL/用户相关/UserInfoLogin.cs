@@ -22,12 +22,21 @@ namespace DAL
         //用户注册
         public int AddUser(UserInfo user)
         {
-            connection.Open();
+            if (connection.State==ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+           
             var bus = UserInfoLogin.GenerateSalt();
             string sql = $@"insert into UserInfo(NickName,Img,PhoneNumber,Password,Salt,Email,RealName,CreateTime,UpdateTime,CreaterId,UpdaterId) 
-                                 values('{user.NickName}','','{user.PhoneNumber}','{MD5Encrypt32(user.PassWord + "{" + bus + "}")}','{bus}','{user.Email}','{user.RealName}','{DateTime.Now}','{DateTime.Now}','{user.CreaterId}','{user.UpdaterId}')";
+                                 values('{user.NickName}','','{user.PhoneNumber}','{MD5Encrypt32(user.PassWord + bus )}','{bus}','{user.Email}','{user.RealName}','{DateTime.Now}','{DateTime.Now}','{user.CreaterId}','{user.UpdaterId}')";
             SqlCommand command = new SqlCommand(sql, connection);
             var res = command.ExecuteNonQuery();
+
+            if (connection.State==ConnectionState.Open)
+            {
+                connection.Close();
+            }
             return res;
         }
         /// <summary>
@@ -168,17 +177,18 @@ namespace DAL
             return res;
         }
         //修改用户地址
-        public int EditUserInfo(string content,int Areaid,int UserId,int Id)
+        public int EditUserInfo(string content, int Areaid, int UserId, int Id)
         {
             int res = 0;
-            res = bHelper.ExecuteNonQuery("UPDATE dbo.AddressInfo SET Content="+content+" ,Area="+Areaid+" WHERE UserId="+UserId+" AND Id="+Id+")");
+            string sql = "UPDATE dbo.AddressInfo SET Content='" + content + "' ,Area=" + Areaid + " WHERE UserId=" + UserId + " AND Id=" + Id + "";
+            res = bHelper.ExecuteNonQuery(sql);
             return res;
         }
         //显示地址信息
         public List<UserAddress> ShowressInfo(int UserId)
         {
             List<UserAddress> infos = new List<UserAddress>();
-            using (IDbConnection conn=new SqlConnection(connStr))
+            using (IDbConnection conn = new SqlConnection(connStr))
             {
                 infos = conn.Query<UserAddress>("SELECT a.Id,aa.Name,a.Content FROM dbo.AddressInfo AS a JOIN dbo.Arealnfo AS aa ON a.Area = aa.Id WHERE a.UserId = 1  AND a.Sates=1").ToList();
             }
@@ -188,9 +198,13 @@ namespace DAL
         //添加新地址
         public int AddressInfo(AddressInfo info)
         {
-            connection.Open();
-            string sql = $@"insert into AddressInfo(ProvinceId,CityId,AreaId,UserId,Content,States,CreateTime,UpdateTime,CreaterId,UpdaterId)
-            values('{info.ProvinceId}','{info.CityId}','{info.AreaId}','{info.UserId}','{info.Content}','{info.States}','{info.CreateTime}','{info.UpdateTime}','{info.CreaterId}','{info.UpdaterId}')";
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+
+            string sql = $@"insert into AddressInfo(ProvinceId,CityId,Area,UserId,Content,Sates,CreateTime,UpdateTime,CreaterId,UpdaterId)
+            values(1,1,'{info.AreaId}','{info.UserId}','{info.Content}',1,GETDATE(),GETDATE(),1,1)";
             SqlCommand command = new SqlCommand(sql, connection);
             var res = command.ExecuteNonQuery();
             return res;
@@ -206,7 +220,7 @@ namespace DAL
             {
                 infos = conn.Query<UserInfo>("select m.Img,m.Name,cd.ToPrice,cd.Count, cd.CreateTime FROM dbo.CartInfo AS c JOIN dbo.CartDetails AS cd ON c.Id = cd.CartId JOIN dbo.BusinessInfo AS b ON b.Id = c.BusinessInfo JOIN dbo.UserInfo AS u ON c.UserId = u.Id JOIN dbo.MenuInfo AS m ON m.Id = cd.DetailsId WHERE c.UserId =" + UserId + " ").ToList();
             }
-                return infos;
+            return infos;
         }
 
     }

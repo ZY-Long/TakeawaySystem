@@ -104,10 +104,10 @@ namespace Api.Controllers
 
         //添加新地址
         [HttpPost]
-        public AdLoctionResponse AddressInfo(AdLoctionRequest request, AddressInfo info)
+        public AdLoctionResponse AddressInfo(AdLoctionRequest request)
         {
             AdLoctionResponse response = new AdLoctionResponse();
-            response.User=Convert.ToInt32(BaseBLL<UserInfobll>.Instance.AddressInfo(info));
+            response.User=Convert.ToInt32(BaseBLL<UserInfobll>.Instance.AddressInfo(request.info));
             response.State = true; return response;
              
         }

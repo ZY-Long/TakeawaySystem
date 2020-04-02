@@ -29,10 +29,10 @@
     </style>
 </head>
 <body>
-    
+
     <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="~/images/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <div class="preloader">
-        
+
         <div class="preloader-body">
             <div class="cssload-bell">
                 <div class="cssload-circle">
@@ -101,7 +101,7 @@
                                             <h6 class="cart-inline-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">总价：</font></font><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">42美元</font></font></span></h6>
                                         </div>
                                         <div class="cart-inline-body">
-                                           @* 显示购物车信息 *@
+                                            @* 显示购物车信息 *@
                                             <div class="cart-inline-item">
                                                 <div class="unit unit-spacing-sm align-items-center">
                                                     <div class="unit-left"><a class="cart-inline-figure" href="/single-product.html"><img src="/images/product-mini-1-106x104.jpg" alt="" width="106" height="104"></a></div>
@@ -136,20 +136,24 @@
                                             </div>
                                         </div>
                                         <div class="cart-inline-footer">
-                                            <div class="group-sm"><a class="button button-default-outline-2 button-zakaria" href="#">
-                                                <font style="vertical-align: inherit;">结帐</font></font></a></div>
+                                            <div class="group-sm">
+                                                <a class="button button-default-outline-2 button-zakaria" href="#">
+                                                    <font style="vertical-align: inherit;">结帐</font></font>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="rd-navbar-fixed-element-2 select-inline" style="margin-top:20px">
-                                    <select data-dropdown-class="select-inline-dropdown" data-select2-id="1" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true" >
-                                        <option value="en" data-select2-id="3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">恩</font></font></option>
-                                        <option value="fr"><font style="vertical-align: inherit;"><font style="vertical-align: inherit; width:50px"><a>账户</a></font></font></option>
-                                        <option value="es"><font style="vertical-align: inherit;"><font style="vertical-align: inherit; width:50px"><a href="">地址</a></font></font></option>
+                                    <input type="hidden" id="Id" value="@Session["Id"]">
+                                    <input type="hidden" id="PhoneNumber" value="@Session["PhoneNumber"]">
+                                    <select data-dropdown-class="select-inline-dropdown" data-select2-id="1" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
+                                        <option value="en" data-select2-id="3">..</option>
+
                                     </select>
                                     <span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="2" style="width: 41px;">
-                                    
-                                    <span class="dropdown-wrapper" aria-hidden="true">  </span>
+
+                                        <span class="dropdown-wrapper" aria-hidden="true">  </span>
                                 </div>
                             </div>
                         </div>
@@ -212,8 +216,16 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="rd-nav-item">
-                                        <a class="rd-nav-link" href="contact-us.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联系我们</font></font></a>
+                                    <li class="rd-nav-item rd-navbar--has-dropdown rd-navbar-submenu">
+                                        <a class="rd-nav-link" href="grid-shop.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">账户</font></font></a><span class="rd-navbar-submenu-toggle"></span>
+                                        <ul class="rd-menu rd-navbar-dropdown">
+                                            <li class="rd-dropdown-item">
+                                                <a id="UserInfo" class="rd-dropdown-link"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">账户信息</font></font></a>
+                                            </li>
+                                            <li class="rd-dropdown-item">
+                                                <a id="AddressView" class="rd-dropdown-link"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">地址信息</font></font></a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </div>
@@ -314,10 +326,10 @@
         </footer>
     </div>
     <div class="snackbars" id="form-output-global"></div>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/js/core.min.js"></script>
     <script src="~/js/script.js"></script>
     <script src="~/js/bootstrapValidator.js"></script>
-
 
 </body>
 </html>
