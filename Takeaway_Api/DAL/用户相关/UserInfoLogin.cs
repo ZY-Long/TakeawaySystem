@@ -190,7 +190,7 @@ namespace DAL
             List<UserAddress> infos = new List<UserAddress>();
             using (IDbConnection conn = new SqlConnection(connStr))
             {
-                infos = conn.Query<UserAddress>("SELECT a.Id,aa.Name,a.Content FROM dbo.AddressInfo AS a JOIN dbo.Arealnfo AS aa ON a.Area = aa.Id WHERE a.UserId = 1  AND a.Sates=1").ToList();
+                infos = conn.Query<UserAddress>("SELECT a.Id,aa.Name,a.Content FROM dbo.AddressInfo AS a JOIN dbo.Arealnfo AS aa ON a.Area = aa.Id WHERE a.UserId = "+UserId+"  AND a.Sates=1").ToList();
             }
             return infos;
         }

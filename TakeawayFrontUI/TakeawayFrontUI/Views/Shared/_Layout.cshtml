@@ -148,7 +148,7 @@
                                     <input type="hidden" id="Id" value="@Session["Id"]">
                                     <input type="hidden" id="PhoneNumber" value="@Session["PhoneNumber"]">
                                     <select data-dropdown-class="select-inline-dropdown" data-select2-id="1" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
-                                        <option value="en" data-select2-id="3">..</option>
+                                        <option value="en" data-select2-id="3">@Session["PhoneNumber"]</option>
 
                                     </select>
                                     <span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="2" style="width: 41px;">
@@ -220,10 +220,10 @@
                                         <a class="rd-nav-link" href="grid-shop.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">账户</font></font></a><span class="rd-navbar-submenu-toggle"></span>
                                         <ul class="rd-menu rd-navbar-dropdown">
                                             <li class="rd-dropdown-item">
-                                                <a id="UserInfo" class="rd-dropdown-link"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">账户信息</font></font></a>
+                                                <a id="UserInfo" class="rd-dropdown-link" href="/TakeawayHome/UserInfo"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">账户信息</font></font></a>
                                             </li>
                                             <li class="rd-dropdown-item">
-                                                <a id="AddressView" class="rd-dropdown-link"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">地址信息</font></font></a>
+                                                <a id="AddressView" class="rd-dropdown-link" href="/TakeawayHome/AddressView"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">地址信息</font></font></a>
                                             </li>
                                         </ul>
                                     </li>

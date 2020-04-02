@@ -26,18 +26,18 @@
     $(document).ready(
         function () {
             GetAddress();
-            getCookie();
         }
     );
 
+    //获取用户所有的地址信息
     function GetAddress() {
-        var UserId = 1;
+         var Id = jQuery("#Id").val();
         
         jQuery.ajax({
             url: "/User/ShowressInfo",
             data:
             {
-                UserId: 1
+                UserId: Id
             },
             dataType: "Json",
             type: "Post",
@@ -66,18 +66,10 @@
         })
     }
 
+    //跳转到修改页面
     function EditAddress(Id) {
         location.href = "/TakeawayHome/EditAddress/?Id=" + Id;
     }
 
-    function getCookie() {
-        var name = "Userid";
-        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
-        if (arr != null) {
-            alert(unescape(arr[2]));
-        } else {
-            return null;
-        }
-    }
 </script>
 
