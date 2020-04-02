@@ -151,7 +151,7 @@ namespace TakeawayFrontUI.Controllers
             {
                 if (response.userInfos.Id > 0)
                 {
-                    Session["Id"] = response.userInfos;
+                    Session["Id"] = response.userInfos.Id;
                 }
                 if (!string.IsNullOrEmpty(response.userInfos.PhoneNumber))
                 {

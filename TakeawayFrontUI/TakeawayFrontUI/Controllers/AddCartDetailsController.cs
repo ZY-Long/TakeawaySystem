@@ -18,7 +18,8 @@ namespace TakeawayFrontUI.Controllers
         [HttpPost]
         public JsonResult AddCartDetailInfos(AddCartDetailsRequest request)
         {
-            return Json(bll.AddCartDetails(request));
+            AddCartDetailsResponse response = bll.AddCartDetails(request);
+            return Json(response);
         }
        
     }
