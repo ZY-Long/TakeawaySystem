@@ -20,7 +20,7 @@
         </thead>
         
         <tbody id="td">
-
+           
         </tbody>
     </table>
 </div>
@@ -36,33 +36,38 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
+
+         var userId = $("#Id").val();
         $.ajax({
             url: "/ShowCart/GetCart",
             type: "POST",
             dataType: "Json",
             data: {
-                userid: 1
+                userid: userId
             },
             success: function (res) {
                 var op = "";
                 $(res.GetCart).each(function () {
 
-                    var tp ="<tr>"
-                        +"<td><input type='checkbox' class='selectOne' /></td>"
-                        + "<td class='imgbackground'><img src='"+this.Img+"' width='100' height='100' /></td>"
+                    var tp = "<tr>"
+                        + "<td><input type='checkbox' class='selectOne' /></td>"
+                        + "<td class='imgbackground'><img src='" + this.Img + "' width='100' height='100' /></td>"
                         + "<td>" + this.Name + "</td>"
                         + "<td>" + this.Price + "</td>"
-                        +"<td>"
+                        + "<td>"
                         + "<button onclick='reduce(this)'>-</button>"
-                        + "<input type='text' size='1' readonly='true' value='"+this.Count+"' />"
-                        +"<button onclick='plus(this)'>+</button>"
+                        + "<input type='text' size='1' readonly='true' value='" + this.Count + "' />"
+                        + "<button onclick='plus(this)'>+</button>"
                         + "</td>"
                         + "<td class='shopCount'>" + this.ToPrice + "</td>"
-                        + "<td><input type='button' value=’删除 ' onclick='deleteCatr(" + this
+                        + "<td><input type='button' value='删除 ' onclick='deleteCatr(" + this
                             .Id + ")' /></td>"
-                        +"</tr>"
+                        + "</tr>";
+                     console.log(tp);
                     op += tp;
+                   
                 })
+                
                 $("#td").append(op);
             }
         });

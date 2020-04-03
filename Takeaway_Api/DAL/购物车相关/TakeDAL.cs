@@ -69,22 +69,34 @@ namespace DAL
         /// <returns></returns>
         public List<CartInfos> GetCartInfos(int userid)
         {
-            if (connection.State==System.Data.ConnectionState.Closed)
+            try
             {
-                connection.Open();
-            }
-            
-            string sql = $@"select c.Id,  m.Img,m.Name,m.Price,c.Count,c.ToPrice from CartDetails as c
+                if (connection.State == System.Data.ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
+
+                string sql = $@"select c.Id,  m.Img,m.Name,m.Price,c.Count,c.ToPrice from CartDetails as c
                         join CartInfo as a on c.CartId=a.Id
                         join MenuInfo as m on c.DetailsId =m.Id where c.[Sates]=1 and a.UserId={userid} order by c.Id desc";
-            SqlCommand command = new SqlCommand(sql,connection);
-            var reader = command.ExecuteReader();
-            var list = reader.DataReaderToList<CartInfos>();
-            if (connection.State == System.Data.ConnectionState.Open)
-            {
-                connection.Close();
+                SqlCommand command = new SqlCommand(sql, connection);
+                var reader = command.ExecuteReader();
+                
+                var list = reader.DataReaderToList<CartInfos>();
+
+                reader.Close();
+                if (connection.State == System.Data.ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+                return list;
             }
-            return list;
+            catch (Exception ex)
+            {
+                string a = ex.Message;
+                throw;
+            }
+          
         }
         /// <summary>
         /// 口味下拉框
