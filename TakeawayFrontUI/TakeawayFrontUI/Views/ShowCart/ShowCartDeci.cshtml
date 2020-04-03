@@ -2,6 +2,8 @@
 @{
     ViewBag.Title = "ShowCartDeci";
 }
+
+
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 
 <div id="info-table">
@@ -9,19 +11,17 @@
     <table id="mytable" width="1200" align="center">
         <thead>
             <tr>
-            <th><input type="checkbox" id="allCheck" onclick="selectAll()" />全选</th>
-            <td>菜品图片</td>
-            <td>菜品名称</td>
-            <td>菜品单价</td>
-            <td>菜品数量</td>
-            <td>菜品小计</td>
-            <td>操作</td>
-        </tr>
+                <th><input type="checkbox" id="allCheck" onclick="selectAll()" />全选</th>
+                <td>菜品图片</td>
+                <td>菜品名称</td>
+                <td>菜品单价</td>
+                <td>菜品数量</td>
+                <td>菜品小计</td>
+                <td>操作</td>
+            </tr>
         </thead>
-        
-        <tbody id="td">
 
-        </tbody>
+        <tbody id="td"></tbody>
     </table>
 </div>
 <div id="info-input">
@@ -82,7 +82,7 @@
         nowtable.removeChild(nowtr);
         // 总价
         allShopPriceTotal();
-        
+
     }
     // 批量删除
     function selectDelete() {
@@ -95,7 +95,7 @@
         }
         // 总价
         allShopPriceTotal();
-       
+
     }
 
     // 减少数量
@@ -110,7 +110,7 @@
         singleSubTotal(singelSumElement);
         // 总价
         allShopPriceTotal();
-       
+
     }
     // 增加数量
     function plus(obj) {
@@ -121,7 +121,7 @@
         singleSubTotal(singelSumElement);
         // 总价
         allShopPriceTotal();
-        
+
     }
     // 初始化全部商品小计
     function singleAllSubTotal() {
@@ -162,7 +162,7 @@
         }
     }
     function deleteCatr(id) {
-        
+
         $.ajax({
             url: "/DeleteCart/DeleteCartInfo",
             type: "POST",
@@ -186,10 +186,9 @@
         changeBackground();
         singleAllSubTotal();
         allShopPriceTotal();
-       
+
     }
 </script>
-
 
 
 
