@@ -26,8 +26,6 @@ namespace DAL
         /// <returns></returns>
         public OrderShow GetOrderShow(int UserId, int BusinessId)
         {
-            this.UserId = UserId;
-            this.UserId = BusinessId;
 
             OrderShow order = OrmDBHelper.GetToList<OrderShow>(@"SELECT 
 SUM(cd.ToPrice) AS TotalPrice,
@@ -82,17 +80,7 @@ WHERE c.UserId =" + UserId + " AND c.BusinessInfo=" + BusinessId + " AND c.Sates
         public int GenerateOrder(OrderParameter parameter)
         {
             int res = 0;
-            OrderShow order = GetOrderShow(UserId, BusinessId);
 
-            parameter.OrderId = order.Id;
-            parameter.TotalPrice = order.TotalPrice;
-            parameter.NickName = order.NickName;
-            parameter.Name = order.Name;
-            parameter.PhoneNumber = order.PhoneNumber;
-            parameter.BusinessNumber = order.BusinessNumber;
-            parameter.Merchataddress = order.Merchataddress;
-            parameter.Consignee = parameter.Consignee == "" ? order.NickName : parameter.Consignee;
-            parameter.ActivityId = 1;
 
             using (IDbConnection conn = new SqlConnection() { ConnectionString = "Data Source =.; Initial Catalog = TakeOutDB; Integrated Security = True" })
             {
@@ -100,6 +88,25 @@ WHERE c.UserId =" + UserId + " AND c.BusinessInfo=" + BusinessId + " AND c.Sates
             }
             return res;
         }
+
+        /// <summary>
+        /// 获取用户地址信息
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        public List<OrderAddress> GetOrders(int UserId)
+        {
+            string sql = @"SELECT ad.Id,ad.Content,ae.Name FROM dbo.AddressInfo AS ad
+JOIN dbo.Arealnfo AS ae
+ON ad.Area=ae.Id
+WHERE UserId="+UserId+" AND Sates=1";
+
+            List<OrderAddress> orders = OrmDBHelper.GetToList<OrderAddress>(sql);
+            return orders;
+        }
+
+    
+       
 
     }
 }

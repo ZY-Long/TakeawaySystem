@@ -33,11 +33,25 @@ namespace Api
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public GenerateOrderResponse GenerateOrder(GenerateOrderRequest parameter)
+        public GenerateOrderResponse GenerateOrder(GenerateOrderRequest request)
         {
             GenerateOrderResponse response = new GenerateOrderResponse();
-            int res = BaseBLL<OrderBLL>.Instance.GenerateOrder(parameter.parameter);
+            int res = BaseBLL<OrderBLL>.Instance.GenerateOrder(request.parameter);
             response.State = res > 0 ? true : false;
+            return response;
+        }
+
+        /// <summary>
+        /// 获取用户地址信息
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public GetOrdersResponse GetOrders(GetOrdersRequest request)
+        {
+            GetOrdersResponse response = new GetOrdersResponse();
+            response.addresses= BaseBLL<OrderBLL>.Instance.GetOrders(request.Id);
+            response.State = response.addresses.Count > 0 ? true : false;
             return response;
         }
     }

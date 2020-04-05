@@ -20,10 +20,8 @@
                 <td>操作</td>
             </tr>
         </thead>
-        
-        <tbody id="td">
-           
-        </tbody>
+
+        <tbody id="td"></tbody>
     </table>
 </div>
 <div id="info-input">
@@ -32,14 +30,14 @@
     </div>
     <div class="btorinter-div">
         <button onclick="selectDelete()" class="btdelete">删除所选</button>
-        <button class="btbuy">立即购买</button>
+        <button class="btbuy" onclick="GenerateOrder()">立即购买</button>
     </div>
 </div>
 <script type="text/javascript">
 
     $(document).ready(function () {
 
-         var userId = $("#Id").val();
+        var userId = $("#Id").val();
         $.ajax({
             url: "/ShowCart/GetCart",
             type: "POST",
@@ -65,11 +63,11 @@
                         + "<td><input type='button' value='删除 ' onclick='deleteCatr(" + this
                             .Id + ")' /></td>"
                         + "</tr>";
-                     console.log(tp);
+                    console.log(tp);
                     op += tp;
-                   
+
                 })
-                
+
                 $("#td").append(op);
             }
         });
@@ -155,6 +153,8 @@
             sum += singelSubElement.innerHTML;
         }
         obj.innerHTML = eval(sum);
+        sum = sum.substr(2, 4);
+        jQuery("#resultTotalMoney").val(sum);
     }
     // 鼠标移动改变背景颜色
     function changeBackground() {
@@ -178,7 +178,7 @@
                 Id: id
             },
             success: function (res) {
-                if (res.State ) {
+                if (res.State) {
                     alert("删除成功");
                     location.href = "/ShowCart/ShowCartDeci";
                 }
@@ -193,6 +193,28 @@
         changeBackground();
         singleAllSubTotal();
         allShopPriceTotal();
+    }
+
+    function GenerateOrder() {
+        var resultTotalMoney = $("#resultTotalMoney").val();
+        $.ajax({
+            url: "/Order/SessionPrice",
+            data:
+            {
+                Price: resultTotalMoney,  /* 总价(从页面获取)*/
+            },
+            dataType: "Json",
+            type: "Post",
+            success: function (res) {
+                if (res) {
+                    location.href = "/TakeawayHome/GenerateOrderView";
+
+                }
+                else {
+                    alert("请刷新重试");
+                }
+            }
+        })
     }
 </script>
 

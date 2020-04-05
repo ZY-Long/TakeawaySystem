@@ -83,5 +83,15 @@ namespace TakeawayFrontUI.Controllers
 
             return View();
         }
+
+        /// <summary>
+        /// 确认订单页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GenerateOrderView()
+        {
+
+            return View();
+        }
     }
 }
