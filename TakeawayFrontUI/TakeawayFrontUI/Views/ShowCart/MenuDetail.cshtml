@@ -245,29 +245,8 @@
         <!-- Single Product-->
         <section class="section section-sm section-first bg-default">
             <div class="container">
-                <div class="row row-30">
-                    <div class="col-lg-6">
-                        <div class="slick-vertical slick-product">
-                            <!-- Slick Carousel-->
-                            <div class="slick-slider carousel-parent" id="carousel-parent" data-items="1" data-swipe="true" data-child="#child-carousel" data-for="#child-carousel">
-                                <div class="item">
-                                    <div class="slick-product-figure"><img src="~/images/single-product-1-530x480.png" alt="" width="530" height="480" /></div>
-                                </div>
-                                
-                            </div>
-                            <div class="slick-slider child-carousel slick-nav-1" id="child-carousel" data-arrows="true" data-items="3" data-sm-items="3" data-md-items="3" data-lg-items="3" data-xl-items="3" data-xxl-items="3" data-md-vertical="true" data-for="#carousel-parent">
-                                <div class="item">
-                                    <div class="slick-product-figure"><img src="~/images/single-product-2-530x480.jpg" alt="" width="250" height="250" /></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        @RenderBody()
-                        <div class="single-product" id="td">
-                            
-                        </div>
-                    </div>
+                <div class="row row-30" id="td">
+                    @RenderBody()
                 </div>
                 <!-- Bootstrap tabs-->
                 <div class="tabs-custom tabs-horizontal tabs-line" id="tabs-1">
