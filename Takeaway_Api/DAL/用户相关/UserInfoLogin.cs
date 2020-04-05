@@ -116,8 +116,9 @@ namespace DAL
                     return saltstr;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string msg = ex.Message;
                 throw;
             }
         }

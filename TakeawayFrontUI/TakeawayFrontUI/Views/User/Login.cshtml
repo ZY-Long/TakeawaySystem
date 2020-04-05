@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="button login">
-                <button>
+                <button onclick="Login()">
                     <span>登录</span>
                     <i class="fa fa-check" id="test"></i>
                 </button>
@@ -79,12 +79,15 @@
     <script src="~/js/index.js"></script>
     <script>
 
+
     $("#GL_StandardCode").click(function () {
     var newSrc = "@Url.Action("GetImg", "User")" + "?t=" + (new Date()).getTime();
     this.src=newSrc;
     return false;
     });
-        $("#test").click(function () {
+
+    //登录方法
+    function Login() {
             var PhoneNumber =$("#phonenumber").val();
             var PassWord= $("#password").val();
             if (PhoneNumber == "" || PassWord=="") {
@@ -105,6 +108,11 @@
                 success: function (d) {
                     if (d.State==true) {
                         alert("登陆成功");
+
+                        //登录成功后,将页面的值清空
+                        $("#phonenumber").val("");
+                        $("#password").val("");
+
                         location.href = "/TakeawayHome/ProductHome/?Id=" + d.userInfos.Id;
                     }
                     else {
@@ -112,15 +120,21 @@
                     }
                 }
             })
-        })
+        }
 
         function Zhu() {
-     
-            var PhoneNumber = $("#yong").val();
-            var PassWord = $("#ma").val();
-            var Email = $("#email").val();
+            var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
+
+
+            var PhoneNumber = $("#yong").val();//获取用户输入的电话
+            var PassWord = $("#ma").val();//获取用户输入的密码
+            var Email = $("#email").val();//获取用户输入的邮箱
             if (PhoneNumber == "" || PassWord == "" || Email=="") {
                 alert("用户名密码邮箱不能为空！");
+                return;
+            }
+            if (!reg.test(Email)) {
+                alert("邮箱格式不正确");
                 return;
             }
             $.ajax({
@@ -138,6 +152,8 @@
                 success: function (d) {
                     if (d.State) {
                         alert("注册成功");
+                        location.reload();//注册成功跳转到登录
+
                     }
                     else {
                         alert("注册失败");
@@ -146,8 +162,6 @@
 
             })
         }
-
-
     </script>
 </body>
 </html>
