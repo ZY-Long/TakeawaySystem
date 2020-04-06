@@ -128,7 +128,7 @@ namespace DAL
         /// <returns></returns>
         public List<TasteInfo> GetTakeInfos()
         {
-            if (connection.State == System.Data.ConnectionState.Closed)
+            if (connection.State == System.Data.ConnectionState.Closed) 
             {
                 connection.Open();
             }
