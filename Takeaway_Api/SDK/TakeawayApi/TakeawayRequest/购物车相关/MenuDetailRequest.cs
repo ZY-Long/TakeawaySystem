@@ -8,7 +8,6 @@ namespace SDK
 {
    public class MenuDetailRequest : BaseRequest
     {
-        public int userid { get; set; }
         public int menuid { get; set; }
         public override string GetApiName()
         {

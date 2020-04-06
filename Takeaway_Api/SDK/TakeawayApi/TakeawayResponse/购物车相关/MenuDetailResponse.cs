@@ -8,6 +8,6 @@ namespace SDK
 {
    public class MenuDetailResponse : BaseResponse
     {
-        public List<MenuDetail> GetMenu { get; set; }
+        public MenuDetail GetMenu { get; set; }
     }
 }
