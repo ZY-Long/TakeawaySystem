@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace SDK
 {
-   public class MenuDetailRequest : BaseRequest
+    /// <summary>
+    /// 获取用户地址信息相关
+    /// </summary>
+    public class GetOrdersRequest:BaseRequest
     {
-        public int menuid { get; set; }
+        public int Id { get; set; }
+
         public override string GetApiName()
         {
-            return "/api/MenuDetail/GetMenuDetail";
+            return "/api/Order/GetOrders";
         }
+
     }
 }

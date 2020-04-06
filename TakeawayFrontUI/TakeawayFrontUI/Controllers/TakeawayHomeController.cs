@@ -29,7 +29,7 @@ namespace TakeawayFrontUI.Controllers
         {
             return View();
         }
-
+        
         /// <summary>
         /// 菜品展示
         /// </summary>
@@ -79,6 +79,16 @@ namespace TakeawayFrontUI.Controllers
         /// </summary>
         /// <returns></returns>
         public ActionResult EditAddress()
+        {
+
+            return View();
+        }
+
+        /// <summary>
+        /// 确认订单页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GenerateOrderView()
         {
 
             return View();

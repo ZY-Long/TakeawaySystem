@@ -102,25 +102,13 @@ namespace DAL
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public List<MenuDetail> GetMenuDetail(int userid,int menuid)
+        public MenuDetail GetMenuDetail(int menuid)
         {
-            if (connection.State == System.Data.ConnectionState.Closed)
-            {
-                connection.Open();
-            }
-            string sql = $@"select m.Name,m.Img ,m.Price,m.Remark from CartDetails as c
-                        join CartInfo as a on c.CartId=a.Id
-                        join MenuInfo as m on c.DetailsId =m.Id where c.[Sates]=1 and a.UserId={userid} and m.Id={menuid}";
-            SqlCommand command = new SqlCommand(sql, connection);
-            var reader = command.ExecuteReader();
-
-            var list = reader.DataReaderToList<MenuDetail>();
-            reader.Close();
-            if (connection.State == System.Data.ConnectionState.Open)
-            {
-                connection.Close();
-            }
-            return list;
+            
+            string sql = $@"select * from [dbo].[MenuInfo] as m where m.Id="+menuid;
+            List<MenuDetail> infos = OrmDBHelper.GetToList<MenuDetail>(sql);
+            MenuDetail menu = infos.FirstOrDefault();
+            return menu;
         }
         /// <summary>
         /// 口味下拉框
@@ -128,7 +116,7 @@ namespace DAL
         /// <returns></returns>
         public List<TasteInfo> GetTakeInfos()
         {
-            if (connection.State == System.Data.ConnectionState.Closed)
+            if (connection.State == System.Data.ConnectionState.Closed) 
             {
                 connection.Open();
             }
