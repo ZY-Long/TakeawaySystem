@@ -115,7 +115,7 @@ WHERE UserId=" + UserId + " AND Sates=1";
             string sql = @"SELECT m.Img,m.Name,m.Price,od.Count,od.CreateTime FROM dbo.OrderDetails AS od
     JOIN dbo.MenuInfo AS m
     ON od.DetailsId = m.Id
-     WHERE OrderId IN(SELECT o.Id FROM dbo.UserInfo AS u JOIN dbo.OrderInfo AS o ON u.Id = o.UserId WHERE u.Id ="+UserId+" AND o.[Sates] = 0)AND Od.Sates = 1";
+     WHERE OrderId IN(SELECT o.Id FROM dbo.UserInfo AS u JOIN dbo.OrderInfo AS o ON u.Id = o.UserId WHERE u.Id ="+UserId+" AND o.[Sates] = 1)AND Od.Sates = 1";
             List<OderOrderDetailsShow> orders = OrmDBHelper.GetToList<OderOrderDetailsShow>(sql);
             
             return orders;
