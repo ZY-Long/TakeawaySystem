@@ -222,7 +222,7 @@ namespace DAL
                 throw;
             }
         }
-        public
+        
 
 
         ///修改密码
