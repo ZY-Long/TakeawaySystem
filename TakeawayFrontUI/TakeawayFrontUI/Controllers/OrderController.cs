@@ -58,5 +58,18 @@ namespace TakeawayFrontUI.Controllers
             GetOrdersResponse response = bll.GetOrders(request);
             return Json(response);
         }
+
+        /// <summary>
+        /// 获取订单详情
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult GetOrderDetails(GetOrderDetailsRequest request)
+        {
+            GetOrderDetailsResponse response = bll.GetOrderDetails(request);
+            
+            return Json(response);
+        }
     }
 }

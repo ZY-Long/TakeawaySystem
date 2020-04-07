@@ -20,35 +20,40 @@
             </tr>
         </thead>
 
-        <tbody id="td">
-        </tbody>
+        <tbody id="td"></tbody>
     </table>
     <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script>
- $(document).ready(function () {
-        $.ajax({
-            url: "/User/Dingshow",
-            type: "POST",
-            dataType: "json",
-            success: function (res) {
-                var op = "";
-                $(res.Uuers).each(function () {
+        $(document).ready(function () {
 
-                    var tp ="<tr>"
-                        + "<td><img src='"+this.Img+"' /></td>"
-                        + "<td>" + this.Name + "</td>"
-                        + "<td>" + this.Price + "</td>"
-                        + "<td>" + this.Count + "</td>"
-                        + "<td>" + this.Price + "</td>"
-                        + "<td>" + this.CreateTime + "</td>"
-                        +"</tr>"
-                    op += tp;
-                })
-                $("#td").append(op);
-            }
-        });
-    })
+            var UserId = jQuery("#Id").val();
+            $.ajax({
+                url: "/Order/GetOrderDetails",
+                type: "POST",
+                dataType: "json",
+                data:
+                {
+                    UserId:UserId
+                },
+                success: function (res) {
+                    var op = "";
+                    $(res.orders).each(function () {
+
+                        var tp = "<tr>"
+                            + "<td><img src='" + this.Img + "' /></td>"
+                            + "<td>" + this.Name + "</td>"
+                            + "<td>" + this.Price + "</td>"
+                            + "<td>" + this.Count + "</td>"
+             
+                            + "<td>" + this.CreateTime + "</td>"
+                            + "</tr>"
+                        op += tp;
+                    })
+                    $("#td").append(op);
+                }
+            });
+        })
 
 
 
