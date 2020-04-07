@@ -44,5 +44,15 @@ namespace BLL
             return BaseDAL<OrderDAL>.Instance.GetOrders(UserId);
         }
 
+
+        /// <summary>
+        /// 获取订单详情
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        public List<OderOrderDetailsShow> GetOrderDetails(int UserId)
+        {
+            return BaseDAL<OrderDAL>.Instance.GetOrderDetails(UserId);
+        }
     }
 }

@@ -107,7 +107,8 @@ namespace Api.Controllers
         public AdLoctionResponse AddressInfo(AdLoctionRequest request)
         {
             AdLoctionResponse response = new AdLoctionResponse();
-            response.User=Convert.ToInt32(BaseBLL<UserInfobll>.Instance.AddressInfo(request.info));
+            request.info.UserId = request.UserId;
+            response.User=Convert.ToInt32(BaseBLL<UserInfobll>.Instance.AddressInfo(request.info));    
             response.State = true; return response;
              
         }

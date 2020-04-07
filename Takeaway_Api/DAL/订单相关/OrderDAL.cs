@@ -99,13 +99,27 @@ WHERE c.UserId =" + UserId + " AND c.BusinessInfo=" + BusinessId + " AND c.Sates
             string sql = @"SELECT ad.Id,ad.Content,ae.Name FROM dbo.AddressInfo AS ad
 JOIN dbo.Arealnfo AS ae
 ON ad.Area=ae.Id
-WHERE UserId="+UserId+" AND Sates=1";
+WHERE UserId=" + UserId + " AND Sates=1";
 
             List<OrderAddress> orders = OrmDBHelper.GetToList<OrderAddress>(sql);
             return orders;
         }
 
-    
+        /// <summary>
+        /// 获取订单详情
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        public List<OderOrderDetailsShow> GetOrderDetails(int UserId)
+        {
+            string sql = @"SELECT m.Img,m.Name,m.Price,od.Count,od.CreateTime FROM dbo.OrderDetails AS od
+    JOIN dbo.MenuInfo AS m
+    ON od.DetailsId = m.Id
+     WHERE OrderId IN(SELECT o.Id FROM dbo.UserInfo AS u JOIN dbo.OrderInfo AS o ON u.Id = o.UserId WHERE u.Id ="+UserId+" AND o.[Sates] = 0)AND Od.Sates = 1";
+            List<OderOrderDetailsShow> orders = OrmDBHelper.GetToList<OderOrderDetailsShow>(sql);
+            
+            return orders;
+        }
        
 
     }

@@ -222,6 +222,9 @@ namespace DAL
                 throw;
             }
         }
+        public
+
+
         ///修改密码
         public int EditUserPwd(string pwd, int id)
         {

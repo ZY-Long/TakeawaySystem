@@ -35,7 +35,17 @@ namespace BLL
         /// <returns></returns>
         public GetOrdersResponse GetOrders(GetOrdersRequest request)
         {
-            return ApiRequestHelper.Post<GetOrdersRequest, GetOrdersResponse>(request); ;
+            return ApiRequestHelper.Post<GetOrdersRequest, GetOrdersResponse>(request); 
+        }
+
+        /// <summary>
+        /// 获取订单详情
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        public GetOrderDetailsResponse GetOrderDetails(GetOrderDetailsRequest request)
+        {
+            return ApiRequestHelper.Post<GetOrderDetailsRequest, GetOrderDetailsResponse>(request);
         }
     }
 }
