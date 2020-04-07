@@ -63,7 +63,7 @@
                         + "<td><input type='button' value='删除 ' onclick='deleteCatr(" + this
                             .Id + ")' /></td>"
                         + "</tr>";
-                    console.log(tp);
+ 
                     op += tp;
 
                 })
@@ -151,10 +151,14 @@
                 sum += "+";
             }
             sum += singelSubElement.innerHTML;
-        }
+        }  
         obj.innerHTML = eval(sum);
-        sum = sum.substr(2, 4);
-        jQuery("#resultTotalMoney").val(sum);
+        
+
+        
+        jQuery("#resultTotalMoney").val(eval(sum));
+     
+       
     }
     // 鼠标移动改变背景颜色
     function changeBackground() {
@@ -197,6 +201,7 @@
 
     function GenerateOrder() {
         var resultTotalMoney = $("#resultTotalMoney").val();
+        alert(resultTotalMoney);
         $.ajax({
             url: "/Order/SessionPrice",
             data:

@@ -21,6 +21,7 @@ namespace TakeawayFrontUI.Controllers
         /// <summary>
         /// 将总价写入session
         /// </summary>
+        [HttpPost]
         public JsonResult SessionPrice(decimal Price)
         {
 

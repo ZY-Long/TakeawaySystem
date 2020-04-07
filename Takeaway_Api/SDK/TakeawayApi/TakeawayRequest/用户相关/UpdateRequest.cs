@@ -16,6 +16,8 @@ namespace SDK
         }
         public UserInfo user { get; set; }
         public string  pwd { get; set; }
-        public int id { get; set; }
+        public string PhoneNumber { get; set; }
+
+        public string NewPwd { get; set; }
     }
 }

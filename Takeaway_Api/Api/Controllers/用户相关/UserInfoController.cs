@@ -68,7 +68,7 @@ namespace Api.Controllers
         public UpdateResponse EditUserPwd(UpdateRequest request)
         {
             UpdateResponse response = new UpdateResponse();
-            response.User = BaseBLL<UserInfobll>.Instance.EditUserPwd(request.pwd, request.id);
+            response.User = BaseBLL<UserInfobll>.Instance.EditUserPwd(request.pwd, request.PhoneNumber,request.NewPwd);
             response.State = response.User > 0 ? true : false;
             return response;
         }
