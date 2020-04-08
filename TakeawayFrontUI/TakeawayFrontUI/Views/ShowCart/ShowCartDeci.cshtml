@@ -47,6 +47,7 @@
             },
             success: function (res) {
                 var op = "";
+                var sumPrice=0;
                 $(res.GetCart).each(function () {
 
                     var tp = "<tr>"
@@ -63,12 +64,13 @@
                         + "<td><input type='button' value='删除 ' onclick='deleteCatr(" + this
                             .Id + ")' /></td>"
                         + "</tr>";
- 
+                    sumPrice += parseFloat(this.Price);
                     op += tp;
 
                 })
 
                 $("#td").append(op);
+                $("#resultTotalMoney").html(sumPrice);;
             }
         });
     })
@@ -145,6 +147,8 @@
     function allShopPriceTotal() {
         var obj = document.getElementById("resultTotalMoney");
         var allSingelSubElement = document.getElementsByClassName("shopCount");
+
+
         var sum = "0";
         for (singelSubElement of allSingelSubElement) {
             if (sum != "") {
