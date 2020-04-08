@@ -50,8 +50,23 @@ namespace Api
         public GetOrdersResponse GetOrders(GetOrdersRequest request)
         {
             GetOrdersResponse response = new GetOrdersResponse();
-            response.addresses= BaseBLL<OrderBLL>.Instance.GetOrders(request.Id);
+            response.addresses = BaseBLL<OrderBLL>.Instance.GetOrders(request.Id);
             response.State = response.addresses.Count > 0 ? true : false;
+            return response;
+        }
+
+        /// <summary>
+        /// 获取订单详情
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public GetOrderDetailsResponse GetOrderDetails(GetOrderDetailsRequest request)
+        {
+            GetOrderDetailsResponse response = new GetOrderDetailsResponse();
+            response.orders = BaseBLL<OrderBLL>.Instance.GetOrderDetails(request.UserId);
+            
+            response.State = response.orders.Count > 0 ? true : false;
             return response;
         }
     }

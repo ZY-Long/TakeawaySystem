@@ -222,18 +222,21 @@ namespace DAL
                 throw;
             }
         }
+
         ///修改密码
-        public int EditUserPwd(string pwd, int id)
+        public int EditUserPwd(string pwd, string PhoneNumber)
         {
             try
             {
                 var bus = UserInfoLogin.GenerateSalt();
                 int res = 0;
-                res = bHelper.ExecuteNonQuery("update UserInfo set Password='" + MD5Encrypt32(pwd + bus) + "' and Salt=" + bus + " where Id='" + id + "'");
+                string sql = "update UserInfo set Password='" + MD5Encrypt32(pwd + bus) + "' , Salt='" + bus + "' where PhoneNumber='" + PhoneNumber + "'";
+                res = OrmDBHelper.ExecuteNonQuery(sql);
                 return res;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string res = ex.Message;
                 throw;
             }
         }

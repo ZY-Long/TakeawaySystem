@@ -55,15 +55,15 @@
     function AddRequest() {
         var sele = jQuery("#Sele").val();
         var Address = jQuery("#Address").val();
-         var Id = jQuery("#Id").val();
-        alert(UserId);
+         var UserId = $("#Id").val();
+      
         jQuery.ajax({
             url: "/User/AddressInfo",
             dataType: "Json",
             type: "Post",
             data:
             {
-                UserId: Id,
+                UserId: UserId,
                 info: {
                     content: Address,
                     Areaid: sele,

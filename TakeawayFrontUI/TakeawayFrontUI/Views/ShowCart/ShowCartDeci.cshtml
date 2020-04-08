@@ -47,6 +47,7 @@
             },
             success: function (res) {
                 var op = "";
+                var sumPrice=0;
                 $(res.GetCart).each(function () {
 
                     var tp = "<tr>"
@@ -63,12 +64,13 @@
                         + "<td><input type='button' value='删除 ' onclick='deleteCatr(" + this
                             .Id + ")' /></td>"
                         + "</tr>";
-                    console.log(tp);
+                    sumPrice += parseFloat(this.Price);
                     op += tp;
 
                 })
 
                 $("#td").append(op);
+                $("#resultTotalMoney").html(sumPrice);;
             }
         });
     })
@@ -145,16 +147,22 @@
     function allShopPriceTotal() {
         var obj = document.getElementById("resultTotalMoney");
         var allSingelSubElement = document.getElementsByClassName("shopCount");
+
+
         var sum = "0";
         for (singelSubElement of allSingelSubElement) {
             if (sum != "") {
                 sum += "+";
             }
             sum += singelSubElement.innerHTML;
-        }
+        }  
         obj.innerHTML = eval(sum);
-        sum = sum.substr(2, 4);
-        jQuery("#resultTotalMoney").val(sum);
+        
+
+        
+        jQuery("#resultTotalMoney").val(eval(sum));
+     
+       
     }
     // 鼠标移动改变背景颜色
     function changeBackground() {
@@ -197,6 +205,7 @@
 
     function GenerateOrder() {
         var resultTotalMoney = $("#resultTotalMoney").val();
+        alert(resultTotalMoney);
         $.ajax({
             url: "/Order/SessionPrice",
             data:

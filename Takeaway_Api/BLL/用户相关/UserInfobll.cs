@@ -98,9 +98,17 @@ namespace BLL
         }
         ///修改密码
         ///
-        public int EditUserPwd(string pwd, int id)
+        public int EditUserPwd(string pwd, string  phoneNumber,string NewPwd)
         {
-            return BaseDAL<UserInfoLogin>.Instance.EditUserPwd(pwd, id);
+            DeLoginResponse response = new DeLoginResponse();
+            int res = 0;
+            response = InfoResponse(new DeLoginRequest() {User=new UserInfoLog() {PhoneNumber=phoneNumber,PassWord=pwd } });
+            if (response.State)
+            {
+                 res= BaseDAL<UserInfoLogin>.Instance.EditUserPwd(NewPwd, phoneNumber);
+            }
+            
+            return res;
         }
         //修改用户地址
         public int EditUserInfo(string content, int Areaid, int UserId, int Id)
@@ -115,6 +123,7 @@ namespace BLL
         //添加新地址
         public int AddressInfo(AddressInfo info)
         {
+            
             return dal.AddressInfo(info);
         }
         //显示订单 

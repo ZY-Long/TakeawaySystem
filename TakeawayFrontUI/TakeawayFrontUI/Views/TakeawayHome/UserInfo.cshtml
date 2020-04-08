@@ -2,66 +2,62 @@
 @{
 
 }
-<section class="section section-xxl bg-image-1">
-    <div class="container">
-        <h2 class="text-transform-capitalize wow fadeScale">修改密码</h2>
-        <!-- Owl Carousel-->
-        <div class="owl-carousel" data-margin="30" data-dots="true" data-mouse-drag="false">
-            <!-- Post Classic-->
-            <!-- Post Classic-->
-            <article class="post post-classic box-md wow slideInUp">
-                <div class="post-classic-content" style="height:300px">
-                    <div style="width:100%;height:10%">
-                        <div style="margin-left:0px;float:left"> <label>旧密码</label></div>
-                        <div style="margin-right:0px;float:right">  <input id="OldPwd" type="text" /></div>
-                    </div>
-                    <div style="margin-top:50px;width:100%;height:10%">
-                        <div style="margin-left:0px;float:left"> <label>新密码</label></div>
-                        <div style="margin-right:0px;float:right">  <input id="NewPwd" type="password" /></div>
-                    </div>
-                    <div style="margin-top:50px;width:100%;height:10%">
-                        <div style="margin-left:0px;float:left"> <label>确认新密码</label></div>
-                        <div style="margin-right:0px;float:right">  <input id="ConfirmPwd" type="password" /></div>
-                    </div>
-                    <div style="margin-top:50px;width:100%;height:10%">
-                        <div style="margin-left:30%;float:left"><input id="Button1" type="button" value="提交" class="btn btn-default" onclick="EditPwd()" /></div>
-                    </div>
+    <section class="section section-xxl bg-image-1">
+        <div class="container">
+            <h2 class="text-transform-capitalize wow fadeScale">修改密码</h2>
+            <!-- Owl Carousel-->
+            <div class="post-classic-content" style="height:350px;margin-top:50px;width:55%;margin-left:27%">
+
+                <div style="margin-top:50px;width:100%;height:10%">
+                    <div style="margin-left:0px;float:left"> <label>当前密码:</label></div>
+                    <div style="margin-right:0px;float:right">  <input class="Address" type="text" id="OldPwd" /><hiden id="AddresId"></hiden></div>
                 </div>
-            </article>
+                <div style="margin-top:50px;width:100%;height:10%">
+                    <div style="margin-left:0px;float:left"> <label>新密码:</label></div>
+                    <div style="margin-right:0px;float:right">  <input class="Address" type="password" id="NewPwd" /><hiden id="AddresId"></hiden></div>
+                </div>
+                <div style="margin-top:50px;width:100%;height:10%">
+                    <div style="margin-left:0px;float:left"> <label>确认新密码:</label></div>
+                    <div style="margin-right:0px;float:right">  <input class="Address" type="password" id="ConfirmPwd" /><hiden id="AddresId"></hiden></div>
+                </div>
+                <div style="margin-top:100px;width:100%;height:10%">
+                    <div style="margin-left:30%;float:left"><input id="Button1" type="button" value="提交" class="btn btn-default" onclick="EditPwd()" /></div>
+                </div>
+            </div>
             <!-- Post Classic-->
         </div>
-    </div>
-</section>
+
+    </section>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
 <script src="~/Scripts/bootstrap.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 <script>
     function EditPwd() {
-        var NewPwd = jQuery("NewPwd").val();
-        var ConfirmPwd = jQuery("ConfirmPwd").val();
-        var id = jQuery("#UserId").val();
-        alert(id);
-        if (NewPwd != ConfirmPwd) {
-            alert("两次密码输入不一致");
-        }
-        else {
-            jQuery.ajax({
-                url: "/User/EditUserPwd",
-                data: {
-                    Id=id,
-                    pwd=NewPwd
-                },
-                dataType: "Json",
-                type: "Post",
-                success: function (res) {
-                    if (res.State == true) {
-                        alert("修改成功");
-                    }
-                    else {
-                        alert(res.Message);
-                    }
+        var OldPwd = jQuery("#OldPwd").val();
+        var NewPwd = jQuery("#NewPwd").val();
+        var ConfirmPwd = jQuery("#ConfirmPwd").val();
+        var PhoneNumber = jQuery("#PhoneNumber").val();
+
+        jQuery.ajax({
+            url: "/User/EditUserPwd",
+            data: {
+                PhoneNumber: PhoneNumber,
+                pwd: OldPwd,
+                NewPwd: NewPwd
+            },
+            dataType: "Json",
+            type: "Post",
+            success: function (res) {
+                if (res.State) {
+                    alert("修改成功");
+                    location.href = "/TakeawayHome/ProductHome";
                 }
-            })
-        }
+                else {
+                    alert("请刷新重试");
+                }
+            }
+        })
+
     }
 </script>
 

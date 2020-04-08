@@ -76,7 +76,7 @@
                                 <button class="rd-navbar-toggle toggle-original" data-rd-navbar-toggle=".rd-navbar-nav-wrap"></button>
                                 <!-- RD Navbar Brand-->
                                 <div class="rd-navbar-brand">
-                                    <!--Brand--><a class="brand" href="index.html"><img class="brand-logo-dark" src="~/images/logo-default-234x82.png" alt="" width="117" height="41"><img class="brand-logo-light" src="~/images/logo-inverse-234x82.png" alt="" width="117" height="41"></a>
+                                    <!--Brand--><a class="brand" href="/TakeawayHome/ProductHome"><img class="brand-logo-dark" src="~/images/logo-default-234x82.png" alt="" width="117" height="41"><img class="brand-logo-light" src="~/images/logo-inverse-234x82.png" alt="" width="117" height="41"></a>
                                 </div>
                             </div>
                             <div class="rd-navbar-aside-element">
@@ -94,55 +94,8 @@
                                 </div>
                                 <!-- RD Navbar Basket-->
                                 <div class="rd-navbar-basket-wrap">
-                                    <button class="rd-navbar-basket fl-bigmug-line-shopping202 toggle-original" data-rd-navbar-toggle=".cart-inline"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></span></button>
-                                    <div class="cart-inline toggle-original-elements">
-                                        <div class="cart-inline-header">
-                                            <h5 class="cart-inline-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">购物车：</font></font><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">产品</font></font></h5>
-                                            <h6 class="cart-inline-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">总价：</font></font><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">42美元</font></font></span></h6>
-                                        </div>
-                                        <div class="cart-inline-body">
-                                            @* 显示购物车信息 *@
-                                            <div class="cart-inline-item">
-                                                <div class="unit unit-spacing-sm align-items-center">
-                                                    <div class="unit-left"><a class="cart-inline-figure" href="/single-product.html"><img src="/images/product-mini-1-106x104.jpg" alt="" width="106" height="104"></a></div>
-                                                    <div class="unit-body">
-                                                        <h6 class="cart-inline-name"><a href="single-product.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">森林浆果</font></font></a></h6>
-                                                        <div>
-                                                            <div class="group-xs group-middle">
-                                                                <div class="table-cart-stepper">
-                                                                    <div class="stepper "><input class="form-input stepper-input" type="number" data-zeros="true" value="1" min="1" max="1000"><span class="stepper-arrow up"></span><span class="stepper-arrow down"></span></div>
-                                                                </div>
-                                                                <h6 class="cart-inline-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ 18.00</font></font></h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="cart-inline-item">
-                                                <div class="unit unit-spacing-sm align-items-center">
-                                                    <div class="unit-left"><a class="cart-inline-figure" href="single-product.html"><img src="/images/product-mini-2-106x104.jpg" alt="" width="106" height="104"></a></div>
-                                                    <div class="unit-body">
-                                                        <h6 class="cart-inline-name"><a href="single-product.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">萝卜</font></font></a></h6>
-                                                        <div>
-                                                            <div class="group-xs group-middle">
-                                                                <div class="table-cart-stepper">
-                                                                    <div class="stepper "><input class="form-input stepper-input" type="number" data-zeros="true" value="1" min="1" max="1000"><span class="stepper-arrow up"></span><span class="stepper-arrow down"></span></div>
-                                                                </div>
-                                                                <h6 class="cart-inline-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ 24.00</font></font></h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cart-inline-footer">
-                                            <div class="group-sm">
-                                                <a class="button button-default-outline-2 button-zakaria" href="#">
-                                                    <font style="vertical-align: inherit;">结帐</font></font>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <button class="rd-navbar-basket fl-bigmug-line-shopping202 toggle-original" data-rd-navbar-toggle=".cart-inline" onclick="Href()"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></span></button>
+                                    
                                 </div>
                                 <div class="rd-navbar-fixed-element-2 select-inline" style="margin-top:20px">
                                     <input type="hidden" id="Id" value="@Session["Id"]">
@@ -163,48 +116,9 @@
                             <div class="rd-navbar-nav-wrap toggle-original-elements">
                                 <ul class="rd-navbar-nav">
                                     <li class="rd-nav-item">
-                                        <a class="rd-nav-link"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">家</font></font></a>
+                                        <a class="rd-nav-link" href="/TakeawayHome/ProductHome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">家</font></font></a>
                                     </li>
-                                    <li class="rd-nav-item active rd-navbar--has-dropdown rd-navbar-submenu">
-                                        <a class="rd-nav-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">页数</font></font></a><span class="rd-navbar-submenu-toggle"></span>
-                                        <ul class="rd-menu rd-navbar-dropdown">
-                                            <li class="rd-dropdown-item">
-                                                <a class="rd-dropdown-link" href="about-us.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关于我们</font></font></a>
-                                            </li>
-                                            <li class="rd-dropdown-item active">
-                                                <a class="rd-dropdown-link" href="what-we-offer.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们提供什么</font></font></a>
-                                            </li>
-                                            <li class="rd-dropdown-item">
-                                                <a class="rd-dropdown-link" href="our-team.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们的队伍</font></font></a>
-                                            </li>
-                                            <li class="rd-dropdown-item">
-                                                <a class="rd-dropdown-link" href="pricing-list.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">定价表</font></font></a>
-                                            </li>
-                                            <li class="rd-dropdown-item">
-                                                <a class="rd-dropdown-link" href="404-page.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">404页</font></font></a>
-                                            </li>
-                                            <li class="rd-dropdown-item">
-                                                <a class="rd-dropdown-link" href="coming-soon.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快来了</font></font></a>
-                                            </li>
-                                            <li class="rd-dropdown-item">
-                                                <a class="rd-dropdown-link" href="privacy-policy.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">隐私政策</font></font></a>
-                                            </li>
-                                            <li class="rd-dropdown-item">
-                                                <a class="rd-dropdown-link" href="search-results.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">搜索结果</font></font></a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="rd-nav-item rd-navbar--has-dropdown rd-navbar-submenu">
-                                        <a class="rd-nav-link" href="blog-list.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">博客</font></font></a><span class="rd-navbar-submenu-toggle"></span>
-                                        <ul class="rd-menu rd-navbar-dropdown">
-                                            <li class="rd-dropdown-item">
-                                                <a class="rd-dropdown-link" href="blog-post.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">博客文章</font></font></a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="rd-nav-item">
-                                        <a class="rd-nav-link" href="gallery.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">画廊</font></font></a>
-                                    </li>
+
                                     <li class="rd-nav-item rd-navbar--has-dropdown rd-navbar-submenu">
                                         <a class="rd-nav-link" href="/TakeawayHome/showM"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">店</font></font></a><span class="rd-navbar-submenu-toggle"></span>
 
@@ -242,52 +156,52 @@
                     <div class="row row-40 row-md-50 justify-content-xl-between">
                         <div class="col-md-10 col-lg-3 col-xl-4 wow fadeInRight">
                             <div class="inset-xl-right-70 block-1">
-                                <h5 class="footer-modern-title">Gallery</h5>
+                                <h5 class="footer-modern-title">画廊</h5>
                                 <div class="row row-10 gutters-10" data-lightgallery="group">
                                     <div class="col-4 col-sm-2 col-lg-4">
-                                        <!-- Thumbnail Minimal--><a class="thumbnail-minimal" href="~/images/grid-gallery-footer-1-1200x800-original.jpg" data-lightgallery="item"><img src="~/images/grid-gallery-1-93x93.jpg" alt="" width="93" height="93" /></a>
+                                        <!-- Thumbnail Minimal--><a class="thumbnail-minimal" href="~/images/grid-gallery-1-93x93.jpg" data-lightgallery="item"><img src="~/images/grid-gallery-1-93x93.jpg" alt="" width="93" height="93" /></a>
                                     </div>
                                     <div class="col-4 col-sm-2 col-lg-4">
-                                        <!-- Thumbnail Minimal--><a class="thumbnail-minimal" href="~/images/grid-gallery-footer-2-1200x800-original.jpg" data-lightgallery="item"><img src="~/images/grid-gallery-2-93x93.jpg" alt="" width="93" height="93" /></a>
+                                        <!-- Thumbnail Minimal--><a class="thumbnail-minimal" href="~/images/grid-gallery-2-93x93.jpg" data-lightgallery="item"><img src="~/images/grid-gallery-2-93x93.jpg" alt="" width="93" height="93" /></a>
                                     </div>
                                     <div class="col-4 col-sm-2 col-lg-4">
-                                        <!-- Thumbnail Minimal--><a class="thumbnail-minimal" href="~/images/grid-gallery-footer-3-1200x800-original.jpg" data-lightgallery="item"><img src="~/images/grid-gallery-3-93x93.jpg" alt="" width="93" height="93" /></a>
+                                        <!-- Thumbnail Minimal--><a class="thumbnail-minimal" href="~/images/grid-gallery-3-93x93.jpg" data-lightgallery="item"><img src="~/images/grid-gallery-3-93x93.jpg" alt="" width="93" height="93" /></a>
                                     </div>
                                     <div class="col-4 col-sm-2 col-lg-4">
-                                        <!-- Thumbnail Minimal--><a class="thumbnail-minimal" href="~/images/grid-gallery-footer-4-1200x800-original.jpg" data-lightgallery="item"><img src="~/images/grid-gallery-4-93x93.jpg" alt="" width="93" height="93" /></a>
+                                        <!-- Thumbnail Minimal--><a class="thumbnail-minimal" href="~/images/grid-gallery-4-93x93.jpg" data-lightgallery="item"><img src="~/images/grid-gallery-4-93x93.jpg" alt="" width="93" height="93" /></a>
                                     </div>
                                     <div class="col-4 col-sm-2 col-lg-4">
-                                        <!-- Thumbnail Minimal--><a class="thumbnail-minimal" href="~/images/grid-gallery-footer-5-1200x800-original.jpg" data-lightgallery="item"><img src="~/images/grid-gallery-5-93x93.jpg" alt="" width="93" height="93" /></a>
+                                        <!-- Thumbnail Minimal--><a class="thumbnail-minimal" href="~/images/grid-gallery-5-93x93.jpg" data-lightgallery="item"><img src="~/images/grid-gallery-5-93x93.jpg" alt="" width="93" height="93" /></a>
                                     </div>
                                     <div class="col-4 col-sm-2 col-lg-4">
-                                        <!-- Thumbnail Minimal--><a class="thumbnail-minimal" href="~/images/grid-gallery-footer-6-1200x800-original.jpg" data-lightgallery="item"><img src="~/images/grid-gallery-6-93x93.jpg" alt="" width="93" height="93" /></a>
+                                        <!-- Thumbnail Minimal--><a class="thumbnail-minimal" href="~/images/grid-gallery-6-93x93.jpg" data-lightgallery="item"><img src="~/images/grid-gallery-6-93x93.jpg" alt="" width="93" height="93" /></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-7 col-lg-5 wow fadeInRight" data-wow-delay=".1s">
-                            <h5 class="footer-modern-title">Quick Links</h5>
+                            <h5 class="footer-modern-title">快速链接</h5>
                             <ul class="footer-modern-list footer-modern-list-2 d-sm-inline-block d-md-block">
-                                <li><a href="our-team.html">Our Team</a></li>
-                                <li><a href="grid-shop.html">New Products</a></li>
-                                <li><a href="blog-list.html">Blog</a></li>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="contact-us.html">Contact Us</a></li>
-                                <li><a href="#">Smoothies</a></li>
-                                <li><a href="#">Energy Bowls</a></li>
-                                <li><a href="#">Juices</a></li>
-                                <li><a href="#">Ingredients</a></li>
-                                <li><a href="#">Delivery</a></li>
+                                <li><a href="our-team.html">我们的队伍</a></li>
+                                <li><a href="grid-shop.html">新产品</a></li>
+                                <li><a href="blog-list.html">博客</a></li>
+                                <li><a href="about-us.html">关于我们</a></li>
+                                <li><a href="#">常见问题</a></li>
+                                <li><a href="contact-us.html">联系我们</a></li>
+                                <li><a href="#">冰沙</a></li>
+                                <li><a href="#">能量碗</a></li>
+                                <li><a href="#">果汁</a></li>
+                                <li><a href="#">配料</a></li>
+                                <li><a href="#">交货</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-6 col-md-5 col-lg-4 col-xl-3 wow fadeInRight" data-wow-delay=".2s">
-                            <h5 class="footer-modern-title">Get in touch</h5>
+                            <h5 class="footer-modern-title">保持联系</h5>
                             <ul class="contacts-creative">
                                 <li>
                                     <div class="unit unit-spacing-sm flex-column flex-md-row">
                                         <div class="unit-left"><span class="icon mdi mdi-map-marker"></span></div>
-                                        <div class="unit-body"><a href="#">523 Sylvan Ave, 5th Floor<br />Mountain View, CA 94041 USA</a></div>
+                                        <div class="unit-body"><a href="#">上海市浦东新区花园石桥路<br />汤臣一品 1# - 1单元 - 35 - 4001</a></div>
                                     </div>
                                 </li>
                                 <li>
@@ -303,20 +217,13 @@
                                     </div>
                                 </li>
                             </ul>
-                            <ul class="list-inline list-social-3 list-inline-sm">
-                                <li><a class="icon mdi mdi-facebook icon-xxs" href="#"></a></li>
-                                <li><a class="icon mdi mdi-twitter icon-xxs" href="#"></a></li>
-                                <li><a class="icon mdi mdi-instagram icon-xxs" href="#"></a></li>
-                                <li><a class="icon mdi mdi-google-plus icon-xxs" href="#"></a></li>
-                                <li><a class="icon mdi mdi-skype icon-xxs" href="#"></a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="footer-modern-panel text-center">
                 <div class="container">
-                    <p class="rights"><span>Copyright &copy; 2020.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></span></p>
+                    <p class="rights"><span>版权所有©2020.默默外卖保留所有权利.</a></span></p>
                 </div>
             </div>
         </footer>
@@ -331,13 +238,17 @@
 </html>
 
 <script>
- ////判断是否已有用户登录
+ //判断是否已有用户登录
     //$(document).ready(function () {
-    //    var UserName = jQuery("#Name").val();
+    //    var UserName = jQuery("#Id").val();
 
     //    if (UserName == null || UserName == undefined || UserName == "") {
     //        alert("请先登陆");
-    //        location.href = "User/Login";
+    //        location.href = "/User/Login";
     //    }
     //});
+
+    function Href() {
+        location.href=("/ShowCart/ShowCartDeci");
+    }
 </script>

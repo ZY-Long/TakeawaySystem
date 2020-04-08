@@ -21,6 +21,7 @@ namespace TakeawayFrontUI.Controllers
         /// <summary>
         /// 将总价写入session
         /// </summary>
+        [HttpPost]
         public JsonResult SessionPrice(decimal Price)
         {
 
@@ -56,6 +57,19 @@ namespace TakeawayFrontUI.Controllers
         public JsonResult GetOrders(GetOrdersRequest request)
         {
             GetOrdersResponse response = bll.GetOrders(request);
+            return Json(response);
+        }
+
+        /// <summary>
+        /// 获取订单详情
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult GetOrderDetails(GetOrderDetailsRequest request)
+        {
+            GetOrderDetailsResponse response = bll.GetOrderDetails(request);
+            
             return Json(response);
         }
     }

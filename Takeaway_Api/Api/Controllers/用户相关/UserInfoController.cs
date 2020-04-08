@@ -68,7 +68,7 @@ namespace Api.Controllers
         public UpdateResponse EditUserPwd(UpdateRequest request)
         {
             UpdateResponse response = new UpdateResponse();
-            response.User = BaseBLL<UserInfobll>.Instance.EditUserPwd(request.pwd, request.id);
+            response.User = BaseBLL<UserInfobll>.Instance.EditUserPwd(request.pwd, request.PhoneNumber,request.NewPwd);
             response.State = response.User > 0 ? true : false;
             return response;
         }
@@ -107,7 +107,8 @@ namespace Api.Controllers
         public AdLoctionResponse AddressInfo(AdLoctionRequest request)
         {
             AdLoctionResponse response = new AdLoctionResponse();
-            response.User=Convert.ToInt32(BaseBLL<UserInfobll>.Instance.AddressInfo(request.info));
+            request.info.UserId = request.UserId;
+            response.User=Convert.ToInt32(BaseBLL<UserInfobll>.Instance.AddressInfo(request.info));    
             response.State = true; return response;
              
         }
