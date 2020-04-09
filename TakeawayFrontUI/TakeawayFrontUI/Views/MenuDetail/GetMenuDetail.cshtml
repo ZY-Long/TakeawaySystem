@@ -23,20 +23,20 @@
         </div>
     </div>
 </section>
-<section class="section section-sm section-first bg-default" >
+<section class="section section-sm section-first bg-default">
     <div class="container" id="td">
         <div class="row row-30">
             <div class="col-lg-6">
-                
+
             </div>
             <div class="col-lg-6">
                 <div class="single-product">
-                    
+
                     <div class="group-md group-middle">
-                        
+
                         <div class="single-product-rating"><span class="icon mdi mdi-star"></span><span class="icon mdi mdi-star"></span><span class="icon mdi mdi-star"></span><span class="icon mdi mdi-star"></span><span class="icon mdi mdi-star-half"></span></div>
                     </div>
-                    
+
                     <hr class="hr-gray-100">
                     <ul class="list list-description">
                         <li><span>Categories:</span><span>Avocados</span></li>
@@ -352,53 +352,18 @@
     </div>
 </section>
 <!-- Page Footer-->
-
 <script>
-    $(document).ready(function (id) {
+    function Xiang(id) {
         $.ajax({
-            url: "/MenuDetail/MenuDteail",
+            url: "MenuDteail/MenuDteail",
             type: "POST",
             dataType: "Json",
             data: {
-                menuid: 1
+                menuid: id
             },
             success: function (res) {
-                var op = 
-                $(res).each(function () {
-                    var th = "<h3 class='text-transform-none font-weight-medium'>"+this.Name+"</h3>"
-                        +"< div class='slick-vertical slick-product' > "
-                    +"<!-- Slick Carousel-->"
-                    +"<div class='slick-slider carousel-parent' id='carousel-parent' data-items='1' data-swipe='true' data-child='#child-carousel' data-for='#child-carousel'>"
-                        +"<div class='item'>"
-                            +"<div class='slick-product-figure'>"
-                                +"<img src='" + this.Img + "' alt='' width='530' height='480' />"
-                            +"</div>"
-                        +"</div>"
-                        +"<div class='item'>"
-                           +" <div class='slick-product-figure'>"
-                                +"<img src='" + this.Img + "' alt='' width='530' height='480' />"
-                           +" </div>"
-                       +" </div>"
-                    +"</div>"
-                   +" <div class='slick-slider child-carousel slick-nav-1' id='child-carousel' data-arrows='true' data-items='3' data-sm-items='3' data-md-items='3' data-lg-items='3' data-xl-items='3' data-xxl-items='3' data-md-vertical='true' data-for='#carousel-parent'>"
-                       +" <div class='item'>"
-                           +" <div class='slick-product-figure'>"
-                              +"  <img src='" + this.Img + "' alt='' width='530' height='480' />"
-                           +" </div>"
-                       +" </div>"
-                       +" <div class='item'>"
-                    + "<div class='slick-product-figure'>"
-                    + " <img src='" + this.Img + "' alt='' width='530' height='480' />"
-                           +" </div>"
-                       +" </div>"
-                   +" </div>"
-                    + " </div>"
-                        + "<div>" + this.Price + "</div>"
-                        + "<p>" + this.Remark + " </p>"
-                    op += th;
-                })
-                $("#td").append();
+
             }
         })
-    })
+    }
 </script>
