@@ -34,16 +34,16 @@ namespace Model
         public string Content { get; set; }
 
 
-        /// <summary>
-        /// 地址Id
-        /// </summary>
-        public int BusinessInfo { get; set; }
-
 
         /// <summary>
         /// 用户Id
         /// </summary>
         public int UserId { get; set; }
+
+        /// <summary>
+        /// 商品Id
+        /// </summary>
+        public string Ids { get; set; }
 
     }
 }

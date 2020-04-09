@@ -47,5 +47,15 @@ namespace BLL
         {
             return ApiRequestHelper.Post<GetOrderDetailsRequest, GetOrderDetailsResponse>(request);
         }
+
+        /// <summary>
+        /// 生成订单
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        public GenerateOrderResponse OrderTran(GenerateOrderRequest request)
+        {
+            return ApiRequestHelper.Post<GenerateOrderRequest, GenerateOrderResponse>(request);
+        }
     }
 }

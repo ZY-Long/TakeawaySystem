@@ -60,6 +60,16 @@ namespace BLL
         //    return BaseDAL<TakeDAL>.Instance.AddCart(cart);
         //}
         /*添加购物车*/
-       
+
+        /// <summary>
+        /// 添加购物车
+        /// </summary>
+        /// <returns></returns>
+        public int CartTran(int minefid, int userId, int count)
+        {
+            return BaseDAL<TakeDAL>.Instance.CartTran(minefid,userId,count);
+        }
+
+
     }
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using SDK;
 using BLL;
+using Newtonsoft.Json;
 
 namespace TakeawayFrontUI.Controllers
 {
@@ -22,13 +23,15 @@ namespace TakeawayFrontUI.Controllers
         /// 将总价写入session
         /// </summary>
         [HttpPost]
-        public JsonResult SessionPrice(decimal Price)
+        public JsonResult SessionPrice(decimal Price,string[] Ids )
         {
 
             bool status;
-            if (Price > 0)
+            if (Price > 0 && Ids!=null)
             {
                 Session["Price"] = Price.ToString();
+                string json = JsonConvert.SerializeObject(Ids);
+                Session["Ids"] = json;
                 status = true;
             }
             else
@@ -70,6 +73,19 @@ namespace TakeawayFrontUI.Controllers
         {
             GetOrderDetailsResponse response = bll.GetOrderDetails(request);
             
+            return Json(response);
+        }
+
+        /// <summary>
+        /// 生成订单
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult OrderTran(GenerateOrderRequest request)
+        {
+            GenerateOrderResponse response = bll.OrderTran(request);
+
             return Json(response);
         }
     }

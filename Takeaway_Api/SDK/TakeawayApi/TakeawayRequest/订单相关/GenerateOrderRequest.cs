@@ -19,9 +19,11 @@ namespace SDK
 
         public decimal Price { get; set; }
 
+        public string Ids { get; set; }
+
         public override string GetApiName()
         {
-            return "api/Order/GenerateOrder"; 
+            return "/api/Order/OrderTran"; 
         }
     }
 }

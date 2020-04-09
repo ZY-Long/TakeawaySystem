@@ -13,7 +13,7 @@ namespace SDK
         public int count { get; set; }
         public override string GetApiName()
         {
-            return "/api/AddCartDetails/AddCartDetails";
+            return "/api/AddCartDetails/CartTran";
         }
     }
 }

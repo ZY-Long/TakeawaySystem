@@ -5,7 +5,7 @@
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 <section class="breadcrumbs-custom">
-    <div class="parallax-container" data-parallax-img="images/bg-about-2.jpg">
+    <div class="parallax-container" data-parallax-img="/images/bg-about-2.jpg">
         <div class="breadcrumbs-custom-body parallax-content context-dark">
             <div class="container">
                 <h2 class="text-transform-capitalize breadcrumbs-custom-title">Shop</h2>
@@ -285,7 +285,6 @@
                         + "</div>"
                         + "</article>"
                         + "</div>"
-                    console.log(div1);
                     dav += div1;
                 });
                 $("#div11").append(dav);
@@ -300,7 +299,7 @@
     function AddCart(cnmid) {
         var userId = $("#Id").val();
         $.ajax({
-            url: "/AddCartDetails/AddCartDetailInfos",
+            url: "/AddCartDetails/CartTran",
             type: "POST",
             dataType: "json",
             data: {
