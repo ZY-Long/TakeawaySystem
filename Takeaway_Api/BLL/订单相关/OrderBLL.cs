@@ -54,5 +54,15 @@ namespace BLL
         {
             return BaseDAL<OrderDAL>.Instance.GetOrderDetails(UserId);
         }
+
+        /// <summary>
+        /// 生成订单
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        public int OrderTran(OrderParameter order)
+        {
+            return BaseDAL<OrderDAL>.Instance.OrderTran(order);
+        }
     }
 }

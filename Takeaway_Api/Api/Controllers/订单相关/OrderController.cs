@@ -65,8 +65,21 @@ namespace Api
         {
             GetOrderDetailsResponse response = new GetOrderDetailsResponse();
             response.orders = BaseBLL<OrderBLL>.Instance.GetOrderDetails(request.UserId);
-            
+
             response.State = response.orders.Count > 0 ? true : false;
+            return response;
+        }
+
+        /// <summary>
+        /// 生成订单
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public GenerateOrderResponse OrderTran(GenerateOrderRequest request)
+        {
+            GenerateOrderResponse response = new GenerateOrderResponse();
+            response.State = BaseBLL<OrderBLL>.Instance.OrderTran(request.parameter) > 0 ? true : false;
             return response;
         }
     }
