@@ -11,7 +11,7 @@ namespace SDK
         public int menuid { get; set; }
         public override string GetApiName()
         {
-            return "/api/MenuDetail/GetMenuDetail";
+            return "api/MenuDetail/GetMenuDetail";
         }
     }
 }

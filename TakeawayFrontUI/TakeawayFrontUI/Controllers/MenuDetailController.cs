@@ -16,7 +16,7 @@ namespace TakeawayFrontUI.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult MenuDteail(MenuDetailRequest request)
+        public JsonResult MenuDteails(MenuDetailRequest request)
         {
             MenuDetailResponse response = bll.GetMenuDetati(request);
             return Json(response);
