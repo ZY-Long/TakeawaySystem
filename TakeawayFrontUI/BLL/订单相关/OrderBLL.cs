@@ -57,5 +57,14 @@ namespace BLL
         {
             return ApiRequestHelper.Post<GenerateOrderRequest, GenerateOrderResponse>(request);
         }
+
+        /// <summary>
+        /// 获取订单的总价
+        /// </summary>
+        /// <returns></returns>
+        public GetOrderPriceResponse GetOrderPrice(GetOrderPriceRequest request)
+        {
+            return ApiRequestHelper.Post<GetOrderPriceRequest, GetOrderPriceResponse>(request); 
+        }
     }
 }

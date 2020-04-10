@@ -82,5 +82,18 @@ namespace Api
             response.State = BaseBLL<OrderBLL>.Instance.OrderTran(request.parameter) > 0 ? true : false;
             return response;
         }
+
+        /// <summary>
+        /// 获取订单的总价
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public GetOrderPriceResponse GetOrderPrice(GetOrderPriceRequest request)
+        {
+            GetOrderPriceResponse response = new GetOrderPriceResponse();
+            response.Toprice = BaseBLL<OrderBLL>.Instance.GetOrderPrice(request.Ids);
+            response.State = response.Toprice > 0 ? true : false;
+            return response;
+        }
     }
 }

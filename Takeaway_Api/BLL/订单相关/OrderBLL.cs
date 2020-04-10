@@ -64,5 +64,14 @@ namespace BLL
         {
             return BaseDAL<OrderDAL>.Instance.OrderTran(order);
         }
+
+        /// <summary>
+        /// 获取订单的总价
+        /// </summary>
+        /// <returns></returns>
+        public decimal GetOrderPrice(string Ids)
+        {
+            return BaseDAL<OrderDAL>.Instance.GetOrderPrice(Ids);
+        }
     }
 }

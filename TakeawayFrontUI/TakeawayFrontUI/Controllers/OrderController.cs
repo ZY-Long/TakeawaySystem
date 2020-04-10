@@ -88,5 +88,17 @@ namespace TakeawayFrontUI.Controllers
 
             return Json(response);
         }
+
+        /// <summary>
+        /// 获取订单的总价
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult GetOrderPrice(GetOrderPriceRequest request)
+        {
+            GetOrderPriceResponse response = new GetOrderPriceResponse();
+            response = bll.GetOrderPrice(request);
+            return Json(response);
+        }
     }
 }
