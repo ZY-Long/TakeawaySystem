@@ -367,7 +367,7 @@
     <Content Include="Views\MenuDetail\GetMenuDetail.cshtml" />
     <Content Include="Views\ShowCart\MenuDetail.cshtml" />
     <Content Include="Views\TakeawayHome\GenerateOrderView.cshtml" />
-    <Content Include="Views\Team\MEMBER.cshtml" />
+    <Content Include="Views\MenuDetail\MenuDteails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
