@@ -17,5 +17,9 @@ namespace Model
         public int Count { get; set; }
 
         public string CreateTime { get; set; }
+
+        public string Arname { get; set; }
+
+        public string Content { get; set; }
     }
 }

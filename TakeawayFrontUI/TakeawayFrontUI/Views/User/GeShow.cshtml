@@ -17,6 +17,7 @@
                 <td>菜品单价</td>
                 <td>菜品数量</td>
                 <td>下单时间</td>
+                <td>收货地址</td>
             </tr>
         </thead>
 
@@ -34,7 +35,7 @@
                 dataType: "json",
                 data:
                 {
-                    UserId:UserId
+                    UserId: UserId
                 },
                 success: function (res) {
                     var op = "";
@@ -46,6 +47,7 @@
                             + "<td>" + this.Price + "</td>"
                             + "<td>" + this.Count + "</td>"
                             + "<td>" + this.CreateTime + "</td>"
+                            + "<td>" + this.Arname + "-"+this.Content+"</td>"
                             + "</tr>"
                         op += tp;
                     })

@@ -79,7 +79,7 @@ WHERE c.UserId =" + UserId + " AND c.BusinessInfo=" + BusinessId + " AND c.Sates
         public int GenerateOrder(OrderParameter parameter)
         {
             int res = 0;
-
+            
 
             using (IDbConnection conn = new SqlConnection() { ConnectionString = "Data Source =.; Initial Catalog = TakeOutDB; Integrated Security = True" })
             {
@@ -111,10 +111,18 @@ WHERE UserId=" + UserId + " AND Sates=1";
         /// <returns></returns>
         public List<OderOrderDetailsShow> GetOrderDetails(int UserId)
         {
-            string sql = @"SELECT m.Img,m.Name,m.Price,od.Count,od.CreateTime FROM dbo.OrderDetails AS od
+            string sql = @"SELECT m.Img,m.Name,m.Price,od.Count,od.CreateTime,ar.Name AS Arname,ad.Content FROM dbo.OrderDetails AS od
     JOIN dbo.MenuInfo AS m
     ON od.DetailsId = m.Id
-     WHERE OrderId IN(SELECT o.Id FROM dbo.UserInfo AS u JOIN dbo.OrderInfo AS o ON u.Id = o.UserId WHERE u.Id =" + UserId + " AND o.[Sates] = 1)AND Od.Sates = 1";
+	JOIN dbo.OrderInfo AS o
+	ON o.Id=od.OrderId
+	JOIN dbo.AddressInfo AS Ad
+	ON o.AddressId=Ad.Id
+	JOIN dbo.CityInfo AS c
+	ON ad.CityId=c.Id
+	JOIN dbo.Arealnfo AS ar
+	ON ad.Area=ar.Id
+     WHERE OrderId IN(SELECT o.Id FROM dbo.UserInfo AS u JOIN dbo.OrderInfo AS o ON u.Id = o.UserId WHERE u.Id =" + UserId+" AND o.[Sates] = 1)AND Od.Sates = 1;";
             List<OderOrderDetailsShow> orders = OrmDBHelper.GetToList<OderOrderDetailsShow>(sql);
 
             return orders;
