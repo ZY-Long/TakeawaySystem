@@ -140,6 +140,7 @@
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\ProvinceController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Controllers\Usercontrollers.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
