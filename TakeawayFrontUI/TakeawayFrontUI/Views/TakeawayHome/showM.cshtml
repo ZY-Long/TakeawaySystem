@@ -4,10 +4,8 @@
 }
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-
-
 <section class="breadcrumbs-custom">
-    <div class="parallax-container" data-parallax-img="images/bg-about-2.jpg">
+    <div class="parallax-container" data-parallax-img="/images/bg-about-2.jpg">
         <div class="breadcrumbs-custom-body parallax-content context-dark">
             <div class="container">
                 <h2 class="text-transform-capitalize breadcrumbs-custom-title">商店</h2>
@@ -125,7 +123,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row row-30 row-lg-50" >
+                <div class="row row-30 row-lg-50">
                     @*<div class="col-sm-6 col-md-4 col-lg-6 col-xl-4">
                             <!-- Product-->
                             <article class="product">
@@ -203,29 +201,30 @@
     </div>
 </section>
 
+
 <script>
     //菜品类型:0代表全部，1代表菜，2代表酒水，3代表套餐
     var TypeId = 0;
     $(function () {
-            $("input[type='radio']").on("click",function () {
-                if($("input[id='Radio1']:checked").val()=="radio-1"){
-                    TypeId = 0;
-                    inquire();
-                }
-                else if($("input[id='Radio2']:checked").val()=="radio-2"){
-                    TypeId = 1;
-                    inquire();
-                }
-                else if($("input[id='Radio3']:checked").val()=="radio-3"){
-                    TypeId = 2;
-                    inquire();
-                }
-                else if($("input[id='Radio4']:checked").val()=="radio-4"){
-                    TypeId = 3;
-                    inquire();
-                }
-            })
+        $("input[type='radio']").on("click", function () {
+            if ($("input[id='Radio1']:checked").val() == "radio-1") {
+                TypeId = 0;
+                inquire();
+            }
+            else if ($("input[id='Radio2']:checked").val() == "radio-2") {
+                TypeId = 1;
+                inquire();
+            }
+            else if ($("input[id='Radio3']:checked").val() == "radio-3") {
+                TypeId = 2;
+                inquire();
+            }
+            else if ($("input[id='Radio4']:checked").val() == "radio-4") {
+                TypeId = 3;
+                inquire();
+            }
         })
+    })
     function inquire() {
 
         //页数
@@ -258,16 +257,15 @@
                         + "</div>"
                         + "</div>"
                         + "<div class='product-button-wrap'>"
-                        + "<div class='product-button'><a class='button button-secondary button-zakaria fl-bigmug-line-search74' href='single-product.html' onclick='Deci("+this.Id+")'></a></div>"
+                        + "<div class='product-button'><a class='button button-secondary button-zakaria fl-bigmug-line-search74'  onclick='Deci(" + this.Id + ")'></a></div>"
                         + "<div class='product-button'><a class='button button-primary button-zakaria fl-bigmug-line-shopping202' href='#' onclick='AddCart(" + this.Id + ")'></a></div>"
                         + "</div>"
                         + "</article>"
                         + "</div>"
-                    console.log(div1);
                     dav += div1;
                 });
                 $("#div11").append(dav);
-               
+
             }
         })
     }
@@ -276,10 +274,9 @@
         inquire();
     })
     function AddCart(cnmid) {
-
         var userId = $("#Id").val();
         $.ajax({
-            url: "/AddCartDetails/AddCartDetailInfos",
+            url: "/AddCartDetails/CartTran",
             type: "POST",
             dataType: "json",
             data: {
@@ -288,7 +285,7 @@
                 Count: 1
             },
             success: function (res) {
-                if (res. State) {
+                if (res.State) {
                     location.href = "/ShowCart/ShowCartDeci";
                 }
                 else {
@@ -296,9 +293,9 @@
                 }
             }
         })
-        }
+    }
     function Deci(id) {
-        location.href = "/MenuDetail/MenuDteail/?Id=" + id;
+        location.href = "/MenuDetail/GetMenuDetail/?Id=" + id;
     }
 </script>
 

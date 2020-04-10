@@ -7,10 +7,11 @@ using System.Web.Http;
 using BLL;
 using SDK;
 using Model;
-namespace Api.Controllers.购物车相关
+namespace Api
 {
     public class MenuDetailController : ApiController
     {
+        [HttpPost]
         public MenuDetailResponse GetMenuDetail(MenuDetailRequest request)
         {
             MenuDetailResponse menuresponse = new MenuDetailResponse();

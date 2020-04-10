@@ -9,6 +9,8 @@
         <!-- Owl Carousel-->
         <div class="post-classic-content" style="height:500px;margin-top:50px;width:55%;margin-left:27%">
             <input type="hidden" id="Price" value="@Session["Price"]">
+            <input type="hidden" id="Ids" value="@Session["Ids"]  ">
+
             <div style="margin-top:50px;width:100%;height:20%">
                 <div style="margin-left:0px;float:left"> <label>地址:</label></div>
                 <div style="margin-right:30%;float:right" id="radio">
@@ -39,16 +41,22 @@
     jQuery(document).ready(
         function () {
             GetSele();
+
+           
+
+
+
         });
 
     function GetSele() {
-         var UserId = jQuery("#Id").val();
+        var UserId = jQuery("#Id").val();
         jQuery.ajax({
             url: "/Order/GetOrders",
             type: "Post",
             dataType: "Json",
             data:
             {
+
                 Id: UserId
             },
             success: function (res) {
@@ -70,6 +78,8 @@
         var Content = jQuery("#Content").val();
         var UserId = jQuery("#Id").val();
 
+         var like = jQuery("#Ids").val();
+
         jQuery.ajax({
             url: "/Order/GenerateOrder",
             type: "Post",
@@ -78,6 +88,7 @@
             {
                 Price: Price,
                 parameter: {
+                    Ids: like,
                     TotalPrice: Price,
                     AddressId: AddressId,
                     Consignee: Consignee,

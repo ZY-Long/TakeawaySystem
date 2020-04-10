@@ -21,6 +21,17 @@ namespace TakeawayFrontUI.Controllers
             AddCartDetailsResponse response = bll.AddCartDetails(request);
             return Json(response);
         }
-       
+
+        /// <summary>
+        /// 添加购物车
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult CartTran(AddCartDetailsRequest request)
+        {
+            AddCartDetailsResponse response = bll.CartTran(request);
+            return Json(response);
+        }
+
     }
 }

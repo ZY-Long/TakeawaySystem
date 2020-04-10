@@ -303,6 +303,9 @@
     <Content Include="Ximages\slide-1.jpg" />
     <Content Include="显示购物车图片\1.jpg" />
     <Content Include="显示购物车图片\2 - 副本.jpg" />
+    <Content Include="购物车动态\css\style.css" />
+    <Content Include="购物车动态\js\jquery.min.js" />
+    <Content Include="购物车动态\js\script.js" />
     <Content Include="购物车引用文件2\css\carts.css" />
     <Content Include="购物车引用文件2\css\reset.css" />
     <Content Include="购物车引用文件2\images\1.png" />

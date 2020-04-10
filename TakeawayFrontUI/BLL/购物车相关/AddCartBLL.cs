@@ -12,5 +12,14 @@ namespace BLL
         {
             return ApiRequestHelper.Post<AddCartDetailsRequest, AddCartDetailsResponse>(request);
         }
+
+        /// <summary>
+        /// 添加购物车
+        /// </summary>
+        /// <returns></returns>
+        public AddCartDetailsResponse CartTran(AddCartDetailsRequest request)
+        {
+            return ApiRequestHelper.Post<AddCartDetailsRequest, AddCartDetailsResponse>(request);
+        }
     }
 }
