@@ -208,7 +208,7 @@ namespace DAL
                     else
                     {
                         //添加购物车
-                        StringBuilder sql4 = new StringBuilder(@"	  		 INSERT  dbo.CartInfo
+                        StringBuilder sql4 = new StringBuilder(@"INSERT  dbo.CartInfo
 		         ( UserId ,
 		           BusinessInfo ,
 		           Sates ,
@@ -222,10 +222,10 @@ namespace DAL
 
                         //获取刚刚添加的购物车的Id
                         StringBuilder sql7 = new StringBuilder("select  MAX(Id) from  CartInfo as ca where ca.UserId="+userId+" and ca.Sates=1;");
-                        int cartId = Convert.ToInt32(conn.ExecuteScalar(sql5.ToString(), null, transaction));
+                        int cartId = Convert.ToInt32(conn.ExecuteScalar(sql7.ToString(), null, transaction));
 
                         //添加购物车详情表
-                        StringBuilder sql8 = new StringBuilder(@"		 INSERT dbo.CartDetails
+                        StringBuilder sql8 = new StringBuilder(@"INSERT dbo.CartDetails
          ( TypeId ,
            DetailsId ,
            Count ,
@@ -239,7 +239,7 @@ namespace DAL
            UpdaterId
          )
  VALUES  ( "+typeId+" , "+minefid+" , "+count+" ,0 , "+price+" ,"+cartId+" ,1 ,GETDATE() ,GETDATE() , 1 , 1)");
-                        conn.Execute(sql4.ToString(), null, transaction);
+                        conn.Execute(sql8.ToString(), null, transaction);
                     }
 
 
@@ -255,7 +255,6 @@ namespace DAL
                 }
             }
         }
-
 
     }
 }
